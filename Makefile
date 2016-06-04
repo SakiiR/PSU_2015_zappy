@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sat Jun  4 17:43:45 2016 Erwan Dupard
+## Last update Sat Jun  4 17:44:22 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -50,3 +50,5 @@ fclean: clean
 	$(RM) $(GRAPHIC_NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
