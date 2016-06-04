@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sat Jun  4 17:44:22 2016 Erwan Dupard
+## Last update Sat Jun  4 17:46:29 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -14,7 +14,11 @@ RM		= rm -f
 
 CLIENT_NAME	= client
 SERVER_NAME	= server
-GRAPHIC_NAME	= console
+GRAPHIC_NAME	= graphic
+
+CLIENT_BINARY	= bin/client
+SERVER_BINARY	= bin/server
+GRAPHIC_BINARY	= bin/console
 
 CLIENT_SRCS	= client_src/main.c
 GRAPHIC_SRCS	= graphic_src/main.c
@@ -31,13 +35,13 @@ LDFLAGS		+=
 all: $(CLIENT_NAME) $(SERVER_NAME) $(GPRAHIC_NAME)
 
 $(CLIENT_NAME): $(CLIENT_OBJS)
-	$(CC) -o $(CLIENT_NAME) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $(CLIENT_BINARY) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(SERVER_NAME): $(SERVER_OBJS)
-	$(CC) -o $(SERVER_NAME) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_NAME) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS)
 
 clean:
 	$(RM) $(CLIENT_OBJS)
