@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sat Jun  4 17:46:29 2016 Erwan Dupard
+## Last update Sat Jun  4 17:47:59 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -49,9 +49,9 @@ clean:
 	$(RM) $(GRAPHIC_OBJS)
 
 fclean: clean
-	$(RM) $(CLIENT_NAME)
-	$(RM) $(SERVER_NAME)
-	$(RM) $(GRAPHIC_NAME)
+	$(RM) $(CLIENT_BINARY)
+	$(RM) $(SERVER_BINARY)
+	$(RM) $(GRAPHIC_BINARY)
 
 re: fclean all
 
