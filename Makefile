@@ -1,0 +1,52 @@
+##
+## Makefile for zappy in /home/dupard_e/rendus/PSU_2015_zappy
+## 
+## Made by Erwan Dupard
+## Login   <dupard_e@epitech.net>
+## 
+## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
+## Last update Sat Jun  4 17:43:45 2016 Erwan Dupard
+##
+
+CC		= gcc
+
+RM		= rm -f
+
+CLIENT_NAME	= client
+SERVER_NAME	= server
+GRAPHIC_NAME	= console
+
+CLIENT_SRCS	= client_src/main.c
+GRAPHIC_SRCS	= graphic_src/main.c
+SERVER_SRCS	= server_src/main.c
+
+CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
+SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
+GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
+
+CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi
+
+LDFLAGS		+=
+
+all: $(CLIENT_NAME) $(SERVER_NAME) $(GPRAHIC_NAME)
+
+$(CLIENT_NAME): $(CLIENT_OBJS)
+	$(CC) -o $(CLIENT_NAME) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
+
+$(SERVER_NAME): $(SERVER_OBJS)
+	$(CC) -o $(SERVER_NAME) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
+
+$(GRAPHIC_NAME): $(GRAPHIC_OBJS)
+	$(CC) -o $(GRAPHIC_NAME) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS)
+
+clean:
+	$(RM) $(CLIENT_OBJS)
+	$(RM) $(SERVER_OBJS)
+	$(RM) $(GRAPHIC_OBJS)
+
+fclean: clean
+	$(RM) $(CLIENT_NAME)
+	$(RM) $(SERVER_NAME)
+	$(RM) $(GRAPHIC_NAME)
+
+re: fclean all
