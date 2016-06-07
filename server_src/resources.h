@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:58 2016 Erwan Dupard
-** Last update Tue Jun  7 16:32:43 2016 Erwan Dupard
+** Last update Tue Jun  7 16:48:12 2016 Erwan Dupard
 */
 
 #ifndef RESOURCES_H_
@@ -13,6 +13,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include "options.h"
 
 # define RETURN_SUCCESS			(0)
 # define RETURN_FAILURE			(-1)
@@ -24,11 +25,11 @@ typedef unsigned int			u64;
  */
 typedef struct				s_options
 {
-  u64					port;
-  u64					world_x;
-  u64					world_y;
-  u64					max_clients;
-  u64					speed;
+  int					port;
+  int					world_x;
+  int					world_y;
+  int					max_clients;
+  int					speed;
   char					**teams;
 }					t_options;
 
@@ -51,6 +52,7 @@ void					init_options(t_options *options);
 int					handle_option_id(const char id,
 							 char **args,
 							 t_options *options);
+int					check_options(t_options *options);
 
 /*
  * Function pointers

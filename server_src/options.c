@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Tue Jun  7 16:31:34 2016 Erwan Dupard
+** Last update Tue Jun  7 16:49:03 2016 Erwan Dupard
 */
 
 #include "resources.h"
@@ -66,5 +66,19 @@ int					handle_option_id(const char id,
 	}
       ++i;
     }
+  return (RETURN_SUCCESS);
+}
+
+int					check_options(t_options *options)
+{
+  if (!(options->teams && options->teams[0] && options->teams[1]) ||
+      !(options->port >= MIN_PORT && options->port <= MAX_PORT) ||
+      !(options->world_x >= MIN_WORLD_X && options->world_x <= MAX_WORLD_X) ||
+      !(options->world_y >= MIN_WORLD_Y && options->world_y <= MAX_WORLD_Y) ||
+      !(options->max_clients >= MIN_MAX_CLIENTS &&
+	options->max_clients <= MAX_MAX_CLIENTS) ||
+      !(options->speed >= MIN_SPEED && options->speed <= MAX_SPEED)
+      )
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
