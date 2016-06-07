@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sat Jun  4 17:47:59 2016 Erwan Dupard
+## Last update Tue Jun  7 16:18:05 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -22,7 +22,11 @@ GRAPHIC_BINARY	= bin/console
 
 CLIENT_SRCS	= client_src/main.c
 GRAPHIC_SRCS	= graphic_src/main.c
-SERVER_SRCS	= server_src/main.c
+
+SERVER_SRCS	= server_src/main.c		\
+		  server_src/options.c		\
+		  server_src/options_id.c	\
+		  server_src/options_id2.c	\
 
 CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
