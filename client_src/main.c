@@ -5,11 +5,9 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 07 17:42:11 2016 Gabriel Goude
+** Last update Tue Jun 07 17:59:17 2016 Gabriel Goude
 */
 
-#include <sys/socket.h>
-#include <netinet/ip.h>
 #include <stdlib.h>
 #include "drone.h"
 
