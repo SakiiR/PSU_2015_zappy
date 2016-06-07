@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Tue Jun  7 16:18:05 2016 Erwan Dupard
+## Last update Tue Jun  7 17:26:40 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -27,6 +27,7 @@ SERVER_SRCS	= server_src/main.c		\
 		  server_src/options.c		\
 		  server_src/options_id.c	\
 		  server_src/options_id2.c	\
+		  server_src/map.c
 
 CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)

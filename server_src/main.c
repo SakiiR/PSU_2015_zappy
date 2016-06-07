@@ -5,10 +5,21 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Tue Jun  7 16:23:22 2016 Erwan Dupard
+** Last update Tue Jun  7 16:54:00 2016 Erwan Dupard
 */
 
 #include "resources.h"
+
+static void			usage(const char *file_name)
+{
+  printf("usage: %s ", file_name);
+  printf("[[[-p port] -p port] ...] ");
+  printf("[-x world_x] ");
+  printf("[-y world_y] ");
+  printf("[-c max_clients] ");
+  printf("[-t speed] ");
+  printf("-n team_name_1 team_name_2 ...\n");
+}
 
 int				main(int argc, char **argv)
 {
@@ -17,6 +28,11 @@ int				main(int argc, char **argv)
   init_options(&options);
   if (get_options(argc, argv, &options) == RETURN_FAILURE)
     return (RETURN_FAILURE);
+  if (check_options(&options) == RETURN_FAILURE)
+    {
+      usage(argv[0]);
+      return (RETURN_SUCCESS);
+    }
   printf("OPTIONS!\n");
   printf("options->port : %d\n", options.port);
   printf("options->world_x : %d\n", options.world_x);
