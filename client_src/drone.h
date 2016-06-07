@@ -1,15 +1,17 @@
 /*
 ** drone.h for zappy in /home/goude_g/src/PSU_2015_zappy/client_src
-**
+** 
 ** Made by Gabriel Goude
 ** Login   <goude_g@epitech.net>
-**
+** 
 ** Started on  Tue Jun 07 15:48:50 2016 Gabriel Goude
-** Last update Tue Jun 07 16:18:06 2016 Gabriel Goude
+** Last update Tue Jun 07 17:41:32 2016 Gabriel Goude
 */
 
 #ifndef DRONE_H_
 # define DRONE_H_
+
+#include <netinet/ip.h>
 
 typedef struct		s_client_settings
 {
@@ -18,5 +20,7 @@ typedef struct		s_client_settings
 
 }		t_client_settings;
 
+int		get_param(int ac, char **av, t_client_settings *settings);
+int		get_next_param(int i, char **av, t_client_settings *settings);
 
 #endif /* !DRONE_H_ */
