@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Tue Jun  7 16:52:48 2016 Erwan Dupard
+** Last update Tue Jun  7 16:54:00 2016 Erwan Dupard
 */
 
 #include "resources.h"
@@ -16,7 +16,6 @@ static void			usage(const char *file_name)
   printf("[[[-p port] -p port] ...] ");
   printf("[-x world_x] ");
   printf("[-y world_y] ");
-  printf("[-c max_clients] ");
   printf("[-c max_clients] ");
   printf("[-t speed] ");
   printf("-n team_name_1 team_name_2 ...\n");
