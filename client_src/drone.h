@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:50 2016 Gabriel Goude
-** Last update Tue Jun 07 17:41:32 2016 Gabriel Goude
+** Last update Tue Jun 07 18:11:31 2016 Gabriel Goude
 */
 
 #ifndef DRONE_H_
@@ -17,6 +17,7 @@ typedef struct		s_client_settings
 {
   char			*team_name;
   struct sockaddr_in	sock;
+  int			s;
 
 }		t_client_settings;
 
