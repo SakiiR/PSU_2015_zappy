@@ -5,11 +5,12 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 07 17:59:03 2016 Gabriel Goude
+** Last update Tue Jun 07 18:24:09 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
 #include <string.h>
+#include <netdb.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include "drone.h"
@@ -19,6 +20,7 @@ int			get_param(int ac, char **av, t_client_settings *settings)
   int			i;
 
   i = 1;
+  settings->s = socket(AF_INET, SOCK_STREAM, getprotobyname("tcp")->p_proto);
   if (ac != 7)
     return (EXIT_FAILURE);
   while (i < 6)
