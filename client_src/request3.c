@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 16:43:03 2016 Gabriel Goude
-** Last update Wed Jun 08 16:45:40 2016 Gabriel Goude
+** Last update Wed Jun 08 16:47:02 2016 Gabriel Goude
 */
 
 #include <unistd.h>
@@ -15,4 +15,5 @@
 int			connect_nbr(t_client_settings *settings)
 {
   write(settings->s, "connect_nbr\n", 12);
+  return (EXIT_SUCCESS);
 }

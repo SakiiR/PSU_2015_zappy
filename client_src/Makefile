@@ -3,7 +3,8 @@ NAME = client
 SRCS = main.c \
 	   parser.c \
 	   request.c \
-	   request2.c
+	   request2.c \
+	   request3.c
 
 OBJS = $(SRCS:.c=.o)
 
