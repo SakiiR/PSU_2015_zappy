@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Wed Jun 08 15:09:21 2016 Gabriel Goude
+** Last update Wed Jun 08 16:19:08 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -20,6 +20,7 @@ int			main(int ac, char **av)
     return (0);
   if (init_connection(&settings) == EXIT_FAILURE)
     return (0);
+  return (0);
 }
 
 int			init_connection(t_client_settings *settings)
