@@ -5,10 +5,13 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 07 17:59:17 2016 Gabriel Goude
+** Last update Wed Jun 08 13:51:48 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
 #include "drone.h"
 
 int			main(int ac, char **av)
@@ -17,5 +20,17 @@ int			main(int ac, char **av)
 
   if (get_param(ac, av, &settings) == EXIT_FAILURE)
     return (0);
+  if (init_connection(&settings) == EXIT_FAILURE)
+    return (0);
 }
 
+int			init_connection(t_client_settings *settings)
+{
+  if ((settings->s = socket(AF_INET, SOCK_STREAM, getprotobyname("tcp")->p_proto)) < 0)
+    return (EXIT_FAILURE);
+  if (bind(settings->s, (struct sockaddr *) &(settings->sock), sizeof(settings->sock)) < 0)
+    return (EXIT_FAILURE);
+  if (connect(settings->s, (struct sockaddr *) &(settings->sock), sizeof(settings->sock)) < 0)
+    return (EXIT_FAILURE);
+  return (EXIT_SUCCESS);
+}

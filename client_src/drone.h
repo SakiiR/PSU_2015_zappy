@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:50 2016 Gabriel Goude
-** Last update Tue Jun 07 18:11:31 2016 Gabriel Goude
+** Last update Wed Jun 08 13:50:26 2016 Gabriel Goude
 */
 
 #ifndef DRONE_H_
@@ -21,6 +21,14 @@ typedef struct		s_client_settings
 
 }		t_client_settings;
 
+/*
+** main.c
+*/
+int		init_connection(t_client_settings *settings);
+
+/*
+** parser.c
+*/
 int		get_param(int ac, char **av, t_client_settings *settings);
 int		get_next_param(int i, char **av, t_client_settings *settings);
 
