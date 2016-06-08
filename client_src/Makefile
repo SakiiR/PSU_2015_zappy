@@ -7,8 +7,10 @@ SRCS = main.c \
 
 OBJS = $(SRCS:.c=.o)
 
+CFLAGS += -W -Wall -Wextra -ansi -pedantic
+
 all:	$(OBJS)
-	gcc $(OBJS) -o $(NAME) -W -Wall -Wextra
+	gcc $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
