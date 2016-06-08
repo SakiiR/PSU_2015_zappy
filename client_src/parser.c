@@ -5,14 +5,12 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Wed Jun 08 13:19:58 2016 Gabriel Goude
+** Last update Wed Jun 08 14:04:15 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
 #include <string.h>
-#include <netdb.h>
 #include <arpa/inet.h>
-#include <sys/socket.h>
 #include "drone.h"
 
 int			get_param(int ac, char **av, t_client_settings *settings)
