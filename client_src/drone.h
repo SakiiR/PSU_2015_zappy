@@ -5,13 +5,19 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:50 2016 Gabriel Goude
-** Last update Wed Jun 08 13:50:26 2016 Gabriel Goude
+** Last update Thu Jun 09 15:09:38 2016 Gabriel Goude
 */
 
 #ifndef DRONE_H_
 # define DRONE_H_
 
-#include <netinet/ip.h>
+# include <netinet/ip.h>
+
+typedef struct		s_game
+{
+  int			world_x;
+  int			world_y;
+}			t_game;
 
 typedef struct		s_client_settings
 {
@@ -25,6 +31,8 @@ typedef struct		s_client_settings
 ** main.c
 */
 int		init_connection(t_client_settings *settings);
+int		enter_game(t_client_settings *settings, t_game *game);
+int		get_world_size(t_game *game, char *s);
 
 /*
 ** parser.c
