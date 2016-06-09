@@ -5,14 +5,14 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun  9 16:30:10 2016 Thomas Billot
+** Last update Thu Jun  9 17:28:32 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
 # define GRAPHICAL_H_
 
 #define	MSZ "msz" /* Taille de la carte */
-#define BCT "bct" /* Contenu de toute la carte (une case | toutes les cases) */
+#define BCT "bct" /* Contenu de toute la carte (une case - toutes les cases) */
 #define TNA "tna" /* Nom des équipes */
 #define PNW "pnw" /* Connexion d'un nouveau joueur */
 #define PPO "ppo" /* Position d'un joueur */
