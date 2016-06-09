@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun  9 16:15:27 2016 Thomas Billot
+** Last update Thu Jun  9 16:30:10 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -39,8 +39,8 @@
 typedef struct		s_ptr
 { 
   const char		*id;
-  const int		s_id = 3;
-  //  int			(*f)(t_option *);
+  const int		s_id;
+  /*  int			(*f)(t_option *); */
 }			t_ptr;
 
-/* !GRAPHICAL_H_ */
+#endif /* !GRAPHICAL_H_ */
