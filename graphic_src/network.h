@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 11:07:28 2016 Thomas Billot
-** Last update Fri Jun 10 12:21:30 2016 Thomas Billot
+** Last update Fri Jun 10 14:11:40 2016 Thomas Billot
 */
 
 #ifndef NETWORK_H_
