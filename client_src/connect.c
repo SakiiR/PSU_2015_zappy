@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 14:28:50 2016 Gabriel Goude
+** Last update Fri Jun 10 14:49:21 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -68,7 +68,19 @@ int			get_world_size(t_game *game, char *s)
   y[j] = 0;
   game->world_x = atoi(x);
   game->world_y = atoi(y);
+  init_inv(game);
   return (EXIT_SUCCESS);
+}
+
+void			init_inv(t_game *game)
+{
+  game->inv.food = 0;
+  game->inv.linemate = 0;
+  game->inv.deraumere = 0;
+  game->inv.sibur = 0;
+  game->inv.mendiane = 0;
+  game->inv.phiras = 0;
+  game->inv.thystame = 0;
 }
 
 int			init_connection(t_client_settings *settings)
