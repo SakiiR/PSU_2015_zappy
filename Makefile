@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 10 14:59:22 2016 Thomas Billot
+## Last update Fri Jun 10 15:54:23 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -20,7 +20,13 @@ CLIENT_BINARY	= bin/client
 SERVER_BINARY	= bin/server
 GRAPHIC_BINARY	= bin/console
 
-CLIENT_SRCS	= client_src/main.c
+CLIENT_SRCS	= client_src/main.c		\
+		  client_src/connect.c		\
+		  client_src/parser.c		\
+		  client_src/request.c		\
+		  client_src/request2.c		\
+		  client_src/request3.c		\
+
 GRAPHIC_SRCS	= graphic_src/main.c		\
 		  graphic_src/my_str_to_wordtab.c \
 		  graphic_src/my_str_to_wordtab2.c \
