@@ -5,15 +5,15 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:31:29 2016 Gabriel Goude
-** Last update Fri Jun 10 14:42:50 2016 Gabriel Goude
+** Last update Fri Jun 10 17:03:55 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
-#include "drone.h"
+#include "resources.h"
 
 int			ai(t_client_settings *settings, t_game *game)
 {
-  settings = settings;
-  game = game;
-  return (EXIT_SUCCESS);
+  (void)settings;
+  (void)game;
+  return (RETURN_SUCCESS);
 }
