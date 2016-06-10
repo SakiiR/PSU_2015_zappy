@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 10 15:54:23 2016 Erwan Dupard
+## Last update Fri Jun 10 15:55:00 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -54,7 +54,7 @@ CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi
 
 LDFLAGS		+=
 
-all: $(CLIENT_NAME) $(SERVER_NAME) $(GPRAHIC_NAME)
+all: $(CLIENT_NAME) $(SERVER_NAME) $(GRAPHIC_NAME)
 
 $(CLIENT_NAME): $(CLIENT_OBJS)
 	$(CC) -o $(CLIENT_BINARY) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
