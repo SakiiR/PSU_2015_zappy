@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Fri Jun 10 18:40:00 2016 Gabriel Goude
+** Last update Fri Jun 10 19:36:32 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -56,6 +56,12 @@ typedef struct				s_client_settings
   int					s;
 
 }					t_client_settings;
+
+/*
+** map.c
+*/
+t_map					**create_map(t_game *game);
+void					init_map(t_map *map);
 
 /*
 ** ai.c
