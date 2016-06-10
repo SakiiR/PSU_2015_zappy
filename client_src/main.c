@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 17:03:27 2016 Erwan Dupard
+** Last update Fri Jun 10 17:11:09 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -26,7 +26,7 @@ int			main(int ac, char **av)
     return (RETURN_FAILURE);
   if (enter_game(&settings, &game) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (ai(&settings, &game) == EXIT_FAILURE)
+  if (ai(&settings, &game) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
