@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Fri Jun 10 17:03:24 2016 Erwan Dupard
+** Last update Fri Jun 10 18:40:00 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -15,6 +15,17 @@
 # define RETURN_FAILURE			(-1)
 
 # include <netinet/ip.h>
+
+typedef struct				s_map
+{
+  int					food;
+  int					linemate;
+  int					deraumere;
+  int					sibur;
+  int					mendiane;
+  int					phiras;
+  int					thystame;
+}					t_map;
 
 typedef struct				s_inv
 {
@@ -31,6 +42,10 @@ typedef struct				s_game
 {
   int					world_x;
   int					world_y;
+  int					pos_x;
+  int					pos_y;
+  t_map					**map;
+  int					lvl;
   t_inv					inv;
 }					t_game;
 
