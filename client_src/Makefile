@@ -4,7 +4,8 @@ SRCS = main.c \
 	   parser.c \
 	   request.c \
 	   request2.c \
-	   request3.c
+	   request3.c \
+	   connect.c
 
 OBJS = $(SRCS:.c=.o)
 
