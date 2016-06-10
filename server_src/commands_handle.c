@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Fri Jun 10 17:05:04 2016 Barthelemy Gouby
+** Last update Fri Jun 10 17:10:51 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -58,8 +58,8 @@ int					handle_command(char *input,
   int					i;
   char					*command_name;
 
-  if (strlen(input > 1)
-      input[strlen(input) - 1] = 0;
+  /* if (strlen(input > 1) */
+  /*     input[strlen(input) - 1] = 0; */
   if (client->type == UNSPECIFIED)
     define_client_type(server, client, input);
   else

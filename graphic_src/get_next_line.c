@@ -5,13 +5,13 @@
 ** Login   <billot_t@epitech.net>
 ** 
 ** Started on  Mon Jun 15 13:21:49 2015 Thomas Billot
-** Last update Tue May 10 18:06:03 2016 Thomas Billot
+** Last update Fri Jun 10 10:55:58 2016 Thomas Billot
 */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "myftp.h"
+#include "xfunc.h"
 
 char		*add_char(char **str, const int l, const char c)
 {
