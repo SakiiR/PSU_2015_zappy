@@ -5,11 +5,14 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun  9 17:28:32 2016 Thomas Billot
+** Last update Fri Jun 10 14:59:01 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
 # define GRAPHICAL_H_
+
+#include "network.h"
+#include "circular_buffer.h"
 
 #define	MSZ "msz" /* Taille de la carte */
 #define BCT "bct" /* Contenu de toute la carte (une case - toutes les cases) */
@@ -36,11 +39,23 @@
 #define SUC "suc" /* Commande du serveur */
 #define SBP "sbp" /* Mauvais parametres de commande */
 
+#define BIENVENUE "BIENVENUE" /* Message du serveur pour 
+				 initialisé le moniteur graphique */
+typedef struct		s_option
+{
+  int			sockfd;
+  t_circular_buffer	*circular_buffer;
+}			t_option;
+
 typedef struct		s_ptr
 { 
   const char		*id;
-  const int		s_id;
-  /*  int			(*f)(t_option *); */
+  int			(*f)(t_option *);
 }			t_ptr;
+
+
+int			launch_client(t_option *options);
+
+int			fct_welcome(t_option *options);
 
 #endif /* !GRAPHICAL_H_ */

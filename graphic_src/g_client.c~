@@ -1,0 +1,14 @@
+/*
+** g_client.c for PSU_2015_zappy in /home/mikaz3
+** 
+** Made by Thomas Billot
+** Login   <mikaz3@epitech.net>
+** 
+** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
+** Last update Fri Jun 10 14:56:38 2016 Thomas Billot
+*/
+
+#include "graphical.h"
+#include "network.h"
+#include "circular_buffer.h"
+

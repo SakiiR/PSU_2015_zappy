@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:59:16 2016 Thomas Billot
-** Last update Fri Jun 10 13:33:27 2016 Thomas Billot
+** Last update Fri Jun 10 13:57:17 2016 Thomas Billot
 */
 
 #include "network.h"
@@ -32,7 +32,6 @@ int			setup_networking(int port)
     }
   if ((sock = xsocket(AF_INET, SOCK_STREAM, pe->p_proto)) == SOCKET_ERROR)
     return (-1);
-  printf("sock : %d || port : %d\n", sock, port);
   sin.sin_family = AF_INET;
   sin.sin_addr.s_addr = INADDR_ANY;
   sin.sin_port = htons(port);
@@ -42,5 +41,5 @@ int			setup_networking(int port)
 	return (-1);
       return (-1);
     }    
-  return (0);
+  return (sock);
 }
