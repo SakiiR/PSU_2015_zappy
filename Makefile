@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Tue Jun  7 17:26:40 2016 Barthelemy Gouby
+## Last update Fri Jun 10 12:23:00 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -21,7 +21,14 @@ SERVER_BINARY	= bin/server
 GRAPHIC_BINARY	= bin/console
 
 CLIENT_SRCS	= client_src/main.c
-GRAPHIC_SRCS	= graphic_src/main.c
+GRAPHIC_SRCS	= graphic_src/main.c		\
+		  graphic_src/my_str_to_wordtab.c \
+		  graphic_src/my_str_to_wordtab2.c \
+		  graphic_src/network.c \
+		  graphic_src/xsocket.c \
+		  graphic_src/xconnect.c \
+		  graphic_src/xclose.c \
+		  graphic_src/get_next_line.c
 
 SERVER_SRCS	= server_src/main.c		\
 		  server_src/options.c		\
