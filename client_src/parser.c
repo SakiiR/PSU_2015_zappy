@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Wed Jun 08 14:04:15 2016 Gabriel Goude
+** Last update Thu Jun 09 17:34:15 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -20,10 +20,12 @@ int			get_param(int ac, char **av, t_client_settings *settings)
   i = 1;
   if (ac != 7)
     return (EXIT_FAILURE);
+  settings->sock.sin_family = AF_INET;
   while (i < 6)
   {
     if (i % 2 == 1)
       get_next_param(i, av, settings);
+    i++;
   }
   return (EXIT_SUCCESS);
 }
@@ -33,7 +35,7 @@ int			get_next_param(int i, char **av, t_client_settings *settings)
   if (strcmp(av[i], "-n") == 0)
     settings->team_name = av[i + 1];
   else if (strcmp(av[i], "-p") == 0)
-    settings->sock.sin_port = atoi(av[i + 1]);
+    settings->sock.sin_port = htons(atoi(av[i + 1]));
   else if (strcmp(av[i], "-h") == 0)
   {
     if (strcmp(av[i + 1], "localhost") == 0)
