@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Thu Jun 09 16:29:21 2016 Gabriel Goude
+** Last update Fri Jun 10 14:28:56 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -22,12 +22,9 @@ int			main(int ac, char **av)
 
   if (get_param(ac, av, &settings) == EXIT_FAILURE)
     return (0);
-  printf("param ok \n");
   if (init_connection(&settings) == EXIT_FAILURE)
     return (0);
-  printf("connection ok \n");
   if (enter_game(&settings, &game) == EXIT_FAILURE)
     return (0);
-  printf("enter ok \n");
   return (0);
 }

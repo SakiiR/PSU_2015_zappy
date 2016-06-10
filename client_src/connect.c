@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Thu Jun 09 17:44:20 2016 Gabriel Goude
+** Last update Fri Jun 10 14:28:50 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -24,21 +24,19 @@ int			enter_game(t_client_settings *settings, t_game *game)
   s[i - 1] = 0;
   if (strcmp(s, "BIENVENUE") == 0)
   {
-    printf("bvn\n");
-    send(settings->s, settings->team_name, strlen(settings->team_name), 0);
-    /*
-    if (fgets(s, 4096, fd) == NULL)
-      return (EXIT_FAILURE);
+    write(settings->s, settings->team_name, strlen(settings->team_name));
+    write(settings->s, "\n", 1);
+    i = read(settings->s, s, 4096);
+    s[i - 1] = 0;
     if (atoi(s) > 0)
     {
-      if (fgets(s, 4096, fd) == NULL)
-	return (EXIT_SUCCESS);
+      i = read(settings->s, s, 4096);
+      s[i - 1] = 0;
       if (get_world_size(game, s) == EXIT_FAILURE)
 	return (EXIT_FAILURE);
       return (EXIT_SUCCESS);
-      }
-      */
-    return (EXIT_SUCCESS);
+    }
+      return (EXIT_SUCCESS);
   }
   return (EXIT_FAILURE);
 }
