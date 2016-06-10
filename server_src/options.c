@@ -5,54 +5,74 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Tue Jun  7 16:49:03 2016 Erwan Dupard
+** Last update Fri Jun 10 15:34:21 2016 Barthelemy Gouby
 */
 
-#include "resources.h"
+#include "server.h"
 
 static t_option_id			g_options_ids[] = {
   {'p', &option_id_port},
   {'x', &option_id_worldx},
   {'y', &option_id_worldy},
-  {'c', &option_id_maxclients},
+  {'c', &option_id_maxmembers},
   {'t', &option_id_speed},
   {'n', &option_id_teams},
   {'\0', NULL}
 };
 
-void					init_options(t_options *options)
+
+static void			usage(const char *file_name)
 {
-  options->port = 0;
-  options->port = 0;
-  options->world_x = 0;
-  options->world_y = 0;
-  options->max_clients = 0;
-  options->speed = 0;
-  options->teams = NULL;
+  printf("usage: %s ", file_name);
+  printf("[[[-p port] -p port] ...] ");
+  printf("[-x world_x] ");
+  printf("[-y world_y] ");
+  printf("[-c max_clients] ");
+  printf("[-t speed] ");
+  printf("-n team_name_1 team_name_2 ...\n");
+}
+
+void					init_options(t_server *server)
+{
+  server->port = 0;
+  server->host_name = "zappy.epitech";
+  server->game_data.map.width = 0;
+  server->game_data.map.height = 0;
+  server->game_data.base_max_members = 0;
+  server->game_data.speed = 0;
+  server->game_data.teams = NULL;
+  server->game_data.nbr_of_teams = 0;
 }
 
 int					get_options(u64 argc,
 						    char **argv,
-						    t_options *options)
+						    t_server *server)
 {
   u64					i;
 
   i = 0;
+  init_options(server);
   while (i < argc)
     {
       if (argv[i][0] == '-')
 	{
-	  if (handle_option_id(argv[i][1], &argv[i], options) == RETURN_FAILURE)
+	  if (handle_option_id(argv[i][1], &argv[i], server) == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
 	}
       ++i;
     }
-  return (RETURN_SUCCESS);
+  i = 0;
+  while (i < server->game_data.nbr_of_teams)
+    {
+      server->game_data.teams[i].max_members = server->game_data.base_max_members;
+      i++;
+    }
+  return (check_options(server, argv[0]));
 }
 
 int					handle_option_id(const char id,
 							 char **args,
-							 t_options *options)
+							 t_server *server)
 {
   u64					i;
 
@@ -61,7 +81,7 @@ int					handle_option_id(const char id,
     {
       if (id == g_options_ids[i].id)
 	{
-	  if (g_options_ids[i].f(args, options) == RETURN_FAILURE)
+	  if (g_options_ids[i].f(args, server) == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
 	}
       ++i;
@@ -69,16 +89,22 @@ int					handle_option_id(const char id,
   return (RETURN_SUCCESS);
 }
 
-int					check_options(t_options *options)
+int					check_options(t_server *server, char *file_name)
 {
-  if (!(options->teams && options->teams[0] && options->teams[1]) ||
-      !(options->port >= MIN_PORT && options->port <= MAX_PORT) ||
-      !(options->world_x >= MIN_WORLD_X && options->world_x <= MAX_WORLD_X) ||
-      !(options->world_y >= MIN_WORLD_Y && options->world_y <= MAX_WORLD_Y) ||
-      !(options->max_clients >= MIN_MAX_CLIENTS &&
-	options->max_clients <= MAX_MAX_CLIENTS) ||
-      !(options->speed >= MIN_SPEED && options->speed <= MAX_SPEED)
+  if (!(server->game_data.teams
+	&& server->game_data.nbr_of_teams > 0) ||
+      !(server->port >= MIN_PORT && server->port <= MAX_PORT) ||
+      !(server->game_data.map.width >= MIN_WORLD_X
+	&& server->game_data.map.width <= MAX_WORLD_X) ||
+      !(server->game_data.map.height >= MIN_WORLD_Y
+	&& server->game_data.map.height <= MAX_WORLD_Y) ||
+      !(server->game_data.base_max_members >= MIN_MAX_CLIENTS &&
+        server->game_data.base_max_members <= MAX_MAX_CLIENTS) ||
+      !(server->game_data.speed >= MIN_SPEED && server->game_data.speed <= MAX_SPEED)
       )
-    return (RETURN_FAILURE);
+    {
+      usage(file_name);
+      return (RETURN_FAILURE);
+    }
   return (RETURN_SUCCESS);
 }

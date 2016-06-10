@@ -5,15 +5,15 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:17:21 2016 Erwan Dupard
-** Last update Tue Jun  7 16:30:52 2016 Erwan Dupard
+** Last update Fri Jun 10 15:14:14 2016 Barthelemy Gouby
 */
 
-#include "resources.h"
+#include "server.h"
 
-int					option_id_teams(char **args, t_options *options)
+int					option_id_teams(char **args, t_server *server)
 {
   u64					i;
-  char					**teams;
+  t_team				*teams;
 
   i = 0;
   ++args;
@@ -24,10 +24,12 @@ int					option_id_teams(char **args, t_options *options)
   i = 0;
   while (args[i])
     {
-      teams[i] = args[i];
+      teams[i].name = args[i];
+      teams[i].members = NULL;
+      teams[i].max_members = 0;
       ++i;
     }
-  teams[i] = NULL;
-  options->teams = teams;
+  server->game_data.teams = teams;
+  server->game_data.nbr_of_teams = i;
   return (RETURN_SUCCESS);
 }

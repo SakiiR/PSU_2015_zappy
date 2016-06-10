@@ -5,24 +5,22 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Tue Jun  7 17:31:37 2016 Barthelemy Gouby
+** Last update Fri Jun 10 15:16:27 2016 Barthelemy Gouby
 */
 
+#include <time.h>
 #include <stdlib.h>
 #include "server.h"
 
-t_map 		*initialize_map(const unsigned int width, const unsigned int height)
+int 		initialize_map(t_map *map)
 {
-  t_map		*map;
   t_case	*cases;
   unsigned int	i;
 
   i = 0;
-  if (!(map = malloc(sizeof(*map))))
-    return (NULL);
-  if (!(cases = malloc(sizeof(*cases) * width * height)))
-    return (NULL);
-  while (i < width * height)
+  if (!(cases = malloc(sizeof(*cases) * map->width * map->height)))
+    return (RETURN_FAILURE);
+  while (i < map->width * map->height)
     {
       cases[i].quantities[FOOD] = 0;
       cases[i].quantities[LINEMATE] = 0;
@@ -34,9 +32,7 @@ t_map 		*initialize_map(const unsigned int width, const unsigned int height)
       i++;
     }
   map->cases = cases;
-  map->width = width;
-  map->height = height;
-  return (map);
+  return (RETURN_SUCCESS);
 }
 
 t_case		*map_get_case_at(const unsigned int x, const unsigned int y, const t_map *map)
@@ -44,7 +40,54 @@ t_case		*map_get_case_at(const unsigned int x, const unsigned int y, const t_map
   unsigned int	index;
 
   index = y * map->width + x;
-  if (index > map->height * map->width)
+  if (index >= map->height * map->width)
     return (NULL);
   return (&map->cases[index]);
+}
+
+void		spread_ressource(const object_type type, unsigned int quantity, t_map *map)
+{
+  while (quantity > 0)
+    {
+      map->cases[rand() % (map->width * map->height)].quantities[type]++;
+      quantity--;
+    }
+}		
+
+void		initialize_ressources(t_server *server)
+{
+  unsigned int	nbr_of_teams;
+  unsigned int	base_max_members;
+  t_map		*map;
+
+  nbr_of_teams = server->game_data.nbr_of_teams;
+  base_max_members = server->game_data.base_max_members;
+  map = &server->game_data.map;
+  srand(time(NULL));
+  spread_ressource(FOOD, nbr_of_teams * base_max_members * 100, map);
+  spread_ressource(LINEMATE, nbr_of_teams * base_max_members * 6, map);
+  spread_ressource(DERAUMERE, nbr_of_teams * base_max_members * 5, map);
+  spread_ressource(SIBUR, nbr_of_teams * base_max_members * 4, map);
+  spread_ressource(MENDIANE, nbr_of_teams * base_max_members * 3, map);
+  spread_ressource(PHIRAS, nbr_of_teams * base_max_members * 2, map);
+  spread_ressource(THYSTAME, nbr_of_teams * base_max_members, map);
+}
+
+void		text_display_map(t_map *map)
+{
+  unsigned int	i;
+
+  i = 0;
+  while (i < map->width * map->height)
+    {
+      printf("--------- case at x: %i y: %i\n", i % map->height, i / map->height);
+      printf("Food: %i\n", map->cases[i].quantities[FOOD]);
+      printf("Linemate: %i\n", map->cases[i].quantities[LINEMATE]);
+      printf("Deraumere: %i\n", map->cases[i].quantities[DERAUMERE]);
+      printf("Sibur: %i\n", map->cases[i].quantities[SIBUR]);
+      printf("Mendiane: %i\n", map->cases[i].quantities[MENDIANE]);
+      printf("Phiras: %i\n", map->cases[i].quantities[PHIRAS]);
+      printf("Thystame: %i\n", map->cases[i].quantities[THYSTAME]);
+      i++;
+    }
 }
