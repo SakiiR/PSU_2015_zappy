@@ -5,29 +5,29 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Thu Jun 09 17:34:15 2016 Gabriel Goude
+** Last update Fri Jun 10 17:07:05 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
 #include <string.h>
 #include <arpa/inet.h>
-#include "drone.h"
+#include "resources.h"
 
 int			get_param(int ac, char **av, t_client_settings *settings)
 {
   int			i;
 
   i = 1;
-  if (ac != 7)
-    return (EXIT_FAILURE);
+  if (ac < 8)
+    return (RETURN_FAILURE);
   settings->sock.sin_family = AF_INET;
   while (i < 6)
   {
-    if (i % 2 == 1)
+    if (i % 2)
       get_next_param(i, av, settings);
     i++;
   }
-  return (EXIT_SUCCESS);
+  return (RETURN_SUCCESS);
 }
 
 int			get_next_param(int i, char **av, t_client_settings *settings)
@@ -41,15 +41,15 @@ int			get_next_param(int i, char **av, t_client_settings *settings)
     if (strcmp(av[i + 1], "localhost") == 0)
     {
       if (inet_pton(AF_INET,  "127.0.0.1", &(settings->sock.sin_addr)) != 1)
-	return (EXIT_FAILURE);
+	return (RETURN_FAILURE);
     }
     else
     {
       if (inet_pton(AF_INET, av[i + 1], &(settings->sock.sin_addr)) != 1)
-	return (EXIT_FAILURE);
+	return (RETURN_FAILURE);
     }
   }
   else
-    return (EXIT_FAILURE);
-  return (EXIT_SUCCESS);
+    return (RETURN_FAILURE);
+  return (RETURN_SUCCESS);
 }

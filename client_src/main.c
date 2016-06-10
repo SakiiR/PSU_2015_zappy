@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 14:31:11 2016 Gabriel Goude
+** Last update Fri Jun 10 17:03:27 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -13,20 +13,20 @@
 #include <netdb.h>
 #include <stdio.h>
 #include <string.h>
-#include "drone.h"
+#include "resources.h"
 
 int			main(int ac, char **av)
 {
   t_client_settings	settings;
   t_game		game;
 
-  if (get_param(ac, av, &settings) == EXIT_FAILURE)
-    return (0);
-  if (init_connection(&settings) == EXIT_FAILURE)
-    return (0);
-  if (enter_game(&settings, &game) == EXIT_FAILURE)
-    return (0);
+  if (get_param(ac, av, &settings) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (init_connection(&settings) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (enter_game(&settings, &game) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   if (ai(&settings, &game) == EXIT_FAILURE)
-    return (0);
-  return (0);
+    return (RETURN_FAILURE);
+  return (RETURN_SUCCESS);
 }
