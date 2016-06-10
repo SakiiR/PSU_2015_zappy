@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 17:06:55 2016 Erwan Dupard
+** Last update Fri Jun 10 17:37:09 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -68,6 +68,9 @@ int					get_world_size(t_game *game, char *s)
   y[j] = 0;
   game->world_x = atoi(x);
   game->world_y = atoi(y);
+  game->pos_x = 0;
+  game->pos_y = 0;
+  game->lvl = 1;
   init_inv(game);
   return (RETURN_SUCCESS);
 }
