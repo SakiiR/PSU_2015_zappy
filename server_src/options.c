@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Fri Jun 10 15:34:21 2016 Barthelemy Gouby
+** Last update Sun Jun 12 17:31:53 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -17,11 +17,10 @@ static t_option_id			g_options_ids[] = {
   {'c', &option_id_maxmembers},
   {'t', &option_id_speed},
   {'n', &option_id_teams},
-  {'\0', NULL}
+  {0, NULL}
 };
 
-
-static void			usage(const char *file_name)
+static void				usage(const char *file_name)
 {
   printf("usage: %s ", file_name);
   printf("[[[-p port] -p port] ...] ");
@@ -48,7 +47,7 @@ int					get_options(u64 argc,
 						    char **argv,
 						    t_server *server)
 {
-  u64					i;
+  int					i;
 
   i = 0;
   init_options(server);
@@ -61,12 +60,9 @@ int					get_options(u64 argc,
 	}
       ++i;
     }
-  i = 0;
-  while (i < server->game_data.nbr_of_teams)
-    {
-      server->game_data.teams[i].max_members = server->game_data.base_max_members;
-      i++;
-    }
+  i = -1;
+  while (++i < server->game_data.nbr_of_teams)
+    server->game_data.teams[i].max_members = server->game_data.base_max_members;
   return (check_options(server, argv[0]));
 }
 
@@ -100,7 +96,8 @@ int					check_options(t_server *server, char *file_name)
 	&& server->game_data.map.height <= MAX_WORLD_Y) ||
       !(server->game_data.base_max_members >= MIN_MAX_CLIENTS &&
         server->game_data.base_max_members <= MAX_MAX_CLIENTS) ||
-      !(server->game_data.speed >= MIN_SPEED && server->game_data.speed <= MAX_SPEED)
+      !(server->game_data.speed >= MIN_SPEED &&
+	server->game_data.speed <= MAX_SPEED)
       )
     {
       usage(file_name);
