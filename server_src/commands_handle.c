@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sun Jun 12 19:02:15 2016 Erwan Dupard
+** Last update Sun Jun 12 19:12:20 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-const static t_command				g_commands[] = {
+const static t_command			g_commands[] = {
   {NULL, NULL, 0}
 };
 
