@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Fri Jun 10 17:13:36 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:59:34 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -14,7 +14,7 @@ int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input)
 {
-  unsigned int					i;
+  unsigned int				i;
 
   i = 0;
   if (strcmp(input, "GRAPHIC") == 0)
