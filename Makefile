@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 10 17:10:07 2016 Barthelemy Gouby
+## Last update Sun Jun 12 18:33:46 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -52,6 +52,7 @@ SERVER_SRCS	= server_src/main.c			\
 		  server_src/commands_handle.c		\
 		  circular_buffer/circular_buffer.c	\
 		  circular_buffer/circular_buffer2.c	\
+		  server_src/graphic_commands.c
 
 CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)

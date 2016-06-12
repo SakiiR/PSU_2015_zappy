@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 10 16:03:28 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:28:23 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -119,6 +119,7 @@ typedef struct				s_server
   const char				*host_name;
   t_client				*clients;
   t_game_data				game_data;
+  char					buffer[4096];
 }					t_server;
 
 typedef struct				s_command
@@ -181,11 +182,33 @@ int					check_options(t_server *server, char *file_name);
 /*
  * Function pointers
  */
-int					option_id_port(char **args, t_server *server);
-int					option_id_worldx(char **args, t_server *server);
-int					option_id_worldy(char **args, t_server *server);
-int					option_id_maxmembers(char **args, t_server *server);
-int					option_id_speed(char **args, t_server *server);
-int					option_id_teams(char **args, t_server *server);
+int					option_id_port(char **args,
+						       t_server *server);
+int					option_id_worldx(char **args,
+							 t_server *server);
+int					option_id_worldy(char **args,
+							 t_server *server);
+int					option_id_maxmembers(char **args,
+							     t_server *server);
+int					option_id_speed(char **args,
+							t_server *server);
+int					option_id_teams(char **args,
+							t_server *server);
+
+int					send_map_size(t_server *server,
+						      t_client *client,
+						      char *operands
+						      __attribute__((unused)))
+int					send_speed(t_server *server,
+						   t_client *client,
+						   char *operands
+						   __attribute__((unused)));
+int					send_case_content(t_server *server,
+							  t_client *client,
+							  char *operands);
+int					send_map_content(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
 
 #endif /* !_SERVER_H_ */
