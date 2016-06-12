@@ -5,10 +5,8 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 17:12:06 2016 Erwan Dupard
-** Last update Fri Jun 10 10:53:39 2016 Thomas Billot
+** Last update Sun Jun 12 18:33:57 2016 Erwan Dupard
 */
-
-#include "../server_src/resources.h"
 
 unsigned int				wordtab_length(const char **tab)
 {

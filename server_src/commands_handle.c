@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sun Jun 12 18:33:08 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:59:16 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -23,6 +23,7 @@ int					define_client_type(t_server *server,
       send_map_size(server, client, NULL);
       send_speed(server, client, NULL);
       send_map_content(server, client, NULL);
+      send_team_names(server, client, NULL);
     }
   else
     {

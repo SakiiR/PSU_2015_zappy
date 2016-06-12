@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sun Jun 12 18:28:23 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:58:43 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -20,7 +20,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
-# include "../circular_buffer/circular_buffer.h"
+# include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
 # define BUFFER_SIZE			(4096)
@@ -198,7 +198,7 @@ int					option_id_teams(char **args,
 int					send_map_size(t_server *server,
 						      t_client *client,
 						      char *operands
-						      __attribute__((unused)))
+						      __attribute__((unused)));
 int					send_speed(t_server *server,
 						   t_client *client,
 						   char *operands
@@ -210,5 +210,8 @@ int					send_map_content(t_server *server,
 							 t_client *client,
 							 char *operands
 							 __attribute__((unused)));
+int					send_team_names(t_server *server,
+							t_client *client,
+							char *operands __attribute__((unused)));
 
 #endif /* !_SERVER_H_ */

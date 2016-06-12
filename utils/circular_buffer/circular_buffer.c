@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon May 30 14:55:52 2016 Barthelemy Gouby
-** Last update Fri Jun  3 12:48:00 2016 Erwan Dupard
+** Last update Fri Jun 10 17:03:33 2016 Barthelemy Gouby
 */
 
 #include "circular_buffer.h"
@@ -29,11 +29,11 @@ char		*get_next_message(t_circular_buffer *buffer)
 
   if (!(data = read_data_from_buffer(buffer)))
     return (NULL);
-  if (!(end_of_line = strstr(data, "\r\n")))
+  if (!(end_of_line = strstr(data, "\n")))
     data[0] = 0;
   else
     {
-      message_size = end_of_line - data + 2;
+      message_size = end_of_line - data + 1;
       data[message_size] = 0;
       if (buffer->valid_data_start + message_size > buffer->size)
 	buffer->valid_data_start = message_size -

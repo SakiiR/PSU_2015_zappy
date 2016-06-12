@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Fri Jun 10 16:56:50 2016 Barthelemy Gouby
+** Last update Sun Jun 12 17:32:09 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -75,20 +75,9 @@ int				main(int argc, char **argv)
 
   if (get_options(argc, argv, &server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  /* printf("OPTIONS!\n"); */
-  /* printf("options->port : %d\n", options.port); */
-  /* printf("options->world_x : %d\n", options.world_x); */
-  /* printf("options->world_y : %d\n", options.world_y); */
-  /* printf("options->max_clients : %d\n", options.max_clients); */
-  /* printf("options->speed : %d\n", options.speed); */
-  /* printf("options->teams : %p\n", (void *)options.teams); */
-  /* printf("options->nbr_of_team : %i\n", options.nbr_of_teams); */
-
   if (initialize_map(&server.game_data.map) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   initialize_ressources(&server);
-  /* text_display_map(&server.map); */
-
   if (initialize_socket(&server) == RETURN_FAILURE)
     {
       printf("[-] Failed to initialize connection ..\n");
@@ -97,6 +86,5 @@ int				main(int argc, char **argv)
   if (process_server(&server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   close_connection(&server);
-
   return (RETURN_SUCCESS);
 }
