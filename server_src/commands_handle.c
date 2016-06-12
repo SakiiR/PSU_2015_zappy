@@ -5,16 +5,20 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sun Jun 12 18:59:16 2016 Barthelemy Gouby
+** Last update Sun Jun 12 19:04:04 2016 Barthelemy Gouby
 */
 
 #include "server.h"
+
+const static t_command				g_commands[] = {
+  {NULL, NULL, 0}
+};
 
 int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input)
 {
-  unsigned int					i;
+  unsigned int				i;
 
   i = 0;
   if (strcmp(input, "GRAPHIC") == 0)
@@ -49,10 +53,6 @@ int					define_client_type(t_server *server,
     }
   return (RETURN_SUCCESS);
 }
-
-const t_command				g_commands[] = {
-  {NULL, NULL, 0}
-};
 
 int					handle_command(char *input,
 						       t_server *server,
