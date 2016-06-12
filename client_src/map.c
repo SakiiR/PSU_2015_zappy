@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 18:35:00 2016 Gabriel Goude
-** Last update Fri Jun 10 19:38:30 2016 Gabriel Goude
+** Last update Sun Jun 12 17:16:33 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ t_map			**create_map(t_game *game)
     {
       if ((map[i] = malloc(sizeof(**map) * game->world_y)) == NULL)
 	return (NULL);
-      init_map(&(map[i]));
+      init_map(&map[i]);
       i++;
     }
   return (map);
