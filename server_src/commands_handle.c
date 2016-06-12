@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Fri Jun 10 17:13:36 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:33:08 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -20,7 +20,9 @@ int					define_client_type(t_server *server,
   if (strcmp(input, "GRAPHIC") == 0)
     {
       client->type = GRAPHIC;
-      write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
+      send_map_size(server, client, NULL);
+      send_speed(server, client, NULL);
+      send_map_content(server, client, NULL);
     }
   else
     {
@@ -57,6 +59,7 @@ int					handle_command(char *input,
 {
   int					i;
   char					*command_name;
+  char					*operands;
 
   if (strlen(input) > 1)
       input[strlen(input) - 1] = 0;
@@ -65,11 +68,12 @@ int					handle_command(char *input,
   else
     {
       command_name = strtok(input, " ");
+      operands = strtok(NULL, "\n");
       while (g_commands[++i].command != NULL)
 	{
 	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)
 	    {
-	      return (g_commands[i].f(input, server, client));
+	      return (g_commands[i].f(operands, server, client));
 	    }
 	}
     }
