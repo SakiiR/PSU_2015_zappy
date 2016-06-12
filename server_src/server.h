@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 10 16:03:28 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:31:17 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -20,7 +20,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
-# include "../circular_buffer/circular_buffer.h"
+# include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
 # define BUFFER_SIZE			(4096)
