@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Sun Jun 12 17:31:53 2016 Erwan Dupard
+** Last update Sun Jun 12 18:32:45 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -51,7 +51,7 @@ int					get_options(u64 argc,
 
   i = 0;
   init_options(server);
-  while (i < argc)
+  while (i < (int)argc)
     {
       if (argv[i][0] == '-')
 	{
@@ -61,7 +61,7 @@ int					get_options(u64 argc,
       ++i;
     }
   i = -1;
-  while (++i < server->game_data.nbr_of_teams)
+  while (++i < (int)server->game_data.nbr_of_teams)
     server->game_data.teams[i].max_members = server->game_data.base_max_members;
   return (check_options(server, argv[0]));
 }

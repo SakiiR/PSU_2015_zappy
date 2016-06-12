@@ -5,10 +5,10 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May  3 11:38:55 2016 Erwan Dupard
-** Last update Fri Jun 10 10:52:51 2016 Thomas Billot
+** Last update Sun Jun 12 18:33:47 2016 Erwan Dupard
 */
 
-#include "../server_src/resources.h"
+#include <stdlib.h>
 
 static int				is_allowed_char(char c, const char *forbidden)
 {
