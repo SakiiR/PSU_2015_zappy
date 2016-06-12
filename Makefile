@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sun Jun 12 18:33:46 2016 Barthelemy Gouby
+## Last update Sun Jun 12 18:37:14 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -29,6 +29,7 @@ CLIENT_SRCS	= client_src/main.c			\
 		  client_src/request2.c			\
 		  client_src/request3.c			\
 		  client_src/ai.c			\
+		  client_src/map.c			\
 
 GRAPHIC_SRCS	= graphic_src/main.c			\
 		  graphic_src/my_str_to_wordtab.c 	\
@@ -50,15 +51,15 @@ SERVER_SRCS	= server_src/main.c			\
 		  server_src/map.c			\
 		  server_src/process.c			\
 		  server_src/commands_handle.c		\
-		  circular_buffer/circular_buffer.c	\
-		  circular_buffer/circular_buffer2.c	\
-		  server_src/graphic_commands.c
+		  server_src/graphic_commands.c		\
+		  utils/circular_buffer/circular_buffer.c	\
+		  utils/circular_buffer/circular_buffer2.c	\
 
 CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
 GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
 
-CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi
+CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils
 
 LDFLAGS		+=
 

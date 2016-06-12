@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Sun Jun 12 18:14:03 2016 Barthelemy Gouby
+** Last update Sun Jun 12 18:59:45 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -48,7 +48,7 @@ int		send_case_content(t_server *server,
 				 atoi(y),
 				 &server->game_data.map);
       sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
-	      x, y,
+	      atoi(x), atoi(y),
 	      map_case->quantities[FOOD],
 	      map_case->quantities[LINEMATE],
 	      map_case->quantities[DERAUMERE],
@@ -59,16 +59,17 @@ int		send_case_content(t_server *server,
       write_to_buffer(&client->buffer_out, server->buffer,
 		      strlen(server->buffer));
     }
+  return (RETURN_SUCCESS);
 }
 
 int		send_map_content(t_server *server,
 				 t_client *client,
 				 char *operands __attribute__((unused)))
 {
-  int		i;
-  i = -1;
+  unsigned int		i;
+  i = 0;
 
-  while (++i  < server->game_data.map.width * server->game_data.map.height)
+  while (i  < server->game_data.map.width * server->game_data.map.height)
     {
       sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
 	      i % server->game_data.map.width,
@@ -80,6 +81,22 @@ int		send_map_content(t_server *server,
 	      server->game_data.map.cases[i].quantities[MENDIANE],
 	      server->game_data.map.cases[i].quantities[PHIRAS],
 	      server->game_data.map.cases[i].quantities[THYSTAME]);
+      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      i++;
+    }
+  return (RETURN_SUCCESS);
+}
+
+int		send_team_names(t_server *server,
+				t_client *client,
+				char *operands __attribute__((unused)))
+{
+  unsigned int	i;
+
+  i = 0;
+  while (i < server->game_data.nbr_of_teams)
+    {
+      sprintf(server->buffer, "tna %s\n", server->game_data.teams[i++].name);
       write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
     }
   return (RETURN_SUCCESS);
