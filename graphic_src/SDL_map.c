@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Sun Jun 12 11:17:17 2016 Thomas Beaudet
-** Last update Mon Jun 13 15:41:03 2016 Thomas Beaudet
+** Last update Mon Jun 13 18:45:54 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -56,7 +56,7 @@ void		drawLine(SDL_Surface *screen, int x0, int y0, int x1,
 
   x = x0;
   y = y0;
-  for (i = 0; i < length; i+= 1)
+  for (i = 0; i < length; i++)
     {
       putpixel(screen, x, y, pixel);
       x += addx;
@@ -64,60 +64,47 @@ void		drawLine(SDL_Surface *screen, int x0, int y0, int x1,
     }
 }
 
+void		sdlEvent(t_sdl *s)
+{
+  while (SDL_PollEvent(&s->event))
+    if (s->event.type == SDL_QUIT)
+      s->action = 0;
+    else if (s->event.type == SDL_QUIT)
+      if (s->event.key.keysym.sym == SDLK_ESCAPE)
+	s->action = 0;
+}
+
 int		run(t_sdl *s)
 {
   int		i;
-  int		sx;
-  int		sy;
-  int		ex;
-  int		ey;
+  int		x1;
+  int		y1;
+  int		x2;
+  int		y2;
 
   i = 0;
-  sx = 300;
-  sy = 300;
-  ex = 100;
-  ey = 100;
+  x1 = 300;
+  y1 = 300;
+  x2 = 100;
+  y2 = 100;
   init_sdl();
   init_ttf();
-
+  s->pix = 0x000000;
   while (s->action)
     {
-      SDL_WaitEvent(&s->event);
-      switch (s->event.type)
-	{
-	case SDL_QUIT:
-	  s->action = 0;
-	  break;
-	}
-      SDL_FillRect(s->win, NULL, SDL_MapRGB(s->win->format,  0, 204, 0));
-      for (i=0; i < 17; i++)
-	{
-	  drawLine(s->win, sx, sy, ex, ey, s->pix);
-	  SDL_Flip(s->win);
-	  SDL_Delay(500);
-	  if (i < 4) {
-	    ex += 100;
-	  }
-	  if (i >= 8 && i < 12) {
-	    ey -= 100;
-	  }
-	  if (i >= 12 && i < 16) {
-	    ey -= 100;
-	  }
-	}
-      drawLine(s->win, 100, 100, 500, 100, s->pix);
-      drawLine(s->win, 500, 100, 500, 500, s->pix);
-      drawLine(s->win, 500, 500, 100, 100, s->pix);
-      drawLine(s->win, 100, 500, 100, 100, s->pix);
+      sdlEvent(s);
+      SDL_FillRect(s->win, NULL, SDL_MapRGB(s->win->format, 102, 204, 0));
+      for (int i = 0; i < 10; ++i)
+	drawLine(s->win, 1931+(i*10), 100, 100, 100, s->pix);
       SDL_Flip(s->win);
-      SDL_Delay(4000);
+      /* SDL_Delay(4000); */
       /*      s->pos.x = 50;
-      s->pos.y = 50;
-      SDL_BlitSurface(s->backg, NULL, s->win, &s->pos);
-      s->pos.x = WIDTH;
-      s->pos.y = HEIGHT;
-      SDL_BlitSurface(s->text, NULL, s->win, &s->pos);
-      SDL_Flip(s->win);*/
+	      s->pos.y = 50;
+	      SDL_BlitSurface(s->backg, NULL, s->win, &s->pos);
+	      s->pos.x = WIDTH;
+	      s->pos.y = HEIGHT;
+	      SDL_BlitSurface(s->text, NULL, s->win, &s->pos);
+	      SDL_Flip(s->win);*/
     }
 }
 
@@ -125,7 +112,6 @@ void		SDL_quit(t_sdl *s)
 {
   TTF_CloseFont(s->font);
   TTF_Quit();
-
   SDL_Quit();
 }
 
