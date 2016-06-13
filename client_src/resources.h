@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Mon Jun 13 15:56:31 2016 Gabriel Goude
+** Last update Mon Jun 13 17:17:32 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -28,11 +28,11 @@ typedef enum
   NUMBER_OF_TYPES			= 7
 }					e_object_type;
 
-typedef unsigned int			quantity;
+typedef unsigned int			t_quantity;
 
 typedef struct				s_map
 {
-  quantity				obj[NUMBER_OF_TYPES];
+  t_quantity				obj[NUMBER_OF_TYPES];
   int					players;
 }					t_map;
 
@@ -40,11 +40,12 @@ typedef struct				s_game
 {
   int					world_x;
   int					world_y;
+  int					world_size;
   int					pos_x;
   int					pos_y;
-  t_map					**map;
+  t_map					*map;
   int					lvl;
-  quantity				inv[NUMBER_OF_TYPES];
+  t_quantity				inv[NUMBER_OF_TYPES];
 }					t_game;
 
 typedef struct				s_client_settings

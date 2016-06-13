@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 17:07:05 2016 Erwan Dupard
+** Last update Mon Jun 13 16:47:36 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -18,13 +18,16 @@ int			get_param(int ac, char **av, t_client_settings *settings)
   int			i;
 
   i = 1;
-  if (ac < 8)
+  if (ac != 7)
     return (RETURN_FAILURE);
   settings->sock.sin_family = AF_INET;
   while (i < 6)
   {
     if (i % 2)
-      get_next_param(i, av, settings);
+    {
+      if (get_next_param(i, av, settings) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+    }
     i++;
   }
   return (RETURN_SUCCESS);
