@@ -13,6 +13,8 @@ Enjoy the github powerfull
 Just commit simple like is it
 
 ```
+git remote add github git@github.com:SakiiR/PSU_2015_zappy.git
+
 git status
 git add FILES
 git commit -m "Your Commit Message"
