@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sun Jun 12 18:58:43 2016 Barthelemy Gouby
+** Last update Mon Jun 13 13:41:38 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -30,11 +30,11 @@
 
 typedef enum
   {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT
-  }					orientation;
+    EST,
+    WEST,
+    NORTH,
+    SOUTH
+  }					e_orientation;
 
 typedef enum
   {
@@ -46,14 +46,14 @@ typedef enum
     PHIRAS				= 5,
     THYSTAME				= 6,
     NUMBER_OF_TYPES			= 7
-  }					object_type;
+  }					e_object_type;
 
 typedef enum
   {
     DRONE,
     GRAPHIC,
     UNSPECIFIED
-  }					client_type;
+  }					e_client_type;
 
 typedef unsigned int			quantity;
 
@@ -64,7 +64,7 @@ typedef struct				s_character
   unsigned int				level;
   char					*team;
   quantity				quantities[NUMBER_OF_TYPES];
-  orientation				orientation;
+  e_orientation			        orientation;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -90,7 +90,7 @@ typedef struct				s_client
   struct sockaddr_in			in;
   t_circular_buffer			buffer_in;
   t_circular_buffer			buffer_out;
-  client_type				type;
+  e_client_type				type;
   t_character				*character;
   char					*team;
 }					t_client;
@@ -125,16 +125,18 @@ typedef struct				s_server
 typedef struct				s_command
 {
   const char				*command;
-  int					(*f)(char *command,
-					     t_server *server,
-					     t_client *client);
-  int					require_auth;
+  int					(*f)(t_server *server,
+					     t_client *client,
+					     char *operands);
 }					t_command;
 
 int					process_server(t_server *server);
 int					handle_command(char *command,
 						      t_server *server,
 						      t_client *client);
+int					define_client_type(t_server *server,
+							   t_client *client,
+							   char *input);
 
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
