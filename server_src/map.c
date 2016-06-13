@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Fri Jun 10 15:16:27 2016 Barthelemy Gouby
+** Last update Mon Jun 13 13:44:56 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -45,7 +45,7 @@ t_case		*map_get_case_at(const unsigned int x, const unsigned int y, const t_map
   return (&map->cases[index]);
 }
 
-void		spread_ressource(const object_type type, unsigned int quantity, t_map *map)
+void		spread_ressource(const e_object_type type, unsigned int quantity, t_map *map)
 {
   while (quantity > 0)
     {
