@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Mon Jun 13 17:17:32 2016 Gabriel Goude
+** Last update Mon Jun 13 17:26:30 2016 Erwan Dupard
 */
 
 #ifndef RESOURCES_H_
@@ -30,31 +30,35 @@ typedef enum
 
 typedef unsigned int			t_quantity;
 
-typedef struct				s_map
+typedef struct				s_infos
+{
+  struct s_client			*client;
+  struct s_map				*map;
+  struct sockaddr_in			in;
+  int					socket;
+}					t_infos;
+
+typedef struct				s_client
+{
+  unsigned int				x;
+  unsigned int				y;
+  char					*team_name;
+  t_quantity			        inventory[NUMBER_OF_TYPES];
+  unsigned int				level;
+}					t_client;
+
+typedef struct				s_tile
 {
   t_quantity				obj[NUMBER_OF_TYPES];
-  int					players;
+  unsigned int				players;
+}					t_tile;
+
+typedef struct				s_map
+{
+  unsigned int				x;
+  unsigned int				y;
+  struct s_tile				*tiles;
 }					t_map;
-
-typedef struct				s_game
-{
-  int					world_x;
-  int					world_y;
-  int					world_size;
-  int					pos_x;
-  int					pos_y;
-  t_map					*map;
-  int					lvl;
-  t_quantity				inv[NUMBER_OF_TYPES];
-}					t_game;
-
-typedef struct				s_client_settings
-{
-  char					*team_name;
-  struct sockaddr_in			sock;
-  int					s;
-
-}					t_client_settings;
 
 /*
 ** map.c
