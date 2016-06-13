@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Mon Jun 13 15:58:26 2016 Thomas Billot
+** Last update Mon Jun 13 18:07:28 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -17,7 +17,7 @@
 
 int			main(int argc, char *argv[])
 {
-  t_option		options;
+  t_info		infos;
   t_circular_buffer	*circular_buffer;
   
   if (argc != 2)
@@ -25,14 +25,14 @@ int			main(int argc, char *argv[])
       fprintf(stderr, "Usage: ./bin/console [port]\n");
       return (-1);
     }
-  if ((options.sockfd = setup_networking(atoi(argv[1]))) == -1)
+  if ((infos.sockfd = setup_networking(atoi(argv[1]))) == -1)
     return (-1);
   if ((circular_buffer = malloc(sizeof(*circular_buffer))) == NULL)
     return (-1);
-  options.circular_buffer = circular_buffer;
-  if (initialize_buffer(options.circular_buffer, 4096) == -1)
+  infos.circular_buffer = circular_buffer;
+  if (initialize_buffer(infos.circular_buffer, 4096) == -1)
     return (-1);
-  if (launch_client(&options) == -1)
+  if (launch_client(&infos) == -1)
     return (-1);
   return (0);
 }

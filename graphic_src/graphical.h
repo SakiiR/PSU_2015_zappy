@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 13 17:27:15 2016 Thomas Billot
+** Last update Mon Jun 13 18:11:11 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -42,6 +42,7 @@
 #define BIENVENUE "BIENVENUE" /* Message du serveur pour 
 				 initialisé le moniteur graphique */
 
+typedef unsigned int	t_quantity;
 
 typedef struct		s_info
 {
@@ -53,7 +54,7 @@ typedef struct		s_info
 typedef struct		s_ptr
 { 
   const char		*id;
-  int			(*f)(t_option *);
+  int			(*f)(t_info *);
 }			t_ptr;
 
 typedef enum

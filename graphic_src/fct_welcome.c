@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:10:07 2016 Thomas Billot
-** Last update Fri Jun 10 14:25:43 2016 Thomas Billot
+** Last update Mon Jun 13 18:15:23 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include <errno.h>
 
-int		fct_welcome(t_option *options)
+int		fct_welcome(t_info *infos)
 {
-  if (write(options->sockfd, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
+  if (write(infos->sockfd, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
     {
       fprintf(stderr, "Error in write(): %s\n", strerror(errno));
       return (-1);
