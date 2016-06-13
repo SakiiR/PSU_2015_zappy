@@ -5,19 +5,19 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 13:32:56 2016 Barthelemy Gouby
+## Last update Mon Jun 13 13:44:17 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
 
 RM		= rm -f
 
-CLIENT_NAME	= client
-SERVER_NAME	= server
+CLIENT_NAME	= zappy_ai
+SERVER_NAME	= zappy_server
 GRAPHIC_NAME	= graphic
 
-CLIENT_BINARY	= client
-SERVER_BINARY	= server
+CLIENT_BINARY	= zappy_ai
+SERVER_BINARY	= zappy_server
 GRAPHIC_BINARY	= console
 
 CLIENT_SRCS	= client_src/main.c				\

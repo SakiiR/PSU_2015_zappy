@@ -5,14 +5,14 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Sun Jun 12 18:59:45 2016 Barthelemy Gouby
+** Last update Mon Jun 13 13:40:25 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int		send_map_size(t_server *server,
-			      t_client *client,
-			      char *operands __attribute__((unused)))
+int					send_map_size(t_server *server,
+						      t_client *client,
+						      char *operands __attribute__((unused)))
 {
   sprintf(server->buffer, "msz %i %i\n",
 	  server->game_data.map.width,
@@ -21,22 +21,22 @@ int		send_map_size(t_server *server,
   return (RETURN_SUCCESS);
 }
 
-int		send_speed(t_server *server,
-			   t_client *client,
-			   char *operands __attribute__((unused)))
+int					send_speed(t_server *server,
+						   t_client *client,
+						   char *operands __attribute__((unused)))
 {
   sprintf(server->buffer, "sgt %i\n", server->game_data.speed);
   write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
   return (RETURN_SUCCESS);
 }
 
-int		send_case_content(t_server *server,
-				  t_client *client,
-				  char *operands)
+int					send_case_content(t_server *server,
+							  t_client *client,
+							  char *operands)
 {
-  char		*x;
-  char		*y;
-  t_case	*map_case;
+  char					*x;
+  char					*y;
+  t_case				*map_case;
 
   if (!operands)
     return (RETURN_SUCCESS);
@@ -62,11 +62,11 @@ int		send_case_content(t_server *server,
   return (RETURN_SUCCESS);
 }
 
-int		send_map_content(t_server *server,
-				 t_client *client,
-				 char *operands __attribute__((unused)))
+int					send_map_content(t_server *server,
+							 t_client *client,
+							 char *operands __attribute__((unused)))
 {
-  unsigned int		i;
+  unsigned int				i;
   i = 0;
 
   while (i  < server->game_data.map.width * server->game_data.map.height)
@@ -87,11 +87,11 @@ int		send_map_content(t_server *server,
   return (RETURN_SUCCESS);
 }
 
-int		send_team_names(t_server *server,
-				t_client *client,
-				char *operands __attribute__((unused)))
+int					send_team_names(t_server *server,
+							t_client *client,
+							char *operands __attribute__((unused)))
 {
-  unsigned int	i;
+  unsigned int				i;
 
   i = 0;
   while (i < server->game_data.nbr_of_teams)
