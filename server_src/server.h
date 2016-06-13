@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 13 13:41:38 2016 Barthelemy Gouby
+** Last update Mon Jun 13 18:42:55 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -55,7 +55,7 @@ typedef enum
     UNSPECIFIED
   }					e_client_type;
 
-typedef unsigned int			quantity;
+typedef unsigned int			t_quantity;
 
 struct					s_case;
 
@@ -63,7 +63,7 @@ typedef struct				s_character
 {
   unsigned int				level;
   char					*team;
-  quantity				quantities[NUMBER_OF_TYPES];
+  t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
@@ -72,7 +72,7 @@ typedef struct				s_character
 typedef struct				s_case
 {
   t_character				*characters;
-  quantity				quantities[NUMBER_OF_TYPES];
+  t_quantity				quantities[NUMBER_OF_TYPES];
 }					t_case;
 
 typedef struct				s_map
@@ -158,7 +158,7 @@ void					text_display_map(t_map *map);
 # define MIN_SPEED			(1)
 # define MAX_SPEED			(500)
 
-typedef unsigned int			u64;
+typedef unsigned int			t_u64;
 
 /*
  * Pointer Function Array Definition
@@ -172,7 +172,7 @@ typedef struct				s_option_id
 /*
  * Base Command Line Options Gesture
  */
-int					get_options(u64 argc,
+int					get_options(t_u64 argc,
 						    char **argv,
 						    t_server *server);
 void					init_options(t_server *server);
@@ -215,5 +215,22 @@ int					send_map_content(t_server *server,
 int					send_team_names(t_server *server,
 							t_client *client,
 							char *operands __attribute__((unused)));
+int					change_time_unit(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+int				        send_player_level(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+int				        send_player_inventory(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+
+int				        send_player_position(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
 
 #endif /* !_SERVER_H_ */

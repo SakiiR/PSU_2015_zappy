@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Mon Jun 13 15:46:19 2016 Thomas Billot
+** Last update Mon Jun 13 18:14:40 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -41,7 +41,7 @@ static t_ptr	ftab[] =
     {NULL, NULL}
   };
 
-int			handle_command(char *message, t_option *options)
+int			handle_command(char *message, t_info *infos)
 {
   char			**cmd;
   int			i;
@@ -54,7 +54,7 @@ int			handle_command(char *message, t_option *options)
 	  if (strcmp(cmd[0], ftab[i].id) == 0 && ftab[i].f != NULL)
 	    {
 	      printf("Command found: %s\n", ftab[i].id);
-	      if (ftab[i].f(options) == -1)
+	      if (ftab[i].f(infos) == -1)
 		return (-1);
 	    }
 	}
@@ -63,35 +63,35 @@ int			handle_command(char *message, t_option *options)
   return (0);
 }
 
-int		        handle_server_cmd(t_option *options)
+int		        handle_server_cmd(t_info *infos)
 {
   char			buffer[BUFF_SIZE];
   int			size_read;
   char			*next_message;
 
-  size_read = read(options->sockfd, buffer, BUFF_SIZE);
+  size_read = read(infos->sockfd, buffer, BUFF_SIZE);
   buffer[size_read] = 0;
-  /*  if (size_read > 0)
-      printf("buffer : %s\n", buffer); */
-  write_to_buffer(options->circular_buffer, buffer, size_read);
-  if ((next_message = get_next_message(options->circular_buffer)))
+  if (size_read > 0)
+    printf("buffer : [%s]\n", buffer);
+  write_to_buffer(infos->circular_buffer, buffer, size_read);	
+  if ((next_message = get_next_message(infos->circular_buffer)))
     {
-      if (strlen(next_message) > 0)
+      if (next_message && next_message[0])
 	{
 	  printf("message : [%s]\n", next_message);
-	  if (handle_command(next_message, options) == -1)
-	    return (0);
+	  if (handle_command(next_message, infos) == -1)
+	    return (-1);
 	}
       free(next_message);
     }
   return (0);
 }
 
-int			launch_client(t_option *options)
+int			launch_client(t_info *infos)
 {  
   while (1)
     {
-      if (handle_server_cmd(options) == -1)
+      if (handle_server_cmd(infos) == -1)
 	return (-1);
     }
   return (0);

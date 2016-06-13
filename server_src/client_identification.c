@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Mon Jun 13 13:33:09 2016 Barthelemy Gouby
+** Last update Mon Jun 13 17:14:20 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -26,7 +26,7 @@ int					initialize_drone(t_server *server,
 	    return (RETURN_FAILURE);
 	  client->character->level = 1;
 	  memset(client->character->quantities, 0,
-		 NUMBER_OF_TYPES * sizeof(quantity));
+		 NUMBER_OF_TYPES * sizeof(t_quantity));
 	  client->character->orientation = NORTH;
 	  break;
 	}

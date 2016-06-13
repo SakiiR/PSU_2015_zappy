@@ -5,19 +5,22 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 11:07:28 2016 Thomas Billot
-** Last update Fri Jun 10 14:11:40 2016 Thomas Billot
+** Last update Mon Jun 13 18:55:49 2016 Thomas Billot
 */
 
 #ifndef NETWORK_H_
 # define NETWORK_H_
 
-#define SOCKET_ERROR -1
+#include "graphical.h"
 
-typedef int SOCKET;
-typedef struct sockaddr_in SOCKADDR_IN;
-typedef struct in_addr IN_ADDR;
-typedef struct protoent PROTOCOL;
+# define RETURN_SUCESS (0)
+# define RETURN_FAILURE (-1)
 
-int		setup_networking(int port);
+# define SOCKET_ERROR (-1)
+
+typedef int t_socket;
+typedef struct sockaddr_in t_sockaddr;
+typedef struct in_addr t_inaddr;
+typedef struct protoent t_protocol;
 
 #endif /* !NETWORK_H_ */
