@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Mon Jun 13 17:26:30 2016 Erwan Dupard
+** Last update Mon Jun 13 17:55:22 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -57,32 +57,32 @@ typedef struct				s_map
 {
   unsigned int				x;
   unsigned int				y;
-  struct s_tile				*tiles;
+  t_tile				*tiles;
 }					t_map;
 
 /*
 ** map.c
 */
-t_map					*create_map(t_game *game);
-void					init_map(t_map *map, t_game *game);
+int					create_map(t_infos *infos);
+void					init_map(t_infos *infos);
 
 /*
 ** ai.c
 */
-int					ai(t_client_settings *settings, t_game *game);
+int					ai(t_infos *infos);
 
 /*
 ** connect.c
 */
-int					init_connection(t_client_settings *settings);
-int					enter_game(t_client_settings *settings, t_game *game);
-int					get_world_size(t_game *game, char *s);
-void					init_inv(t_game *game);
+int					init_connection(t_infos *infos);
+int					enter_game(t_infos *infos);
+int					get_world_size(t_infos *infos, char *s);
+void					init_inv(t_infos *infos);
 
 /*
 ** parser.c
 */
-int					get_param(int ac, char **av, t_client_settings *settings);
-int					get_next_param(int i, char **av, t_client_settings *settings);
+int					get_param(int ac, char **av, t_infos *infos);
+int					get_next_param(int i, char **av, t_infos *infos);
 
 #endif /* ! RESOURCES_H_ */
