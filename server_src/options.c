@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Sun Jun 12 18:32:45 2016 Erwan Dupard
+** Last update Mon Jun 13 17:13:58 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -43,7 +43,7 @@ void					init_options(t_server *server)
   server->game_data.nbr_of_teams = 0;
 }
 
-int					get_options(u64 argc,
+int					get_options(t_u64 argc,
 						    char **argv,
 						    t_server *server)
 {
@@ -70,7 +70,7 @@ int					handle_option_id(const char id,
 							 char **args,
 							 t_server *server)
 {
-  u64					i;
+  t_u64					i;
 
   i = 0;
   while (g_options_ids[i].id)

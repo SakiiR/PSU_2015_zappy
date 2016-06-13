@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:59:16 2016 Thomas Billot
-** Last update Fri Jun 10 13:57:17 2016 Thomas Billot
+** Last update Mon Jun 13 17:17:26 2016 Thomas Billot
 */
 
 #include "network.h"
@@ -21,9 +21,9 @@
 
 int			setup_networking(int port)
 {
-  SOCKADDR_IN		sin;
-  SOCKET		sock;
-  PROTOCOL		*pe;
+  t_sockaddr		sin;
+  t_socket		sock;
+  t_protocol		*pe;
 
   if ((pe = getprotobyname("TCP")) == NULL)
     {
