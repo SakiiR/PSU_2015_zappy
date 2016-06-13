@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Mon Jun 13 15:53:15 2016 Gabriel Goude
+** Last update Mon Jun 13 17:00:53 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -34,7 +34,8 @@ int					enter_game(t_client_settings *settings, t_game *game)
       s[i - 1] = 0;
       if (get_world_size(game, s) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      return (RETURN_SUCCESS);
+      if (create_map(game) == NULL)
+	return (RETURN_FAILURE);
     }
       return (RETURN_SUCCESS);
   }
@@ -68,6 +69,7 @@ int					get_world_size(t_game *game, char *s)
   y[j] = 0;
   game->world_x = atoi(x);
   game->world_y = atoi(y);
+  game->world_size = game->world_x * game->world_y;
   game->pos_x = 0;
   game->pos_y = 0;
   game->lvl = 1;
