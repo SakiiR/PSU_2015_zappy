@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 13 17:13:36 2016 Erwan Dupard
+** Last update Mon Jun 13 18:42:55 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -215,5 +215,22 @@ int					send_map_content(t_server *server,
 int					send_team_names(t_server *server,
 							t_client *client,
 							char *operands __attribute__((unused)));
+int					change_time_unit(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+int				        send_player_level(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+int				        send_player_inventory(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+
+int				        send_player_position(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
 
 #endif /* !_SERVER_H_ */
