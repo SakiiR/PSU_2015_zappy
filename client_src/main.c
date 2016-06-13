@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Mon Jun 13 16:53:36 2016 Gabriel Goude
+** Last update Mon Jun 13 17:27:46 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -17,6 +17,9 @@
 
 int			main(int ac, char **av)
 {
+  t_infos		infos;
+  t_map			map;
+  t_client		client;
   t_client_settings	settings;
   t_game		game;
 
