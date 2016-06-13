@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 15:51:42 2016 Thomas Billot
+## Last update Mon Jun 13 15:58:45 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -14,7 +14,7 @@ RM		= rm -f
 
 CLIENT_NAME	= zappy_ai
 SERVER_NAME	= zappy_server
-GRAPHIC_NAME	= graphic
+GRAPHIC_NAME	= console
 
 CLIENT_BINARY	= zappy_ai
 SERVER_BINARY	= zappy_server
