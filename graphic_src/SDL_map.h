@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Sat Jun 11 01:02:05 2016 Thomas Beaudet
-** Last update Sun Jun 12 16:07:39 2016 Thomas Beaudet
+** Last update Mon Jun 13 12:12:54 2016 Thomas Beaudet
 */
 
 #ifndef _SDL_MAP_H_
@@ -37,6 +37,7 @@ typedef struct			s_sdl
   SDL_Event			event;
   TTF_Font			*font;
   int				action;
+  SDL_Color			color;
 }				t_sdl;
 
 typedef struct	s_container
@@ -53,7 +54,9 @@ typedef struct	s_container
   int		thystame;
 }		t_contain;
 
-int		window_open(t_sdl *s);
+int		set_vals(t_sdl *s);
+int		init_sdl();
+int		init_ttf();
 void		SDL_quit(t_sdl *s);
 int		run(t_sdl *s);
 
