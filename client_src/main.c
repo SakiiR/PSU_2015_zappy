@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 17:11:09 2016 Gabriel Goude
+** Last update Mon Jun 13 17:51:12 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -17,16 +17,19 @@
 
 int			main(int ac, char **av)
 {
-  t_client_settings	settings;
-  t_game		game;
+  t_infos		infos;
+  t_map			map;
+  t_client		client;
 
-  if (get_param(ac, av, &settings) == RETURN_FAILURE)
+  infos.client = &client;
+  infos.map = &map;
+  if (get_param(ac, av, &infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (init_connection(&settings) == RETURN_FAILURE)
+  if (init_connection(&infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (enter_game(&settings, &game) == RETURN_FAILURE)
+  if (enter_game(&infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (ai(&settings, &game) == RETURN_FAILURE)
+  if (ai(&infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
