@@ -5,14 +5,14 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Fri Jun 10 14:59:01 2016 Thomas Billot
+** Last update Mon Jun 13 15:41:09 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
 # define GRAPHICAL_H_
 
 #include "network.h"
-#include "circular_buffer.h"
+#include "../utils/circular_buffer/circular_buffer.h"
 
 #define	MSZ "msz" /* Taille de la carte */
 #define BCT "bct" /* Contenu de toute la carte (une case - toutes les cases) */
