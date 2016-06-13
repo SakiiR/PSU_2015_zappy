@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Sat Jun 11 01:02:05 2016 Thomas Beaudet
-** Last update Mon Jun 13 15:34:21 2016 Thomas Beaudet
+** Last update Mon Jun 13 18:43:04 2016 Thomas Beaudet
 */
 
 #ifndef _SDL_MAP_H_
@@ -15,8 +15,8 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 
-#define WIDTH 600
-#define HEIGHT 600
+#define WIDTH 1920
+#define HEIGHT 1010
 #define LINEMATE 1
 #define DERAUMERE 2
 #define PHIRAS 3
