@@ -5,15 +5,15 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 16:43:03 2016 Gabriel Goude
-** Last update Fri Jun 10 17:08:43 2016 Erwan Dupard
+** Last update Mon Jun 13 17:54:59 2016 Gabriel Goude
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "resources.h"
 
-int					connect_nbr(t_client_settings *settings)
+int					connect_nbr(t_infos *infos)
 {
-  write(settings->s, "connect_nbr\n", 12);
+  write(infos->socket, "connect_nbr\n", 12);
   return (RETURN_SUCCESS);
 }
