@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 13:11:55 2016 Erwan Dupard
+## Last update Mon Jun 13 15:03:27 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -16,7 +16,7 @@ MD		= mkdir -p
 
 CLIENT_NAME	= client
 SERVER_NAME	= server
-GRAPHIC_NAME	= graphic
+GRAPHIC_NAME	= console
 
 CLIENT_BINARY	= client
 SERVER_BINARY	= server
@@ -34,8 +34,8 @@ CLIENT_SRCS	= client_src/main.c			\
 GRAPHIC_SRCS	= graphic_src/main.c			\
 		  graphic_src/my_str_to_wordtab.c 	\
 		  graphic_src/my_str_to_wordtab2.c 	\
-		  graphic_src/circular_buffer.c 	\
-		  graphic_src/circular_buffer2.c 	\
+		  utils/circular_buffer/circular_buffer.c	\
+		  utils/circular_buffer/circular_buffer2.c	\
 		  graphic_src/network.c 		\
 		  graphic_src/xsocket.c 		\
 		  graphic_src/xconnect.c 		\
