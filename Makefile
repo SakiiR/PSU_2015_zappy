@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sun Jun 12 18:37:14 2016 Barthelemy Gouby
+## Last update Mon Jun 13 13:11:55 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -18,9 +18,9 @@ CLIENT_NAME	= client
 SERVER_NAME	= server
 GRAPHIC_NAME	= graphic
 
-CLIENT_BINARY	= bin/client
-SERVER_BINARY	= bin/server
-GRAPHIC_BINARY	= bin/console
+CLIENT_BINARY	= client
+SERVER_BINARY	= server
+GRAPHIC_BINARY	= console
 
 CLIENT_SRCS	= client_src/main.c			\
 		  client_src/connect.c			\
