@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Mon Jun 13 18:53:05 2016 Thomas Billot
+** Last update Mon Jun 13 20:03:12 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -34,22 +34,22 @@ bool			is_valid_ip(char *ip)
   return (result != 0);
 }
 
-int			check_options(t_option *options, char *ip, char *port)
+int			check_options(t_option *options, char **argv)
 {
   int			i;
 
-  if (!(ip || port))
+  if (strcmp(argv[1], "-h") || !(is_valid_ip(argv[2])))
     return (RETURN_FAILURE);
-  i = 0;
-  while (port[++i] != '\0')
+  i = -1;
+  while (argv[4][++i] != '\0')
     {
-      if (is_number(port[i]))
+      if (is_number(argv[4][i]))
 	return (RETURN_FAILURE);
     }
-  if (!(is_valid_ip(ip)))
+  if (strcmp(argv[3], "-p"))
     return (RETURN_FAILURE);
-  options->ip = ip;
-  options->port = atoi(port);
+  options->ip = argv[2];
+  options->port = atoi(argv[4]);
   return (RETURN_SUCESS);
 }
 
@@ -59,13 +59,11 @@ int			main(int argc, char *argv[])
   t_info		infos;
   t_circular_buffer	*circular_buffer;
   
-  if (argc != 3)
+  if (argc != 5 || check_options(&options, argv) == RETURN_FAILURE)
     {
       fprintf(stderr, "Usage: ./console -h [ipaddress] -p [port]\n");
       return (RETURN_FAILURE);
     }
-  if (check_options(&options, argv[1], argv[2]) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
   if ((infos.sockfd = setup_networking(&options)) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   if ((circular_buffer = malloc(sizeof(*circular_buffer))) == NULL)
