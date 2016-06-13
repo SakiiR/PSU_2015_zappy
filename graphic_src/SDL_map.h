@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Sat Jun 11 01:02:05 2016 Thomas Beaudet
-** Last update Mon Jun 13 12:12:54 2016 Thomas Beaudet
+** Last update Mon Jun 13 15:34:21 2016 Thomas Beaudet
 */
 
 #ifndef _SDL_MAP_H_
@@ -15,8 +15,8 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 
-#define WIDTH 1024
-#define HEIGHT 1024
+#define WIDTH 600
+#define HEIGHT 600
 #define LINEMATE 1
 #define DERAUMERE 2
 #define PHIRAS 3
@@ -30,14 +30,15 @@ typedef struct			s_sdl
 {
   int				height;
   int				width;
-  SDL_Surface			*text;
   SDL_Rect			pos;
   SDL_Surface			*win;
-  SDL_Surface			*backg;
   SDL_Event			event;
   TTF_Font			*font;
   int				action;
   SDL_Color			color;
+  int				bpp;
+  Uint32			pix;
+  Uint8				*p;
 }				t_sdl;
 
 typedef struct	s_container
@@ -55,8 +56,11 @@ typedef struct	s_container
 }		t_contain;
 
 int		set_vals(t_sdl *s);
-int		init_sdl();
-int		init_ttf();
+void		init_sdl();
+void		init_ttf();
+void		putpixel(SDL_Surface *screen, int x, int y, Uint32 pixel);
+void		drawLine(SDL_Surface *screen, int x0, int y0, int x1,
+			 int y1, Uint32 pixel);
 void		SDL_quit(t_sdl *s);
 int		run(t_sdl *s);
 
