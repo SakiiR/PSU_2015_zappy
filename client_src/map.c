@@ -5,40 +5,41 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 18:35:00 2016 Gabriel Goude
-** Last update Mon Jun 13 17:01:21 2016 Gabriel Goude
+** Last update Mon Jun 13 17:57:35 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "resources.h"
 
-t_map			*create_map(t_game *game)
+int			create_map(t_infos *infos)
 {
-  t_map			*map;
+  t_tile		*tiles;
 
-  if ((map = malloc(sizeof(t_map) * (game->world_size))) == NULL)
-    return (NULL);
-  init_map(map, game);
-  game->map = map;
-  printf("done\n");
-  return (map);
+  if ((tiles = malloc(sizeof(t_tile) * (infos->map->x * infos->map->y))) == NULL)
+    return (RETURN_FAILURE);
+  infos->map->tiles = tiles;
+  init_map(infos);
+  return (RETURN_SUCCESS);
 }
 
-void			init_map(t_map *map, t_game *game)
+void			init_map(t_infos *infos)
 {
   int			i;
+  int			size;
 
   i = 0;
-  while (i < game->world_x * game->world_y)
+  size = infos->map->x * infos->map->y;
+  while (i < size)
   {
-    map->obj[FOOD] = 0;
-    map->obj[LINEMATE] = 0;
-    map->obj[DERAUMERE] = 0;
-    map->obj[SIBUR] = 0;
-    map->obj[MENDIANE] = 0;
-    map->obj[PHIRAS] = 0;
-    map->obj[THYSTAME] = 0;
-    map->players = 0;
+    infos->map->tiles[i].obj[FOOD] = 0;
+    infos->map->tiles[i].obj[LINEMATE] = 0;
+    infos->map->tiles[i].obj[DERAUMERE] = 0;
+    infos->map->tiles[i].obj[SIBUR] = 0;
+    infos->map->tiles[i].obj[MENDIANE] = 0;
+    infos->map->tiles[i].obj[PHIRAS] = 0;
+    infos->map->tiles[i].obj[THYSTAME] = 0;
+    infos->map->tiles[i].players = 0;
     i++;
   }
 }
