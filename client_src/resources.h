@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Mon Jun 13 17:55:22 2016 Gabriel Goude
+** Last update Mon Jun 13 18:20:23 2016 Erwan Dupard
 */
 
 #ifndef RESOURCES_H_
@@ -64,7 +64,7 @@ typedef struct				s_map
 ** map.c
 */
 int					create_map(t_infos *infos);
-void					init_map(t_infos *infos);
+void					init_map(t_map *map);
 
 /*
 ** ai.c
