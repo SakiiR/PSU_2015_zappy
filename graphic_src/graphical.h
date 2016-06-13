@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 13 15:41:09 2016 Thomas Billot
+** Last update Mon Jun 13 17:27:15 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -41,11 +41,14 @@
 
 #define BIENVENUE "BIENVENUE" /* Message du serveur pour 
 				 initialisé le moniteur graphique */
-typedef struct		s_option
+
+
+typedef struct		s_info
 {
   int			sockfd;
   t_circular_buffer	*circular_buffer;
-}			t_option;
+  struct s_map		*map;
+}			t_info;
 
 typedef struct		s_ptr
 { 
@@ -53,9 +56,33 @@ typedef struct		s_ptr
   int			(*f)(t_option *);
 }			t_ptr;
 
+typedef enum
+  {
+    FOOD		= 0,
+    LINEMATE		= 1,
+    DERAUMERE		= 2,
+    SIBUR		= 3,
+    MENDIANE		= 4,
+    PHIRAS		= 5,
+    THYSTAME		= 6,
+    NUMBER_OF_TYPES	= 7
+  }			e_object_types;
 
-int			launch_client(t_option *options);
+typedef struct		s_tiles
+{
+  t_quantity		obj[NUMBER_OF_TYPES];
+  unsigned int		players;
+}			t_tiles;
 
-int			fct_welcome(t_option *options);
+typedef struct		s_map
+{
+  int			x;
+  int			y;
+  struct s_tiles	*tiles;
+}			t_map;
+
+int			launch_client(t_info *options);
+
+int			fct_welcome(t_info *options);
 
 #endif /* !GRAPHICAL_H_ */
