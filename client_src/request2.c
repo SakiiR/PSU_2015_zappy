@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 16:02:31 2016 Gabriel Goude
-** Last update Mon Jun 13 17:54:31 2016 Gabriel Goude
+** Last update Mon Jun 13 18:25:03 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -29,6 +29,10 @@ int					prend(t_infos *infos, char *obj)
   return (RETURN_SUCCESS);
 }
 
+/*
+ * Si non, tout ce code la peut etre remplacer par dprintf(); je te laisse regarde le man
+ * dprintf(infos->socket, "pose %s\n", obj);
+ */
 int					pose(t_infos *infos, char *obj)
 {
   char					*str;

@@ -5,41 +5,41 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 18:35:00 2016 Gabriel Goude
-** Last update Mon Jun 13 17:57:35 2016 Gabriel Goude
+** Last update Mon Jun 13 18:41:13 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "resources.h"
 
-int			create_map(t_infos *infos)
+int					create_map(t_infos *infos)
 {
-  t_tile		*tiles;
+  t_tile				*tiles;
 
-  if ((tiles = malloc(sizeof(t_tile) * (infos->map->x * infos->map->y))) == NULL)
+  if ((tiles = malloc(sizeof(t_tile) * (infos->map->x * infos->map->y + 1))) == NULL)
     return (RETURN_FAILURE);
   infos->map->tiles = tiles;
-  init_map(infos);
+  init_map(infos->map);
   return (RETURN_SUCCESS);
 }
 
-void			init_map(t_infos *infos)
+void					init_map(t_map *map)
 {
-  int			i;
-  int			size;
-
+  int					i;
+  int					size;
+  
   i = 0;
-  size = infos->map->x * infos->map->y;
+  size = map->x * map->y;
   while (i < size)
-  {
-    infos->map->tiles[i].obj[FOOD] = 0;
-    infos->map->tiles[i].obj[LINEMATE] = 0;
-    infos->map->tiles[i].obj[DERAUMERE] = 0;
-    infos->map->tiles[i].obj[SIBUR] = 0;
-    infos->map->tiles[i].obj[MENDIANE] = 0;
-    infos->map->tiles[i].obj[PHIRAS] = 0;
-    infos->map->tiles[i].obj[THYSTAME] = 0;
-    infos->map->tiles[i].players = 0;
-    i++;
-  }
+    {
+      map->tiles[i].obj[FOOD] = 0;
+      map->tiles[i].obj[LINEMATE] = 0;
+      map->tiles[i].obj[DERAUMERE] = 0;
+      map->tiles[i].obj[SIBUR] = 0;
+      map->tiles[i].obj[MENDIANE] = 0;
+      map->tiles[i].obj[PHIRAS] = 0;
+      map->tiles[i].obj[THYSTAME] = 0;
+      map->tiles[i].players = 0;
+      i++;
+    }
 }

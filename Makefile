@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 15:58:45 2016 Thomas Billot
+## Last update Mon Jun 13 18:45:45 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -50,6 +50,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/process.c				\
 		  server_src/commands_handle.c			\
 		  server_src/graphic_commands.c			\
+		  server_src/graphic_commands2.c		\
 		  server_src/client_identification.c		\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
