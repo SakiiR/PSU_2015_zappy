@@ -5,13 +5,12 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Fri Jun 10 15:07:44 2016 Thomas Billot
+** Last update Mon Jun 13 15:58:26 2016 Thomas Billot
 */
 
 #include "graphical.h"
 #include "network.h"
 #include "xfunc.h"
-#include "circular_buffer.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
