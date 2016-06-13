@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Fri Jun 10 19:36:32 2016 Gabriel Goude
+** Last update Mon Jun 13 15:56:31 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -16,27 +16,25 @@
 
 # include <netinet/ip.h>
 
+typedef enum
+{
+  FOOD					= 0,
+  LINEMATE				= 1,
+  DERAUMERE				= 2,
+  SIBUR					= 3,
+  MENDIANE				= 4,
+  PHIRAS				= 5,
+  THYSTAME				= 6,
+  NUMBER_OF_TYPES			= 7
+}					e_object_type;
+
+typedef unsigned int			quantity;
+
 typedef struct				s_map
 {
-  int					food;
-  int					linemate;
-  int					deraumere;
-  int					sibur;
-  int					mendiane;
-  int					phiras;
-  int					thystame;
+  quantity				obj[NUMBER_OF_TYPES];
+  int					players;
 }					t_map;
-
-typedef struct				s_inv
-{
-  int					food;
-  int					linemate;
-  int					deraumere;
-  int					sibur;
-  int					mendiane;
-  int					phiras;
-  int					thystame;
-}					t_inv;
 
 typedef struct				s_game
 {
@@ -46,7 +44,7 @@ typedef struct				s_game
   int					pos_y;
   t_map					**map;
   int					lvl;
-  t_inv					inv;
+  quantity				inv[NUMBER_OF_TYPES];
 }					t_game;
 
 typedef struct				s_client_settings
@@ -60,8 +58,8 @@ typedef struct				s_client_settings
 /*
 ** map.c
 */
-t_map					**create_map(t_game *game);
-void					init_map(t_map *map);
+t_map					*create_map(t_game *game);
+void					init_map(t_map *map, t_game *game);
 
 /*
 ** ai.c

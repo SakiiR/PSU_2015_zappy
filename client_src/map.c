@@ -5,37 +5,37 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 18:35:00 2016 Gabriel Goude
-** Last update Sun Jun 12 18:30:25 2016 Erwan Dupard
+** Last update Mon Jun 13 16:15:42 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
 #include "resources.h"
 
-t_map			**create_map(t_game *game)
+t_map			*create_map(t_game *game)
 {
-  t_map			**map;
-  int			i;
+  t_map			*map;
 
-  i = 0;
-  if ((map = malloc(sizeof(*map) * game->world_x)) == NULL)
+  if ((map = malloc(sizeof(t_map) * (game->world_x * game->world_y))) == NULL)
     return (NULL);
-  while (i < game->world_y)
-    {
-      if ((map[i] = malloc(sizeof(**map) * game->world_y)) == NULL)
-	return (NULL);
-      init_map(map[i]);
-      i++;
-    }
+  init_map(map, game);
   return (map);
 }
 
-void			init_map(t_map *map)
+void			init_map(t_map *map, t_game *game)
 {
-  map->food = 0;
-  map->linemate = 0;
-  map->deraumere = 0;
-  map->sibur = 0;
-  map->mendiane = 0;
-  map->phiras = 0;
-  map->thystame = 0;
+  int			i;
+
+  i = 0;
+  while (i < game->world_x * game->world_y)
+  {
+    map->obj[FOOD] = 0;
+    map->obj[LINEMATE] = 0;
+    map->obj[DERAUMERE] = 0;
+    map->obj[SIBUR] = 0;
+    map->obj[MENDIANE] = 0;
+    map->obj[PHIRAS] = 0;
+    map->obj[THYSTAME] = 0;
+    map->players = 0;
+    i++;
+  }
 }
