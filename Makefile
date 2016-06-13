@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 13:44:17 2016 Barthelemy Gouby
+## Last update Mon Jun 13 15:51:42 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -32,8 +32,6 @@ CLIENT_SRCS	= client_src/main.c				\
 GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/my_str_to_wordtab.c 		\
 		  graphic_src/my_str_to_wordtab2.c 		\
-		  graphic_src/circular_buffer.c 		\
-		  graphic_src/circular_buffer2.c 		\
 		  graphic_src/network.c 			\
 		  graphic_src/xsocket.c 			\
 		  graphic_src/xconnect.c 			\
@@ -41,6 +39,8 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/g_client.c 			\
 		  graphic_src/fct_welcome.c 			\
 		  graphic_src/get_next_line.c			\
+		  utils/circular_buffer/circular_buffer.c	\
+		  utils/circular_buffer/circular_buffer2.c	\
 
 SERVER_SRCS	= server_src/main.c				\
 		  server_src/options.c				\
