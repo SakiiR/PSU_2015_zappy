@@ -5,13 +5,17 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Mon Jun 13 13:26:23 2016 Barthelemy Gouby
+** Last update Mon Jun 13 13:43:31 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
 static const t_command			g_commands[] = {
-  {NULL, NULL, 0}
+    {"msz", &send_map_size},
+    {"sgt", &send_speed},
+    {"bct", &send_case_content},
+    {"mct", &send_map_content},
+    {NULL, NULL}
 };
 
 int					handle_command(char *input,
@@ -34,7 +38,7 @@ int					handle_command(char *input,
 	{
 	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)
 	    {
-	      return (g_commands[i].f(operands, server, client));
+	      return (g_commands[i].f(server, client, operands));
 	    }
 	}
     }
