@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sun Jun 12 18:58:43 2016 Barthelemy Gouby
+** Last update Mon Jun 13 13:26:48 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -135,6 +135,9 @@ int					process_server(t_server *server);
 int					handle_command(char *command,
 						      t_server *server,
 						      t_client *client);
+int					define_client_type(t_server *server,
+							   t_client *client,
+							   char *input);
 
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
