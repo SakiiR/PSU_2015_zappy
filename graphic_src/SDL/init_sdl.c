@@ -1,4 +1,3 @@
-
 /*
 ** init_sdl.c for zappy in /home/beaude_t/PSU_2015_zappy/graphic_src
 **
@@ -6,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Mon Jun 13 14:15:31 2016 Thomas Beaudet
-** Last update Tue Jun 14 13:15:24 2016 Thomas Billot
+** Last update Mon Jun 13 14:16:18 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
