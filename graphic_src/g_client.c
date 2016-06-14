@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Tue Jun 14 13:01:30 2016 Thomas Billot
+** Last update Tue Jun 14 15:00:26 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -87,12 +87,25 @@ int		        handle_server_cmd(t_info *infos)
   return (0);
 }
 
-int			launch_client(t_info *infos)
-{  
+
+int			launch_client(t_server *server)
+{
+  (void)server;
+  /*  fd_set		si;
+  fd_set		so;
+  int			max_socket;
+
+  max_socket = 0;
   while (1)
     {
-      if (handle_server_cmd(infos) == -1)
-	return (-1);
-    }
+      FD_ZERO(&si);
+      FD_ZERO(&so);
+      FD_SET(server->socket, &si);
+      max_socket = server->socket;
+      if (select(max_socket + 1, &si, &so, NULL, NULL) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+      if (handle_server_cmd(infos) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+	}*/
   return (0);
 }

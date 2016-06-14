@@ -5,13 +5,13 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun  9 19:15:32 2016 Barthelemy Gouby
-** Last update Thu Jun  9 19:18:36 2016 Barthelemy Gouby
 */
 
-int		place_character_randomly(t_map *map, t_character *character)
+#include "server.h"
+
+void					place_character_randomly(t_map *map, t_character *character)
 {
-  unsigned int	index;
+  t_u64					index;
 
   index = rand() % (map->width * map->height);
-  
 }
