@@ -9,10 +9,9 @@
 
 #include "server.h"
 
-int					place_character_randomly(t_map *map, t_character *character)
+void					place_character_randomly(t_map *map, t_character *character)
 {
   t_u64					index;
 
   index = rand() % (map->width * map->height);
-  return (RETURN_SUCCESS);
 }
