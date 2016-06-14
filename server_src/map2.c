@@ -13,5 +13,17 @@ void					place_character_randomly(t_map *map, t_character *character)
 {
   t_u64					index;
 
-  index = rand() % (map->width * map->height);
+  t_character	*iterator;
+  
+  index = rand() % (map->width * map->height);  
+  character->current_case = &map->cases[index];
+  iterator = character->current_case->characters;
+  if (!iterator)
+    character->current_case->characters = character;
+  else
+    {
+      while (iterator->next_in_case)
+ 	iterator = iterator->next_in_case;
+      iterator->next_in_case = character;
+    }
 }
