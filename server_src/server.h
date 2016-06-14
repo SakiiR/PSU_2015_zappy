@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 15:52:08 2016 Erwan Dupard
+** Last update Tue Jun 14 16:19:14 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -61,7 +61,7 @@ struct					s_case;
 
 typedef struct				s_character
 {
-  unsigned int				level;
+  t_u64					level;
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
@@ -78,8 +78,8 @@ typedef struct				s_case
 typedef struct				s_map
 {
   t_case				*cases;
-  unsigned int				width;
-  unsigned int				height;
+  t_u64					width;
+  t_u64					height;
 }					t_map;
 
 typedef struct				s_client
@@ -99,16 +99,16 @@ typedef struct				s_team
 {
   char					*name;
   t_client				*members;
-  unsigned int				max_members;
+  t_u64					max_members;
 }					t_team;
 
 typedef struct				s_game_data
 {
   t_map					map;
   int					speed;
-  unsigned int				base_max_members;
+  t_u64					base_max_members;
   t_team				*teams;
-  unsigned int				nbr_of_teams; 
+  t_u64					nbr_of_teams; 
 }					t_game_data;
 
 typedef struct				s_server
@@ -139,8 +139,8 @@ int					define_client_type(t_server *server,
 
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
-t_case					*map_get_case_at(const unsigned int x,
-							 const unsigned int y,
+t_case					*map_get_case_at(const t_u64 x,
+							 const t_u64 y,
 							 const t_map *map);
 void					text_display_map(t_map *map);
 
@@ -178,7 +178,8 @@ void					init_options(t_server *server);
 int					handle_option_id(const char id,
 							 char **args,
 							 t_server *server);
-int					check_options(t_server *server, char *file_name);
+int					check_options(t_server *server,
+						      char *file_name);
 
 /*
  * Function pointers

@@ -5,17 +5,17 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Mon Jun 13 13:44:56 2016 Barthelemy Gouby
+** Last update Tue Jun 14 16:21:35 2016 Erwan Dupard
 */
 
 #include <time.h>
 #include <stdlib.h>
 #include "server.h"
 
-int 		initialize_map(t_map *map)
+int					initialize_map(t_map *map)
 {
-  t_case	*cases;
-  unsigned int	i;
+  t_case				*cases;
+  t_u64					i;
 
   i = 0;
   if (!(cases = malloc(sizeof(*cases) * map->width * map->height)))
@@ -35,9 +35,9 @@ int 		initialize_map(t_map *map)
   return (RETURN_SUCCESS);
 }
 
-t_case		*map_get_case_at(const unsigned int x, const unsigned int y, const t_map *map)
+t_case					*map_get_case_at(const t_u64 x, const t_u64 y, const t_map *map)
 {
-  unsigned int	index;
+  t_u64					index;
 
   index = y * map->width + x;
   if (index >= map->height * map->width)
@@ -45,7 +45,7 @@ t_case		*map_get_case_at(const unsigned int x, const unsigned int y, const t_map
   return (&map->cases[index]);
 }
 
-void		spread_ressource(const e_object_type type, unsigned int quantity, t_map *map)
+void					spread_ressource(const e_object_type type, t_u64 quantity, t_map *map)
 {
   while (quantity > 0)
     {
@@ -54,11 +54,11 @@ void		spread_ressource(const e_object_type type, unsigned int quantity, t_map *m
     }
 }		
 
-void		initialize_ressources(t_server *server)
+void					initialize_ressources(t_server *server)
 {
-  unsigned int	nbr_of_teams;
-  unsigned int	base_max_members;
-  t_map		*map;
+  t_u64					nbr_of_teams;
+  t_u64					base_max_members;
+  t_map					*map;
 
   nbr_of_teams = server->game_data.nbr_of_teams;
   base_max_members = server->game_data.base_max_members;
@@ -73,9 +73,9 @@ void		initialize_ressources(t_server *server)
   spread_ressource(THYSTAME, nbr_of_teams * base_max_members, map);
 }
 
-void		text_display_map(t_map *map)
+void					text_display_map(t_map *map)
 {
-  unsigned int	i;
+  t_u64					i;
 
   i = 0;
   while (i < map->width * map->height)

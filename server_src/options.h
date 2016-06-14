@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:58 2016 Erwan Dupard
-** Last update Fri Jun 10 14:49:52 2016 Barthelemy Gouby
+** Last update Tue Jun 14 16:21:56 2016 Erwan Dupard
 */
 
 #ifndef OPTIONS_H_
@@ -28,8 +28,6 @@
 # define MIN_SPEED			(0)
 # define MAX_SPEED			(500)
 
-typedef unsigned int			u64;
-
 /*
  * Command Line Options Structure
  */
@@ -41,7 +39,7 @@ typedef struct				s_options
   int					max_clients;
   int					speed;
   char					**teams;
-  unsigned int				nbr_of_teams;
+  t_u64					nbr_of_teams;
 }					t_options;
 
 /*
