@@ -5,11 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-<<<<<<< HEAD
-** Last update Tue Jun 14 15:39:02 2016 Barthelemy Gouby
-=======
-** Last update Tue Jun 14 15:52:08 2016 Erwan Dupard
->>>>>>> 8477b46a05f9655364a08f8d836f988690b63562
+** Last update Tue Jun 14 16:25:38 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -32,6 +28,8 @@
 
 # define RETURN_SUCCESS			(0)
 # define RETURN_FAILURE			(-1)
+
+typedef unsigned int			t_u64;
 
 typedef enum
   {
@@ -66,8 +64,8 @@ struct					s_case;
 
 typedef struct				s_character
 {
-  unsigned int				id;
-  unsigned int				level;
+  t_u64					level;
+  t_u64				        id;
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
@@ -86,8 +84,8 @@ typedef struct				s_case
 typedef struct				s_map
 {
   t_case				*cases;
-  unsigned int				width;
-  unsigned int				height;
+  t_u64					width;
+  t_u64					height;
 }					t_map;
 
 typedef struct				s_client
@@ -107,17 +105,17 @@ typedef struct				s_team
 {
   char					*name;
   t_client				*members;
-  unsigned int				max_members;
+  t_u64					max_members;
 }					t_team;
 
 typedef struct				s_game_data
 {
   t_map					map;
   int					speed;
-  unsigned int				base_max_members;
+  t_u64					base_max_members;
   t_team				*teams;
-  unsigned int				nbr_of_teams; 
-  unsigned int				next_drone_id;
+  t_u64					nbr_of_teams; 
+  t_u64					next_drone_id;
 }					t_game_data;
 
 typedef struct				s_server
@@ -148,8 +146,8 @@ int					define_client_type(t_server *server,
 
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
-t_case					*map_get_case_at(const unsigned int x,
-							 const unsigned int y,
+t_case					*map_get_case_at(const t_u64 x,
+							 const t_u64 y,
 							 const t_map *map);
 void					place_character_randomly(t_map *map,
 								 t_character *character);
@@ -167,8 +165,6 @@ void					text_display_map(t_map *map);
 # define MAX_MAX_CLIENTS		(50)
 # define MIN_SPEED			(1)
 # define MAX_SPEED			(500)
-
-typedef unsigned int			t_u64;
 
 /*
  * Pointer Function Array Definition
@@ -189,7 +185,8 @@ void					init_options(t_server *server);
 int					handle_option_id(const char id,
 							 char **args,
 							 t_server *server);
-int					check_options(t_server *server, char *file_name);
+int					check_options(t_server *server,
+						      char *file_name);
 
 /*
  * Function pointers

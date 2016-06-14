@@ -5,21 +5,31 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Mon Jun 13 17:55:42 2016 Gabriel Goude
+** Last update Tue Jun 14 16:26:51 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
+#include <sys/times.h>
+#include <sys/types.h>
 #include <unistd.h>
+#include <sys/select.h>
 #include <netdb.h>
 #include <stdio.h>
 #include <string.h>
 #include "resources.h"
 
+/*
+** WIP
+*/
 int					enter_game(t_infos *infos)
 {
   char					s[4096];
   ssize_t				i;
+  int					retval;
 
+  fill_set(infos);
+  while ((retval = select(1, &(infos->select.rfds), NULL, NULL, &(infos->select.tv))) == 0)
+    fill_set(infos);
   i = read(infos->socket, s, 4096);
   s[i - 1] = 0;
   if (strcmp(s, "BIENVENUE") == 0)
