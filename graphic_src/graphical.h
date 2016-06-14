@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 13 18:55:37 2016 Thomas Billot
+** Last update Tue Jun 14 14:59:42 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -88,7 +88,6 @@ typedef struct		s_map
   struct s_tiles	*tiles;
 }			t_map;
 
-int			launch_client(t_info *infos);
 int			setup_networking(t_option *options);
 int			fct_welcome(t_info *infos);
 
