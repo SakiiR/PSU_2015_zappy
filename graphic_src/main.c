@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Mon Jun 13 20:03:12 2016 Thomas Billot
+** Last update Mon Jun 13 20:31:56 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -66,9 +66,8 @@ int			main(int argc, char *argv[])
     }
   if ((infos.sockfd = setup_networking(&options)) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if ((circular_buffer = malloc(sizeof(*circular_buffer))) == NULL)
+  if ((infos.circular_buffer = malloc(sizeof(*circular_buffer))) == NULL)
     return (RETURN_FAILURE);
-  infos.circular_buffer = circular_buffer;
   if (initialize_buffer(infos.circular_buffer, 4096) == RETURN_FAILURE)
    return (RETURN_FAILURE);
   if (launch_client(&infos) == RETURN_FAILURE)
