@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Mon Jun 13 13:40:25 2016 Erwan Dupard
+** Last update Tue Jun 14 16:15:27 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -66,7 +66,7 @@ int					send_map_content(t_server *server,
 							 t_client *client,
 							 char *operands __attribute__((unused)))
 {
-  unsigned int				i;
+  t_u64					i;
   i = 0;
 
   while (i  < server->game_data.map.width * server->game_data.map.height)
@@ -91,7 +91,7 @@ int					send_team_names(t_server *server,
 							t_client *client,
 							char *operands __attribute__((unused)))
 {
-  unsigned int				i;
+  t_u64					i;
 
   i = 0;
   while (i < server->game_data.nbr_of_teams)

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Mon Jun 13 15:28:42 2016 Thomas Billot
+** Last update Tue Jun 14 15:31:10 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -122,6 +122,7 @@ int				process_server(t_server *server)
   int				max_socket;
 
   max_socket = 0;
+  server->game_data.next_drone_id = 1;
   while (1)
     {
       FD_ZERO(&si);

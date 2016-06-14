@@ -5,29 +5,49 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Mon Jun 13 17:14:20 2016 Erwan Dupard
+** Last update Tue Jun 14 16:24:32 2016 Erwan Dupard
 */
 
 #include "server.h"
+
+int					initialize_character(t_server *server,
+							     t_client *client,
+							     char *input)
+{
+  client->type = DRONE;
+  client->team = input;
+  if (!(client->character = malloc(sizeof(*(client->character)))))
+    return (RETURN_FAILURE);
+  client->character->level = 1;
+  memset(client->character->quantities, 0,
+	 NUMBER_OF_TYPES * sizeof(t_quantity));
+  client->character->orientation = NORTH;
+  client->character->id = server->game_data.next_drone_id++;
+  place_character_randomly(&server->game_data.map, client->character);
+  sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
+	  client->character->id,
+	  client->character->current_case->x,
+	  client->character->current_case->y,
+	  client->character->orientation,
+	  client->character->level,
+	  client->character->team);
+  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+  return (RETURN_SUCCESS);
+}
 
 int					initialize_drone(t_server *server,
 							 t_client *client,
 							 char *input)
 {
-  unsigned int				i;
+  t_u64					i;
 
   i = 0;
   while (i < server->game_data.nbr_of_teams)
     {
       if (strcmp(input, server->game_data.teams[i].name) == 0)
 	{
-	  client->type = DRONE;
-	  if (!(client->character = malloc(sizeof(*(client->character)))))
+	  if (initialize_character(server, client, input) == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
-	  client->character->level = 1;
-	  memset(client->character->quantities, 0,
-		 NUMBER_OF_TYPES * sizeof(t_quantity));
-	  client->character->orientation = NORTH;
 	  break;
 	}
       i++;

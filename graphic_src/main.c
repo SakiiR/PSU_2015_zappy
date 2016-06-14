@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Mon Jun 13 20:31:56 2016 Thomas Billot
+** Last update Tue Jun 14 14:58:33 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -56,21 +56,20 @@ int			check_options(t_option *options, char **argv)
 int			main(int argc, char *argv[])
 {
   t_option		options;
-  t_info		infos;
-  t_circular_buffer	*circular_buffer;
+  t_server		server;
   
   if (argc != 5 || check_options(&options, argv) == RETURN_FAILURE)
     {
       fprintf(stderr, "Usage: ./console -h [ipaddress] -p [port]\n");
       return (RETURN_FAILURE);
     }
-  if ((infos.sockfd = setup_networking(&options)) == RETURN_FAILURE)
+  if ((server.socket = setup_networking(&options)) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if ((infos.circular_buffer = malloc(sizeof(*circular_buffer))) == NULL)
-    return (RETURN_FAILURE);
-  if (initialize_buffer(infos.circular_buffer, 4096) == RETURN_FAILURE)
+  if (initialize_buffer(&(server.buffer_in), 4096) == RETURN_FAILURE)
    return (RETURN_FAILURE);
-  if (launch_client(&infos) == RETURN_FAILURE)
+  if (initialize_buffer(&(server.buffer_out), 4096) == RETURN_FAILURE)
+   return (RETURN_FAILURE);
+  if (launch_client(&server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (0);
 }
