@@ -5,10 +5,9 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun  9 19:15:32 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:20:12 2016 Erwan Dupard
 */
 
-#include "resources.h"
+#include "server.h"
 
 int					place_character_randomly(t_map *map, t_character *character)
 {

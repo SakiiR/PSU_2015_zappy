@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:19:14 2016 Erwan Dupard
+** Last update Tue Jun 14 16:23:01 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -23,17 +23,18 @@
 # include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
-# define BUFFER_SIZE			(4096)
+# define CIRC_PAGE_NBR			(10)			
+# define PAGE_SIZE			(4096)
 
 # define RETURN_SUCCESS			(0)
 # define RETURN_FAILURE			(-1)
 
 typedef enum
   {
-    EST,
-    WEST,
-    NORTH,
-    SOUTH
+    NORTH				= 1,
+    EST					= 2,
+    SOUTH				= 3,
+    WEST				= 4
   }					e_orientation;
 
 typedef enum
@@ -62,6 +63,7 @@ struct					s_case;
 typedef struct				s_character
 {
   t_u64					level;
+  t_u64				        id;
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
@@ -73,6 +75,8 @@ typedef struct				s_case
 {
   t_character				*characters;
   t_quantity				quantities[NUMBER_OF_TYPES];
+  unsigned int				x;
+  unsigned int				y;
 }					t_case;
 
 typedef struct				s_map
@@ -109,6 +113,7 @@ typedef struct				s_game_data
   t_u64					base_max_members;
   t_team				*teams;
   t_u64					nbr_of_teams; 
+  t_u64					next_drone_id;
 }					t_game_data;
 
 typedef struct				s_server
@@ -118,7 +123,7 @@ typedef struct				s_server
   int					port;
   t_client				*clients;
   t_game_data				game_data;
-  char					buffer[4096];
+  char					buffer[PAGE_SIZE];
 }					t_server;
 
 typedef struct				s_command
@@ -142,6 +147,8 @@ void					initialize_ressources(t_server *server);
 t_case					*map_get_case_at(const t_u64 x,
 							 const t_u64 y,
 							 const t_map *map);
+void					place_character_randomly(t_map *map,
+								 t_character *character);
 void					text_display_map(t_map *map);
 
 # define WELCOME			("BIENVENUE\n")

@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:21:35 2016 Erwan Dupard
+** Last update Tue Jun 14 16:24:02 2016 Erwan Dupard
 */
 
 #include <time.h>
@@ -22,6 +22,7 @@ int					initialize_map(t_map *map)
     return (RETURN_FAILURE);
   while (i < map->width * map->height)
     {
+      cases[i].characters = NULL;
       cases[i].quantities[FOOD] = 0;
       cases[i].quantities[LINEMATE] = 0;
       cases[i].quantities[DERAUMERE] = 0;
@@ -29,6 +30,8 @@ int					initialize_map(t_map *map)
       cases[i].quantities[MENDIANE] = 0;
       cases[i].quantities[PHIRAS] = 0;
       cases[i].quantities[THYSTAME] = 0;
+      cases[i].x = i % map->width;
+      cases[i].y = i / map->height;
       i++;
     }
   map->cases = cases;
