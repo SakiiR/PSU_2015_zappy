@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 13 18:11:11 2016 Thomas Billot
+** Last update Mon Jun 13 18:55:37 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -43,6 +43,12 @@
 				 initialisé le moniteur graphique */
 
 typedef unsigned int	t_quantity;
+
+typedef struct		s_option
+{
+  char			*ip;
+  int			port;
+}			t_option;
 
 typedef struct		s_info
 {
@@ -82,8 +88,8 @@ typedef struct		s_map
   struct s_tiles	*tiles;
 }			t_map;
 
-int			launch_client(t_info *options);
-
-int			fct_welcome(t_info *options);
+int			launch_client(t_info *infos);
+int			setup_networking(t_option *options);
+int			fct_welcome(t_info *infos);
 
 #endif /* !GRAPHICAL_H_ */

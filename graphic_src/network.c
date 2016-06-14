@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:59:16 2016 Thomas Billot
-** Last update Mon Jun 13 17:17:26 2016 Thomas Billot
+** Last update Mon Jun 13 18:52:15 2016 Thomas Billot
 */
 
 #include "network.h"
@@ -19,7 +19,7 @@
 #include <string.h>
 #include <errno.h>
 
-int			setup_networking(int port)
+int			setup_networking(t_option *options)
 {
   t_sockaddr		sin;
   t_socket		sock;
@@ -28,18 +28,18 @@ int			setup_networking(int port)
   if ((pe = getprotobyname("TCP")) == NULL)
     {
       fprintf(stderr, "Error in getprotobyname(): %s\n", strerror(errno));
-      return (-1);
+      return (SOCKET_ERROR);
     }
   if ((sock = xsocket(AF_INET, SOCK_STREAM, pe->p_proto)) == SOCKET_ERROR)
-    return (-1);
+    return (SOCKET_ERROR);
   sin.sin_family = AF_INET;
-  sin.sin_addr.s_addr = INADDR_ANY;
-  sin.sin_port = htons(port);
+  sin.sin_addr.s_addr = inet_addr(options->ip);
+  sin.sin_port = htons(options->port);
   if (xconnect(sock, (struct sockaddr*)&sin, sizeof(sin)) == -1)
     {
       if (xclose(sock) == -1)
-	return (-1);
-      return (-1);
+	return (SOCKET_ERROR);
+      return (SOCKET_ERROR);
     }    
   return (sock);
 }
