@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Tue Jun 14 15:31:10 2016 Barthelemy Gouby
+** Last update Tue Jun 14 16:16:03 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -33,8 +33,8 @@ static void			adding_sockets(t_server *server,
 static int			handle_clients_input(t_server *server, fd_set *set_in)
 {
   int				i;
-  char				buffer[BUFFER_SIZE];
   int				size_read;
+  char				buffer[PAGE_SIZE];
   char				*next_message;
   i = -1;
 
@@ -42,7 +42,7 @@ static int			handle_clients_input(t_server *server, fd_set *set_in)
     {
       if (FD_ISSET(server->clients[i].socket, set_in))
 	{
-	  size_read = read(server->clients[i].socket, buffer, BUFFER_SIZE);
+	  size_read = read(server->clients[i].socket, buffer, PAGE_SIZE);
 	  buffer[size_read] = 0;
 	  if (size_read > 0)
 	    printf("buffer : %s\n", buffer);
