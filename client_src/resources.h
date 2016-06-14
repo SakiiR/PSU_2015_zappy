@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Mon Jun 13 18:20:23 2016 Erwan Dupard
+** Last update Tue Jun 14 14:43:43 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -28,12 +28,35 @@ typedef enum
   NUMBER_OF_TYPES			= 7
 }					e_object_type;
 
+typedef enum
+{
+  AVANCE				= 0,
+  DROITE				= 1,
+  GAUCHE				= 2,
+  VOIR					= 3,
+  INVENTAIRE				= 4,
+  PREND					= 5,
+  POSE					= 6,
+  EXPULSE				= 7,
+  BROADCAST				= 8,
+  INCANTATION				= 9,
+  CONNECT_NBR				= 10,
+  NUMBER_OF_REQUESTS			= 11
+}					e_request_type;
+
+typedef struct				s_request
+{
+  int					request;
+  struct s_request			*next;
+}					t_request;
+
 typedef unsigned int			t_quantity;
 
 typedef struct				s_infos
 {
   struct s_client			*client;
   struct s_map				*map;
+  struct s_request			*request;
   struct sockaddr_in			in;
   int					socket;
 }					t_infos;
@@ -45,6 +68,7 @@ typedef struct				s_client
   char					*team_name;
   t_quantity			        inventory[NUMBER_OF_TYPES];
   unsigned int				level;
+  unsigned int				orientation;
 }					t_client;
 
 typedef struct				s_tile
@@ -84,5 +108,11 @@ void					init_inv(t_infos *infos);
 */
 int					get_param(int ac, char **av, t_infos *infos);
 int					get_next_param(int i, char **av, t_infos *infos);
+
+/*
+** list_fct.c
+*/
+int					add_elem(t_infos *infos, int id);
+int					remove_elem(t_infos *infos);
 
 #endif /* ! RESOURCES_H_ */
