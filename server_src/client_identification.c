@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Mon Jun 13 17:14:20 2016 Erwan Dupard
+** Last update Tue Jun 14 16:15:42 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -14,7 +14,7 @@ int					initialize_drone(t_server *server,
 							 t_client *client,
 							 char *input)
 {
-  unsigned int				i;
+  t_u64					i;
 
   i = 0;
   while (i < server->game_data.nbr_of_teams)
