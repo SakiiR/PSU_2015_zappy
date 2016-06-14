@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Mon Jun 13 17:51:12 2016 Gabriel Goude
+** Last update Tue Jun 14 14:36:22 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -23,6 +23,7 @@ int			main(int ac, char **av)
 
   infos.client = &client;
   infos.map = &map;
+  infos.request = NULL;
   if (get_param(ac, av, &infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   if (init_connection(&infos) == RETURN_FAILURE)
