@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 13 13:41:38 2016 Barthelemy Gouby
+** Last update Mon Jun 13 14:17:36 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -30,10 +30,10 @@
 
 typedef enum
   {
-    EST,
-    WEST,
-    NORTH,
-    SOUTH
+    NORTH				= 1,
+    EST					= 2,
+    SOUTH				= 3,
+    WEST				= 4
   }					e_orientation;
 
 typedef enum
@@ -61,6 +61,7 @@ struct					s_case;
 
 typedef struct				s_character
 {
+  unsigned int				id;
   unsigned int				level;
   char					*team;
   quantity				quantities[NUMBER_OF_TYPES];
@@ -73,6 +74,8 @@ typedef struct				s_case
 {
   t_character				*characters;
   quantity				quantities[NUMBER_OF_TYPES];
+  unsigned int				x;
+  unsigned int				y;
 }					t_case;
 
 typedef struct				s_map
@@ -109,6 +112,7 @@ typedef struct				s_game_data
   unsigned int				base_max_members;
   t_team				*teams;
   unsigned int				nbr_of_teams; 
+  unsigned int				next_drone_id;
 }					t_game_data;
 
 typedef struct				s_server
@@ -143,6 +147,8 @@ void					initialize_ressources(t_server *server);
 t_case					*map_get_case_at(const unsigned int x,
 							 const unsigned int y,
 							 const t_map *map);
+void					place_character_randomly(t_map *map,
+								 t_character *character);
 void					text_display_map(t_map *map);
 
 # define WELCOME			("BIENVENUE\n")

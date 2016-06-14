@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 13:44:17 2016 Barthelemy Gouby
+## Last update Mon Jun 13 14:24:31 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -47,6 +47,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/options_id.c			\
 		  server_src/options_id2.c			\
 		  server_src/map.c				\
+		  server_src/map2.c				\
 		  server_src/process.c				\
 		  server_src/commands_handle.c			\
 		  server_src/graphic_commands.c			\
