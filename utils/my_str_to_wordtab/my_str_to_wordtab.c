@@ -5,10 +5,10 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May  3 11:38:55 2016 Erwan Dupard
-** Last update Wed Jun  1 16:22:43 2016 Erwan Dupard
+** Last update Tue Jun 14 17:24:44 2016 Erwan Dupard
 */
 
-#include "../server_src/resources.h"
+#include "my_str_to_wordtab.h"
 
 static int				is_allowed_char(char c, const char *forbidden)
 {

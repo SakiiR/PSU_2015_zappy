@@ -5,14 +5,14 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 11:07:28 2016 Thomas Billot
-** Last update Tue Jun 14 14:59:31 2016 Thomas Billot
+** Last update Tue Jun 14 17:19:34 2016 Erwan Dupard
 */
 
 #ifndef NETWORK_H_
 # define NETWORK_H_
 
 #include "graphical.h"
-#include "../utils/circular_buffer/circular_buffer.h"
+#include <circular_buffer/circular_buffer.h>
 #include <arpa/inet.h>
 
 # define RETURN_SUCESS (0)

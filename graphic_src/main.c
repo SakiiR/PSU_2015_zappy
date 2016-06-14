@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Tue Jun 14 14:58:33 2016 Thomas Billot
+** Last update Tue Jun 14 17:21:39 2016 Erwan Dupard
 */
 
 #include "graphical.h"
@@ -60,6 +60,9 @@ int			main(int argc, char *argv[])
   
   if (argc != 5 || check_options(&options, argv) == RETURN_FAILURE)
     {
+      /*
+       * Tu peux mettre une macro pour le usage (la string) # define USAGE ("Usage: ./console -h [ipaddress] -p [port]\n")
+       */
       fprintf(stderr, "Usage: ./console -h [ipaddress] -p [port]\n");
       return (RETURN_FAILURE);
     }
