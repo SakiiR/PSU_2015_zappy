@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Tue Jun 14 14:43:43 2016 Gabriel Goude
+** Last update Tue Jun 14 16:17:07 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -15,6 +15,9 @@
 # define RETURN_FAILURE			(-1)
 
 # include <netinet/ip.h>
+# include <sys/times.h>
+# include <sys/select.h>
+# include <circular_buffer/circular_buffer.h>
 
 typedef enum
 {
@@ -52,12 +55,21 @@ typedef struct				s_request
 
 typedef unsigned int			t_quantity;
 
+typedef struct				s_select
+{
+  fd_set				rfds;
+  fd_set				wfds;
+  struct timeval			tv;
+}					t_select;
+
 typedef struct				s_infos
 {
   struct s_client			*client;
   struct s_map				*map;
   struct s_request			*request;
   struct sockaddr_in			in;
+  struct s_select			select;
+  t_circular_buffer			buffer;
   int					socket;
 }					t_infos;
 
@@ -94,6 +106,7 @@ void					init_map(t_map *map);
 ** ai.c
 */
 int					ai(t_infos *infos);
+void					fill_set(t_infos *infos);
 
 /*
 ** connect.c
