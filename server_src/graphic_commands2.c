@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 13 18:43:41 2016 Erwan Dupard
-** Last update Mon Jun 13 18:45:57 2016 Erwan Dupard
+** Last update Tue Jun 14 14:34:44 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -26,8 +26,8 @@ int				        send_player_level(t_server *server,
 							 char *operands
 							 __attribute__((unused)))
 {
-  (void)server;
   (void)client;
+  (void)server;
   (void)operands;
   return (RETURN_SUCCESS);
 }
