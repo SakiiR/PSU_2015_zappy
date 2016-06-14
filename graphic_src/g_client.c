@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Mon Jun 13 18:14:40 2016 Thomas Billot
+** Last update Tue Jun 14 13:01:30 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -73,7 +73,7 @@ int		        handle_server_cmd(t_info *infos)
   buffer[size_read] = 0;
   if (size_read > 0)
     printf("buffer : [%s]\n", buffer);
-  write_to_buffer(infos->circular_buffer, buffer, size_read);	
+  write_to_buffer(infos->circular_buffer, buffer, size_read);
   if ((next_message = get_next_message(infos->circular_buffer)))
     {
       if (next_message && next_message[0])
