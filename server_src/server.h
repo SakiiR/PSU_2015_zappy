@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 17:08:10 2016 Erwan Dupard
+** Last update Tue Jun 14 17:11:57 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -57,8 +57,6 @@ typedef enum
     GRAPHIC,
     UNSPECIFIED
   }					e_client_type;
-
-
 
 typedef unsigned int			t_quantity;
 

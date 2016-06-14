@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Tue Jun 14 17:08:07 2016 Erwan Dupard
+** Last update Tue Jun 14 17:12:15 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -26,6 +26,6 @@ typedef struct				s_event_handler
   int					(*f)(...); /* Var Args ! */
 }					t_event_handler;
 
-int					handle_event(e_event_type type, ...)
+int					handle_event(e_event_type type, ...);
 
 #endif /* ! EVENTS_H_ */
