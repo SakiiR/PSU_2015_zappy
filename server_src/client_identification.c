@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Mon Jun 13 14:22:17 2016 Barthelemy Gouby
+** Last update Tue Jun 14 15:33:16 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -20,7 +20,7 @@ int					initialize_character(t_server *server,
     return (RETURN_FAILURE);
   client->character->level = 1;
   memset(client->character->quantities, 0,
-	 NUMBER_OF_TYPES * sizeof(quantity));
+	 NUMBER_OF_TYPES * sizeof(t_quantity));
   client->character->orientation = NORTH;
   client->character->id = server->game_data.next_drone_id++;
   place_character_randomly(&server->game_data.map, client->character);

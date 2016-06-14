@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 10 17:37:09 2016 Gabriel Goude
+** Last update Mon Jun 13 17:55:42 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -15,33 +15,34 @@
 #include <string.h>
 #include "resources.h"
 
-int					enter_game(t_client_settings *settings, t_game *game)
+int					enter_game(t_infos *infos)
 {
   char					s[4096];
   ssize_t				i;
 
-  i = read(settings->s, s, 4096);
+  i = read(infos->socket, s, 4096);
   s[i - 1] = 0;
   if (strcmp(s, "BIENVENUE") == 0)
   {
-    write(settings->s, settings->team_name, strlen(settings->team_name));
-    write(settings->s, "\n", 1);
-    i = read(settings->s, s, 4096);
+    write(infos->socket, infos->client->team_name, strlen(infos->client->team_name));
+    write(infos->socket, "\n", 1);
+    i = read(infos->socket, s, 4096);
     s[i - 1] = 0;
     if (atoi(s) > 0)
     {
-      i = read(settings->s, s, 4096);
+      i = read(infos->socket, s, 4096);
       s[i - 1] = 0;
-      if (get_world_size(game, s) == RETURN_FAILURE)
+      if (get_world_size(infos, s) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      return (RETURN_SUCCESS);
+      if (create_map(infos) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
     }
       return (RETURN_SUCCESS);
   }
   return (RETURN_FAILURE);
 }
 
-int					get_world_size(t_game *game, char *s)
+int					get_world_size(t_infos *infos, char *s)
 {
   char					x[2048];
   char					y[2048];
@@ -66,31 +67,19 @@ int					get_world_size(t_game *game, char *s)
     j++;
   }
   y[j] = 0;
-  game->world_x = atoi(x);
-  game->world_y = atoi(y);
-  game->pos_x = 0;
-  game->pos_y = 0;
-  game->lvl = 1;
-  init_inv(game);
+  infos->map->x = atoi(x);
+  infos->map->y = atoi(y);
+  infos->client->x = 0;
+  infos->client->y = 0;
+  infos->client->level = 1;
   return (RETURN_SUCCESS);
 }
 
-void					init_inv(t_game *game)
+int					init_connection(t_infos *infos)
 {
-  game->inv.food = 0;
-  game->inv.linemate = 0;
-  game->inv.deraumere = 0;
-  game->inv.sibur = 0;
-  game->inv.mendiane = 0;
-  game->inv.phiras = 0;
-  game->inv.thystame = 0;
-}
-
-int					init_connection(t_client_settings *settings)
-{
-  if ((settings->s = socket(AF_INET, SOCK_STREAM, getprotobyname("tcp")->p_proto)) < 0)
+  if ((infos->socket = socket(AF_INET, SOCK_STREAM, getprotobyname("tcp")->p_proto)) < 0)
     return (RETURN_FAILURE);
-  if (connect(settings->s, (struct sockaddr *) &(settings->sock), sizeof(settings->sock)) < 0)
+  if (connect(infos->socket, (struct sockaddr *) &(infos->in), sizeof(infos->in)) < 0)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
