@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Mon Jun 13 17:13:58 2016 Erwan Dupard
+** Last update Tue Jun 14 15:52:02 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -34,7 +34,6 @@ static void				usage(const char *file_name)
 void					init_options(t_server *server)
 {
   server->port = 0;
-  server->host_name = "zappy.epitech";
   server->game_data.map.width = 0;
   server->game_data.map.height = 0;
   server->game_data.base_max_members = 0;

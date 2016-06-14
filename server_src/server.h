@@ -5,7 +5,11 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
+<<<<<<< HEAD
 ** Last update Tue Jun 14 15:39:02 2016 Barthelemy Gouby
+=======
+** Last update Tue Jun 14 15:52:08 2016 Erwan Dupard
+>>>>>>> 8477b46a05f9655364a08f8d836f988690b63562
 */
 
 #ifndef _SERVER_H_
@@ -121,7 +125,6 @@ typedef struct				s_server
   int					socket;
   struct sockaddr_in			in;
   int					port;
-  const char				*host_name;
   t_client				*clients;
   t_game_data				game_data;
   char					buffer[PAGE_SIZE];
