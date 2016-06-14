@@ -6,7 +6,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Mon Jun 13 14:15:31 2016 Thomas Beaudet
-** Last update Tue Jun 14 13:15:24 2016 Thomas Billot
+** Last update Tue Jun 14 17:21:02 2016 Erwan Dupard
 */
 
 #include <SDL/SDL.h>
@@ -16,6 +16,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/*
+ * Attention 1 fichier pour une fonction comme ca .. 
+ * ça ressemble beaucoup ) init_ttf en plus :) Erwan.
+ */
 void		init_sdl()
 {
   if ((SDL_Init(SDL_INIT_VIDEO)) != 0)

@@ -5,14 +5,14 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Tue Jun 14 15:00:26 2016 Thomas Billot
+** Last update Tue Jun 14 17:20:03 2016 Erwan Dupard
 */
 
 #include "graphical.h"
 #include "network.h"
 #include "xfunc.h"
 
-static t_ptr	ftab[] =
+static t_ptr	g_ftab[] =
   {
     {MSZ, NULL},
     {BCT, NULL},
@@ -49,12 +49,12 @@ int			handle_command(char *message, t_info *infos)
   if ((cmd = my_str_to_wordtab(message, " \n")) != NULL && cmd[0] != NULL) 
     {
       i = -1;
-      while (ftab[++i].id != NULL)
+      while (g_ftab[++i].id != NULL)
 	{
-	  if (strcmp(cmd[0], ftab[i].id) == 0 && ftab[i].f != NULL)
+	  if (strcmp(cmd[0], g_ftab[i].id) == 0 && g_ftab[i].f != NULL)
 	    {
-	      printf("Command found: %s\n", ftab[i].id);
-	      if (ftab[i].f(infos) == -1)
+	      printf("Command found: %s\n", g_ftab[i].id);
+	      if (g_ftab[i].f(infos) == -1)
 		return (-1);
 	    }
 	}
