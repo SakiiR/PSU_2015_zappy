@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 13 14:17:36 2016 Barthelemy Gouby
+** Last update Tue Jun 14 15:39:02 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -23,7 +23,8 @@
 # include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
-# define BUFFER_SIZE			(4096)
+# define CIRC_PAGE_NBR			(10)			
+# define PAGE_SIZE			(4096)
 
 # define RETURN_SUCCESS			(0)
 # define RETURN_FAILURE			(-1)
@@ -55,7 +56,7 @@ typedef enum
     UNSPECIFIED
   }					e_client_type;
 
-typedef unsigned int			quantity;
+typedef unsigned int			t_quantity;
 
 struct					s_case;
 
@@ -64,7 +65,7 @@ typedef struct				s_character
   unsigned int				id;
   unsigned int				level;
   char					*team;
-  quantity				quantities[NUMBER_OF_TYPES];
+  t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
@@ -73,7 +74,7 @@ typedef struct				s_character
 typedef struct				s_case
 {
   t_character				*characters;
-  quantity				quantities[NUMBER_OF_TYPES];
+  t_quantity				quantities[NUMBER_OF_TYPES];
   unsigned int				x;
   unsigned int				y;
 }					t_case;
@@ -123,7 +124,7 @@ typedef struct				s_server
   const char				*host_name;
   t_client				*clients;
   t_game_data				game_data;
-  char					buffer[4096];
+  char					buffer[PAGE_SIZE];
 }					t_server;
 
 typedef struct				s_command
@@ -164,7 +165,7 @@ void					text_display_map(t_map *map);
 # define MIN_SPEED			(1)
 # define MAX_SPEED			(500)
 
-typedef unsigned int			u64;
+typedef unsigned int			t_u64;
 
 /*
  * Pointer Function Array Definition
@@ -178,7 +179,7 @@ typedef struct				s_option_id
 /*
  * Base Command Line Options Gesture
  */
-int					get_options(u64 argc,
+int					get_options(t_u64 argc,
 						    char **argv,
 						    t_server *server);
 void					init_options(t_server *server);
@@ -221,5 +222,22 @@ int					send_map_content(t_server *server,
 int					send_team_names(t_server *server,
 							t_client *client,
 							char *operands __attribute__((unused)));
+int					change_time_unit(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+int				        send_player_level(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+int				        send_player_inventory(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
+
+int				        send_player_position(t_server *server,
+							 t_client *client,
+							 char *operands
+							 __attribute__((unused)));
 
 #endif /* !_SERVER_H_ */

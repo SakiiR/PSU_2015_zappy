@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 13 14:24:31 2016 Barthelemy Gouby
+## Last update Tue Jun 14 15:32:38 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -14,7 +14,7 @@ RM		= rm -f
 
 CLIENT_NAME	= zappy_ai
 SERVER_NAME	= zappy_server
-GRAPHIC_NAME	= graphic
+GRAPHIC_NAME	= console
 
 CLIENT_BINARY	= zappy_ai
 SERVER_BINARY	= zappy_server
@@ -28,12 +28,11 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/request3.c				\
 		  client_src/ai.c				\
 		  client_src/map.c				\
+		  client_src/list_fct.c			\
 
 GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/my_str_to_wordtab.c 		\
 		  graphic_src/my_str_to_wordtab2.c 		\
-		  graphic_src/circular_buffer.c 		\
-		  graphic_src/circular_buffer2.c 		\
 		  graphic_src/network.c 			\
 		  graphic_src/xsocket.c 			\
 		  graphic_src/xconnect.c 			\
@@ -41,6 +40,8 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/g_client.c 			\
 		  graphic_src/fct_welcome.c 			\
 		  graphic_src/get_next_line.c			\
+		  utils/circular_buffer/circular_buffer.c	\
+		  utils/circular_buffer/circular_buffer2.c	\
 
 SERVER_SRCS	= server_src/main.c				\
 		  server_src/options.c				\
@@ -51,6 +52,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/process.c				\
 		  server_src/commands_handle.c			\
 		  server_src/graphic_commands.c			\
+		  server_src/graphic_commands2.c		\
 		  server_src/client_identification.c		\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\

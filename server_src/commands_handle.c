@@ -5,13 +5,18 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Mon Jun 13 13:43:31 2016 Barthelemy Gouby
+** Last update Mon Jun 13 18:39:42 2016 Erwan Dupard
 */
 
 #include "server.h"
 
 static const t_command			g_commands[] = {
     {"msz", &send_map_size},
+    {"sst", &change_time_unit},
+    {"ppo", &send_player_position},
+    {"plv", &send_player_level},
+    {"pin", &send_player_inventory},
+    {"tna", &send_team_names},
     {"sgt", &send_speed},
     {"bct", &send_case_content},
     {"mct", &send_map_content},

@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 16:02:31 2016 Gabriel Goude
-** Last update Fri Jun 10 17:09:20 2016 Erwan Dupard
+** Last update Mon Jun 13 18:25:03 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 #include <string.h>
 #include "resources.h"
 
-int					prend(t_client_settings *settings, char *obj)
+int					prend(t_infos *infos, char *obj)
 {
   char					*str;
   int					len;
@@ -24,12 +24,16 @@ int					prend(t_client_settings *settings, char *obj)
   strcpy(str, "prend ");
   strcpy(str + 6, obj);
   str[6 + len] = '\n';
-  write(settings->s, str, 7 + len);
+  write(infos->socket, str, 7 + len);
   free(str);
   return (RETURN_SUCCESS);
 }
 
-int					pose(t_client_settings *settings, char *obj)
+/*
+ * Si non, tout ce code la peut etre remplacer par dprintf(); je te laisse regarde le man
+ * dprintf(infos->socket, "pose %s\n", obj);
+ */
+int					pose(t_infos *infos, char *obj)
 {
   char					*str;
   int					len;
@@ -40,18 +44,18 @@ int					pose(t_client_settings *settings, char *obj)
   strcpy(str, "pose ");
   strcpy(str + 5, obj);
   str[5 + len] = '\n';
-  write(settings->s, str, 6 + len);
+  write(infos->socket, str, 6 + len);
   free(str);
   return (RETURN_SUCCESS);
 }
 
-int					expulse(t_client_settings *settings)
+int					expulse(t_infos *infos)
 {
-  write(settings->s, "expulse\n", 8);
+  write(infos->socket, "expulse\n", 8);
   return (RETURN_SUCCESS);
 }
 
-int					broadcast(t_client_settings *settings, char *text)
+int					broadcast(t_infos *infos, char *text)
 {
   char					*str;
   int					len;
@@ -62,13 +66,13 @@ int					broadcast(t_client_settings *settings, char *text)
   strcpy(str, "broadcast ");
   strcpy(str + 10, text);
   str[10 + len] = '\n';
-  write(settings->s, str, 11 + len);
+  write(infos->socket, str, 11 + len);
   free(str);
   return (RETURN_SUCCESS);
 }
 
-int					incantation(t_client_settings *settings)
+int					incantation(t_infos *infos)
 {
-  write(settings->s, "incantation\n", 12);
+  write(infos->socket, "incantation\n", 12);
   return (RETURN_SUCCESS);
 }

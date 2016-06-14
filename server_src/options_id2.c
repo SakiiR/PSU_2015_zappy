@@ -5,14 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:17:21 2016 Erwan Dupard
-** Last update Fri Jun 10 15:14:14 2016 Barthelemy Gouby
+** Last update Mon Jun 13 17:14:08 2016 Erwan Dupard
 */
 
 #include "server.h"
 
 int					option_id_teams(char **args, t_server *server)
 {
-  u64					i;
+  t_u64					i;
   t_team				*teams;
 
   i = 0;

@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Sun Jun 12 11:17:17 2016 Thomas Beaudet
-** Last update Mon Jun 13 13:18:22 2016 Thomas Beaudet
+** Last update Mon Jun 13 18:45:54 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -14,79 +14,97 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <math.h>
 #include "SDL_map.h"
 
 int		set_vals(t_sdl *s)
 {
-  printf("window 1\n");
-  s->color.r = 255;
+  s->color.r = 51;
   s->color.g = 255;
-  s->color.b = 255;
-  s->text = NULL;
-  s->backg = NULL;
+  s->color.b = 51;
   s->font = NULL;
   s->action = 1;
-  s->backg = IMG_Load("../Media/anonymous->jpg");
   s->win = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
-  printf("window 2\n");
-  printf("window 3\n");
   SDL_WM_SetCaption("ZAPPY UNITED", NULL);
-  s->font = TTF_OpenFont("../FONTS/Arial.ttf", 40);
-  s->text = TTF_RenderText_Blended(s->font, "Zappy Maggle !", s->color);
+  s->font = TTF_OpenFont("FONTS/Arial.ttf", 200);
 }
 
-int		init_sdl()
+void		putpixel(SDL_Surface *screen, int x, int y, Uint32 pixel)
 {
-  printf("window if\n");
-  if (SDL_Init(SDL_INIT_VIDEO) != 0)
-    {
-      printf("window if1\n");
-      fprintf(stderr, "\nProblem when SDL_init: %s\n", SDL_GetError());
-      return (1);
-    }
-  exit (EXIT_FAILURE);
-  //atexit(&SDL_Quit);
+  int		bpp;
+  Uint8		*p;
+
+  bpp = screen->format->BytesPerPixel;
+  p = (Uint8*)screen->pixels + y * screen->pitch + x * bpp;
+  *(Uint32 *)p = pixel;
 }
 
-int		init_ttf()
+void		drawLine(SDL_Surface *screen, int x0, int y0, int x1,
+			 int y1, Uint32 pixel)
 {
-  if (TTF_Init() == -1)
-    {
-      fprintf(stderr, "\nProblem when TTF init: %s\n", TTF_GetError());
-      return (1);
-    }
-  exit (EXIT_FAILURE);
-  //atexit(TTF_Quit);
+  int		i;
+  double	x;
+  double	y;
 
+  i = 0;
+  x = x1 - x0;
+  y = y1 - y0;
+
+  double	length = sqrt(x*x + y*y);
+  double	addx = x / length;
+  double	addy = y / length;
+
+  x = x0;
+  y = y0;
+  for (i = 0; i < length; i++)
+    {
+      putpixel(screen, x, y, pixel);
+      x += addx;
+      y += addy;
+    }
+}
+
+void		sdlEvent(t_sdl *s)
+{
+  while (SDL_PollEvent(&s->event))
+    if (s->event.type == SDL_QUIT)
+      s->action = 0;
+    else if (s->event.type == SDL_QUIT)
+      if (s->event.key.keysym.sym == SDLK_ESCAPE)
+	s->action = 0;
 }
 
 int		run(t_sdl *s)
 {
+  int		i;
+  int		x1;
+  int		y1;
+  int		x2;
+  int		y2;
+
+  i = 0;
+  x1 = 300;
+  y1 = 300;
+  x2 = 100;
+  y2 = 100;
   init_sdl();
   init_ttf();
-  printf("run 1\n");
+  s->pix = 0x000000;
   while (s->action)
     {
-      printf("run while\n");
-      SDL_WaitEvent(&s->event);
-      switch (s->event.type)
-	{
-	case SDL_QUIT:
-	  s->action = 0;
-	  break;
-	}
-      printf("run 2\n");
-      SDL_FillRect(s->win, NULL, SDL_MapRGB(s->win->format,  255, 255, 255));
-
-      s->pos.x = 0;
-      s->pos.y = 0;
-      SDL_BlitSurface(s->backg, NULL, s->win, &s->pos);
-      printf("run 3\n");
-      s->pos.x = WIDTH;
-      s->pos.y = HEIGHT;
-      SDL_BlitSurface(s->text, NULL, s->win, &s->pos);
+      sdlEvent(s);
+      SDL_FillRect(s->win, NULL, SDL_MapRGB(s->win->format, 102, 204, 0));
+      for (int i = 0; i < 10; ++i)
+	drawLine(s->win, 1931+(i*10), 100, 100, 100, s->pix);
       SDL_Flip(s->win);
-      printf("run 4\n");
+      /* SDL_Delay(4000); */
+      /*      s->pos.x = 50;
+	      s->pos.y = 50;
+	      SDL_BlitSurface(s->backg, NULL, s->win, &s->pos);
+	      s->pos.x = WIDTH;
+	      s->pos.y = HEIGHT;
+	      SDL_BlitSurface(s->text, NULL, s->win, &s->pos);
+	      SDL_Flip(s->win);*/
     }
 }
 
@@ -94,8 +112,6 @@ void		SDL_quit(t_sdl *s)
 {
   TTF_CloseFont(s->font);
   TTF_Quit();
-
-  SDL_FreeSurface(s->text);
   SDL_Quit();
 }
 
@@ -104,13 +120,12 @@ int		main()
   t_sdl		world;
 
   memset(&world, 0, sizeof(t_sdl));
-  printf("1\n");
-  // init();
+  printf("memset : ok\n");
   set_vals(&world);
-  printf("2\n");
+  printf("set_vals : ok\n");
   run(&world);
-  printf("3\n");
+  printf("run : ok\n");
   SDL_quit(&world);
-  printf("4\n");
+  printf("sdl_quit : ok\n");
   return (0);
 }

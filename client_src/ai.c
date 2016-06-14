@@ -5,15 +5,14 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:31:29 2016 Gabriel Goude
-** Last update Fri Jun 10 17:03:55 2016 Erwan Dupard
+** Last update Mon Jun 13 17:41:20 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
 #include "resources.h"
 
-int			ai(t_client_settings *settings, t_game *game)
+int			ai(t_infos *infos)
 {
-  (void)settings;
-  (void)game;
+  (void)infos;
   return (RETURN_SUCCESS);
 }

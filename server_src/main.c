@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Sun Jun 12 17:32:09 2016 Erwan Dupard
+** Last update Tue Jun 14 15:39:21 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -21,10 +21,10 @@ static t_client			*init_clients(t_client *clients)
       clients[i].host_name = NULL;
       clients[i].server_name = NULL;
       if (initialize_buffer(&clients[i].buffer_in,
-			    BUFFER_SIZE) == RETURN_FAILURE)
+			    CIRC_PAGE_NBR * PAGE_SIZE) == RETURN_FAILURE)
 	return (NULL);
       if (initialize_buffer(&clients[i].buffer_out,
-			    BUFFER_SIZE) == RETURN_FAILURE)
+			    CIRC_PAGE_NBR * PAGE_SIZE) == RETURN_FAILURE)
 	return (NULL);
     }
   return (clients);
