@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:23:01 2016 Erwan Dupard
+** Last update Tue Jun 14 16:25:38 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -28,6 +28,8 @@
 
 # define RETURN_SUCCESS			(0)
 # define RETURN_FAILURE			(-1)
+
+typedef unsigned int			t_u64;
 
 typedef enum
   {
@@ -163,8 +165,6 @@ void					text_display_map(t_map *map);
 # define MAX_MAX_CLIENTS		(50)
 # define MIN_SPEED			(1)
 # define MAX_SPEED			(500)
-
-typedef unsigned int			t_u64;
 
 /*
  * Pointer Function Array Definition
