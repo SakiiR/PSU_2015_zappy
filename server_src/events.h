@@ -5,13 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Tue Jun 14 17:12:15 2016 Erwan Dupard
+** Last update Wed Jun 15 10:37:36 2016 Erwan Dupard
 */
-
-#include "server.h"
 
 #ifndef EVENTS_H_
 # define EVENTS_H_
+
+# include <stdarg.h>
+# include "server.h"
 
 typedef enum
   {
@@ -23,9 +24,14 @@ typedef enum
 typedef struct				s_event_handler
 {
   e_event_type				type;
-  int					(*f)(...); /* Var Args ! */
+  int					(*f)(t_server *server, va_list ap); /* Var Args ! */
 }					t_event_handler;
 
-int					handle_event(e_event_type type, ...);
+int				        trigger_event(t_server *server, e_event_type type, ...);
+
+/*
+ * Events Function Pointer
+ */
+int					event_new_player(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
