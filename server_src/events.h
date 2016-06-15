@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 16:02:46 2016 Erwan Dupard
+** Last update Wed Jun 15 16:14:42 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -22,6 +22,15 @@ typedef enum
     NEW_INCANTATION,
     LAY_EGG,
     PLAYER_EXPULSED,
+    THROW_RESOURCE,
+    TAKE_RESOURCE,
+    DIE_OF_HUNGER,
+    LAYED_EGG,
+    EGG_DIE_OF_HUNGER,
+    END_OF_GAME,
+    SERVER_MESSAGE,
+    UNKNOW_COMMAND,
+    BAD_COMMAND_PARAM,
     ETC
   }					e_event_type;
 
