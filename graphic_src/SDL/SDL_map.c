@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Sun Jun 12 11:17:17 2016 Thomas Beaudet
-** Last update Tue Jun 14 12:43:43 2016 Thomas Beaudet
+** Last update Wed Jun 15 12:10:39 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -26,8 +26,8 @@ int		set_vals(t_sdl *s)
   s->player[] = NULL;
   s->action = 1;
   s->lines[] = NULL;
-  s->win = SDL_SetVideoMode(S_WIDTH, S_HEIGHT, 32, SDL_HWSURFACE |
-			    SDL_RESIZABLE | SDL_DOUBLEBUF);
+  s->win = SDL_SetVideoMode(S_WIDTH, S_HEIGHT, 32, SDL_HWSURFACE
+			    | SDL_RESIZABLE | SDL_DOUBLEBUF);
   if (s->win == NULL)
     {
       fprintf(stderr, "Problem ecountered while setting video mode : %s\n",
@@ -35,7 +35,7 @@ int		set_vals(t_sdl *s)
       exit (EXIT_FAILURE);
     }
   SDL_WM_SetCaption("ZAPPY UNITED", NULL);
-  s->font = TTF_OpenFont("FONTS/Arial.ttf", 200);
+  s->font = TTF_OpenFont("../FONTS/Arial.ttf", 200);
 }
 
 void		putpixel(SDL_Surface *screen, int x, int y, Uint32 pixel)
@@ -53,7 +53,7 @@ void		drawLine(t_sdl *s)
   int		i;
 
   i = 0;
-  for (i = 0; i < 8; i++)
+  for (i = 0; i < ; i++)
     {
     }
 }
