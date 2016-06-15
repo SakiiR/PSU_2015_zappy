@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 17:03:27 2016 Erwan Dupard
+** Last update Wed Jun 15 17:48:42 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -36,7 +36,7 @@ typedef struct				s_event_handler
 {
   e_event_type				type;
   int					(*f)(t_server *server,
-					     va_list ap); /* Var Args ! */
+					     va_list ap);
 }					t_event_handler;
 
 int				        trigger_event(t_server *server,
