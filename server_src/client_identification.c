@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:24:32 2016 Erwan Dupard
+** Last update Tue Jun 14 18:22:51 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -24,6 +24,7 @@ int					initialize_character(t_server *server,
   client->character->orientation = NORTH;
   client->character->id = server->game_data.next_drone_id++;
   place_character_randomly(&server->game_data.map, client->character);
+  // send to graphical
   sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
 	  client->character->id,
 	  client->character->current_case->x,

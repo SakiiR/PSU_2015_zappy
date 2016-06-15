@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:25:38 2016 Erwan Dupard
+** Last update Tue Jun 14 17:26:45 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -106,6 +106,7 @@ typedef struct				s_team
   char					*name;
   t_client				*members;
   t_u64					max_members;
+  t_u64					current_members_nbr;
 }					t_team;
 
 typedef struct				s_game_data
