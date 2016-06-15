@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:15:27 2016 Erwan Dupard
+** Last update Wed Jun 15 11:55:28 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -81,7 +81,9 @@ int					send_map_content(t_server *server,
 	      server->game_data.map.cases[i].quantities[MENDIANE],
 	      server->game_data.map.cases[i].quantities[PHIRAS],
 	      server->game_data.map.cases[i].quantities[THYSTAME]);
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out,
+		      server->buffer,
+		      strlen(server->buffer));
       i++;
     }
   return (RETURN_SUCCESS);
@@ -97,7 +99,9 @@ int					send_team_names(t_server *server,
   while (i < server->game_data.nbr_of_teams)
     {
       sprintf(server->buffer, "tna %s\n", server->game_data.teams[i++].name);
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out,
+		      server->buffer,
+		      strlen(server->buffer));
     }
   return (RETURN_SUCCESS);
 }
