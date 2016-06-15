@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Tue Jun 14 17:19:24 2016 Erwan Dupard
+** Last update Wed Jun 15 10:48:07 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -13,6 +13,12 @@
 
 #include "network.h"
 #include <circular_buffer/circular_buffer.h>
+#include <arpa/inet.h>
+
+# define RETURN_SUCESS (0)
+# define RETURN_FAILURE (-1)
+
+# define SOCKET_ERROR (-1)
 
 #define	MSZ "msz" /* Taille de la carte */
 #define BCT "bct" /* Contenu de toute la carte (une case - toutes les cases) */
@@ -43,6 +49,10 @@
 				 initialisé le moniteur graphique */
 
 typedef unsigned int	t_quantity;
+typedef int t_socket;
+typedef struct sockaddr_in t_sockaddr;
+typedef struct in_addr t_inaddr;
+typedef struct protoent t_protocol;
 
 typedef struct		s_option
 {
@@ -50,17 +60,22 @@ typedef struct		s_option
   int			port;
 }			t_option;
 
-typedef struct		s_info
+typedef struct				s_server
 {
-  int			sockfd;
-  t_circular_buffer	*circular_buffer;
-  struct s_map		*map;
-}			t_info;
+  t_socket			       	socket;
+  t_sockaddr				in;
+  t_circular_buffer			buffer_in;
+  t_circular_buffer			buffer_out;
+}					t_server;
+
+/*
+** Function pointer definition
+*/
 
 typedef struct		s_ptr
 { 
   const char		*id;
-  int			(*f)(t_info *);
+  int			(*f)(t_server *);
 }			t_ptr;
 
 typedef enum
@@ -89,6 +104,11 @@ typedef struct		s_map
 }			t_map;
 
 int			setup_networking(t_option *options);
-int			fct_welcome(t_info *infos);
+
+/*
+** Functions pointer functions
+*/
+
+int			fct_welcome(t_server *server);
 
 #endif /* !GRAPHICAL_H_ */

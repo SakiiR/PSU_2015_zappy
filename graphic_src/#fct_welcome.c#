@@ -16,7 +16,7 @@
 
 int		fct_welcome(t_server *server)
 {
-  if (write(server->socket, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
+  if (write(server->socketx, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
     {
       fprintf(stderr, "Error in write(): %s\n", strerror(errno));
       return (-1);
