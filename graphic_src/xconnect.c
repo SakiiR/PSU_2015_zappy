@@ -5,13 +5,13 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 12:03:28 2016 Thomas Billot
-** Last update Fri Jun 10 12:06:23 2016 Thomas Billot
+** Last update Wed Jun 15 11:50:41 2016 Thomas Billot
 */
 
-#include "xfunc.h"
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include "xfunc.h"
 
 int		xconnect(int sockfd, const struct sockaddr *adress, socklen_t socklen)
 {

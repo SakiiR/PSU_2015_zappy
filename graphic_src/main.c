@@ -5,18 +5,18 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Wed Jun 15 11:02:13 2016 Thomas Billot
+** Last update Wed Jun 15 11:55:17 2016 Thomas Billot
 */
 
-#include "graphical.h"
-#include "network.h"
-#include "xfunc.h"
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "graphical.h"
+#include "network.h"
+#include "xfunc.h"
 
 int			is_number(char c)
 {
@@ -65,9 +65,9 @@ int			main(int argc, char *argv[])
     }
   if ((server.socket = setup_networking(&options)) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (initialize_buffer(&(server.buffer_in), 4096) == RETURN_FAILURE)
+  if (initialize_buffer(&(server.buffer_in), (4096 * 10)) == RETURN_FAILURE)
    return (RETURN_FAILURE);
-  if (initialize_buffer(&(server.buffer_out), 4096) == RETURN_FAILURE)
+  if (initialize_buffer(&(server.buffer_out), (4096 * 10)) == RETURN_FAILURE)
    return (RETURN_FAILURE);
   if (launch_client(&server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
