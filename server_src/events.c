@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Wed Jun 15 13:51:31 2016 Barthelemy Gouby
+** Last update Wed Jun 15 14:16:45 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -17,7 +17,6 @@ int					event_graphic_broadcast(t_server *server, va_list ap)
   i = -1;
 
   message = va_arg(ap, char*);
-  printf("broadcasting to graphic clients\n");
   while (++i < MAX_CLIENTS)
     {
       if (server->clients[i].socket != 0 && server->clients[i].type == GRAPHIC)
