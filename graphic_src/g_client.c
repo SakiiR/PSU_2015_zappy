@@ -5,13 +5,13 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 11:38:54 2016 Thomas Billot
+** Last update Wed Jun 15 11:52:15 2016 Thomas Billot
 */
 
+#include <sys/select.h>
 #include "graphical.h"
 #include "network.h"
 #include "xfunc.h"
-#include <sys/select.h>
 
 static t_ptr	g_ftab[] =
   {
@@ -46,8 +46,8 @@ int			handle_command(char *message, t_server *server)
 {
   char			**cmd;
   int			i;
-  
-  if ((cmd = my_str_to_wordtab(message, " \n")) != NULL && cmd[0] != NULL) 
+
+  if ((cmd = my_str_to_wordtab(message, " \n")) != NULL && cmd[0] != NULL)
     {
       i = -1;
       while (g_ftab[++i].id != NULL)
@@ -90,7 +90,6 @@ int		        handle_server_cmd(t_server *server, fd_set *si)
     }
   return (0);
 }
-
 
 int			launch_client(t_server *server)
 {

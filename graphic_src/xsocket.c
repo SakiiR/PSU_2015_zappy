@@ -5,13 +5,13 @@
 ** Login   <billot_t@epitech.net>
 ** 
 ** Started on  Tue May 10 14:10:35 2016 Thomas Billot
-** Last update Fri Jun 10 12:13:54 2016 Thomas Billot
+** Last update Wed Jun 15 11:51:01 2016 Thomas Billot
 */
 
-#include "xfunc.h"
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include "xfunc.h"
 
 int		xsocket(int domain, int type, int protocol)
 {
