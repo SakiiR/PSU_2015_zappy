@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Wed Jun 15 10:56:43 2016 Thomas Billot
+** Last update Wed Jun 15 12:17:59 2016 Thomas Billot
 */
 
 #ifndef XFUNC_H_
@@ -18,7 +18,9 @@
 char		*get_next_line(const int fd);
 char		**my_str_to_wordtab(const char *str, const char *forbidden);
 void		free_word_tab(char **tab);
-int		xconnect(int sockfd, const struct sockaddr *adress, socklen_t socklen);
+int		xconnect(int sockfd,
+			 const struct sockaddr *adress,
+			 socklen_t socklen);
 int		xsocket(int domain, int type, int protocol);
 int		xclose(int fd);
 
