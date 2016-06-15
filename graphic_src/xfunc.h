@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Fri Jun 10 12:25:28 2016 Thomas Billot
+** Last update Wed Jun 15 10:56:43 2016 Thomas Billot
 */
 
 #ifndef XFUNC_H_
