@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 16:00:56 2016 Erwan Dupard
+** Last update Wed Jun 15 16:02:46 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -22,7 +22,7 @@ typedef enum
     NEW_INCANTATION,
     LAY_EGG,
     PLAYER_EXPULSED,
-    ETC,
+    ETC
   }					e_event_type;
 
 typedef struct				s_event_handler
