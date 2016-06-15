@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Tue Jun 14 16:24:02 2016 Erwan Dupard
+** Last update Wed Jun 15 11:55:11 2016 Erwan Dupard
 */
 
 #include <time.h>
@@ -38,7 +38,9 @@ int					initialize_map(t_map *map)
   return (RETURN_SUCCESS);
 }
 
-t_case					*map_get_case_at(const t_u64 x, const t_u64 y, const t_map *map)
+t_case					*map_get_case_at(const t_u64 x,
+							 const t_u64 y,
+							 const t_map *map)
 {
   t_u64					index;
 
@@ -48,14 +50,16 @@ t_case					*map_get_case_at(const t_u64 x, const t_u64 y, const t_map *map)
   return (&map->cases[index]);
 }
 
-void					spread_ressource(const e_object_type type, t_u64 quantity, t_map *map)
+void					spread_ressource(const e_object_type type,
+							 t_u64 quantity,
+							 t_map *map)
 {
   while (quantity > 0)
     {
       map->cases[rand() % (map->width * map->height)].quantities[type]++;
       quantity--;
     }
-}		
+}
 
 void					initialize_ressources(t_server *server)
 {
@@ -83,7 +87,9 @@ void					text_display_map(t_map *map)
   i = 0;
   while (i < map->width * map->height)
     {
-      printf("--------- case at x: %i y: %i\n", i % map->height, i / map->height);
+      printf("--------- case at x: %i y: %i\n",
+	     i % map->height,
+	     i / map->height);
       printf("Food: %i\n", map->cases[i].quantities[FOOD]);
       printf("Linemate: %i\n", map->cases[i].quantities[LINEMATE]);
       printf("Deraumere: %i\n", map->cases[i].quantities[DERAUMERE]);

@@ -5,14 +5,14 @@
 ** Login   <billot_t@epitech.net>
 ** 
 ** Started on  Tue May 10 14:32:01 2016 Thomas Billot
-** Last update Fri Jun 10 13:08:17 2016 Thomas Billot
+** Last update Wed Jun 15 11:50:49 2016 Thomas Billot
 */
 
-#include "xfunc.h"
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
+#include "xfunc.h"
 
 int		xclose(int fd)
 {

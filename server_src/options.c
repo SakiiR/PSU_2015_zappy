@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Tue Jun 14 15:52:02 2016 Erwan Dupard
+** Last update Wed Jun 15 11:51:40 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -61,7 +61,8 @@ int					get_options(t_u64 argc,
     }
   i = -1;
   while (++i < (int)server->game_data.nbr_of_teams)
-    server->game_data.teams[i].max_members = server->game_data.base_max_members;
+    server->game_data.teams[i].max_members =
+      server->game_data.base_max_members;
   return (check_options(server, argv[0]));
 }
 

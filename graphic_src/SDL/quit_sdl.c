@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 14 12:35:49 2016 Thomas Beaudet
-** Last update Tue Jun 14 12:36:25 2016 Thomas Beaudet
+** Last update Wed Jun 15 10:28:20 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "SDL_map.h"
+#include "SDL_ressources.h"
 
 void		SDL_quit(t_sdl *s)
 {
