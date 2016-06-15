@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 14 12:33:59 2016 Thomas Beaudet
-** Last update Tue Jun 14 12:44:19 2016 Thomas Beaudet
+** Last update Wed Jun 15 15:30:34 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include "SDL_ressources.h"
 
-void		sdlEvent(t_sdl *s)
+void		event_sdl(t_sdl *s)
 {
   while (SDL_PollEvent(&s->event))
     if (s->event.type == SDL_QUIT)
