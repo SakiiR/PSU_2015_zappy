@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 15 14:06:16 2016 Barthelemy Gouby
+** Last update Wed Jun 15 14:16:38 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -241,36 +241,6 @@ int				        send_player_position(t_server *server,
 							 char *operands
 							 __attribute__((unused)));
 
-typedef enum
-  {
-    NEW_PLAYER,
-    GRAPHIC_BROADCAST,
-    BROADCAST,
-    END_INCANTATION,
-    NEW_INCANTATION,
-    LAY_EGG,
-    ETC
-  }					e_event_type;
-
-typedef struct				s_event_handler
-{
-  e_event_type				type;
-  int					(*f)(t_server *server,
-					     va_list ap); /* Var Args ! */
-}					t_event_handler;
-
-int				        trigger_event(t_server *server,
-						      e_event_type type,
-						      ...);
-
-/*
- * Events Function Pointer
- */
-int					event_new_player(t_server *server, va_list ap);
-int					event_broadcast(t_server *server, va_list ap);
-int					event_end_incantation(t_server *server, va_list ap);
-int					event_new_incantation(t_server *server, va_list ap);
-int					event_lay_egg(t_server *server, va_list ap);
-int					event_graphic_broadcast(t_server *server, va_list ap);
+# include "events.h"
 
 #endif /* !_SERVER_H_ */
