@@ -5,11 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-<<<<<<< HEAD
-** Last update Wed Jun 15 14:40:19 2016 Thomas Billot
-=======
-** Last update Wed Jun 15 11:59:09 2016 Barthelemy Gouby
->>>>>>> 4bd6fb8b86dc22731854d74ca39aee07062e9f96
+** Last update Wed Jun 15 16:20:51 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -125,12 +121,15 @@ static int			add_client(t_server *server)
 
 int				process_server(t_server *server)
 {
+  struct timeval		tv;
   fd_set		        si;
   fd_set			so;
   int				max_socket;
 
   max_socket = 0;
   server->game_data.next_drone_id = 1;
+  tv.tv_usec = 50;
+  tv.tv_sec = 0;
   while (1)
     {
       FD_ZERO(&si);
@@ -138,7 +137,7 @@ int				process_server(t_server *server)
       FD_SET(server->socket, &si);
       max_socket = server->socket;
       adding_sockets(server, &si, &so, &max_socket);
-      if (select(max_socket + 1, &si, &so, NULL, NULL) == RETURN_FAILURE)
+      if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (FD_ISSET(server->socket, &si))
 	{
