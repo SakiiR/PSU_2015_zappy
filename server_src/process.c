@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Tue Jun 14 16:16:03 2016 Barthelemy Gouby
+** Last update Tue Jun 14 18:22:55 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -139,6 +139,7 @@ int				process_server(t_server *server)
 	}
       if (handle_clients_input(server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      
       if (handle_server_output(server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
    }
