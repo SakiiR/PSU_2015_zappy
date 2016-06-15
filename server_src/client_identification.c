@@ -5,17 +5,16 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Wed Jun 15 11:52:52 2016 Barthelemy Gouby
+** Last update Wed Jun 15 16:16:08 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
 int					initialize_character(t_server *server,
 							     t_client *client,
-							     char *input)
+							     t_team *team)
 {
   client->type = DRONE;
-  client->team = input;
   if (!(client->character = malloc(sizeof(*(client->character)))))
     return (RETURN_FAILURE);
   client->character->level = 1;
@@ -23,15 +22,42 @@ int					initialize_character(t_server *server,
 	 NUMBER_OF_TYPES * sizeof(t_quantity));
   client->character->orientation = NORTH;
   client->character->id = server->game_data.next_drone_id++;
+  client->character->team = team->name;
   place_character_randomly(&server->game_data.map, client->character);
-  sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
-	  client->character->id,
-	  client->character->current_case->x,
-	  client->character->current_case->y,
-	  client->character->orientation,
-	  client->character->level,
-	  client->character->team);
+  sprintf(server->buffer, "%i\n%i %i\n",
+	  team->max_members - team->nbr_of_members,
+	  server->game_data.map.width,
+	  server->game_data.map.height);
   write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+  team->nbr_of_members++;
+  sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
+  	  client->character->id,
+  	  client->character->current_case->x,
+  	  client->character->current_case->y,
+  	  client->character->orientation,
+  	  client->character->level,
+  	  client->character->team);
+  trigger_event(server, GRAPHIC_BROADCAST, server->buffer);
+  return (RETURN_SUCCESS);
+}
+
+int					add_character_if_possible(t_server *server,
+								  t_client *client,
+								  t_team *team)
+{
+  if (team->nbr_of_members >=
+      team->max_members)
+    {
+      sprintf(server->buffer, "0\n");
+      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+    }
+  else
+    {
+      if (initialize_character(server,
+			       client,
+			       team) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+    }
   return (RETURN_SUCCESS);
 }
 
@@ -46,7 +72,10 @@ int					initialize_drone(t_server *server,
     {
       if (strcmp(input, server->game_data.teams[i].name) == 0)
 	{
-	  if (initialize_character(server, client, input) == RETURN_FAILURE)
+	  if (add_character_if_possible(server,
+					client,
+					&server->game_data.teams[i])
+	      == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
 	  break;
 	}
@@ -54,8 +83,6 @@ int					initialize_drone(t_server *server,
     }
   if (i == server->game_data.nbr_of_teams)
     write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
-  else
-    write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
   return (RETURN_SUCCESS);
 }
 

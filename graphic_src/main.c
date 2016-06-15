@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Wed Jun 15 11:55:17 2016 Thomas Billot
+** Last update Wed Jun 15 17:14:56 2016 Erwan Dupard
 */
 
 #include <netinet/in.h>
@@ -15,15 +15,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "graphical.h"
-#include "network.h"
 #include "xfunc.h"
-
-int			is_number(char c)
-{
-  if (c <= '0' || c >= '9')
-    return (RETURN_FAILURE);
-  return (RETURN_SUCESS);
-}
 
 bool			is_valid_ip(char *ip)
 {
@@ -43,7 +35,7 @@ int			check_options(t_option *options, char **argv)
   i = -1;
   while (argv[4][++i] != '\0')
     {
-      if (is_number(argv[4][i]))
+      if (IS_NUMBER(argv[4][i]))
 	return (RETURN_FAILURE);
     }
   if (strcmp(argv[3], "-p"))
