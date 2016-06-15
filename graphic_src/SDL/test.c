@@ -5,8 +5,14 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 10:42:41 2016 Thomas Beaudet
-** Last update Wed Jun 15 11:58:08 2016 Thomas Beaudet
+** Last update Wed Jun 15 14:51:29 2016 Thomas Beaudet
 */
+
+#include <>
+#include <>
+#include <>
+#include <>
+#include "../graphical.h"
 
 SDL_Surface		*Load_image(const char *file_img)
 {
@@ -24,57 +30,21 @@ SDL_Surface		*Load_image(const char *file_img)
   return (img_ram);
 }
 
-void			ChargerMap_tileset(FILE* file,t_mapping *m)
+int			Free_Map(t_map *m)
 {
-  int			tile_num;
   int			i;
-  int			j;
-  char			buf[CASH_SIZE];
-  char			buf2[CASH_SIZE];
 
-  fscanf(file,"%s",buf);
-  m->tileset = Load_image(buf);
-  fscanf(F,"%d %d",&m->nbtilesX,&m->nbtilesY);
-  m->tile_w = m->tileset->w / m->nb_tileX;
-  m->tile_h = m->tileset->h / m->nb_tileY;
-  m->props = malloc(m->nb_tileX * m->nb_tileY * sizeof(t_proper));
-  for(j = 0,tile_num = 0; j < m->nb_tileY; j++)
-    {
-      for(i = 0; i < m->nb_tileX; i++, numtile++)
-	{
-	  m->props[tile_num].rect.w = m->tile_w;
-	  m->props[tile_num].rect.h = m->tile_h;
-	  m->props[tile_num].rect.x = i * m->tile_w;
-	  m->props[tile_num].rect.y = j * m->tile_h;
-	  fscanf(file,"%s %s", buf, buf2);
-	}
-    }
+  i = 0;
+  SDL_FreeSurface(m->tileset);
+  for(i = 0; i < m->nb_tiles_world_h; i++)
+    free(m->schema[i]);
+  free(m->schema);
+  free(m->props);
+  free(m);
+  return 0;
 }
 
-t_mapping		*Charge_Map(const char* level)
-{
-  FILE* F;
-  Map* m;
-  char buf[CACHE_SIZE];
-
-  if ((m = malloc(sizeof(t_mapping))) == NULL)
-    {
-      printf("Malloc of 'm' failed\n");
-      return (NULL);
-    }
-  do
-    {
-      fgets(buf,CACHE_SIZE,F);
-      if (strstr(buf,"#tileset"))
-	ChargerMap_tileset(F,m);
-      if (strstr(buf,"#level"))
-	ChargerMap_level(F,m);
-    } while (strstr(buf,"#fin")==NULL);
-  fclose(F);
-  return m;
-}
-
-int			AfficherMap(t_mapping *m,SDL_Surface* screen)
+int			Display_Map(t_map *m)
 {
   int			i;
   int			j;
@@ -91,19 +61,5 @@ int			AfficherMap(t_mapping *m,SDL_Surface* screen)
 	  SDL_BlitSurface(m->tileset, &(m->props[tile_num].rect), screen, &dest_rect);
 	}
     }
-  return 0;
-}
-
-int			Free_Map(t_mapping *m)
-{
-  int			i;
-
-  i = 0;
-  SDL_FreeSurface(m->tileset);
-  for(i = 0; i < m->nb_tiles_world_h; i++)
-    free(m->schema[i]);
-  free(m->schema);
-  free(m->props);
-  free(m);
   return 0;
 }
