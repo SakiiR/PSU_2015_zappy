@@ -6,10 +6,14 @@
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
 <<<<<<< HEAD
+<<<<<<< HEAD
 ** Last update Wed Jun 15 11:45:06 2016 Barthelemy Gouby
 =======
 ** Last update Wed Jun 15 11:53:40 2016 Erwan Dupard
 >>>>>>> ee24941106027f9bf15adfb52e38160af7c1eac0
+=======
+** Last update Wed Jun 15 11:57:28 2016 Erwan Dupard
+>>>>>>> 31d8f00629aea2d243160564e1f23dcbabcb493f
 */
 
 #ifndef _SERVER_H_
