@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 15 14:16:38 2016 Erwan Dupard
+** Last update Wed Jun 15 16:14:27 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -70,6 +70,7 @@ typedef struct				s_character
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
+  unsigned int				food_timer;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -89,6 +90,14 @@ typedef struct				s_map
   t_u64					height;
 }					t_map;
 
+/* typedef struct				s_event */
+/* { */
+/*   e_event_type				type; */
+/*   t_client				*origin; */
+/*   unsigned int				timer; */
+/*   struct s_event			*next; */
+/* }					t_event; */
+
 typedef struct				s_client
 {
   char					*host_name;
@@ -106,7 +115,7 @@ typedef struct				s_team
   char					*name;
   t_client				*members;
   t_u64					max_members;
-  t_u64					current_members_nbr;
+  t_u64					nbr_of_members;
 }					t_team;
 
 typedef struct				s_game_data

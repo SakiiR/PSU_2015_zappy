@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Wed Jun 15 13:58:15 2016 Barthelemy Gouby
+** Last update Wed Jun 15 14:16:34 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -29,12 +29,10 @@ int				        trigger_event(t_server *server,
 
   va_start(argp, type);
   i = -1;
-  printf("searching for event handler\n");
   while (g_events[++i].f)
     {
       if (type == g_events[i].type)
 	{
-	  printf("found event\n");
 	  g_events[i].f(server, argp);
 	}
     }
