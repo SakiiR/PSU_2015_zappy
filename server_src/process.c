@@ -5,7 +5,11 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
+<<<<<<< HEAD
+** Last update Wed Jun 15 14:40:19 2016 Thomas Billot
+=======
 ** Last update Wed Jun 15 11:59:09 2016 Barthelemy Gouby
+>>>>>>> 4bd6fb8b86dc22731854d74ca39aee07062e9f96
 */
 
 #include "server.h"

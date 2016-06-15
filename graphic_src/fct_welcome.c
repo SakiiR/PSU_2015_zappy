@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:10:07 2016 Thomas Billot
-** Last update Wed Jun 15 11:57:21 2016 Thomas Billot
+** Last update Wed Jun 15 15:24:19 2016 Thomas Billot
 */
 
 #include <string.h>
@@ -14,12 +14,15 @@
 #include <errno.h>
 #include "graphical.h"
 
-int		fct_welcome(t_server *server)
+int		fct_welcome(t_map *map,
+			    t_server *server,
+			    char **cmd)
 {
-  if (write(server->socket, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
-    {
-      fprintf(stderr, "Error in write(): %s\n", strerror(errno));
-      return (-1);
-    }
+  (void)map;
+  (void)cmd;
+  if (write_to_buffer(&(server->buffer_out),
+		      "GRAPHIC\n",
+		      strlen("GRAPHIC\n")) == -1)
+    return (-1);
   return (0);
 }
