@@ -5,13 +5,12 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Wed Jun 15 11:36:52 2016 Thomas Billot
+** Last update Wed Jun 15 12:19:04 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
 # define GRAPHICAL_H_
 
-#include "network.h"
 #include <circular_buffer/circular_buffer.h>
 #include <arpa/inet.h>
 
@@ -30,7 +29,7 @@
 #define PBC "pbc" /* Un joueur fait un broadcast */
 #define PIC "pic" /* Debut d'incantation pour tout les joueurs sur la case */
 #define PIE "pie" /* Fin d'incantation avec resultat (1 ou 0) */
-#define PFK "pfk" /* Le joueur pond un oeuf */   
+#define PFK "pfk" /* Le joueur pond un oeuf */
 #define PDR "pdr" /* Le joueur jete une ressource */
 #define PGT "pgt" /* Le joueur prends une ressource */
 #define PDI "pdi" /* Le joueur est mort de faim */
@@ -44,7 +43,7 @@
 #define SUC "suc" /* Commande du serveur */
 #define SBP "sbp" /* Mauvais parametres de commande */
 
-#define BIENVENUE "BIENVENUE" /* Message du serveur pour 
+#define BIENVENUE "BIENVENUE" /* Message du serveur pour
 				 initialisé le moniteur graphique */
 
 typedef unsigned int	t_quantity;
@@ -72,7 +71,7 @@ typedef struct				s_server
 */
 
 typedef struct		s_ptr
-{ 
+{
   const char		*id;
   int			(*f)(t_server *);
 }			t_ptr;

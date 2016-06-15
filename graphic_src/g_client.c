@@ -5,13 +5,12 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 11:54:51 2016 Barthelemy Gouby
+** Last update Wed Jun 15 12:17:28 2016 Thomas Billot
 */
 
-#include "graphical.h"
-#include "network.h"
-#include "xfunc.h"
 #include <sys/select.h>
+#include "graphical.h"
+#include "xfunc.h"
 
 static t_ptr	g_ftab[] =
   {
@@ -46,8 +45,8 @@ int			handle_command(char *message, t_server *server)
 {
   char			**cmd;
   int			i;
-  
-  if ((cmd = my_str_to_wordtab(message, " \n")) != NULL && cmd[0] != NULL) 
+
+  if ((cmd = my_str_to_wordtab(message, " \n")) != NULL && cmd[0] != NULL)
     {
       i = -1;
       while (g_ftab[++i].id != NULL)
@@ -75,7 +74,8 @@ int		        handle_server_cmd(t_server *server, fd_set *si)
       size_read = read(server->socket, buffer, BUFF_SIZE);
       buffer[size_read] = 0;
       write_to_buffer(&(server->buffer_in), buffer, size_read);
-      while ((next_message = get_next_message(&(server->buffer_in))) && strlen(next_message) > 0)
+      while ((next_message = get_next_message(&(server->buffer_in)))
+	     && strlen(next_message) > 0)
 	{
 	  printf("message : [%s]\n", next_message);
 	  if (handle_command(next_message, server) == -1)
@@ -87,7 +87,6 @@ int		        handle_server_cmd(t_server *server, fd_set *si)
     }
   return (0);
 }
-
 
 int			launch_client(t_server *server)
 {

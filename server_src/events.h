@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 13:32:01 2016 Barthelemy Gouby
+** Last update Wed Jun 15 13:35:52 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -32,10 +32,13 @@ typedef enum
 typedef struct				s_event_handler
 {
   e_event_type				type;
-  int					(*f)(struct s_server *server, va_list ap); /* Var Args ! */
+  int					(*f)(t_server *server,
+					     va_list ap); /* Var Args ! */
 }					t_event_handler;
 
-int				        trigger_event(struct s_server *server, e_event_type type, ...);
+int				        trigger_event(t_server *server,
+						      e_event_type type,
+						      ...);
 
 /*
  * Events Function Pointer

@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 15 12:22:26 2016 Barthelemy Gouby
+** Last update Wed Jun 15 13:34:44 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -25,7 +25,7 @@
 # include "events.h"
 
 # define MAX_CLIENTS			(50)
-# define CIRC_PAGE_NBR			(10)			
+# define CIRC_PAGE_NBR			(10)
 # define PAGE_SIZE			(4096)
 
 # define RETURN_SUCCESS			(0)
@@ -117,7 +117,7 @@ typedef struct				s_game_data
   int					speed;
   t_u64					base_max_members;
   t_team				*teams;
-  t_u64					nbr_of_teams; 
+  t_u64					nbr_of_teams;
   t_u64					next_drone_id;
 }					t_game_data;
 
