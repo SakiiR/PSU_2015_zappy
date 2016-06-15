@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 14 12:41:33 2016 Thomas Beaudet
-** Last update Tue Jun 14 12:44:33 2016 Thomas Beaudet
+** Last update Wed Jun 15 12:09:55 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -37,15 +37,7 @@ int		run(t_sdl *s)
       sdlEvent(s);
       SDL_FillRect(s->win, NULL, SDL_MapRGB(s->win->format, 102, 204, 0));
       for (int i = 0; i < 10; ++i)
-	drawLine(s->win, 1931+(i*10), 100, 100, 100, s->pix);
+	drawLine(s->win, 1931 + (i * 10), 100, 100, 100, s->pix);
       SDL_Flip(s->win);
-      /* SDL_Delay(4000); */
-      /*      s->pos.x = 50;
-	      s->pos.y = 50;
-	      SDL_BlitSurface(s->backg, NULL, s->win, &s->pos);
-	      s->pos.x = WIDTH;
-	      s->pos.y = HEIGHT;
-	      SDL_BlitSurface(s->text, NULL, s->win, &s->pos);
-	      SDL_Flip(s->win);*/
     }
 }
