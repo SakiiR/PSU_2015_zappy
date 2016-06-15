@@ -5,12 +5,13 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Tue Jun 14 17:20:03 2016 Erwan Dupard
+** Last update Wed Jun 15 10:49:25 2016 Thomas Billot
 */
 
 #include "graphical.h"
 #include "network.h"
 #include "xfunc.h"
+#include <sys/select.h>
 
 static t_ptr	g_ftab[] =
   {
@@ -41,7 +42,7 @@ static t_ptr	g_ftab[] =
     {NULL, NULL}
   };
 
-int			handle_command(char *message, t_info *infos)
+int			handle_command(char *message, t_server *server)
 {
   char			**cmd;
   int			i;
@@ -54,7 +55,7 @@ int			handle_command(char *message, t_info *infos)
 	  if (strcmp(cmd[0], g_ftab[i].id) == 0 && g_ftab[i].f != NULL)
 	    {
 	      printf("Command found: %s\n", g_ftab[i].id);
-	      if (g_ftab[i].f(infos) == -1)
+	      if (g_ftab[i].f(server) == -1)
 		return (-1);
 	    }
 	}
@@ -63,23 +64,23 @@ int			handle_command(char *message, t_info *infos)
   return (0);
 }
 
-int		        handle_server_cmd(t_info *infos)
+int		        handle_server_cmd(t_server *server)
 {
   char			buffer[BUFF_SIZE];
   int			size_read;
   char			*next_message;
 
-  size_read = read(infos->sockfd, buffer, BUFF_SIZE);
+  size_read = read(server->socket, buffer, BUFF_SIZE);
   buffer[size_read] = 0;
-  if (size_read > 0)
-    printf("buffer : [%s]\n", buffer);
-  write_to_buffer(infos->circular_buffer, buffer, size_read);
-  if ((next_message = get_next_message(infos->circular_buffer)))
+  /*  if (size_read > 0)
+      printf("buffer : [%s]\n", buffer);*/
+  write_to_buffer(&(server->buffer_in), buffer, size_read);
+  if ((next_message = get_next_message(&(server->buffer_in))))
     {
       if (next_message && next_message[0])
 	{
 	  printf("message : [%s]\n", next_message);
-	  if (handle_command(next_message, infos) == -1)
+	  if (handle_command(next_message, server) == -1)
 	    return (-1);
 	}
       free(next_message);
@@ -90,11 +91,13 @@ int		        handle_server_cmd(t_info *infos)
 
 int			launch_client(t_server *server)
 {
-  (void)server;
-  /*  fd_set		si;
+  struct timeval	tv;
+  fd_set		si;
   fd_set		so;
   int			max_socket;
 
+  tv.tv_usec = 50;
+  tv.tv_sec = 0;
   max_socket = 0;
   while (1)
     {
@@ -102,10 +105,10 @@ int			launch_client(t_server *server)
       FD_ZERO(&so);
       FD_SET(server->socket, &si);
       max_socket = server->socket;
-      if (select(max_socket + 1, &si, &so, NULL, NULL) == RETURN_FAILURE)
+      if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      if (handle_server_cmd(infos) == RETURN_FAILURE)
+      if (handle_server_cmd(server) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-	}*/
+    }
   return (0);
 }
