@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Wed Jun 15 11:52:52 2016 Barthelemy Gouby
+** Last update Wed Jun 15 12:20:14 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -31,7 +31,7 @@ int					initialize_character(t_server *server,
 	  client->character->orientation,
 	  client->character->level,
 	  client->character->team);
-  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+  trigger_event(server, GRAPHIC_BROADCAST, server->buffer);
   return (RETURN_SUCCESS);
 }
 

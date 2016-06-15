@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 15 11:45:06 2016 Barthelemy Gouby
+** Last update Wed Jun 15 12:22:26 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <circular_buffer/circular_buffer.h>
+# include "events.h"
 
 # define MAX_CLIENTS			(50)
 # define CIRC_PAGE_NBR			(10)			

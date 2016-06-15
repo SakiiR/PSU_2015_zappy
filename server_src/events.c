@@ -5,10 +5,25 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Wed Jun 15 10:56:27 2016 Erwan Dupard
+** Last update Wed Jun 15 13:25:24 2016 Barthelemy Gouby
 */
 
 #include "events.h"
+
+int					event_graphic_broadcast(t_server *server, va_list ap)
+{
+  int					i;
+  char					*message;
+  i = -1;
+
+  message = va_arg(ap, char*);
+  while (server->clients[++i].host_name)
+    {
+      if (server->clients[i].type == GRAPHIC)
+	write_to_buffer(&server->clients[i].buffer_out, message, strlen(message));
+    }
+  return (RETURN_SUCCESS);
+}
 
 int					event_new_player(t_server *server, va_list ap)
 {
