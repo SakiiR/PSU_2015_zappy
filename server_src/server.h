@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 15 16:14:27 2016 Barthelemy Gouby
+** Last update Wed Jun 15 16:20:43 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -244,7 +244,6 @@ int				        send_player_inventory(t_server *server,
 							 t_client *client,
 							 char *operands
 							 __attribute__((unused)));
-
 int				        send_player_position(t_server *server,
 							 t_client *client,
 							 char *operands
