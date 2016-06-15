@@ -5,17 +5,17 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Wed Jun 15 12:20:14 2016 Barthelemy Gouby
+** Last update Wed Jun 15 14:06:32 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
 int					initialize_character(t_server *server,
 							     t_client *client,
-							     char *input)
+							     char *team)
 {
+  printf("initializing drone\n");
   client->type = DRONE;
-  client->team = input;
   if (!(client->character = malloc(sizeof(*(client->character)))))
     return (RETURN_FAILURE);
   client->character->level = 1;
@@ -23,14 +23,18 @@ int					initialize_character(t_server *server,
 	 NUMBER_OF_TYPES * sizeof(t_quantity));
   client->character->orientation = NORTH;
   client->character->id = server->game_data.next_drone_id++;
+  client->character->team = team;
+  printf("placing character\n");
   place_character_randomly(&server->game_data.map, client->character);
+  printf("constructing message\n");
   sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
-	  client->character->id,
-	  client->character->current_case->x,
-	  client->character->current_case->y,
-	  client->character->orientation,
-	  client->character->level,
-	  client->character->team);
+  	  client->character->id,
+  	  client->character->current_case->x,
+  	  client->character->current_case->y,
+  	  client->character->orientation,
+  	  client->character->level,
+  	  client->character->team);
+  printf("preparing to send broadcast\n");
   trigger_event(server, GRAPHIC_BROADCAST, server->buffer);
   return (RETURN_SUCCESS);
 }
@@ -46,7 +50,9 @@ int					initialize_drone(t_server *server,
     {
       if (strcmp(input, server->game_data.teams[i].name) == 0)
 	{
-	  if (initialize_character(server, client, input) == RETURN_FAILURE)
+	  if (initialize_character(server,
+				   client,
+				   server->game_data.teams[i].name) == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
 	  break;
 	}
