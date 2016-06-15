@@ -5,12 +5,11 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 11:56:55 2016 Thomas Billot
+** Last update Wed Jun 15 12:17:28 2016 Thomas Billot
 */
 
 #include <sys/select.h>
 #include "graphical.h"
-#include "network.h"
 #include "xfunc.h"
 
 static t_ptr	g_ftab[] =

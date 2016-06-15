@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Wed Jun 15 11:55:17 2016 Thomas Billot
+** Last update Wed Jun 15 12:16:32 2016 Thomas Billot
 */
 
 #include <netinet/in.h>
@@ -15,7 +15,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "graphical.h"
-#include "network.h"
 #include "xfunc.h"
 
 int			is_number(char c)
