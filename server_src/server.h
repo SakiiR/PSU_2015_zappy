@@ -5,12 +5,21 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 17:11:57 2016 Erwan Dupard
+<<<<<<< HEAD
+<<<<<<< HEAD
+** Last update Wed Jun 15 11:45:06 2016 Barthelemy Gouby
+=======
+** Last update Wed Jun 15 11:53:40 2016 Erwan Dupard
+>>>>>>> ee24941106027f9bf15adfb52e38160af7c1eac0
+=======
+** Last update Wed Jun 15 11:57:28 2016 Erwan Dupard
+>>>>>>> 31d8f00629aea2d243160564e1f23dcbabcb493f
 */
 
 #ifndef _SERVER_H_
 # define _SERVER_H_
 
+# include <stdlib.h>
 # include <arpa/inet.h>
 # include <sys/types.h>
 # include <sys/socket.h>
@@ -23,7 +32,7 @@
 # include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
-# define CIRC_PAGE_NBR			(10)			
+# define CIRC_PAGE_NBR			(10)
 # define PAGE_SIZE			(4096)
 
 # define RETURN_SUCCESS			(0)
@@ -106,6 +115,7 @@ typedef struct				s_team
   char					*name;
   t_client				*members;
   t_u64					max_members;
+  t_u64					current_members_nbr;
 }					t_team;
 
 typedef struct				s_game_data
@@ -114,7 +124,7 @@ typedef struct				s_game_data
   int					speed;
   t_u64					base_max_members;
   t_team				*teams;
-  t_u64					nbr_of_teams; 
+  t_u64					nbr_of_teams;
   t_u64					next_drone_id;
 }					t_game_data;
 

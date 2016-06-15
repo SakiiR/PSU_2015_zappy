@@ -5,11 +5,9 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:59:16 2016 Thomas Billot
-** Last update Mon Jun 13 18:52:15 2016 Thomas Billot
+** Last update Wed Jun 15 11:55:33 2016 Thomas Billot
 */
 
-#include "network.h"
-#include "xfunc.h"
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
@@ -18,6 +16,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include "network.h"
+#include "xfunc.h"
 
 int			setup_networking(t_option *options)
 {
