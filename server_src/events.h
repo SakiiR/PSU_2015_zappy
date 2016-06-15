@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 13:44:45 2016 Barthelemy Gouby
+** Last update Wed Jun 15 16:00:56 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -21,7 +21,8 @@ typedef enum
     END_INCANTATION,
     NEW_INCANTATION,
     LAY_EGG,
-    ETC
+    PLAYER_EXPULSED,
+    ETC,
   }					e_event_type;
 
 typedef struct				s_event_handler
@@ -44,5 +45,6 @@ int					event_end_incantation(t_server *server, va_list ap);
 int					event_new_incantation(t_server *server, va_list ap);
 int					event_lay_egg(t_server *server, va_list ap);
 int					event_graphic_broadcast(t_server *server, va_list ap);
+int					event_player_expulsed(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
