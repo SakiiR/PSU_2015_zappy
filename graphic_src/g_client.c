@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 12:17:28 2016 Thomas Billot
+** Last update Wed Jun 15 15:26:47 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -41,7 +41,7 @@ static t_ptr	g_ftab[] =
     {NULL, NULL}
   };
 
-int			handle_command(char *message, t_server *server)
+int			handle_command(t_map *map, t_server *server, char *message)
 {
   char			**cmd;
   int			i;
@@ -51,19 +51,20 @@ int			handle_command(char *message, t_server *server)
       i = -1;
       while (g_ftab[++i].id != NULL)
 	{
-	  if (strcmp(cmd[0], g_ftab[i].id) == 0 && g_ftab[i].f != NULL)
+	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCESS
+	      && g_ftab[i].f != NULL)
 	    {
 	      printf("Command found: %s\n", g_ftab[i].id);
-	      if (g_ftab[i].f(server) == -1)
-		return (-1);
+	      if (g_ftab[i].f(map, server, cmd) == RETURN_FAILURE)
+		return (RETURN_FAILURE);
 	    }
 	}
       free_word_tab(cmd);
     }
-  return (0);
+  return (RETURN_SUCESS);
 }
 
-int		        handle_server_cmd(t_server *server, fd_set *si)
+int		        handle_server_input(t_map *map, t_server *server, fd_set *si)
 {
   char			buffer[BUFF_SIZE];
   int			size_read;
@@ -78,18 +79,37 @@ int		        handle_server_cmd(t_server *server, fd_set *si)
 	     && strlen(next_message) > 0)
 	{
 	  printf("message : [%s]\n", next_message);
-	  if (handle_command(next_message, server) == -1)
-	    return (-1);
+	  if (handle_command(map, server, next_message) == RETURN_FAILURE)
+	    return (RETURN_FAILURE);
 	  free(next_message);
 	}
       if (next_message)
 	free(next_message);
     }
-  return (0);
+  return (RETURN_SUCESS);
+}
+
+int			handle_server_output(t_map *map, t_server *server, fd_set *so)
+{
+  char			*next_message;
+  char			*data;
+  
+  (void)map;
+  if (FD_ISSET(server->socket, so))
+    {
+      data = read_data_from_buffer(&(server->buffer_out));
+      free(data);
+      next_message = get_next_message(&(server->buffer_out));
+      if (next_message && next_message[0])
+	write(server->socket, next_message, strlen(next_message));
+      free(next_message);
+    }
+  return (RETURN_SUCESS);
 }
 
 int			launch_client(t_server *server)
 {
+  t_map			map;
   struct timeval	tv;
   fd_set		si;
   fd_set		so;
@@ -103,11 +123,14 @@ int			launch_client(t_server *server)
       FD_ZERO(&si);
       FD_ZERO(&so);
       FD_SET(server->socket, &si);
+      FD_SET(server->socket, &so);
       max_socket = server->socket;
       if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      if (handle_server_cmd(server, &si) == RETURN_FAILURE)
+      if (handle_server_input(&map, server, &si) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+      if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
-  return (0);
+  return (RETURN_SUCESS);
 }
