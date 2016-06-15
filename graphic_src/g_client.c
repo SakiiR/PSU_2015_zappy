@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 10:49:25 2016 Thomas Billot
+** Last update Wed Jun 15 11:38:54 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -64,26 +64,29 @@ int			handle_command(char *message, t_server *server)
   return (0);
 }
 
-int		        handle_server_cmd(t_server *server)
+int		        handle_server_cmd(t_server *server, fd_set *si)
 {
   char			buffer[BUFF_SIZE];
   int			size_read;
   char			*next_message;
 
-  size_read = read(server->socket, buffer, BUFF_SIZE);
-  buffer[size_read] = 0;
-  /*  if (size_read > 0)
-      printf("buffer : [%s]\n", buffer);*/
-  write_to_buffer(&(server->buffer_in), buffer, size_read);
-  if ((next_message = get_next_message(&(server->buffer_in))))
+  if (FD_ISSET(server->socket, si))
     {
-      if (next_message && next_message[0])
+      size_read = read(server->socket, buffer, BUFF_SIZE);
+      buffer[size_read] = 0;
+      /*  if (size_read > 0)
+	  printf("buffer : [%s]\n", buffer);*/
+      write_to_buffer(&(server->buffer_in), buffer, size_read);
+      if ((next_message = get_next_message(&(server->buffer_in))))
 	{
-	  printf("message : [%s]\n", next_message);
-	  if (handle_command(next_message, server) == -1)
-	    return (-1);
+	  if (next_message && next_message[0])
+	    {
+	      printf("message : [%s]\n", next_message);
+	      if (handle_command(next_message, server) == -1)
+		return (-1);
+	    }
+	  free(next_message);
 	}
-      free(next_message);
     }
   return (0);
 }
@@ -107,7 +110,7 @@ int			launch_client(t_server *server)
       max_socket = server->socket;
       if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      if (handle_server_cmd(server) == RETURN_FAILURE)
+      if (handle_server_cmd(server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
   return (0);
