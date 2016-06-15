@@ -7,6 +7,7 @@
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ** Last update Wed Jun 15 14:16:39 2016 Thomas Billot
 =======
 ** Last update Wed Jun 15 11:53:40 2016 Erwan Dupard
@@ -14,6 +15,9 @@
 =======
 ** Last update Wed Jun 15 11:57:28 2016 Erwan Dupard
 >>>>>>> 31d8f00629aea2d243160564e1f23dcbabcb493f
+=======
+** Last update Wed Jun 15 14:20:50 2016 Erwan Dupard
+>>>>>>> 4bd6fb8b86dc22731854d74ca39aee07062e9f96
 */
 
 #ifndef _SERVER_H_
@@ -107,7 +111,6 @@ typedef struct				s_client
   t_circular_buffer			buffer_out;
   e_client_type				type;
   t_character				*character;
-  char					*team;
 }					t_client;
 
 typedef struct				s_team
@@ -244,10 +247,11 @@ int				        send_player_inventory(t_server *server,
 							 t_client *client,
 							 char *operands
 							 __attribute__((unused)));
-
 int				        send_player_position(t_server *server,
 							 t_client *client,
 							 char *operands
 							 __attribute__((unused)));
+
+# include "events.h"
 
 #endif /* !_SERVER_H_ */

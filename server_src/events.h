@@ -5,18 +5,18 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 11:52:04 2016 Erwan Dupard
+** Last update Wed Jun 15 13:44:45 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
 # define EVENTS_H_
 
 # include <stdarg.h>
-# include "server.h"
 
 typedef enum
   {
     NEW_PLAYER,
+    GRAPHIC_BROADCAST,
     BROADCAST,
     END_INCANTATION,
     NEW_INCANTATION,
@@ -43,5 +43,6 @@ int					event_broadcast(t_server *server, va_list ap);
 int					event_end_incantation(t_server *server, va_list ap);
 int					event_new_incantation(t_server *server, va_list ap);
 int					event_lay_egg(t_server *server, va_list ap);
+int					event_graphic_broadcast(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
