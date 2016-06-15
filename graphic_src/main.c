@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Wed Jun 15 10:58:11 2016 Thomas Billot
+** Last update Wed Jun 15 11:01:09 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -57,7 +57,7 @@ int			main(int argc, char *argv[])
 {
   t_option		options;
   t_server		server;
-  
+   
   if (argc != 5 || check_options(&options, argv) == RETURN_FAILURE)
     {
       fprintf(stderr, USAGE);
