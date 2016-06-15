@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:31:29 2016 Gabriel Goude
-** Last update Tue Jun 14 16:19:51 2016 Gabriel Goude
+** Last update Tue Jun 14 17:13:29 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -23,6 +23,9 @@ int			ai(t_infos *infos)
   return (RETURN_SUCCESS);
 }
 
+/*
+ * Qu-est-ce que ce code fou ici ? :)
+ */
 void			fill_set(t_infos *infos)
 {
   FD_ZERO(&(infos->select.rfds));

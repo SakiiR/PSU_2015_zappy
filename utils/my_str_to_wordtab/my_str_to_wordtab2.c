@@ -5,10 +5,10 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 17:12:06 2016 Erwan Dupard
-** Last update Wed May 18 17:35:50 2016 Erwan Dupard
+** Last update Tue Jun 14 17:24:33 2016 Erwan Dupard
 */
 
-#include "resources.h"
+#include "my_str_to_wordtab.h"
 
 unsigned int				wordtab_length(const char **tab)
 {

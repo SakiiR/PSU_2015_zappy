@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:10:07 2016 Thomas Billot
-** Last update Mon Jun 13 18:15:23 2016 Thomas Billot
+** Last update Wed Jun 15 10:33:12 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include <errno.h>
 
-int		fct_welcome(t_info *infos)
+int		fct_welcome(t_server *server)
 {
-  if (write(infos->sockfd, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
+  if (write(server->socket, "GRAPHIC\n", strlen("GRAPHIC\n")) == -1)
     {
       fprintf(stderr, "Error in write(): %s\n", strerror(errno));
       return (-1);

@@ -5,12 +5,13 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 14 17:26:45 2016 Barthelemy Gouby
+** Last update Wed Jun 15 11:45:06 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
 # define _SERVER_H_
 
+# include <stdlib.h>
 # include <arpa/inet.h>
 # include <sys/types.h>
 # include <sys/socket.h>
