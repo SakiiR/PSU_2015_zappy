@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 14 14:26:33 2016 Gabriel Goude
-** Last update Tue Jun 14 14:44:09 2016 Gabriel Goude
+** Last update Tue Jun 14 17:13:57 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -35,10 +35,10 @@ int				remove_elem(t_infos *infos)
   t_request			*request;
 
   if (infos->request)
-  {
-    request = infos->request->next;
-    free(infos->request);
-    infos->request = request;
-  }
+    {
+      request = infos->request->next;
+      free(infos->request);
+      infos->request = request;
+    }
   return (RETURN_SUCCESS);
 }
