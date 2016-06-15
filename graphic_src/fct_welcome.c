@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:10:07 2016 Thomas Billot
-** Last update Wed Jun 15 11:46:02 2016 Thomas Billot
+** Last update Wed Jun 15 11:55:39 2016 Barthelemy Gouby
 */
 
 #include "graphical.h"
