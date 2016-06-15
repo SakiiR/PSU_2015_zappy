@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Wed Jun 15 10:56:19 2016 Erwan Dupard
+** Last update Wed Jun 15 11:51:07 2016 Erwan Dupard
 */
 
 #include "events.h"
@@ -19,7 +19,9 @@ static const t_event_handler		g_events[] = {
   {0, NULL}
 };
 
-int				        trigger_event(t_server *server, e_event_type type, ...)
+int				        trigger_event(t_server *server,
+						      e_event_type type,
+						      ...)
 {
   va_list			        argp;
   int					i;
