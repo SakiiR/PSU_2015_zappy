@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 11:52:15 2016 Thomas Billot
+** Last update Wed Jun 15 11:56:55 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -74,19 +74,17 @@ int		        handle_server_cmd(t_server *server, fd_set *si)
     {
       size_read = read(server->socket, buffer, BUFF_SIZE);
       buffer[size_read] = 0;
-      /*  if (size_read > 0)
-	  printf("buffer : [%s]\n", buffer);*/
       write_to_buffer(&(server->buffer_in), buffer, size_read);
-      if ((next_message = get_next_message(&(server->buffer_in))))
+      while ((next_message = get_next_message(&(server->buffer_in)))
+	     && strlen(next_message) > 0)
 	{
-	  if (next_message && next_message[0])
-	    {
-	      printf("message : [%s]\n", next_message);
-	      if (handle_command(next_message, server) == -1)
-		return (-1);
-	    }
+	  printf("message : [%s]\n", next_message);
+	  if (handle_command(next_message, server) == -1)
+	    return (-1);
 	  free(next_message);
 	}
+      if (next_message)
+	free(next_message);
     }
   return (0);
 }
