@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Tue Jun 14 18:22:55 2016 Barthelemy Gouby
+** Last update Wed Jun 15 16:20:51 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -47,16 +47,16 @@ static int			handle_clients_input(t_server *server, fd_set *set_in)
 	  if (size_read > 0)
 	    printf("buffer : %s\n", buffer);
 	  write_to_buffer(&(server->clients[i].buffer_in), buffer, size_read);
-	  if ((next_message = get_next_message(&(server->clients[i].buffer_in))))
+	  while ((next_message = get_next_message(&(server->clients[i].buffer_in)))
+		 && next_message[0])
 	    {
-	      if (strlen(next_message) > 0)
-		{
-		  if (handle_command(next_message, server,
-				     &server->clients[i]) == RETURN_FAILURE)
-		    return (RETURN_FAILURE);
-		}
+	      if (handle_command(next_message, server,
+				 &server->clients[i]) == RETURN_FAILURE)
+		return (RETURN_FAILURE);
 	      free(next_message);
 	    }
+	  if (next_message)
+	    free(next_message);
 	}
     }
   return (RETURN_SUCCESS);
@@ -75,10 +75,14 @@ static int			handle_server_output(t_server *server, fd_set *set_out)
 	{
 	  data = read_data_from_buffer(&(server->clients[i].buffer_out));
 	  free(data);
-	  next_message = get_next_message(&(server->clients[i].buffer_out));
-	  if (strlen(next_message) > 0)
-	    write(server->clients[i].socket, next_message, strlen(next_message));
-	  free(next_message);
+	  while ((next_message = get_next_message(&(server->clients[i].buffer_out)))
+		 && next_message[0])
+	    {
+	      write(server->clients[i].socket, next_message, strlen(next_message));
+	      free(next_message);
+	    }
+	  if (next_message)
+	    free(next_message);
 	}
     }
   return (RETURN_SUCCESS);
@@ -117,12 +121,15 @@ static int			add_client(t_server *server)
 
 int				process_server(t_server *server)
 {
+  struct timeval		tv;
   fd_set		        si;
   fd_set			so;
   int				max_socket;
 
   max_socket = 0;
   server->game_data.next_drone_id = 1;
+  tv.tv_usec = 50;
+  tv.tv_sec = 0;
   while (1)
     {
       FD_ZERO(&si);
@@ -130,7 +137,7 @@ int				process_server(t_server *server)
       FD_SET(server->socket, &si);
       max_socket = server->socket;
       adding_sockets(server, &si, &so, &max_socket);
-      if (select(max_socket + 1, &si, &so, NULL, NULL) == RETURN_FAILURE)
+      if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (FD_ISSET(server->socket, &si))
 	{
