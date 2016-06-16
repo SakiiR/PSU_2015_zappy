@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 16 14:56:28 2016 Barthelemy Gouby
+** Last update Thu Jun 16 16:55:03 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -246,10 +246,9 @@ int				        send_player_position(t_server *server,
 							 char *operands
 							 __attribute__((unused)));
 
-int		test_command(t_server *server,
-			     t_client *client,
-			     char *operands);
-
+int					voir_command(t_server *server,
+						     t_client *client,
+						     char *operands);
 
 # include "events.h"
 
