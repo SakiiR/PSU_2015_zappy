@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 16 16:46:31 2016 Erwan Dupard
+## Last update Thu Jun 16 17:16:14 2016 Thomas Beaudet
 ##
 
 CC		= gcc
@@ -38,31 +38,31 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xconnect.c 			\
 		  graphic_src/xclose.c 				\
 		  graphic_src/client.c				\
-		  graphic_src/fct_welcome.c 			\
-		  graphic_src/fct_msz.c 			\
-		  graphic_src/fct_bct.c 			\
-		  graphic_src/fct_tna.c 			\
-		  graphic_src/fct_pnw.c 			\
-		  graphic_src/fct_ppo.c 			\
-		  graphic_src/fct_plv.c 			\
-		  graphic_src/fct_pin.c 			\
-		  graphic_src/fct_pex.c 			\
-		  graphic_src/fct_pbc.c 			\
-		  graphic_src/fct_pic.c 			\
-		  graphic_src/fct_pie.c 			\
-		  graphic_src/fct_pfk.c 			\
-		  graphic_src/fct_pdr.c 			\
-		  graphic_src/fct_pgt.c 			\
-		  graphic_src/fct_pdi.c 			\
-		  graphic_src/fct_enw.c 			\
-		  graphic_src/fct_eht.c 			\
-		  graphic_src/fct_ebo.c 			\
-		  graphic_src/fct_ebi.c 			\
-		  graphic_src/fct_sgt.c 			\
-		  graphic_src/fct_seg.c 			\
-		  graphic_src/fct_smg.c 			\
-		  graphic_src/fct_suc.c 			\
-		  graphic_src/fct_sbp.c 			\
+		  graphic_src/FCT/fct_welcome.c 			\
+		  graphic_src/FCT/fct_msz.c 			\
+		  graphic_src/FCT/fct_bct.c 			\
+		  graphic_src/FCT/fct_tna.c 			\
+		  graphic_src/FCT/fct_pnw.c 			\
+		  graphic_src/FCT/fct_ppo.c 			\
+		  graphic_src/FCT/fct_plv.c 			\
+		  graphic_src/FCT/fct_pin.c 			\
+		  graphic_src/FCT/fct_pex.c 			\
+		  graphic_src/FCT/fct_pbc.c 			\
+		  graphic_src/FCT/fct_pic.c 			\
+		  graphic_src/FCT/fct_pie.c 			\
+		  graphic_src/FCT/fct_pfk.c 			\
+		  graphic_src/FCT/fct_pdr.c 			\
+		  graphic_src/FCT/fct_pgt.c 			\
+		  graphic_src/FCT/fct_pdi.c 			\
+		  graphic_src/FCT/fct_enw.c 			\
+		  graphic_src/FCT/fct_eht.c 			\
+		  graphic_src/FCT/fct_ebo.c 			\
+		  graphic_src/FCT/fct_ebi.c 			\
+		  graphic_src/FCT/fct_sgt.c 			\
+		  graphic_src/FCT/fct_seg.c 			\
+		  graphic_src/FCT/fct_smg.c 			\
+		  graphic_src/FCT/fct_suc.c 			\
+		  graphic_src/FCT/fct_sbp.c 			\
 		  graphic_src/get_next_line.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
