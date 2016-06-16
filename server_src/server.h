@@ -5,7 +5,11 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
+<<<<<<< HEAD
 ** Last update Thu Jun 16 17:28:23 2016 Barthelemy Gouby
+=======
+** Last update Thu Jun 16 17:01:33 2016 Erwan Dupard
+>>>>>>> 3ec4d20411abf256cb4425ef4299704f8560012d
 */
 
 #ifndef _SERVER_H_
@@ -249,11 +253,12 @@ int				        send_player_position(t_server *server,
 							 char *operands
 							 __attribute__((unused)));
 
-int		test_command(t_server *server,
-			     t_client *client,
-			     char *operands);
-
-
+int					voir_command(t_server *server,
+						     t_client *client,
+						     char *operands);
+int				        inventaire_command(t_server *server,
+							   t_client *client,
+							   char *operands);
 # include "events.h"
 
 #endif /* !_SERVER_H_ */

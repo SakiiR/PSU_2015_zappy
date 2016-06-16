@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 16 16:05:34 2016 Barthelemy Gouby
+## Last update Thu Jun 16 17:09:43 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -87,6 +87,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/trigger_event.c		 	\
 		  server_src/event_handling.c			\
 		  server_src/action.c				\
+		  server_src/voir.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
@@ -94,7 +95,7 @@ CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
 GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
 
-CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils -lm
+CFLAGS		+= -g3 -W -Wall -Werror -Wextra -pedantic -ansi -I./utils -lm
 
 LDFLAGS		+=
 
