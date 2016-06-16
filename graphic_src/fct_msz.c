@@ -5,12 +5,22 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Thu Jun 16 15:38:48 2016 Thomas Billot
+** Last update Thu Jun 16 16:01:46 2016 Thomas Billot
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "graphical.h"
+
+int		generate_map(t_map *map)
+{
+  t_tile	*new;
+
+  if ((new = malloc(sizeof(*new) * (map->x * map->y))) == NULL)
+    return (RETURN_FAILURE);
+  map->tiles = new;
+  return (RETURN_SUCESS);
+}
 
 int		fct_msz(t_map *map,
 			t_server *server __attribute__((unused)),
@@ -19,10 +29,13 @@ int		fct_msz(t_map *map,
   int		i;
   
   i = 0;
-  alloc_map
+  map->x = atoi(cmd[1]);
+  map->y = atoi(cmd[2]);
+  if (generate_map(map) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   printf("fct_%s args:", cmd[i]);
   while (cmd[++i])
     printf(" %s |", cmd[i]);
   printf("\n");
-  return (0);
+  return (RETURN_SUCESS);
 }
