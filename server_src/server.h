@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 16 14:56:28 2016 Barthelemy Gouby
+** Last update Thu Jun 16 17:28:23 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -117,6 +117,8 @@ typedef struct				s_game_data
 {
   t_map					map;
   int					speed;
+  struct timeval			last_tick;
+  struct timeval			tick_length;
   t_u64					base_max_members;
   t_team				*teams;
   t_u64					nbr_of_teams;
@@ -150,6 +152,7 @@ int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input);
 
+void					initialize_time(t_server *server);
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
 t_case					*map_get_case_at(const t_u64 x,
