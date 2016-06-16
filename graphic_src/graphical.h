@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 16 13:53:07 2016 Thomas Billot
+** Last update Thu Jun 16 15:10:47 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -33,7 +33,7 @@
 # define PDR			"pdr" /* Le joueur jete une ressource */
 # define PGT			"pgt" /* Le joueur prends une ressource */
 # define PDI			"pdi" /* Le joueur est mort de faim */
-# define ENW			"enw" /* L'oeuf a ete pondu sur la case par le joueur */
+# define ENW			"enw" /* oeuf pondu sur la case par le joueur */
 # define EHT			"eht" /* L'oeuf eclos */
 # define EBO			"ebo" /* Un joueur s'est connecte pour l'oeuf */
 # define EBI			"ebi" /* L'oeuf eclos est mort de faim */
@@ -127,6 +127,75 @@ int				fct_welcome(t_map *map,
 					    t_server *server,
 					    char **cmd __attribute__((unused)));
 int				fct_msz(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_tna(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_suc(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_smg(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_sgt(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_seg(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_sbp(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_ppo(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pnw(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_plv(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pin(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pie(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pic(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pgt(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pfk(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pex(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pdr(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pdi(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_pbc(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_enw(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_eht(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_ebi(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_bct(t_map *map,
+					t_server *server __attribute__((unused)),
+					char **cmd);
+int				fct_ebo(t_map *map,
 					t_server *server __attribute__((unused)),
 					char **cmd);
 

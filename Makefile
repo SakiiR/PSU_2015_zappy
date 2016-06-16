@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 16 13:35:32 2016 Thomas Billot
+## Last update Thu Jun 16 14:38:42 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -40,6 +40,29 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/client.c				\
 		  graphic_src/fct_welcome.c 			\
 		  graphic_src/fct_msz.c 			\
+		  graphic_src/fct_bct.c 			\
+		  graphic_src/fct_tna.c 			\
+		  graphic_src/fct_pnw.c 			\
+		  graphic_src/fct_ppo.c 			\
+		  graphic_src/fct_plv.c 			\
+		  graphic_src/fct_pin.c 			\
+		  graphic_src/fct_pex.c 			\
+		  graphic_src/fct_pbc.c 			\
+		  graphic_src/fct_pic.c 			\
+		  graphic_src/fct_pie.c 			\
+		  graphic_src/fct_pfk.c 			\
+		  graphic_src/fct_pdr.c 			\
+		  graphic_src/fct_pgt.c 			\
+		  graphic_src/fct_pdi.c 			\
+		  graphic_src/fct_enw.c 			\
+		  graphic_src/fct_eht.c 			\
+		  graphic_src/fct_ebo.c 			\
+		  graphic_src/fct_ebi.c 			\
+		  graphic_src/fct_sgt.c 			\
+		  graphic_src/fct_seg.c 			\
+		  graphic_src/fct_smg.c 			\
+		  graphic_src/fct_suc.c 			\
+		  graphic_src/fct_sbp.c 			\
 		  graphic_src/get_next_line.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Thu Jun 16 13:35:17 2016 Thomas Billot
+** Last update Thu Jun 16 15:07:17 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -15,28 +15,28 @@
 static t_ptr	g_ftab[] =
   {
     {MSZ, fct_msz},
-    {BCT, NULL},
-    {TNA, NULL},
-    {PNW, NULL},
-    {PPO, NULL},
-    {PLV, NULL},
-    {PEX, NULL},
-    {PBC, NULL},
-    {PIC, NULL},
-    {PIE, NULL},
-    {PFK, NULL},
-    {PDR, NULL},
-    {PGT, NULL},
-    {PDI, NULL},
-    {ENW, NULL},
-    {EHT, NULL},
-    {EBO, NULL},
-    {EBI, NULL},
-    {SGT, NULL},
-    {SEG, NULL},
-    {SMG, NULL},
-    {SUC, NULL},
-    {SBP, NULL},
+    {BCT, fct_bct},
+    {TNA, fct_tna},
+    {PNW, fct_pnw},
+    {PPO, fct_ppo},
+    {PLV, fct_plv},
+    {PEX, fct_pex},
+    {PBC, fct_pbc},
+    {PIC, fct_pic},
+    {PIE, fct_pie},
+    {PFK, fct_pfk},
+    {PDR, fct_pdr},
+    {PGT, fct_pgt},
+    {PDI, fct_pdi},
+    {ENW, fct_enw},
+    {EHT, fct_eht},
+    {EBO, fct_ebo},
+    {EBI, fct_ebi},
+    {SGT, fct_sgt},
+    {SEG, fct_seg},
+    {SMG, fct_smg},
+    {SUC, fct_suc},
+    {SBP, fct_sbp},
     {BIENVENUE, fct_welcome},
     {NULL, NULL}
   };
@@ -56,7 +56,6 @@ int			handle_command(t_map *map,
 	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCESS
 	      && g_ftab[i].f != NULL)
 	    {
-	      printf("Command found: %s\n", g_ftab[i].id);
 	      if (g_ftab[i].f(map, server, cmd) == RETURN_FAILURE)
 		return (RETURN_FAILURE);
 	    }
