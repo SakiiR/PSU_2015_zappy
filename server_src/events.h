@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Thu Jun 16 15:05:10 2016 Barthelemy Gouby
+** Last update Thu Jun 16 15:59:22 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -29,8 +29,6 @@ typedef enum
     EGG_DIE_OF_HUNGER,
     END_OF_GAME,
     SERVER_MESSAGE,
-    UNKNOW_COMMAND,
-    BAD_COMMAND_PARAM,
     ETC
   }					e_event_type;
 
@@ -53,7 +51,7 @@ typedef struct				s_event_handler
 {
   e_event_type				type;
   int					(*f)(t_server *server,
-					     va_list ap); /* Var Args ! */
+					     va_list ap);
 }					t_event_handler;
 
 int				        trigger_event(t_server *server,

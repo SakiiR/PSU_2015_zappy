@@ -5,7 +5,7 @@
 ** Login   <billot_t@epitech.net>
 ** 
 ** Started on  Tue May 10 14:32:01 2016 Thomas Billot
-** Last update Wed Jun 15 11:50:49 2016 Thomas Billot
+** Last update Wed Jun 15 17:27:26 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -17,9 +17,9 @@
 int		xclose(int fd)
 {
   if (close(fd) == -1)
-  {
-    fprintf(stderr, "Error in xclose(): %s\n", strerror(errno));
-    return (-1);
-  }
+    {
+      perror("close");
+      return (-1);
+    }
   return (0);
 }

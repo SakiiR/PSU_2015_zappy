@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 10:42:09 2016 Thomas Beaudet
-** Last update Wed Jun 15 11:07:00 2016 Thomas Beaudet
+** Last update Wed Jun 15 14:44:56 2016 Thomas Beaudet
 */
 
 #ifndef _TEST_H_
@@ -13,14 +13,12 @@
 
 #define CASH_SIZE 5000;
 
-typedef unsigned char	tile_index;
-
 typedef struct	s_proper
 {
   SDL_Rect	rect;
 }		t_proper;
 
-typedef struct	s_mapping
+typedef struct	s_display
 {
   int		tile_w;
   int		tile_h;
@@ -31,7 +29,12 @@ typedef struct	s_mapping
   tile_index	**schema;
   int		nb_tiles_world_w;
   int		nb_tiles_world_h;
-}		t_mapping;
+}		t_display;
+
+typedef struct	s_bct
+{
+
+}		t_bct;
 
 SDL_Surface	*Load_image(const char *file_img);
 #endif /* !_TEST_H_ */

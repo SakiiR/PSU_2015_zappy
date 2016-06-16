@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 14 12:35:49 2016 Thomas Beaudet
-** Last update Wed Jun 15 10:28:20 2016 Thomas Beaudet
+** Last update Wed Jun 15 14:58:53 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -18,7 +18,5 @@
 
 void		SDL_quit(t_sdl *s)
 {
-  TTF_CloseFont(s->font);
-  TTF_Quit();
   SDL_Quit();
 }
