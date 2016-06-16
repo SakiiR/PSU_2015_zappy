@@ -5,10 +5,12 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 16 16:07:05 2016 Barthelemy Gouby
+** Last update Thu Jun 16 16:15:55 2016 Thomas Billot
 */
 
 #define _BSD_SOURCE
+#define _SVID_SOURCE
+#define _DEFAULT_SOURCE
 
 #include <sys/time.h>
 #include "server.h"
