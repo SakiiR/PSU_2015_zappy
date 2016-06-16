@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Wed Jun 15 17:18:16 2016 Erwan Dupard
+** Last update Thu Jun 16 15:59:08 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -36,8 +36,8 @@ void					init_options(t_server *server)
   server->port = 0;
   server->game_data.map.width = 0;
   server->game_data.map.height = 0;
-  server->game_data.base_max_members = 0;
-  server->game_data.speed = 0;
+  server->game_data.base_max_members = 1;
+  server->game_data.speed = 100;
   server->game_data.teams = NULL;
   server->game_data.nbr_of_teams = 0;
 }
