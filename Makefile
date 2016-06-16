@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 16 16:01:50 2016 Barthelemy Gouby
+## Last update Thu Jun 16 16:05:34 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -94,7 +94,7 @@ CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
 GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
 
-CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils -D _BSD_SOURCE -lm
+CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils -lm
 
 LDFLAGS		+=
 

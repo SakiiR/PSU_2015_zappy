@@ -5,8 +5,10 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 16 15:06:04 2016 Barthelemy Gouby
+** Last update Thu Jun 16 16:07:05 2016 Barthelemy Gouby
 */
+
+#define _BSD_SOURCE
 
 #include <sys/time.h>
 #include "server.h"
