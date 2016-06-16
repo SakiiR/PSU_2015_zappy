@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Thu Jun 16 17:04:29 2016 Erwan Dupard
+** Last update Thu Jun 16 17:10:56 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -33,6 +33,7 @@ int					handle_command(char *input,
   char					*command_name;
   char					*operands;
 
+  i = -1;
   if (strlen(input) > 1)
       input[strlen(input) - 1] = 0;
   if (client->type == UNSPECIFIED)
