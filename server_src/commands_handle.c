@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Thu Jun 16 14:52:23 2016 Barthelemy Gouby
+** Last update Thu Jun 16 17:10:56 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -20,7 +20,8 @@ static const t_command			g_commands[] = {
     {"sgt", &send_speed},
     {"bct", &send_case_content},
     {"mct", &send_map_content},
-    {"test", &test_command},
+    {"voir", &voir_command},
+    {"inventaire", &inventaire_command},
     {NULL, NULL}
 };
 
@@ -32,6 +33,7 @@ int					handle_command(char *input,
   char					*command_name;
   char					*operands;
 
+  i = -1;
   if (strlen(input) > 1)
       input[strlen(input) - 1] = 0;
   if (client->type == UNSPECIFIED)

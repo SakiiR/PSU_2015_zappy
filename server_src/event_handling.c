@@ -5,10 +5,12 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 16 17:26:57 2016 Barthelemy Gouby
+** Last update Thu Jun 16 17:39:37 2016 Barthelemy Gouby
 */
 
 #define _BSD_SOURCE
+#define _SVID_SOURCE
+#define _DEFAULT_SOURCE
 
 #include <sys/time.h>
 #include "server.h"
@@ -20,37 +22,40 @@ void			initialize_time(t_server *server)
   length = 1.0 / server->game_data.speed;
   server->game_data.tick_length.tv_sec = (int) length;
   server->game_data.tick_length.tv_usec = (int)((length - (int) length) * 1000000);
-  gettimeofday(&server->game_data.last_tick);
+  printf("unit length second:  %i\n", (int) length);
+  printf("unit length usecond:  %i\n", (int)((length - (int) length) * 1000000));
+  gettimeofday(&server->game_data.last_tick, NULL);
 }
 
 int			handle_actions(t_server *server)
 {
   t_action		*iterator;
-  struct timeval	now;
-  struct timeval	interval;
 
-  gettimeofday(&now, NULL);
   iterator = server->game_data.pending_actions;
   while (iterator)
     {
-      timersub(&now, &iterator->start_of_action, &interval);
-      if (!timercmp(&interval, &iterator->length_of_action, <))
+      if (iterator->duration <= 0)
 	{
-	  /* if (trigger_event(server, */
-	  /* 		    iterator->type, */
-	  /* 		    iterator->origin, */
-	  /* 		    iterator->argument) == RETURN_FAILURE); */
-	  printf("action executed\n");
+	  printf("executing action\n");
+	  if (trigger_event(server,
+	  		    iterator->type,
+	  		    iterator->origin,
+	  		    iterator->argument) == RETURN_FAILURE)
+	    return (RETURN_FAILURE);
 	  iterator = remove_action(&server->game_data.pending_actions, iterator);
 	}
       else
-	iterator = iterator->next;
+	{
+	  iterator->duration--;
+	  iterator = iterator->next;
+	}
     }
   return (RETURN_SUCCESS);
 }
 
 int			player_food_consumption(t_server *server)
 {
+  (void) server;
   return (RETURN_SUCCESS);
 }
 
