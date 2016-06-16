@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 14 12:41:33 2016 Thomas Beaudet
-** Last update Wed Jun 15 17:14:43 2016 Thomas Beaudet
+** Last update Wed Jun 15 17:55:46 2016 Thomas Beaudet
 */
 
 #include <SDL/SDL.h>
@@ -30,7 +30,7 @@ int		run(t_sdl *s)
 int		set_vals(t_sdl *s)
 {
   s->action = 1;
-  s->screen = SDL_CreateWindow(640, 480, 32, SDL_HWSURFACE
+  s->screen = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE
 			    | SDL_RESIZABLE | SDL_DOUBLEBUF);
   if (s->screen == NULL)
     {
