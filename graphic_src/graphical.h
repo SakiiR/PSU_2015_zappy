@@ -1,11 +1,11 @@
 /*
 ** graphical.h for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy/graphic_src
-** 
+**
 ** Made by Thomas Billot
 ** Login   <mikaz3@epitech.net>
-** 
+**
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 16 16:00:24 2016 Thomas Billot
+** Last update Thu Jun 16 16:47:59 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -13,6 +13,7 @@
 
 # include <circular_buffer/circular_buffer.h>
 # include <arpa/inet.h>
+# include <SDL2/SDL.h>
 
 # define RETURN_SUCESS		(0)
 # define RETURN_FAILURE		(-1)
@@ -102,12 +103,30 @@ typedef struct		       	s_map
   t_tile			*tiles;
 }				t_map;
 
+typedef struct			s_res
+{
+  SDL_Window			*screen;
+  SDL_Renderer			*rend;
+  SDL_Event			event;
+}				t_res;
+
 /*
 ** Function declaration
 */
 
 int				setup_networking(t_option *options);
 int				launch_client(t_server *server);
+
+/*
+** SDL fucntions declaration
+*/
+
+int				sdl_init();
+void				draw_backg(t_res *ress);
+void				put_delay(int delay);
+int				sdl_create_win(t_res *ress, t_map *map);
+int				sdl_event(t_res *ress);
+void				sdl_quit();
 
 /*
 ** Function pointer definition
