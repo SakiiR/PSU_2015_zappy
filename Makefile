@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Wed Jun 15 16:02:59 2016 Erwan Dupard
+## Last update Thu Jun 16 15:31:27 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -53,12 +53,16 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/map2.c				\
 		  server_src/process.c				\
 		  server_src/commands_handle.c			\
+		  server_src/graphic.c				\
 		  server_src/graphic_commands.c			\
 		  server_src/graphic_commands2.c		\
+		  server_src/drone_commands.c			\
 		  server_src/client_identification.c		\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
 		  server_src/trigger_event.c		 	\
+		  server_src/event_handling.c			\
+		  server_src/action.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
@@ -66,7 +70,7 @@ CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
 GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
 
-CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils
+CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils -D _BSD_SOURCE -lm
 
 LDFLAGS		+=
 
