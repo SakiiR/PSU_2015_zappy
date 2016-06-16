@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 13:51:36 2016 Thomas Billot
-** Last update Thu Jun 16 17:16:57 2016 Thomas Beaudet
+** Last update Thu Jun 16 17:35:31 2016 Thomas Beaudet
 */
 
 #include <stdlib.h>
@@ -27,12 +27,15 @@ int		fct_bct(t_map *map,
   printf("\n");
   y = atoi(cmd[1]);
   x = atoi(cmd[2]);
-  map->tiles[(x * y)].obj[FOOD] = atoi(cmd[3]);
-  map->tiles[(x * y)].obj[LINEMATE] = atoi(cmd[4]);
-  map->tiles[(x * y)].obj[DERAUMERE] = atoi(cmd[5]);
-  map->tiles[(x * y)].obj[SIBUR] = atoi(cmd[6]);
-  map->tiles[(x * y)].obj[MENDIANE] = atoi(cmd[7]);
-  map->tiles[(x * y)].obj[PHIRAS] = atoi(cmd[8]);
-  map->tiles[(x * y)].obj[THYSTAME] = atoi(cmd[9]);
+  if ((x * y) <= (map->x * map->y))
+    {
+      map->tiles[(x * y)].obj[FOOD] = atoi(cmd[3]);
+      map->tiles[(x * y)].obj[LINEMATE] = atoi(cmd[4]);
+      map->tiles[(x * y)].obj[DERAUMERE] = atoi(cmd[5]);
+      map->tiles[(x * y)].obj[SIBUR] = atoi(cmd[6]);
+      map->tiles[(x * y)].obj[MENDIANE] = atoi(cmd[7]);
+      map->tiles[(x * y)].obj[PHIRAS] = atoi(cmd[8]);
+      map->tiles[(x * y)].obj[THYSTAME] = atoi(cmd[9]);
+    }
   return (RETURN_SUCESS);
 }
