@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Thu Jun 16 15:07:04 2016 Barthelemy Gouby
+** Last update Thu Jun 16 17:17:57 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -14,12 +14,12 @@ void		add_action(t_action **action_list, t_action *new_action)
 {
   t_action	*iterator;
 
-  if (!*action_list)
+  if (*action_list == NULL)
     *action_list = new_action;
   else
     {
       iterator = *action_list;
-      while (iterator->next)
+      while (iterator && iterator->next)
 	iterator = iterator->next;
       iterator->next = new_action;
     }
