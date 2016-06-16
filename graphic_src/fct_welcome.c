@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:10:07 2016 Thomas Billot
-** Last update Wed Jun 15 15:24:19 2016 Thomas Billot
+** Last update Thu Jun 16 16:46:14 2016 Thomas Billot
 */
 
 #include <string.h>
@@ -22,7 +22,7 @@ int		fct_welcome(t_map *map,
   (void)cmd;
   if (write_to_buffer(&(server->buffer_out),
 		      "GRAPHIC\n",
-		      strlen("GRAPHIC\n")) == -1)
-    return (-1);
-  return (0);
+		      strlen("GRAPHIC\n")) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  return (RETURN_SUCESS);
 }
