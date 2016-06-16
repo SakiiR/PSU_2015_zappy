@@ -5,11 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-<<<<<<< HEAD
-## Last update Thu Jun 16 15:31:27 2016 Barthelemy Gouby
-=======
-## Last update Thu Jun 16 14:38:42 2016 Thomas Billot
->>>>>>> 3ab655ff19d3be0ea8a6bbb8722dbef83743a382
+## Last update Thu Jun 16 16:01:50 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -86,15 +82,11 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/graphic_commands2.c		\
 		  server_src/drone_commands.c			\
 		  server_src/client_identification.c		\
-		  server_src/trigger_event.c		 	\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
-<<<<<<< HEAD
 		  server_src/trigger_event.c		 	\
 		  server_src/event_handling.c			\
 		  server_src/action.c				\
-=======
->>>>>>> 3ab655ff19d3be0ea8a6bbb8722dbef83743a382
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
