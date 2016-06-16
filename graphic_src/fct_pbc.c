@@ -1,18 +1,18 @@
 /*
-** fct_bct.c for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy
+** fct_pbc.c for PSU_2015_zappy in /home/mikaz3
 ** 
 ** Made by Thomas Billot
 ** Login   <mikaz3@epitech.net>
 ** 
-** Started on  Thu Jun 16 13:51:36 2016 Thomas Billot
-** Last update Thu Jun 16 14:52:26 2016 Thomas Billot
+** Started on  Thu Jun 16 14:28:57 2016 Thomas Billot
+** Last update Thu Jun 16 14:41:04 2016 Thomas Billot
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "graphical.h"
 
-int		fct_bct(t_map *map,
+int		fct_pbc(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
@@ -26,4 +26,3 @@ int		fct_bct(t_map *map,
   printf("\n");
   return (0);
 }
-
