@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Thu Jun 16 16:01:46 2016 Thomas Billot
+** Last update Thu Jun 16 16:37:33 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -27,7 +27,7 @@ int		fct_msz(t_map *map,
 			char **cmd)
 {
   int		i;
-  
+
   i = 0;
   map->x = atoi(cmd[1]);
   map->y = atoi(cmd[2]);
