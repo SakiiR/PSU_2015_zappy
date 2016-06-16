@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Thu Jun 16 15:59:22 2016 Barthelemy Gouby
+** Last update Thu Jun 16 16:49:02 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -69,5 +69,6 @@ int					event_end_incantation(t_server *server, va_list ap);
 int					event_new_incantation(t_server *server, va_list ap);
 int					event_lay_egg(t_server *server, va_list ap);
 int					event_player_expulsed(t_server *server, va_list ap);
+int					event_voir(t_server *server, va_list ap); /* (t_client *)(origin) */
 
 #endif /* ! EVENTS_H_ */
