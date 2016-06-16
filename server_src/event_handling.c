@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 16 16:15:55 2016 Thomas Billot
+** Last update Thu Jun 16 17:16:10 2016 Erwan Dupard
 */
 
 #define _BSD_SOURCE
@@ -28,11 +28,11 @@ int			handle_actions(t_server *server)
       timersub(&now, &iterator->start_of_action, &interval);
       if (!timercmp(&interval, &iterator->length_of_action, <))
 	{
-	  /* if (trigger_event(server, */
-	  /* 		    iterator->type, */
-	  /* 		    iterator->origin, */
-	  /* 		    iterator->argument) == RETURN_FAILURE); */
-	  printf("action executed\n");
+	  if (trigger_event(server,
+	  		    iterator->type,
+	  		    iterator->origin,
+	  		    iterator->argument) == RETURN_FAILURE)
+	    return (RETURN_FAILURE);
 	  iterator = remove_action(&server->game_data.pending_actions, iterator);
 	}
       else
