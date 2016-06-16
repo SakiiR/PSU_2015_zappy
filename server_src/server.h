@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 15 16:20:43 2016 Barthelemy Gouby
+** Last update Thu Jun 16 14:56:28 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -90,14 +90,6 @@ typedef struct				s_map
   t_u64					height;
 }					t_map;
 
-/* typedef struct				s_event */
-/* { */
-/*   e_event_type				type; */
-/*   t_client				*origin; */
-/*   unsigned int				timer; */
-/*   struct s_event			*next; */
-/* }					t_event; */
-
 typedef struct				s_client
 {
   char					*host_name;
@@ -118,6 +110,9 @@ typedef struct				s_team
   t_u64					nbr_of_members;
 }					t_team;
 
+struct					s_action;
+typedef struct s_action			t_action;
+
 typedef struct				s_game_data
 {
   t_map					map;
@@ -126,6 +121,7 @@ typedef struct				s_game_data
   t_team				*teams;
   t_u64					nbr_of_teams;
   t_u64					next_drone_id;
+  t_action				*pending_actions;
 }					t_game_data;
 
 typedef struct				s_server
@@ -214,6 +210,7 @@ int					option_id_speed(char **args,
 int					option_id_teams(char **args,
 							t_server *server);
 
+int				        graphic_broadcast(t_server *server, char *message);
 int					send_map_size(t_server *server,
 						      t_client *client,
 						      char *operands
@@ -248,6 +245,11 @@ int				        send_player_position(t_server *server,
 							 t_client *client,
 							 char *operands
 							 __attribute__((unused)));
+
+int		test_command(t_server *server,
+			     t_client *client,
+			     char *operands);
+
 
 # include "events.h"
 
