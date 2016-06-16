@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Thu Jun 16 14:59:41 2016 Barthelemy Gouby
+** Last update Thu Jun 16 17:27:28 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -131,6 +131,7 @@ int				process_server(t_server *server)
   server->game_data.pending_actions = NULL;
   tv.tv_usec = 50;
   tv.tv_sec = 0;
+  initialize_time(server);
   while (1)
     {
       FD_ZERO(&si);
