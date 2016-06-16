@@ -5,13 +5,14 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Wed Jun 15 12:17:59 2016 Thomas Billot
+** Last update Wed Jun 15 17:14:27 2016 Erwan Dupard
 */
 
 #ifndef XFUNC_H_
 # define XFUNC_H_
 
-#define BUFF_SIZE 1024
+# define BUFF_SIZE (1024)
+# define IS_NUMBER(c) ((c >= '0' && c <= '9'))
 
 #include <sys/socket.h>
 

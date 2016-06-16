@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Wed Jun 15 12:16:32 2016 Thomas Billot
+** Last update Thu Jun 16 13:27:14 2016 Thomas Billot
 */
 
 #include <netinet/in.h>
@@ -16,13 +16,6 @@
 #include <stdlib.h>
 #include "graphical.h"
 #include "xfunc.h"
-
-int			is_number(char c)
-{
-  if (c <= '0' || c >= '9')
-    return (RETURN_FAILURE);
-  return (RETURN_SUCESS);
-}
 
 bool			is_valid_ip(char *ip)
 {
@@ -42,7 +35,7 @@ int			check_options(t_option *options, char **argv)
   i = -1;
   while (argv[4][++i] != '\0')
     {
-      if (is_number(argv[4][i]))
+      if (!(IS_NUMBER(argv[4][i])))
 	return (RETURN_FAILURE);
     }
   if (strcmp(argv[3], "-p"))
@@ -64,9 +57,9 @@ int			main(int argc, char *argv[])
     }
   if ((server.socket = setup_networking(&options)) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (initialize_buffer(&(server.buffer_in), (4096 * 10)) == RETURN_FAILURE)
+  if (initialize_buffer(&(server.buffer_in), 4096) == RETURN_FAILURE)
    return (RETURN_FAILURE);
-  if (initialize_buffer(&(server.buffer_out), (4096 * 10)) == RETURN_FAILURE)
+  if (initialize_buffer(&(server.buffer_out), 4096) == RETURN_FAILURE)
    return (RETURN_FAILURE);
   if (launch_client(&server) == RETURN_FAILURE)
     return (RETURN_FAILURE);

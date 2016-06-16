@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 15:26:47 2016 Thomas Billot
+** Last update Thu Jun 16 15:30:55 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -14,34 +14,36 @@
 
 static t_ptr	g_ftab[] =
   {
-    {MSZ, NULL},
-    {BCT, NULL},
-    {TNA, NULL},
-    {PNW, NULL},
-    {PPO, NULL},
-    {PLV, NULL},
-    {PEX, NULL},
-    {PBC, NULL},
-    {PIC, NULL},
-    {PIE, NULL},
-    {PFK, NULL},
-    {PDR, NULL},
-    {PGT, NULL},
-    {PDI, NULL},
-    {ENW, NULL},
-    {EHT, NULL},
-    {EBO, NULL},
-    {EBI, NULL},
-    {SGT, NULL},
-    {SEG, NULL},
-    {SMG, NULL},
-    {SUC, NULL},
-    {SBP, NULL},
+    {MSZ, fct_msz},
+    {BCT, fct_bct},
+    {TNA, fct_tna},
+    {PNW, fct_pnw},
+    {PPO, fct_ppo},
+    {PLV, fct_plv},
+    {PEX, fct_pex},
+    {PBC, fct_pbc},
+    {PIC, fct_pic},
+    {PIE, fct_pie},
+    {PFK, fct_pfk},
+    {PDR, fct_pdr},
+    {PGT, fct_pgt},
+    {PDI, fct_pdi},
+    {ENW, fct_enw},
+    {EHT, fct_eht},
+    {EBO, fct_ebo},
+    {EBI, fct_ebi},
+    {SGT, fct_sgt},
+    {SEG, fct_seg},
+    {SMG, fct_smg},
+    {SUC, fct_suc},
+    {SBP, fct_sbp},
     {BIENVENUE, fct_welcome},
     {NULL, NULL}
   };
 
-int			handle_command(t_map *map, t_server *server, char *message)
+int			handle_command(t_map *map,
+				       t_server *server,
+				       char *message)
 {
   char			**cmd;
   int			i;
@@ -54,7 +56,6 @@ int			handle_command(t_map *map, t_server *server, char *message)
 	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCESS
 	      && g_ftab[i].f != NULL)
 	    {
-	      printf("Command found: %s\n", g_ftab[i].id);
 	      if (g_ftab[i].f(map, server, cmd) == RETURN_FAILURE)
 		return (RETURN_FAILURE);
 	    }
@@ -64,7 +65,9 @@ int			handle_command(t_map *map, t_server *server, char *message)
   return (RETURN_SUCESS);
 }
 
-int		        handle_server_input(t_map *map, t_server *server, fd_set *si)
+int		        handle_server_input(t_map *map,
+					    t_server *server,
+					    fd_set *si)
 {
   char			buffer[BUFF_SIZE];
   int			size_read;
@@ -78,7 +81,6 @@ int		        handle_server_input(t_map *map, t_server *server, fd_set *si)
       while ((next_message = get_next_message(&(server->buffer_in)))
 	     && strlen(next_message) > 0)
 	{
-	  printf("message : [%s]\n", next_message);
 	  if (handle_command(map, server, next_message) == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
 	  free(next_message);
@@ -89,11 +91,13 @@ int		        handle_server_input(t_map *map, t_server *server, fd_set *si)
   return (RETURN_SUCESS);
 }
 
-int			handle_server_output(t_map *map, t_server *server, fd_set *so)
+int			handle_server_output(t_map *map,
+					     t_server *server,
+					     fd_set *so)
 {
   char			*next_message;
   char			*data;
-  
+
   (void)map;
   if (FD_ISSET(server->socket, so))
     {
