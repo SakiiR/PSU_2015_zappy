@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Wed Jun 15 15:03:01 2016 Thomas Billot
+** Last update Thu Jun 16 13:31:13 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -19,7 +19,7 @@
 #define SOCKET_ERROR		(-1)
 #define USAGE			"./console -h [host-ip] -p [host-port]\n"
 #define	MSZ			"msz" /* Taille de la carte */
-#define BCT			"bct" /* Contenu de la carte (une case - toutes les cases) */
+#define BCT			"bct" /* Contenu de la carte */
 #define TNA			"tna" /* Nom des équipes */
 #define PNW			"pnw" /* Connexion d'un nouveau joueur */
 #define PPO			"ppo" /* Position d'un joueur */
@@ -27,7 +27,7 @@
 #define PIN			"pin" /* Inventaire d'un joueur */
 #define PEX			"pex" /* Expluse un joueur */
 #define PBC			"pbc" /* Un joueur fait un broadcast */
-#define PIC			"pic" /* Debut d'incantation pour tout les joueurs sur la case */
+#define PIC			"pic" /* incantation sur cette case */
 #define PIE			"pie" /* Fin d'incantation avec resultat (1 ou 0) */
 #define PFK			"pfk" /* Le joueur pond un oeuf */
 #define PDR			"pdr" /* Le joueur jete une ressource */
