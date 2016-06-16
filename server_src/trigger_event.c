@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Thu Jun 16 12:56:20 2016 Barthelemy Gouby
+** Last update Thu Jun 16 18:18:12 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -17,6 +17,7 @@ static const t_event_handler		g_events[] = {
   {NEW_INCANTATION, &event_new_incantation},
   {LAY_EGG, &event_lay_egg},
   {PLAYER_EXPULSED, &event_player_expulsed},
+  {INVENTORY, &event_inventaire},
   {0, NULL}
 };
 
