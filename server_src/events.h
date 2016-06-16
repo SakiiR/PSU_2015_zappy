@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Thu Jun 16 17:02:55 2016 Erwan Dupard
+** Last update Thu Jun 16 17:31:35 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -37,8 +37,7 @@ struct					s_action
   e_event_type				type;
   t_client				*origin;
   char					*argument;
-  struct timeval			start_of_action;
-  struct timeval			length_of_action;
+  unsigned int				duration;
   struct s_action			*next;
 };
 
