@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Wed Jun 15 17:26:57 2016 Erwan Dupard
+## Last update Thu Jun 16 13:29:08 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -28,7 +28,7 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/request3.c				\
 		  client_src/ai.c				\
 		  client_src/map.c				\
-		  client_src/list_fct.c			\
+		  client_src/list_fct.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
@@ -37,7 +37,7 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xsocket.c 			\
 		  graphic_src/xconnect.c 			\
 		  graphic_src/xclose.c 				\
-		  graphic_src/g_client.c 			\
+		  graphic_src/client.c				\
 		  graphic_src/fct_welcome.c 			\
 		  graphic_src/get_next_line.c			\
 		  utils/circular_buffer/circular_buffer.c	\

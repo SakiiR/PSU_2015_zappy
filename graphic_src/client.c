@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 15 15:26:47 2016 Thomas Billot
+** Last update Thu Jun 16 13:32:55 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -41,7 +41,9 @@ static t_ptr	g_ftab[] =
     {NULL, NULL}
   };
 
-int			handle_command(t_map *map, t_server *server, char *message)
+int			handle_command(t_map *map,
+				       t_server *server,
+				       char *message)
 {
   char			**cmd;
   int			i;
@@ -64,7 +66,9 @@ int			handle_command(t_map *map, t_server *server, char *message)
   return (RETURN_SUCESS);
 }
 
-int		        handle_server_input(t_map *map, t_server *server, fd_set *si)
+int		        handle_server_input(t_map *map,
+					    t_server *server,
+					    fd_set *si)
 {
   char			buffer[BUFF_SIZE];
   int			size_read;
@@ -89,11 +93,13 @@ int		        handle_server_input(t_map *map, t_server *server, fd_set *si)
   return (RETURN_SUCESS);
 }
 
-int			handle_server_output(t_map *map, t_server *server, fd_set *so)
+int			handle_server_output(t_map *map,
+					     t_server *server,
+					     fd_set *so)
 {
   char			*next_message;
   char			*data;
-  
+
   (void)map;
   if (FD_ISSET(server->socket, so))
     {
