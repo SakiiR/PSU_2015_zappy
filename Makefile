@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 16 13:29:08 2016 Thomas Billot
+## Last update Thu Jun 16 13:35:32 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -39,6 +39,7 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xclose.c 				\
 		  graphic_src/client.c				\
 		  graphic_src/fct_welcome.c 			\
+		  graphic_src/fct_msz.c 			\
 		  graphic_src/get_next_line.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Thu Jun 16 13:32:55 2016 Thomas Billot
+** Last update Thu Jun 16 13:35:17 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -14,7 +14,7 @@
 
 static t_ptr	g_ftab[] =
   {
-    {MSZ, NULL},
+    {MSZ, fct_msz},
     {BCT, NULL},
     {TNA, NULL},
     {PNW, NULL},
@@ -82,7 +82,6 @@ int		        handle_server_input(t_map *map,
       while ((next_message = get_next_message(&(server->buffer_in)))
 	     && strlen(next_message) > 0)
 	{
-	  printf("message : [%s]\n", next_message);
 	  if (handle_command(map, server, next_message) == RETURN_FAILURE)
 	    return (RETURN_FAILURE);
 	  free(next_message);
