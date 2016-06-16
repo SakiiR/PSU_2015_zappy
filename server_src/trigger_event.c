@@ -5,14 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Wed Jun 15 16:20:32 2016 Barthelemy Gouby
+** Last update Thu Jun 16 12:56:20 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
 static const t_event_handler		g_events[] = {
   {NEW_PLAYER, &event_new_player},
-  {GRAPHIC_BROADCAST, &event_graphic_broadcast},
   {BROADCAST, &event_broadcast},
   {END_INCANTATION, &event_end_incantation},
   {NEW_INCANTATION, &event_new_incantation},

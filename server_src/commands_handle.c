@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Mon Jun 13 18:39:42 2016 Erwan Dupard
+** Last update Thu Jun 16 14:52:23 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -20,6 +20,7 @@ static const t_command			g_commands[] = {
     {"sgt", &send_speed},
     {"bct", &send_case_content},
     {"mct", &send_map_content},
+    {"test", &test_command},
     {NULL, NULL}
 };
 

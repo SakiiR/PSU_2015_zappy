@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Wed Jun 15 16:14:42 2016 Erwan Dupard
+** Last update Thu Jun 16 15:05:10 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -34,6 +34,21 @@ typedef enum
     ETC
   }					e_event_type;
 
+struct					s_action
+{
+  e_event_type				type;
+  t_client				*origin;
+  char					*argument;
+  struct timeval			start_of_action;
+  struct timeval			length_of_action;
+  struct s_action			*next;
+};
+
+void					add_action(t_action **action_list,
+						   t_action *new_action);
+t_action				*remove_action(t_action **action_list,
+						       t_action *action);
+
 typedef struct				s_event_handler
 {
   e_event_type				type;
@@ -45,6 +60,8 @@ int				        trigger_event(t_server *server,
 						      e_event_type type,
 						      ...);
 
+int					handle_events(t_server *server);
+
 /*
  * Events Function Pointer
  */
@@ -53,7 +70,6 @@ int					event_broadcast(t_server *server, va_list ap);
 int					event_end_incantation(t_server *server, va_list ap);
 int					event_new_incantation(t_server *server, va_list ap);
 int					event_lay_egg(t_server *server, va_list ap);
-int					event_graphic_broadcast(t_server *server, va_list ap);
 int					event_player_expulsed(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Wed Jun 15 16:20:51 2016 Barthelemy Gouby
+** Last update Thu Jun 16 14:59:41 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -128,6 +128,7 @@ int				process_server(t_server *server)
 
   max_socket = 0;
   server->game_data.next_drone_id = 1;
+  server->game_data.pending_actions = NULL;
   tv.tv_usec = 50;
   tv.tv_sec = 0;
   while (1)
@@ -146,7 +147,8 @@ int				process_server(t_server *server)
 	}
       if (handle_clients_input(server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      
+      if (handle_events(server) == RETURN_FAILURE)
+      	return (RETURN_FAILURE);
       if (handle_server_output(server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
    }
