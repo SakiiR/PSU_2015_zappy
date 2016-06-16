@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 16 13:31:13 2016 Thomas Billot
+** Last update Thu Jun 16 13:45:46 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -127,7 +127,7 @@ int				fct_welcome(t_map *map,
 					    t_server *server,
 					    char **cmd __attribute__((unused)));
 int				fct_msz(t_map *map,
-					t_server *server,
+					t_server *server __attribute__((unused)),
 					char **cmd);
 
 #endif /* !GRAPHICAL_H_ */
