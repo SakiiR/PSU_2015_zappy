@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 11:05:20 2016 Barthelemy Gouby
+** Last update Fri Jun 17 13:06:40 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -269,6 +269,17 @@ int					gauche_command(t_server *server,
 						       t_client *client,
 						       char *operands
 						       __attribute__((unused)));
+
+/*
+ * Incantations
+ */
+
+typedef struct				s_incantation
+{
+  int					level;
+  int					players;
+  t_quantity				obj[NUMBER_OF_TYPES];
+}					t_incantation;
 
 # include "events.h"
 
