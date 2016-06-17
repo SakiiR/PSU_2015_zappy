@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 13:06:40 2016 Erwan Dupard
+** Last update Fri Jun 17 14:35:39 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -35,7 +35,7 @@ typedef unsigned int			t_u64;
 typedef enum
   {
     NORTH				= 1,
-    EST					= 2,
+    EAST				= 2,
     SOUTH				= 3,
     WEST				= 4
   }					e_orientation;
@@ -164,6 +164,10 @@ void					initialize_ressources(t_server *server);
 t_case					*map_get_case_at(const t_u64 x,
 							 const t_u64 y,
 							 const t_map *map);
+void					add_character_to_case(t_case *c,
+							      t_character *character);
+void					remove_character_from_case(t_case *c,
+								   t_character *character);
 void					place_character_randomly(t_map *map,
 								 t_character *character);
 void					text_display_map(t_map *map);
@@ -266,6 +270,10 @@ int					droite_command(t_server *server,
 						       char *operands
 						       __attribute__((unused)));
 int					gauche_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+int				        avance_command(t_server *server,
 						       t_client *client,
 						       char *operands
 						       __attribute__((unused)));
