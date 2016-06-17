@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 10:30:11 2016 Barthelemy Gouby
+** Last update Fri Jun 17 11:05:20 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -39,6 +39,12 @@ typedef enum
     SOUTH				= 3,
     WEST				= 4
   }					e_orientation;
+
+typedef enum
+  {
+    RIGHT				= 0,
+    LEFT				= 1
+  }					e_turn;
 
 typedef enum
   {
@@ -255,6 +261,15 @@ int					voir_command(t_server *server,
 int				        inventaire_command(t_server *server,
 							   t_client *client,
 							   char *operands);
+int					droite_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+int					gauche_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+
 # include "events.h"
 
 #endif /* !_SERVER_H_ */
