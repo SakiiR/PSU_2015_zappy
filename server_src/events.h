@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Fri Jun 17 10:51:24 2016 Barthelemy Gouby
+** Last update Fri Jun 17 12:41:55 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -32,6 +32,7 @@ typedef enum
     INVENTORY,
     VOIR,
     TURN,
+    ADVANCE,
     ETC
   }					e_event_type;
 
