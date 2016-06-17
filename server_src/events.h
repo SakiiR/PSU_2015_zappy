@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Fri Jun 17 12:41:55 2016 Barthelemy Gouby
+** Last update Fri Jun 17 13:22:42 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -75,5 +75,6 @@ int					event_player_expulsed(t_server *server, va_list ap);
 int					event_voir(t_server *server, va_list ap);
 int					event_inventaire(t_server *server, va_list ap);
 int					event_turn(t_server *server, va_list ap);
+int					event_advance(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
