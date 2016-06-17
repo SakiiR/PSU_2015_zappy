@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Fri Jun 17 16:22:47 2016 Erwan Dupard
+** Last update Fri Jun 17 16:24:13 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -95,7 +95,6 @@ int					try_incantation(t_case *c, t_u64 next_level)
   if ((int)players_count == incantation->level &&
       check_incantation_requirement(incantation, c) == RETURN_SUCCESS)
     do_incantation(c, next_level);
-  /* Can't do incantation ! :( */
   return (RETURN_FAILURE);
 }
 

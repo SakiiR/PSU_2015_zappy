@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Fri Jun 17 14:53:23 2016 Barthelemy Gouby
+** Last update Fri Jun 17 16:33:39 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -33,6 +33,7 @@ typedef enum
     VOIR,
     TURN,
     ADVANCE,
+    INCANTATION,
     ETC
   }					e_event_type;
 
@@ -76,6 +77,7 @@ int					event_voir(t_server *server, va_list ap);
 int					event_inventaire(t_server *server, va_list ap);
 int					event_turn(t_server *server, va_list ap);
 int					event_advance(t_server *server, va_list ap);
+int					event_incantation(t_server *server, va_list ap);
 int					event_take(t_server *server, va_list ap);
 int					event_throw(t_server *server, va_list ap);
 
