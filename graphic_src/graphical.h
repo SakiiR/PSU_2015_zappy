@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 16 16:47:59 2016 Thomas Beaudet
+** Last update Fri Jun 17 16:55:21 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -46,6 +46,9 @@
 
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
+
+# define TILE_H			(64) /* temporaire */
+# define TILE_W			(64) /* temporaire */
 
 /*
 ** Simple Typedefs
@@ -108,7 +111,9 @@ typedef struct			s_res
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
-}				t_res;
+  SDL_Texture			*texture;
+  Uint32			*pixels;
+}				t_res; // mettre un t_res *ress dans la struct t_map ?
 
 /*
 ** Function declaration
