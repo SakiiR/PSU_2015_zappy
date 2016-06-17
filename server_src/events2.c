@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Thu Jun 16 18:32:58 2016 Erwan Dupard
+** Last update Fri Jun 17 12:44:15 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -40,6 +40,6 @@ int					event_inventaire(t_server *server, va_list ap)
 	  client->character->quantities[MENDIANE],
 	  client->character->quantities[THYSTAME]
 	  );
-  write_to_buffer(client->buffer_out, server->buffer, strlen(server-buffer));
+  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
   return (RETURN_SUCCESS);
 }
