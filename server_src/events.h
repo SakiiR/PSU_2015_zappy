@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Thu Jun 16 16:49:02 2016 Erwan Dupard
+** Last update Thu Jun 16 18:20:47 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -29,6 +29,8 @@ typedef enum
     EGG_DIE_OF_HUNGER,
     END_OF_GAME,
     SERVER_MESSAGE,
+    INVENTORY,
+    VOIR,
     ETC
   }					e_event_type;
 
@@ -37,8 +39,7 @@ struct					s_action
   e_event_type				type;
   t_client				*origin;
   char					*argument;
-  struct timeval			start_of_action;
-  struct timeval			length_of_action;
+  unsigned int				duration;
   struct s_action			*next;
 };
 
@@ -69,6 +70,7 @@ int					event_end_incantation(t_server *server, va_list ap);
 int					event_new_incantation(t_server *server, va_list ap);
 int					event_lay_egg(t_server *server, va_list ap);
 int					event_player_expulsed(t_server *server, va_list ap);
-int					event_voir(t_server *server, va_list ap); /* (t_client *)(origin) */
+int					event_voir(t_server *server, va_list ap);
+int					event_inventaire(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
