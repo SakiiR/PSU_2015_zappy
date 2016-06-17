@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 14:51:52 2016 Barthelemy Gouby
+** Last update Fri Jun 17 16:18:45 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -294,6 +294,8 @@ typedef struct				s_incantation
   int					players;
   t_quantity				obj[NUMBER_OF_TYPES];
 }					t_incantation;
+
+int					try_incantation(t_case *c, t_u64 level);
 
 # include "events.h"
 
