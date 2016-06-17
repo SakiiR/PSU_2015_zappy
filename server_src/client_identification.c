@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Thu Jun 16 12:57:34 2016 Barthelemy Gouby
+** Last update Thu Jun 16 18:30:08 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -20,6 +20,8 @@ int					initialize_character(t_server *server,
   client->character->level = 1;
   memset(client->character->quantities, 0,
 	 NUMBER_OF_TYPES * sizeof(t_quantity));
+  client->character->quantities[FOOD] = 10;
+  client->character->hunger_timer = 0;
   client->character->orientation = NORTH;
   client->character->id = server->game_data.next_drone_id++;
   client->character->team = team->name;

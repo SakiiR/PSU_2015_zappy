@@ -5,11 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-<<<<<<< HEAD
-** Last update Thu Jun 16 17:28:23 2016 Barthelemy Gouby
-=======
-** Last update Thu Jun 16 17:01:33 2016 Erwan Dupard
->>>>>>> 3ec4d20411abf256cb4425ef4299704f8560012d
+** Last update Thu Jun 16 18:15:27 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -74,7 +70,7 @@ typedef struct				s_character
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
-  unsigned int				food_timer;
+  unsigned int			        hunger_timer;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
