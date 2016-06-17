@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 14 14:36:22 2016 Gabriel Goude
+** Last update Fri Jun 17 17:08:01 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -24,13 +24,28 @@ int			main(int ac, char **av)
   infos.client = &client;
   infos.map = &map;
   infos.request = NULL;
-  if (get_param(ac, av, &infos) == RETURN_FAILURE)
+  if (init_client(ac, av, &infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (init_connection(&infos) == RETURN_FAILURE)
+  if (play_loop(&infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (enter_game(&infos) == RETURN_FAILURE)
+  return (RETURN_SUCCESS);
+}
+
+int			init_client(int ac, char **av, t_infos *infos)
+{
+  if (get_param(ac, av, infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (ai(&infos) == RETURN_FAILURE)
+  if (init_connection(infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
+  if (initialize_buffer(&(infos->buffer), 10 * 4096) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (enter_game(infos) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  return (RETURN_SUCCESS);
+}
+
+int			play_loop(t_infos *infos)
+{
+  ai(infos);
   return (RETURN_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Tue Jun 14 16:17:07 2016 Gabriel Goude
+** Last update Fri Jun 17 17:07:49 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -97,6 +97,19 @@ typedef struct				s_map
 }					t_map;
 
 /*
+** main.c
+*/
+int					init_client(int ac, char **av, t_infos *infos);
+int					play_loop(t_infos *infos);
+
+/*
+** buf.c
+*/
+char					*read_buf(t_infos *infos);
+int					write_buf(t_infos *infos, char *str);
+void					fill_set(t_infos *infos);
+
+/*
 ** map.c
 */
 int					create_map(t_infos *infos);
@@ -106,7 +119,6 @@ void					init_map(t_map *map);
 ** ai.c
 */
 int					ai(t_infos *infos);
-void					fill_set(t_infos *infos);
 
 /*
 ** connect.c
