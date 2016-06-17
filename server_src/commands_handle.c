@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Thu Jun 16 17:10:56 2016 Erwan Dupard
+** Last update Fri Jun 17 13:31:57 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -22,6 +22,9 @@ static const t_command			g_commands[] = {
     {"mct", &send_map_content},
     {"voir", &voir_command},
     {"inventaire", &inventaire_command},
+    {"droite", &droite_command},
+    {"gauche", &gauche_command},
+    {"avance", &avance_command},
     {NULL, NULL}
 };
 

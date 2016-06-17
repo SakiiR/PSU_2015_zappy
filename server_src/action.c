@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Thu Jun 16 17:17:57 2016 Erwan Dupard
+** Last update Fri Jun 17 11:52:14 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -15,7 +15,10 @@ void		add_action(t_action **action_list, t_action *new_action)
   t_action	*iterator;
 
   if (*action_list == NULL)
-    *action_list = new_action;
+    {
+      *action_list = new_action;
+      printf("null add\n");
+    }
   else
     {
       iterator = *action_list;
@@ -49,5 +52,6 @@ t_action	*remove_action(t_action **action_list, t_action *action)
 	  iterator = iterator->next;
 	}
     }
+  free(action);
   return (next_action);
 }

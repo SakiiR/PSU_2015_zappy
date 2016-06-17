@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 16 18:37:20 2016 Karine Aknin
+** Last update Fri Jun 17 16:26:02 2016 Karine Aknin
 */
 
 #ifndef _SERVER_H_
@@ -35,10 +35,16 @@ typedef unsigned int			t_u64;
 typedef enum
   {
     NORTH				= 1,
-    EST					= 2,
+    EAST				= 2,
     SOUTH				= 3,
     WEST				= 4
   }					e_orientation;
+
+typedef enum
+  {
+    RIGHT				= 0,
+    LEFT				= 1
+  }					e_turn;
 
 typedef enum
   {
@@ -70,7 +76,7 @@ typedef struct				s_character
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
-  unsigned int				food_timer;
+  unsigned int			        hunger_timer;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -158,6 +164,10 @@ void					initialize_ressources(t_server *server);
 t_case					*map_get_case_at(const t_u64 x,
 							 const t_u64 y,
 							 const t_map *map);
+void					add_character_to_case(t_case *c,
+							      t_character *character);
+void					remove_character_from_case(t_case *c,
+								   t_character *character);
 void					place_character_randomly(t_map *map,
 								 t_character *character);
 void					text_display_map(t_map *map);
@@ -255,6 +265,32 @@ int					voir_command(t_server *server,
 int				        inventaire_command(t_server *server,
 							   t_client *client,
 							   char *operands);
+int					droite_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+int					gauche_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+int				        avance_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+
+/*
+ * Incantations
+ */
+
+typedef struct				s_incantation
+{
+  int					level;
+  int					players;
+  t_quantity				obj[NUMBER_OF_TYPES];
+}					t_incantation;
+
+int					try_incantation(t_case *c, t_u64 next_level);
+
 # include "events.h"
 
 #endif /* !_SERVER_H_ */
