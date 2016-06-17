@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 13:32:18 2016 Barthelemy Gouby
+** Last update Fri Jun 17 14:35:39 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -277,6 +277,17 @@ int				        avance_command(t_server *server,
 						       t_client *client,
 						       char *operands
 						       __attribute__((unused)));
+
+/*
+ * Incantations
+ */
+
+typedef struct				s_incantation
+{
+  int					level;
+  int					players;
+  t_quantity				obj[NUMBER_OF_TYPES];
+}					t_incantation;
 
 # include "events.h"
 
