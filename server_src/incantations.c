@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Fri Jun 17 15:26:20 2016 Erwan Dupard
+** Last update Fri Jun 17 16:18:40 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -84,7 +84,7 @@ static void			        incantation(t_case *c, t_u64 level)
     }
 }
 
-int					try_incantation(t_case *c, t_u64 level)
+int					try_incantation(t_case *c, t_u64 next_level)
 {
   t_incantation				*incantation;
   t_u64					players_count;
