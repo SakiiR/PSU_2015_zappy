@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 13:10:02 2016 Barthelemy Gouby
-** Last update Thu Jun 16 17:35:49 2016 Barthelemy Gouby
+** Last update Thu Jun 16 18:20:38 2016 Erwan Dupard
 */
 
 #include <math.h>
@@ -22,6 +22,7 @@ int					voir_command(t_server *server,
   printf("creating voir action\n");
   if ((new_action = malloc(sizeof(*new_action))) == NULL)
     return (RETURN_FAILURE);
+  new_action->type = VOIR;
   new_action->origin = client;
   new_action->duration = 7;
   add_action(&server->game_data.pending_actions, new_action);
@@ -39,6 +40,7 @@ int				        inventaire_command(t_server *server,
   printf("creating inventaire action\n");
   if ((new_action = malloc(sizeof(*new_action))) == NULL)
     return (RETURN_FAILURE);
+  new_action->type = INVENTORY;
   new_action->origin = client;
   new_action->duration = 7;
   add_action(&server->game_data.pending_actions, new_action);
