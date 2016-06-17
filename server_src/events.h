@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Thu Jun 16 17:31:35 2016 Barthelemy Gouby
+** Last update Thu Jun 16 18:20:47 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -29,6 +29,8 @@ typedef enum
     EGG_DIE_OF_HUNGER,
     END_OF_GAME,
     SERVER_MESSAGE,
+    INVENTORY,
+    VOIR,
     ETC
   }					e_event_type;
 
