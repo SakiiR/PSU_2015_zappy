@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Fri Jun 17 13:31:57 2016 Barthelemy Gouby
+** Last update Fri Jun 17 14:50:48 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -25,6 +25,8 @@ static const t_command			g_commands[] = {
     {"droite", &droite_command},
     {"gauche", &gauche_command},
     {"avance", &avance_command},
+    {"prend", &prend_command},
+    {"pose", &pose_command},
     {NULL, NULL}
 };
 
