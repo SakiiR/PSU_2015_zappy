@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 16:32:43 2016 Erwan Dupard
+** Last update Fri Jun 17 16:33:21 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -277,6 +277,12 @@ int				        avance_command(t_server *server,
 						       t_client *client,
 						       char *operands
 						       __attribute__((unused)));
+int					prend_command(t_server *server,
+						      t_client *client,
+						      char *operands);
+int					pose_command(t_server *server,
+						     t_client *client,
+						     char *operands);
 
 /*
  * Incantations
