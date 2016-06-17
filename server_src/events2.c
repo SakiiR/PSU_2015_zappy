@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Fri Jun 17 12:45:51 2016 Erwan Dupard
+** Last update Fri Jun 17 12:48:16 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -22,7 +22,7 @@ int					event_inventaire(t_server *server, va_list ap)
   t_client				*client;
   
   (void)server;
-  client = (t_client *) va_arg(ap, void *);
+  client = va_arg(ap, t_client *);
   printf("client : %p\n", (void *)client);
   sprintf(server->buffer,
 	  "{food %d"
@@ -67,4 +67,9 @@ int					event_turn(t_server *server, va_list ap)
 	  client->character->orientation);
   graphic_broadcast(server, server->buffer);
   return (RETURN_SUCCESS);
+}
+
+int				event_advance(t_server *server, va_list ap)
+{
+  t_client
 }
