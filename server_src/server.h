@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 16 18:25:55 2016 Erwan Dupard
+** Last update Fri Jun 17 11:05:20 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -42,6 +42,12 @@ typedef enum
 
 typedef enum
   {
+    RIGHT				= 0,
+    LEFT				= 1
+  }					e_turn;
+
+typedef enum
+  {
     FOOD				= 0,
     LINEMATE				= 1,
     DERAUMERE				= 2,
@@ -70,7 +76,7 @@ typedef struct				s_character
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
-  unsigned int				food_timer;
+  unsigned int			        hunger_timer;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -255,6 +261,15 @@ int					voir_command(t_server *server,
 int				        inventaire_command(t_server *server,
 							   t_client *client,
 							   char *operands);
+int					droite_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+int					gauche_command(t_server *server,
+						       t_client *client,
+						       char *operands
+						       __attribute__((unused)));
+
 # include "events.h"
 
 #endif /* !_SERVER_H_ */
