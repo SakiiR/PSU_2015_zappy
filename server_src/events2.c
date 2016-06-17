@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Fri Jun 17 12:44:15 2016 Erwan Dupard
+** Last update Fri Jun 17 12:45:51 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -41,5 +41,30 @@ int					event_inventaire(t_server *server, va_list ap)
 	  client->character->quantities[THYSTAME]
 	  );
   write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+  return (RETURN_SUCCESS);
+}
+
+int					event_turn(t_server *server, va_list ap)
+{
+  t_client				*client;
+  e_turn				turn;
+
+  printf("executing turn\n");
+  client = va_arg(ap, t_client *);
+  turn = va_arg(ap, e_turn);
+  if (turn == RIGHT)
+    client->character->orientation++;
+  else if (turn == LEFT)
+    client->character->orientation--;
+  if (client->character->orientation > 4)
+    client->character->orientation = 1;
+  else if (client->character->orientation < 1)
+    client->character->orientation = 4;
+  sprintf(server->buffer, "ppo %i %i %i %i\n",
+	  client->character->id, 
+	  client->character->current_case->x,
+	  client->character->current_case->y,
+	  client->character->orientation);
+  graphic_broadcast(server, server->buffer);
   return (RETURN_SUCCESS);
 }
