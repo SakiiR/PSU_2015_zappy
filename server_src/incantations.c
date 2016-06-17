@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Fri Jun 17 16:18:40 2016 Erwan Dupard
+** Last update Fri Jun 17 16:22:47 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -37,7 +37,7 @@ static t_u64				count_client_by_level(t_case *c, t_u64 level)
   return (i);
 }
 
-static t_incantation			*get_incatation_by_level(t_u64 level)
+static t_incantation			*get_incantation_by_level(t_u64 level)
 {
   int					i;
 
@@ -63,7 +63,7 @@ static int				check_incantation_requirement(t_incantation *incantation, t_case *
   return (RETURN_SUCCESS);
 }
 
-static void			        incantation(t_case *c, t_u64 level)
+static void			        do_incantation(t_case *c, t_u64 level)
 {
   t_character				*iterator;
   t_incantation				*incantation;
@@ -76,7 +76,7 @@ static void			        incantation(t_case *c, t_u64 level)
 	++iterator->level;
       iterator = iterator->next_in_case;
     }
-  if ((incantation = get_incantation_by_level(new_level - 1)) != NULL)
+  if ((incantation = get_incantation_by_level(level - 1)) != NULL)
     {
       i = -1;
       while (++i < 7)
@@ -89,12 +89,12 @@ int					try_incantation(t_case *c, t_u64 next_level)
   t_incantation				*incantation;
   t_u64					players_count;
 
-  if ((incantation = get_incantation_by_level(level)) == NULL)
+  if ((incantation = get_incantation_by_level(next_level)) == NULL)
     return (RETURN_FAILURE);
-  players_count = count_client_by_level(c, level);
+  players_count = count_client_by_level(c, next_level);
   if ((int)players_count == incantation->level &&
       check_incantation_requirement(incantation, c) == RETURN_SUCCESS)
-    incantation(c, level);
+    do_incantation(c, next_level);
   /* Can't do incantation ! :( */
   return (RETURN_FAILURE);
 }
