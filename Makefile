@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 17 13:10:40 2016 Erwan Dupard
+## Last update Fri Jun 17 15:08:57 2016 Gabriel Goude
 ##
 
 CC		= gcc
@@ -29,6 +29,7 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/ai.c				\
 		  client_src/map.c				\
 		  client_src/list_fct.c				\
+		  client_src/buf.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
@@ -81,6 +82,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/graphic_commands.c			\
 		  server_src/graphic_commands2.c		\
 		  server_src/drone_commands.c			\
+		  server_src/drone_commands2.c			\
 		  server_src/client_identification.c		\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
