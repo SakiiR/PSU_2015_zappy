@@ -5,31 +5,40 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:31:29 2016 Gabriel Goude
-** Last update Tue Jun 14 17:13:29 2016 Erwan Dupard
+** Last update Fri Jun 17 17:04:56 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
 #include <circular_buffer/circular_buffer.h>
 #include "resources.h"
 
+int			prend(t_infos *infos, char *str);
+int			voir(t_infos *infos);
+int			inventaire(t_infos *infos);
+
 int			ai(t_infos *infos)
 {
-  infos->select.tv.tv_sec = 5;
-  infos->select.tv.tv_usec = 0;
-  if (initialize_buffer(&(infos->buffer), 10 * 4096) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
-  if (enter_game(infos) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
+  char			*msg;
+
+  voir(infos);
+  msg = read_buf(infos);
+  if (msg)
+    printf("%s", msg);
+  prend(infos, "nourriture");
+  msg = read_buf(infos);
+  if (msg)
+    printf("%s", msg);
+  inventaire(infos);
+  msg = read_buf(infos);
+  if (msg)
+    printf("%s", msg);
   return (RETURN_SUCCESS);
 }
 
 /*
- * Qu-est-ce que ce code fou ici ? :)
- */
-void			fill_set(t_infos *infos)
-{
-  FD_ZERO(&(infos->select.rfds));
-  FD_ZERO(&(infos->select.wfds));
-  FD_SET(infos->socket, &(infos->select.rfds));
-  FD_SET(infos->socket, &(infos->select.wfds));
-}
+** AI Will be like :
+** WHILE (NOT MORT)
+**	update <- get messages and update local memory
+**	actions <- AI instructions
+**	send <- send instructions
+*/

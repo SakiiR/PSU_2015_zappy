@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 16:43:03 2016 Gabriel Goude
-** Last update Mon Jun 13 17:54:59 2016 Gabriel Goude
+** Last update Fri Jun 17 16:35:29 2016 Gabriel Goude
 */
 
 #include <unistd.h>
@@ -14,6 +14,9 @@
 
 int					connect_nbr(t_infos *infos)
 {
-  write(infos->socket, "connect_nbr\n", 12);
+  if (write_buf(infos, "connect_nbr") == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (add_elem(infos, CONNECT_NBR) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
