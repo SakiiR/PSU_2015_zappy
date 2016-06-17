@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 17 15:05:07 2016 Gabriel Goude
+** Last update Fri Jun 17 17:08:01 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -26,7 +26,7 @@ int			main(int ac, char **av)
   infos.request = NULL;
   if (init_client(ac, av, &infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  if (ai(&infos) == RETURN_FAILURE)
+  if (play_loop(&infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
@@ -41,5 +41,11 @@ int			init_client(int ac, char **av, t_infos *infos)
     return (RETURN_FAILURE);
   if (enter_game(infos) == RETURN_FAILURE)
     return (RETURN_FAILURE);
+  return (RETURN_SUCCESS);
+}
+
+int			play_loop(t_infos *infos)
+{
+  ai(infos);
   return (RETURN_SUCCESS);
 }
