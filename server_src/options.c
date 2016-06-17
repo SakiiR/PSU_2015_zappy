@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Thu Jun 16 15:59:08 2016 Barthelemy Gouby
+** Last update Fri Jun 17 10:24:49 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -90,14 +90,10 @@ int					check_options(t_server *server, char *file_name)
   if (!(server->game_data.teams
 	&& server->game_data.nbr_of_teams > 0) ||
       !(server->port >= MIN_PORT && server->port <= MAX_PORT) ||
-      !(server->game_data.map.width >= MIN_WORLD_X
-	&& server->game_data.map.width <= MAX_WORLD_X) ||
-      !(server->game_data.map.height >= MIN_WORLD_Y
-	&& server->game_data.map.height <= MAX_WORLD_Y) ||
-      !(server->game_data.base_max_members >= MIN_MAX_CLIENTS &&
-        server->game_data.base_max_members <= MAX_MAX_CLIENTS) ||
-      !(server->game_data.speed >= MIN_SPEED &&
-	server->game_data.speed <= MAX_SPEED)
+      !(server->game_data.map.width >= MIN_WORLD_X) ||
+      !(server->game_data.map.height >= MIN_WORLD_Y) ||
+      !(server->game_data.base_max_members >= MIN_MAX_CLIENTS) ||
+      !(server->game_data.speed >= MIN_SPEED)
       )
     {
       usage(file_name);

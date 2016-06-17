@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Wed Jun 15 11:55:11 2016 Erwan Dupard
+** Last update Fri Jun 17 14:05:14 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -20,6 +20,7 @@ int					initialize_map(t_map *map)
   i = 0;
   if (!(cases = malloc(sizeof(*cases) * map->width * map->height)))
     return (RETURN_FAILURE);
+  printf("building map\n");
   while (i < map->width * map->height)
     {
       cases[i].characters = NULL;
@@ -32,6 +33,7 @@ int					initialize_map(t_map *map)
       cases[i].quantities[THYSTAME] = 0;
       cases[i].x = i % map->width;
       cases[i].y = i / map->height;
+      printf("case %i x: %i y: %i\n", i, cases[i].x, cases[i].y);
       i++;
     }
   map->cases = cases;
@@ -44,9 +46,11 @@ t_case					*map_get_case_at(const t_u64 x,
 {
   t_u64					index;
 
+  printf("looking for case at x: %i y: %i\n", x, y);
   index = y * map->width + x;
   if (index >= map->height * map->width)
     return (NULL);
+  printf("found case %i at x: %i y: %i\n", index, map->cases[index].x, map->cases[index].y);
   return (&map->cases[index]);
 }
 
