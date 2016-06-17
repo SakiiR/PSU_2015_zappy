@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 16:02:31 2016 Gabriel Goude
-** Last update Mon Jun 13 18:25:03 2016 Erwan Dupard
+** Last update Fri Jun 17 16:33:30 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -23,9 +23,10 @@ int					prend(t_infos *infos, char *obj)
     return (RETURN_FAILURE);
   strcpy(str, "prend ");
   strcpy(str + 6, obj);
-  str[6 + len] = '\n';
-  write(infos->socket, str, 7 + len);
+  str[6 + len] = 0;
+  write_buf(infos, str);
   free(str);
+  add_elem(infos, PREND);
   return (RETURN_SUCCESS);
 }
 
@@ -43,15 +44,17 @@ int					pose(t_infos *infos, char *obj)
     return (RETURN_FAILURE);
   strcpy(str, "pose ");
   strcpy(str + 5, obj);
-  str[5 + len] = '\n';
-  write(infos->socket, str, 6 + len);
+  str[5 + len] = 0;
+  write_buf(infos, str);
   free(str);
+  add_elem(infos, POSE);
   return (RETURN_SUCCESS);
 }
 
 int					expulse(t_infos *infos)
 {
-  write(infos->socket, "expulse\n", 8);
+  write_buf(infos, "expulse");
+  add_elem(infos, EXPULSE);
   return (RETURN_SUCCESS);
 }
 
@@ -65,14 +68,16 @@ int					broadcast(t_infos *infos, char *text)
     return (RETURN_FAILURE);
   strcpy(str, "broadcast ");
   strcpy(str + 10, text);
-  str[10 + len] = '\n';
-  write(infos->socket, str, 11 + len);
+  str[10 + len] = 0;
+  write_buf(infos, str);
   free(str);
+  add_elem(infos, BROADCAST);
   return (RETURN_SUCCESS);
 }
 
 int					incantation(t_infos *infos)
 {
-  write(infos->socket, "incantation\n", 12);
+  write_buf(infos, "incantation");
+  add_elem(infos, INCANTATION);
   return (RETURN_SUCCESS);
 }
