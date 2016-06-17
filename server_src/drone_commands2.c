@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Fri Jun 17 12:03:06 2016 Barthelemy Gouby
+** Last update Fri Jun 17 16:26:42 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -28,6 +28,26 @@ int				        avance_command(t_server *server,
       new_action->next = NULL;
       add_action(&server->game_data.pending_actions, new_action);
       printf("finished creating action\n");
+    }
+  return (RETURN_SUCCESS);
+}
+
+int					incantation_command(t_server *server,
+							    t_client *client,
+							    char *operands
+							    __attribute__((unused)))
+{
+  t_action				*new_action;
+  
+  if (client->type == DRONE)
+    {
+      if ((new_action = malloc(sizeof(*new_action))) == NULL)
+	return (RETURN_FAILURE);
+      new_action->type = INCANTATION;
+      new_action->origin = client;
+      new_action->duration = 300;
+      new_action->next = NULL;
+      add_action(&server->game_data.pending_actions, new_action);
     }
   return (RETURN_SUCCESS);
 }
