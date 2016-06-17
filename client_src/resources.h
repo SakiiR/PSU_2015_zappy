@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Tue Jun 14 16:17:07 2016 Gabriel Goude
+** Last update Fri Jun 17 14:58:26 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -95,6 +95,17 @@ typedef struct				s_map
   unsigned int				y;
   t_tile				*tiles;
 }					t_map;
+
+/*
+** main.c
+*/
+int					init_client(int ac, char **av, t_infos *infos);
+
+/*
+** buf.c
+*/
+char					*read_buf(t_infos *infos);
+int					write_buf(t_infos *infos, char *str);
 
 /*
 ** map.c

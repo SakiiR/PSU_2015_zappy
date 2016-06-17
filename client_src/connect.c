@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 14 16:26:51 2016 Gabriel Goude
+** Last update Fri Jun 17 15:00:51 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -23,31 +23,27 @@
 */
 int					enter_game(t_infos *infos)
 {
-  char					s[4096];
-  ssize_t				i;
-  int					retval;
+  char					*msg;
 
-  fill_set(infos);
-  while ((retval = select(1, &(infos->select.rfds), NULL, NULL, &(infos->select.tv))) == 0)
-    fill_set(infos);
-  i = read(infos->socket, s, 4096);
-  s[i - 1] = 0;
-  if (strcmp(s, "BIENVENUE") == 0)
+  if ((msg = read_buf(infos)) == NULL)
+    return (RETURN_FAILURE);
+  if (strcmp(msg, "BIENVENUE\n") == 0)
   {
-    write(infos->socket, infos->client->team_name, strlen(infos->client->team_name));
-    write(infos->socket, "\n", 1);
-    i = read(infos->socket, s, 4096);
-    s[i - 1] = 0;
-    if (atoi(s) > 0)
+    free(msg);
+    write_buf(infos, infos->client->team_name);
+    if ((msg = read_buf(infos)) == NULL)
+      return (RETURN_FAILURE);
+    if (atoi(msg) > 0)
     {
-      i = read(infos->socket, s, 4096);
-      s[i - 1] = 0;
-      if (get_world_size(infos, s) == RETURN_FAILURE)
+      free(msg);
+      msg = read_buf(infos);
+      if (get_world_size(infos, msg) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      free(msg);
       if (create_map(infos) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
-      return (RETURN_SUCCESS);
+    return (RETURN_SUCCESS);
   }
   return (RETURN_FAILURE);
 }
@@ -59,7 +55,6 @@ int					get_world_size(t_infos *infos, char *s)
   int					i;
   int					j;
 
-  /* MOOOCHE TODO */
   i = 0;
   while (s[i] && s[i] != ' ')
   {
