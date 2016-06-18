@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sat Jun 18 16:27:29 2016 Thomas Billot
+** Last update Sat Jun 18 17:22:46 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -125,7 +125,6 @@ int			launch_client(t_server *server)
 
   tv.tv_usec = 50;
   tv.tv_sec = 0;
-  max_socket = 0;
   map.x = 0;
   map.y = 0;
   map.tiles = NULL;
@@ -153,7 +152,7 @@ void		aff_map_info(t_map *map)
 {
   int		i;
   t_character	*current;
-  
+
   i = -1;
   if ((map->x == 0) || (map->x == 0))
     return;

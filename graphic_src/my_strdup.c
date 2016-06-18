@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Sat Jun 18 14:22:58 2016 Thomas Billot
-** Last update Sat Jun 18 16:02:30 2016 Thomas Billot
+** Last update Sat Jun 18 17:23:40 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -14,12 +14,11 @@
 #include <errno.h>
 #include "xfunc.h"
 
-
 char		*my_strdup(char *str)
 {
   char		*new;
   int		i;
-  
+
   if (str == NULL ||
       (new = malloc(sizeof(*new) * strlen(str))) == NULL)
     {

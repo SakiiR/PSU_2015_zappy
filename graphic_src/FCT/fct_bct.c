@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 13:51:36 2016 Thomas Billot
-** Last update Sat Jun 18 14:50:28 2016 Thomas Billot
+** Last update Sat Jun 18 16:31:43 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -19,11 +19,6 @@ int		fct_bct(t_map *map,
   int		x;
   int		y;
 
-  /*i = 0;
-  printf("fct_%s args:", cmd[i]);
-  while (cmd[++i])
-    printf(" %s |", cmd[i]);
-    printf("\n");*/
   x = atoi(cmd[1]);
   y = atoi(cmd[2]);
   if (map)

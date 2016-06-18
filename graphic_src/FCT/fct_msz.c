@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Sat Jun 18 15:46:50 2016 Thomas Billot
+** Last update Sat Jun 18 16:32:51 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -40,7 +40,7 @@ int		generate_map(t_map *map)
   t_tile	*new;
   int		x;
   int		y;
-  
+
   if ((new = malloc(sizeof(*new) * (map->x * map->y))) == NULL)
     return (RETURN_FAILURE);
   map->tiles = new;
