@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Fri Jun 17 16:38:53 2016 Barthelemy Gouby
+** Last update Fri Jun 17 16:45:44 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -15,14 +15,19 @@ int					event_take(t_server *server, va_list ap)
   t_client			*client;
 
   client = va_arg(ap, t_client *);
-
+  (void) server;
+  (void) client;
+  return (RETURN_SUCCESS);
 }
 
 int					event_throw(t_server *server, va_list ap)
 {
   t_client			*client;
 
+  (void) client;
   client = va_arg(ap, t_client *);
+  (void) server;
+  return (RETURN_SUCCESS);
 }
 
 int					event_incantation(t_server *server, va_list ap)

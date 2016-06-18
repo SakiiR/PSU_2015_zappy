@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 16:33:21 2016 Erwan Dupard
+** Last update Fri Jun 17 17:06:09 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -154,6 +154,7 @@ int					process_server(t_server *server);
 int					handle_command(char *command,
 						      t_server *server,
 						      t_client *client);
+int					player_food_consumption(t_server *server);
 int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input);
