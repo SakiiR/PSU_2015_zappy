@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Fri Jun 17 16:33:39 2016 Erwan Dupard
+** Last update Fri Jun 17 17:06:32 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -61,8 +61,6 @@ typedef struct				s_event_handler
 int				        trigger_event(t_server *server,
 						      e_event_type type,
 						      ...);
-
-int					handle_events(t_server *server);
 
 /*
  * Events Function Pointer
