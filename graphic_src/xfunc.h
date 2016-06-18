@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Wed Jun 15 17:14:27 2016 Erwan Dupard
+** Last update Sat Jun 18 14:30:45 2016 Thomas Billot
 */
 
 #ifndef XFUNC_H_
@@ -24,5 +24,6 @@ int		xconnect(int sockfd,
 			 socklen_t socklen);
 int		xsocket(int domain, int type, int protocol);
 int		xclose(int fd);
+char		*my_strdup(char *str);
 
 #endif /* !XFUNC_H_ */
