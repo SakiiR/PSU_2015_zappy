@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 18 13:35:41 2016 Thomas Billot
+** Last update Sat Jun 18 17:23:13 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -133,7 +133,7 @@ typedef struct			s_res
   SDL_Event			event;
   SDL_Texture			*texture;
   Uint32			*pixels;
-}				t_res; /* mettre un t_res *ress dans la struct t_map ? (maybe) */
+}				t_res;
 
 /*
 ** Function declaration
