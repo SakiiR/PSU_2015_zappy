@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 17 16:32:06 2016 Erwan Dupard
+## Last update Sat Jun 18 14:29:10 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -39,7 +39,8 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xconnect.c 			\
 		  graphic_src/xclose.c 				\
 		  graphic_src/client.c				\
-		  graphic_src/FCT/fct_welcome.c 			\
+		  graphic_src/my_strdup.c			\
+		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
 		  graphic_src/FCT/fct_bct.c 			\
 		  graphic_src/FCT/fct_tna.c 			\

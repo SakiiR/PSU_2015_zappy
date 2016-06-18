@@ -5,12 +5,16 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Thu Jun 16 15:30:55 2016 Thomas Billot
+** Last update Sat Jun 18 16:27:29 2016 Thomas Billot
 */
 
 #include <sys/select.h>
 #include "graphical.h"
 #include "xfunc.h"
+
+/* DEBUGGING */
+void		aff_map_info(t_map *map);
+/**/
 
 static t_ptr	g_ftab[] =
   {
@@ -122,6 +126,9 @@ int			launch_client(t_server *server)
   tv.tv_usec = 50;
   tv.tv_sec = 0;
   max_socket = 0;
+  map.x = 0;
+  map.y = 0;
+  map.tiles = NULL;
   while (1)
     {
       FD_ZERO(&si);
@@ -135,6 +142,37 @@ int			launch_client(t_server *server)
 	return (RETURN_FAILURE);
       if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      aff_map_info(&map);
     }
   return (RETURN_SUCESS);
+}
+
+/* DEBUGGING PRUPOSE */
+
+void		aff_map_info(t_map *map)
+{
+  int		i;
+  t_character	*current;
+  
+  i = -1;
+  if ((map->x == 0) || (map->x == 0))
+    return;
+  while (++i <= (map->x * map->y))
+    {
+      if ((map->tiles == NULL))
+	return;
+      if (map->tiles[i].players > 0)
+	{
+	  current = map->tiles[i].characters;
+	  while (current != NULL)
+	    {
+	      printf("-- id: [%d], level: [%d], team: [%s], orientation: [%d] --\n",
+		     current->id,
+		     current->level,
+		     current->team,
+		     (int)current->orientation);
+	      current = current->next_in_case;
+	    }
+	}
+    }
 }
