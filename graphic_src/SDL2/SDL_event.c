@@ -5,11 +5,11 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Thu Jun 16 14:44:04 2016 Thomas Beaudet
-** Last update Thu Jun 16 16:50:33 2016 Thomas Beaudet
+** Last update Thu Jun 16 18:02:48 2016 Thomas Beaudet
 */
 
 #include <SDL2/SDL.h>
-#include "graphical.h"
+#include "../graphical.h"
 
 int			sdl_event(t_res *ress)
 {

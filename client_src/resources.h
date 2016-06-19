@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Fri Jun 17 15:13:04 2016 Gabriel Goude
+** Last update Fri Jun 17 17:07:49 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -100,6 +100,7 @@ typedef struct				s_map
 ** main.c
 */
 int					init_client(int ac, char **av, t_infos *infos);
+int					play_loop(t_infos *infos);
 
 /*
 ** buf.c

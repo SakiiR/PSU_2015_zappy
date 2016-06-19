@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 16 16:47:59 2016 Thomas Beaudet
+** Last update Sat Jun 18 17:23:13 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -47,10 +47,14 @@
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
+# define TILE_W			(64) /* temporaire */
+# define TILE_H			(64) /* temporaire (Nice !!)*/
+
 /*
 ** Simple Typedefs
 */
 
+typedef unsigned int	       	t_u64;
 typedef unsigned int		t_quantity;
 typedef int			t_socket;
 typedef struct sockaddr_in	t_sockaddr;
@@ -80,6 +84,14 @@ typedef struct			s_option
 
 typedef enum
   {
+    NORTH		       	= 1,
+    EAST		       	= 2,
+    SOUTH		       	= 3,
+    WEST		       	= 4
+  }			       	e_orientation;
+
+typedef enum
+  {
     FOOD			= 0,
     LINEMATE			= 1,
     DERAUMERE			= 2,
@@ -90,8 +102,19 @@ typedef enum
     NUMBER_OF_TYPES		= 7
   }				e_object_types;
 
+typedef struct			s_character
+{
+  t_u64				level;
+  t_u64			        id;
+  char 				*team;
+  t_quantity   			quantities[NUMBER_OF_TYPES];
+  e_orientation		        orientation;
+  struct s_character   		*next_in_case;
+}			       	t_character;
+
 typedef struct			s_tile
 {
+  t_character			*characters;
   t_quantity			obj[NUMBER_OF_TYPES];
   unsigned int			players;
 }				t_tile;
@@ -108,6 +131,8 @@ typedef struct			s_res
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
+  SDL_Texture			*texture;
+  Uint32			*pixels;
 }				t_res;
 
 /*
