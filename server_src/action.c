@@ -5,14 +5,14 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:28:07 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:34:58 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
 void		add_action(t_action **action_queue, t_action *new_action)
 {
-  t_action	*iterator;
+  t_action				*iterator;
 
   if (*action_queue == NULL)
     {
@@ -42,8 +42,8 @@ void		pop_action(t_action **action_queue)
 
 t_action	*remove_action(t_action **action_queue, t_action *action)
 {
-  t_action	*iterator;
-  t_action	*next_action;
+  t_action				*iterator;
+  t_action				*next_action;
 
   if (action == *action_queue)
     {
