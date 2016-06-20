@@ -1,11 +1,11 @@
 /*
 ** main.c for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy/graphic_src
-** 
+**
 ** Made by Thomas Billot
 ** Login   <mikaz3@epitech.net>
-** 
+**
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Mon Jun 20 13:56:13 2016 Erwan Dupard
+** Last update Mon Jun 20 16:12:44 2016 Thomas Beaudet
 */
 
 #include <netinet/in.h>
@@ -49,6 +49,7 @@ int			main(int argc, char *argv[])
 {
   t_option		options;
   t_server		server;
+  t_render		render;
 
   if (argc != 5 || check_options(&options, argv) == RETURN_FAILURE)
     {
@@ -61,7 +62,12 @@ int			main(int argc, char *argv[])
    return (RETURN_FAILURE);
   if (initialize_buffer(&(server.buffer_out), 4096) == RETURN_FAILURE)
    return (RETURN_FAILURE);
+  sdl_init();
+  sdl_create_win(&render);
+  draw_backg(&render);
+  sdl_event(&render);
   if (launch_client(&server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
+
   return (RETURN_SUCCESS);
 }

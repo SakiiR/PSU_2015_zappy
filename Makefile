@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 16:14:38 2016 Thomas Billot
+## Last update Mon Jun 20 16:34:35 2016 Thomas Beaudet
 ##
 
 CC		= gcc
@@ -68,6 +68,11 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/FCT/fct_suc.c 			\
 		  graphic_src/FCT/fct_sbp.c 			\
 		  graphic_src/get_next_line.c			\
+		  graphic_src/SDL_init.c			\
+		  graphic_src/SDL_quit.c			\
+		  graphic_src/SDL_event.c			\
+		  graphic_src/SDL_window.c			\
+		  graphic_src/SDL_draw_backg.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
@@ -118,7 +123,7 @@ $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2 -lSDL2main -lSDL2_image
 
 clean:
 	$(RM) $(CLIENT_OBJS)

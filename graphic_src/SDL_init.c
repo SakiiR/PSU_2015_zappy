@@ -5,11 +5,11 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 17:59:09 2016 Thomas Beaudet
-** Last update Thu Jun 16 18:03:11 2016 Thomas Beaudet
+** Last update Mon Jun 20 14:55:27 2016 Thomas Beaudet
 */
 
 #include <stdio.h>
-#include "../graphical.h"
+#include "graphical.h"
 
 int			sdl_init()
 {
