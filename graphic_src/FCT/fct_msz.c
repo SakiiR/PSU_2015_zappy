@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Mon Jun 20 13:57:16 2016 Erwan Dupard
+** Last update Mon Jun 20 17:33:11 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -31,30 +31,25 @@ void		init_obj(t_quantity *obj)
   int		i;
 
   i = -1;
-  while (obj[++i])
+  while (obj && obj[++i])
     obj[i] = 0;
 }
 
 int		generate_map(t_map *map)
 {
   t_tile	*new;
-  int		x;
-  int		y;
-
+  int		i;
+  
   if ((new = malloc(sizeof(*new) * (map->x * map->y))) == NULL)
     return (RETURN_FAILURE);
   map->tiles = new;
-  y = -1;
-  while (++y <= map->y)
+  i = -1;
+  while (++i <= (map->y * map->x))
     {
-      x = -1;
-      while (x++ <= map->x)
-	{
-	  if ((map->tiles[(x * y)].characters = init_characters()) == NULL)
-	    return (RETURN_FAILURE);
-	  init_obj(map->tiles[(x * y)].obj);
-	  map->tiles[(x * y)].players = 0;
-	}
+      if ((map->tiles[i].characters = init_characters()) == NULL)
+	return (RETURN_FAILURE);
+      init_obj(map->tiles[i].obj);
+      map->tiles[i].players = 0;
     }
   return (RETURN_SUCCESS);
 }
