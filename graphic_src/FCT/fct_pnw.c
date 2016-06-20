@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:25:33 2016 Thomas Billot
-** Last update Mon Jun 20 13:55:17 2016 Erwan Dupard
+** Last update Mon Jun 20 15:03:48 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -20,6 +20,7 @@ t_character	*create_new_player(int id,
 				   char *team)
 {
   t_character	*new;
+  int		i;
 
   if ((new = malloc(sizeof(*new))) == NULL)
     return (NULL);
@@ -31,6 +32,9 @@ t_character	*create_new_player(int id,
     return (NULL);
   if ((new->team = my_strdup(team)) == NULL)
     return (NULL);
+  i = -1;
+  while (++i < NUMBER_OF_TYPES)
+    new->inventory[i] = 0;
   new->next_in_case = NULL;
   return (new);
 }

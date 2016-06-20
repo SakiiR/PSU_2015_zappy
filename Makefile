@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 15:22:39 2016 Thomas Beaudet
+## Last update Mon Jun 20 16:34:35 2016 Thomas Beaudet
 ##
 
 CC		= gcc
@@ -40,6 +40,8 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xclose.c 				\
 		  graphic_src/client.c				\
 		  graphic_src/my_strdup.c			\
+		  graphic_src/map_rendering.c			\
+		  graphic_src/get_player_by_id.c		\
 		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
 		  graphic_src/FCT/fct_bct.c 			\
@@ -99,6 +101,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/action.c				\
 		  server_src/food.c				\
 		  server_src/voir.c				\
+		  server_src/expulse.c				\
 		  server_src/incantations.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\

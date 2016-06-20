@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Mon Jun 20 13:06:46 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:43:08 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -23,6 +23,7 @@ static const t_event_handler		g_events[] = {
   {TURN, &event_turn},
   {ADVANCE, &event_advance},
   {INCANTATION, &event_incantation},
+  {EXPULSE, &event_expulse},
   {0, NULL}
 };
 
