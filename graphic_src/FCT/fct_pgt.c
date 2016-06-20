@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:46:08 2016 Thomas Billot
-** Last update Thu Jun 16 17:21:24 2016 Thomas Beaudet
+** Last update Mon Jun 20 15:05:27 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -18,8 +18,8 @@ int		fct_pgt(t_map *map,
 {
   int		i;
 
-  (void)map;
   i = 0;
+  get_player_by_id(map, 3);
   printf("fct_%s args:", cmd[i]);
   while (cmd[++i])
     printf(" %s |", cmd[i]);
