@@ -5,7 +5,11 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
+<<<<<<< HEAD
+** Last update Mon Jun 20 15:50:51 2016 Thomas Beaudet
+=======
 ** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
+>>>>>>> ddf8922ecf6f91190d9e6bf5a0832b19968244da
 */
 
 #ifndef GRAPHICAL_H_
@@ -14,6 +18,7 @@
 # include <circular_buffer/circular_buffer.h>
 # include <arpa/inet.h>
 # include <SDL2/SDL.h>
+# include <stdint.h>
 
 # define RETURN_SUCCESS		(0)
 # define RETURN_FAILURE		(-1)
@@ -134,8 +139,8 @@ typedef struct			s_render
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
-  SDL_Texture			*texture;
-  Uint32			*pixels;
+  /*  SDL_Texture			*texture;
+      Uint32			*pixels; */
 }				t_render;
 
 /*
@@ -154,7 +159,7 @@ int				map_rendering(t_map *map);
 int				sdl_init();
 void				draw_backg(t_render *ress);
 void				put_delay(int delay);
-int				sdl_create_win(t_render *ress, t_map *map);
+int				sdl_create_win(t_render *ress/*, t_map *map*/);
 int				sdl_event(t_render *ress);
 void				sdl_quit();
 
