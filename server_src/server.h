@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:16:49 2016 Erwan Dupard
+** Last update Mon Jun 20 16:03:24 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -37,7 +37,8 @@ typedef enum
     NORTH				= 1,
     EAST				= 2,
     SOUTH				= 3,
-    WEST				= 4
+    WEST				= 4,
+    UNDEFINED				= 5
   }					e_orientation;
 
 typedef enum
@@ -303,6 +304,23 @@ typedef struct				s_incantation
 }					t_incantation;
 
 int					try_incantation(t_case *c, t_u64 next_level);
+
+/*
+ * Expulse
+ */
+int					expulse_player(t_map *map,
+						       t_character *character,
+						       e_orientation orientation);
+typedef struct				s_expulse_case
+{
+  e_orientation				type;
+  void					(*f)(int x, int y, int *new_x, int *new_y);
+}					t_expulse_case;
+
+void					expulse_north(int x, int y, int *new_x, int *new_y);
+void					expulse_south(int x, int y, int *new_x, int *new_y);
+void					expulse_west(int x, int y, int *new_x, int *new_y);
+void					expulse_est(int x, int y, int *new_x, int *new_y);
 
 # include "events.h"
 

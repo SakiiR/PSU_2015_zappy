@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Fri Jun 17 14:50:48 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:35:04 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -50,9 +50,7 @@ int					handle_command(char *input,
       while (g_commands[++i].command != NULL)
 	{
 	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)
-	    {
-	      return (g_commands[i].f(server, client, operands));
-	    }
+	    return (g_commands[i].f(server, client, operands));
 	}
     }
   return (RETURN_SUCCESS);
