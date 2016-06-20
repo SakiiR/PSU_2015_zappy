@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:13:49 2016 Barthelemy Gouby
-** Last update Mon Jun 20 16:03:24 2016 Erwan Dupard
+** Last update Mon Jun 20 16:05:53 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -42,5 +42,15 @@ int					event_expulse(t_server *server, va_list ap)
 		       client->character->orientation);
       iterator = iterator->next_in_case;
     }
+  return (RETURN_SUCCESS);
+}
+
+int					event_fork(t_server *server, va_list ap)
+{
+ t_client				*client;
+
+  (void)server;
+  client = va_arg(ap, t_client *);
+  (void)client;
   return (RETURN_SUCCESS);
 }
