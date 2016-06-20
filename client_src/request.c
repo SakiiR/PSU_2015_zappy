@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Wed Jun 08 15:17:57 2016 Gabriel Goude
-** Last update Tue Jun 14 17:16:22 2016 Erwan Dupard
+** Last update Fri Jun 17 16:33:07 2016 Gabriel Goude
 */
 
 #include <unistd.h>
@@ -14,35 +14,45 @@
 
 int			avance(t_infos *infos)
 {
-  write(infos->socket, "avance\n", 7);
-  add_elem(infos, AVANCE);
+  if (write_buf(infos, "avance") == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (add_elem(infos, AVANCE) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
 
 int			droite(t_infos *infos)
 {
-  write(infos->socket, "droite\n", 7);
-  add_elem(infos, DROITE);
+  if (write_buf(infos, "droite") == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (add_elem(infos, DROITE))
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
 
 int			gauche(t_infos *infos)
 {
-  write(infos->socket, "gauche\n", 7);
-  add_elem(infos, GAUCHE);
+  if (write_buf(infos, "gauche") == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (add_elem(infos, GAUCHE) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
 
 int			voir(t_infos *infos)
 {
-  write(infos->socket, "voir\n", 5);
-  add_elem(infos, VOIR);
+  if (write_buf(infos, "voir") == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (add_elem(infos, VOIR) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
 
 int			inventaire(t_infos *infos)
 {
-  write(infos->socket, "inventaire\n", 11);
-  add_elem(infos, INVENTAIRE);
+  if (write_buf(infos, "inventaire") == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (add_elem(infos, INVENTAIRE) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
