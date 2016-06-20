@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Thu Jun 16 14:44:04 2016 Thomas Beaudet
-** Last update Mon Jun 20 15:07:36 2016 Thomas Beaudet
+** Last update Mon Jun 20 16:52:49 2016 Thomas Billot
 */
 
 #include <SDL2/SDL.h>
@@ -13,20 +13,10 @@
 
 int			sdl_event(t_render *ress)
 {
-  int			state;
-
-  state = 0;
-  while (state == 0)
+  if (ress->event.type == SDL_QUIT)
     {
-      while (SDL_PollEvent(&ress->event))
-	{
-	  if (ress->event.type == SDL_QUIT)
-	    {
-	      state = 1;
-	      sdl_quit();
-	      return (1);
-	    }
-	}
+      sdl_quit();
+      return (RETURN_FAILURE);
     }
-  return (0);
+  return (RETURN_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Mon Jun 20 16:16:30 2016 Thomas Billot
+** Last update Mon Jun 20 16:56:35 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -124,7 +124,7 @@ void			init_struct(t_map *map, struct timeval *tv)
   tv->tv_usec = 50;
 }
 
-int			launch_client(t_server *server)
+int			launch_client(t_server *server, t_render *render)
 {
   t_map			map;
   struct timeval	tv;
@@ -133,7 +133,7 @@ int			launch_client(t_server *server)
   int			max_socket;
 
   init_struct(&map, &tv);
-  while (1)
+  while (SDL_PollEvent(&render->event) || 1)
     {
       FD_ZERO(&si);
       FD_ZERO(&so);
@@ -147,6 +147,8 @@ int			launch_client(t_server *server)
       if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       aff_map_info(&map);
+      if (sdl_event(render) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
     }
   return (RETURN_SUCCESS);
 }

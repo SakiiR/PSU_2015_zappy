@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Mon Jun 20 16:12:44 2016 Thomas Beaudet
+** Last update Mon Jun 20 16:43:54 2016 Thomas Billot
 */
 
 #include <netinet/in.h>
@@ -65,9 +65,7 @@ int			main(int argc, char *argv[])
   sdl_init();
   sdl_create_win(&render);
   draw_backg(&render);
-  sdl_event(&render);
-  if (launch_client(&server) == RETURN_FAILURE)
+  if (launch_client(&server, &render) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-
   return (RETURN_SUCCESS);
 }
