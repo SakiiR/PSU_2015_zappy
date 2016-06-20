@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 17 16:26:02 2016 Karine Aknin
+** Last update Fri Jun 17 18:06:26 2016 Karine Aknin
 */
 
 #ifndef _SERVER_H_
@@ -34,10 +34,10 @@ typedef unsigned int			t_u64;
 
 typedef enum
   {
-    NORTH				= 1,
-    EAST				= 2,
-    SOUTH				= 3,
-    WEST				= 4
+    NORTH				= 0,
+    EAST				= 1,
+    SOUTH				= 2,
+    WEST				= 3
   }					e_orientation;
 
 typedef enum
