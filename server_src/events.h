@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Mon Jun 20 16:03:21 2016 Erwan Dupard
+** Last update Mon Jun 20 16:06:10 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -50,6 +50,7 @@ void					add_action(t_action **action_list,
 						   t_action *new_action);
 t_action				*remove_action(t_action **action_list,
 						       t_action *action);
+void					pop_action(t_action **action_queue);
 
 typedef struct				s_event_handler
 {
@@ -79,5 +80,6 @@ int					event_incantation(t_server *server, va_list ap);
 int					event_take_ressource(t_server *server, va_list ap);
 int					event_throw_ressource(t_server *server, va_list ap);
 int					event_expulse(t_server *server, va_list ap);
+int					event_fork(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */

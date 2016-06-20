@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Fri Jun 17 16:48:41 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:27:52 2016 Barthelemy Gouby
 */
 
 #define _BSD_SOURCE
@@ -29,25 +29,29 @@ void			initialize_time(t_server *server)
 
 int			handle_actions(t_server *server)
 {
-  t_action		*iterator;
+  int			i;
+  t_action		*next_action;
 
-  iterator = server->game_data.pending_actions;
-  while (iterator)
+  i = -1;
+  while (++i < MAX_CLIENTS)
     {
-      if (iterator->duration <= 0)
+      if (server->clients[i].socket != 0
+	  && server->clients[i].type == DRONE
+	  && server->clients[i].character->action_queue)
 	{
-	  printf("executing action\n");
-	  if (trigger_event(server,
-	  		    iterator->type,
-	  		    iterator->origin,
-	  		    iterator->argument) == RETURN_FAILURE)
-	    return (RETURN_FAILURE);
-	  iterator = remove_action(&server->game_data.pending_actions, iterator);
-	}
-      else
-	{
-	  iterator->duration--;
-	  iterator = iterator->next;
+	  next_action = server->clients[i].character->action_queue;
+	  if (next_action->duration <= 0)
+	    {
+	      printf("executing action\n");
+	      if (trigger_event(server,
+				next_action->type,
+			        next_action->origin,
+			        next_action->argument) == RETURN_FAILURE)
+		return (RETURN_FAILURE);
+	      pop_action(&server->clients[i].character->action_queue);
+	    }
+	  else
+	    next_action->duration--;
 	}
     }
   return (RETURN_SUCCESS);
