@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Mon Jun 20 13:12:30 2016 Barthelemy Gouby
+** Last update Mon Jun 20 14:05:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -70,7 +70,7 @@ int					event_throw_ressource(t_server *server, va_list ap)
 int					event_inventaire(t_server *server, va_list ap)
 {
   t_client				*client;
-  
+
   (void)server;
   client = va_arg(ap, t_client *);
   printf("client : %p\n", (void *)client);
