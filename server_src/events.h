@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Fri Jun 17 17:06:32 2016 Barthelemy Gouby
+** Last update Mon Jun 20 13:05:56 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -76,7 +76,7 @@ int					event_inventaire(t_server *server, va_list ap);
 int					event_turn(t_server *server, va_list ap);
 int					event_advance(t_server *server, va_list ap);
 int					event_incantation(t_server *server, va_list ap);
-int					event_take(t_server *server, va_list ap);
-int					event_throw(t_server *server, va_list ap);
+int					event_take_ressource(t_server *server, va_list ap);
+int					event_throw_ressource(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
