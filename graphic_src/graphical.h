@@ -6,7 +6,7 @@
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
 <<<<<<< HEAD
-** Last update Mon Jun 20 15:50:51 2016 Thomas Beaudet
+** Last update Mon Jun 20 16:44:47 2016 Thomas Billot
 =======
 ** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
 >>>>>>> ddf8922ecf6f91190d9e6bf5a0832b19968244da
@@ -148,7 +148,7 @@ typedef struct			s_render
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server);
+int				launch_client(t_server *server, t_render *render);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_map *map);
 
