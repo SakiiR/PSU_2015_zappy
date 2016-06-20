@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:45:12 2016 Erwan Dupard
-** Last update Mon Jun 20 16:35:05 2016 Erwan Dupard
+** Last update Mon Jun 20 16:46:09 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -13,7 +13,7 @@
 t_expulse_case				g_expulse_case[] = {
   {NORTH, &expulse_north},
   {SOUTH, &expulse_south},
-  {EAST, &expulse_est},
+  {EAST, &expulse_east},
   {WEST, &expulse_west},
   {UNDEFINED, NULL}
 };
@@ -30,7 +30,7 @@ void					expulse_south(int x, int y, int *new_x, int *new_y)
   *new_y = y + 1;
 }
 
-void					expulse_est(int x, int y, int *new_x, int *new_y)
+void					expulse_east(int x, int y, int *new_x, int *new_y)
 {
   *new_x = x + 1;
   *new_y = y;
