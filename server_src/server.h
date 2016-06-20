@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sun Jun 19 17:48:14 2016 Barthelemy Gouby
+** Last update Mon Jun 20 13:03:45 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -48,7 +48,7 @@ typedef enum
 
 typedef enum
   {
-    FOOD				= 0,
+    NOURRITURE				= 0,
     LINEMATE				= 1,
     DERAUMERE				= 2,
     SIBUR				= 3,
@@ -56,7 +56,13 @@ typedef enum
     PHIRAS				= 5,
     THYSTAME				= 6,
     NUMBER_OF_TYPES			= 7
-  }					e_object_type;
+  }					e_ressource_type;
+
+typedef struct				s_ressource_name_correspondance
+{
+  char					*name;
+  e_ressource_type			type_identifier;
+}					t_ressource_name_correspondance;
 
 typedef enum
   {
