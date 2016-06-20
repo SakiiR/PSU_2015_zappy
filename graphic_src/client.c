@@ -5,12 +5,16 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Thu Jun 16 15:30:55 2016 Thomas Billot
+** Last update Mon Jun 20 13:56:38 2016 Erwan Dupard
 */
 
 #include <sys/select.h>
 #include "graphical.h"
 #include "xfunc.h"
+
+/* DEBUGGING */
+void		aff_map_info(t_map *map);
+/**/
 
 static t_ptr	g_ftab[] =
   {
@@ -53,7 +57,7 @@ int			handle_command(t_map *map,
       i = -1;
       while (g_ftab[++i].id != NULL)
 	{
-	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCESS
+	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCCESS
 	      && g_ftab[i].f != NULL)
 	    {
 	      if (g_ftab[i].f(map, server, cmd) == RETURN_FAILURE)
@@ -62,7 +66,7 @@ int			handle_command(t_map *map,
 	}
       free_word_tab(cmd);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int		        handle_server_input(t_map *map,
@@ -88,7 +92,7 @@ int		        handle_server_input(t_map *map,
       if (next_message)
 	free(next_message);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int			handle_server_output(t_map *map,
@@ -108,7 +112,7 @@ int			handle_server_output(t_map *map,
 	write(server->socket, next_message, strlen(next_message));
       free(next_message);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int			launch_client(t_server *server)
@@ -121,7 +125,9 @@ int			launch_client(t_server *server)
 
   tv.tv_usec = 50;
   tv.tv_sec = 0;
-  max_socket = 0;
+  map.x = 0;
+  map.y = 0;
+  map.tiles = NULL;
   while (1)
     {
       FD_ZERO(&si);
@@ -135,6 +141,37 @@ int			launch_client(t_server *server)
 	return (RETURN_FAILURE);
       if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      aff_map_info(&map);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
+}
+
+/* DEBUGGING PRUPOSE */
+
+void		aff_map_info(t_map *map)
+{
+  int		i;
+  t_character	*current;
+
+  i = -1;
+  if ((map->x == 0) || (map->x == 0))
+    return;
+  while (++i <= (map->x * map->y))
+    {
+      if ((map->tiles == NULL))
+	return;
+      if (map->tiles[i].players > 0)
+	{
+	  current = map->tiles[i].characters;
+	  while (current != NULL)
+	    {
+	      printf("-- id: [%d], level: [%d], team: [%s], orientation: [%d] --\n",
+		     current->id,
+		     current->level,
+		     current->team,
+		     (int)current->orientation);
+	      current = current->next_in_case;
+	    }
+	}
+    }
 }

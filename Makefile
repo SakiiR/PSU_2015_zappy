@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 17 15:08:57 2016 Gabriel Goude
+## Last update Mon Jun 20 13:50:10 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -39,7 +39,8 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xconnect.c 			\
 		  graphic_src/xclose.c 				\
 		  graphic_src/client.c				\
-		  graphic_src/FCT/fct_welcome.c 			\
+		  graphic_src/my_strdup.c			\
+		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
 		  graphic_src/FCT/fct_bct.c 			\
 		  graphic_src/FCT/fct_tna.c 			\
@@ -86,9 +87,11 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/client_identification.c		\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
+		  server_src/events3.c		 		\
 		  server_src/trigger_event.c		 	\
 		  server_src/event_handling.c			\
 		  server_src/action.c				\
+		  server_src/food.c				\
 		  server_src/voir.c				\
 		  server_src/incantations.c			\
 		  utils/circular_buffer/circular_buffer.c	\
@@ -98,7 +101,7 @@ CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
 GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
 
-CFLAGS		+= -g3 -W -Wall -Werror -Wextra -pedantic -ansi -I./utils -lm
+CFLAGS		+= -g3 -W -Wall -Werror -Wextra -pedantic -ansi -I./utils
 
 LDFLAGS		+=
 
@@ -111,7 +114,7 @@ $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm
 
 clean:
 	$(RM) $(CLIENT_OBJS)

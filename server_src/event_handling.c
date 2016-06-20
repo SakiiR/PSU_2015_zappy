@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Fri Jun 17 10:28:25 2016 Barthelemy Gouby
+** Last update Fri Jun 17 16:48:41 2016 Barthelemy Gouby
 */
 
 #define _BSD_SOURCE
@@ -48,39 +48,6 @@ int			handle_actions(t_server *server)
 	{
 	  iterator->duration--;
 	  iterator = iterator->next;
-	}
-    }
-  return (RETURN_SUCCESS);
-}
-
-int			player_food_consumption(t_server *server)
-{
-  int			i;
-
-  i = -1;
-  while (++i <MAX_CLIENTS)
-    {
-      if (server->clients[i].socket != 0 && server->clients[i].type == DRONE)
-	{
-	  if (server->clients[i].character->hunger_timer <= 0)
-	    {
-	      if (server->clients[i].character->quantities[FOOD] > 0)
-		{
-		  server->clients[i].character->quantities[FOOD]--;
-		  server->clients[i].character->hunger_timer = 126;
-		}
-	      else
-		{
-		  write_to_buffer(&server->clients[i].buffer_out, "mort\n", strlen("mort\n"));
-		  sprintf(server->buffer, "pdi %i\n", server->clients[i].character->id);
-		  graphic_broadcast(server, server->buffer);
-		  close(server->clients[i].socket);
-		  server->clients[i].socket = 0;
-		  server->clients[i].type = UNSPECIFIED;
-		}
-	    }
-	  else
-	    server->clients[i].character->hunger_timer--;
 	}
     }
   return (RETURN_SUCCESS);

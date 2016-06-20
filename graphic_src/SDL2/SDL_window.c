@@ -5,15 +5,15 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:23:26 2016 Thomas Beaudet
-** Last update Thu Jun 16 16:51:28 2016 Thomas Beaudet
+** Last update Fri Jun 17 16:32:20 2016 Thomas Beaudet
 */
 
 #include <stdio.h>
-#include "graphical.h"
+#include "../graphical.h"
 
 int			sdl_create_win(t_res *ress, t_map *map)
 {
-  SDL_CreateWindowAndRenderer(x, y, 0, &ress->screen, &ress->rend);
+  SDL_CreateWindowAndRenderer(map->x, map->y, 0, &ress->screen, &ress->rend);
   if (!ress->screen || !ress->rend)
     {
       fprintf(stderr,
@@ -22,5 +22,11 @@ int			sdl_create_win(t_res *ress, t_map *map)
       SDL_Quit();
       return (-1);
     }
+  ress->texture = SDL_CreateTexture(ress->rend,
+				    SDL_PIXELFORMAT_ARGB8888,
+				    SDL_TEXTUREACCESS_STATIC,
+				    map->X, map->y);
+  ress->pixels = [map->x * map->y];
+  memset(ress->pixels, 255, map->x * map->y * sizeof(Uint32));
   return (0);
 }

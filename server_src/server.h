@@ -5,7 +5,11 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
+<<<<<<< HEAD
 ** Last update Fri Jun 17 18:06:26 2016 Karine Aknin
+=======
+** Last update Mon Jun 20 13:03:45 2016 Barthelemy Gouby
+>>>>>>> 63878c2747df9a5beddfe8c41f2c84f5340f2cb3
 */
 
 #ifndef _SERVER_H_
@@ -48,7 +52,7 @@ typedef enum
 
 typedef enum
   {
-    FOOD				= 0,
+    NOURRITURE				= 0,
     LINEMATE				= 1,
     DERAUMERE				= 2,
     SIBUR				= 3,
@@ -56,7 +60,13 @@ typedef enum
     PHIRAS				= 5,
     THYSTAME				= 6,
     NUMBER_OF_TYPES			= 7
-  }					e_object_type;
+  }					e_ressource_type;
+
+typedef struct				s_ressource_name_correspondance
+{
+  char					*name;
+  e_ressource_type			type_identifier;
+}					t_ressource_name_correspondance;
 
 typedef enum
   {
@@ -154,6 +164,8 @@ int					process_server(t_server *server);
 int					handle_command(char *command,
 						      t_server *server,
 						      t_client *client);
+int					handle_events(t_server *server);
+int					player_food_consumption(t_server *server);
 int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input);
@@ -277,6 +289,12 @@ int				        avance_command(t_server *server,
 						       t_client *client,
 						       char *operands
 						       __attribute__((unused)));
+int					prend_command(t_server *server,
+						      t_client *client,
+						      char *operands);
+int					pose_command(t_server *server,
+						     t_client *client,
+						     char *operands);
 
 /*
  * Incantations
