@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 20 13:55:37 2016 Erwan Dupard
+** Last update Mon Jun 20 14:12:04 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -48,8 +48,10 @@
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
-# define TILE_W			(64) /* temporaire */
-# define TILE_H			(64) /* temporaire (Nice !!)*/
+# define TILE_W			(32)
+# define TILE_H			(32)
+# define WIN_X			(800)
+# define WIN_Y			(600)
 
 /*
 ** Simple Typedefs
@@ -127,14 +129,14 @@ typedef struct		       	s_map
   t_tile			*tiles;
 }				t_map;
 
-typedef struct			s_res
+typedef struct			s_render
 {
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
   SDL_Texture			*texture;
   Uint32			*pixels;
-}				t_res;
+}				t_render;
 
 /*
 ** Function declaration
@@ -148,10 +150,10 @@ int				launch_client(t_server *server);
 */
 
 int				sdl_init();
-void				draw_backg(t_res *ress);
+void				draw_backg(t_render *ress);
 void				put_delay(int delay);
-int				sdl_create_win(t_res *ress, t_map *map);
-int				sdl_event(t_res *ress);
+int				sdl_create_win(t_render *ress, t_map *map);
+int				sdl_event(t_render *ress);
 void				sdl_quit();
 
 /*
