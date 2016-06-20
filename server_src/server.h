@@ -5,11 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-<<<<<<< HEAD
-** Last update Fri Jun 17 18:06:26 2016 Karine Aknin
-=======
-** Last update Mon Jun 20 13:03:45 2016 Barthelemy Gouby
->>>>>>> 63878c2747df9a5beddfe8c41f2c84f5340f2cb3
+** Last update Mon Jun 20 19:05:21 2016 Karine Aknin
 */
 
 #ifndef _SERVER_H_
@@ -160,6 +156,13 @@ typedef struct				s_command
 					     char *operands);
 }					t_command;
 
+typedef struct				s_voir
+{
+  e_orientation				orientation;
+  int					(*f)(t_map *map, t_character *character,
+					     t_case **cases, int max_size);
+}					t_voir;
+
 int					process_server(t_server *server);
 int					handle_command(char *command,
 						      t_server *server,
@@ -295,6 +298,14 @@ int					prend_command(t_server *server,
 int					pose_command(t_server *server,
 						     t_client *client,
 						     char *operands);
+int					voir_north(t_map *map, t_character *character,
+						   t_case **cases, int max_size);
+int					voir_south(t_map *map, t_character *character,
+                                                   t_case **cases, int max_size);
+int					voir_west(t_map *map, t_character *character,
+                                                   t_case **cases, int max_size);
+int					voir_east(t_map *map, t_character *character,
+                                                   t_case **cases, int max_size);
 
 /*
  * Incantations
