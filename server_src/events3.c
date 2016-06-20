@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Mon Jun 20 14:57:09 2016 Erwan Dupard
+** Last update Mon Jun 20 14:57:52 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -103,7 +103,6 @@ int					event_inventaire(t_server *server, va_list ap)
 
   (void)server;
   client = va_arg(ap, t_client *);
-  printf("client : %p\n", (void *)client);
   sprintf(server->buffer,
 	  "{nourriture %d"
 	  ",sibur %d"
