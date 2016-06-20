@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Mon Jun 20 14:08:49 2016 Erwan Dupard
+** Last update Mon Jun 20 15:13:56 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -50,9 +50,8 @@ static t_incantation			*get_incantation_by_level(t_u64 level)
   return (NULL);
 }
 
-static int				check_incantation_requirement(
-								      t_incantation *incantation,
-								      t_case *c)
+static int				check_incantation_req(t_incantation *incantation,
+							      t_case *c)
 {
   int					i;
 
@@ -95,7 +94,7 @@ int					try_incantation(t_case *c, t_u64 next_level)
     return (RETURN_FAILURE);
   players_count = count_client_by_level(c, next_level);
   if ((int)players_count == incantation->level &&
-      check_incantation_requirement(incantation, c) == RETURN_SUCCESS)
+      check_incantation_req(incantation, c) == RETURN_SUCCESS)
     do_incantation(c, next_level);
   return (RETURN_FAILURE);
 }

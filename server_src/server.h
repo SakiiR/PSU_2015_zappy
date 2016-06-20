@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:21:29 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:33:34 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -85,8 +85,8 @@ typedef struct				s_character
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
-  unsigned int			        hunger_timer;
   t_action				*action_queue;
+  t_u64					hunger_timer;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -95,8 +95,8 @@ typedef struct				s_case
 {
   t_character				*characters;
   t_quantity				quantities[NUMBER_OF_TYPES];
-  unsigned int				x;
-  unsigned int				y;
+  t_u64					x;
+  t_u64					y;
 }					t_case;
 
 typedef struct				s_map
@@ -296,7 +296,6 @@ int					pose_command(t_server *server,
 /*
  * Incantations
  */
-
 typedef struct				s_incantation
 {
   int					level;
