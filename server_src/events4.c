@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:13:49 2016 Barthelemy Gouby
-** Last update Mon Jun 20 14:14:41 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:26:08 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -22,5 +22,15 @@ int					event_incantation(t_server *server, va_list ap)
       return (RETURN_SUCCESS);
     }
   printf("[+] Incantation Success !\n");
+  return (RETURN_SUCCESS);
+}
+
+int					event_fork(t_server *server, va_list ap)
+{
+ t_client				*client;
+
+  (void)server;
+  client = va_arg(ap, t_client *);
+  (void)client;
   return (RETURN_SUCCESS);
 }

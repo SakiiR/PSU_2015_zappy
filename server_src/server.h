@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:03:45 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:21:29 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -75,6 +75,9 @@ typedef unsigned int			t_quantity;
 
 struct					s_case;
 
+struct					s_action;
+typedef struct s_action			t_action;
+
 typedef struct				s_character
 {
   t_u64					level;
@@ -83,6 +86,7 @@ typedef struct				s_character
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
   unsigned int			        hunger_timer;
+  t_action				*action_queue;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -121,9 +125,6 @@ typedef struct				s_team
   t_u64					max_members;
   t_u64					nbr_of_members;
 }					t_team;
-
-struct					s_action;
-typedef struct s_action			t_action;
 
 typedef struct				s_game_data
 {

@@ -5,42 +5,54 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Fri Jun 17 11:52:14 2016 Barthelemy Gouby
+** Last update Mon Jun 20 15:28:07 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
-void		add_action(t_action **action_list, t_action *new_action)
+void		add_action(t_action **action_queue, t_action *new_action)
 {
   t_action	*iterator;
 
-  if (*action_list == NULL)
+  if (*action_queue == NULL)
     {
-      *action_list = new_action;
+      *action_queue = new_action;
       printf("null add\n");
     }
   else
     {
-      iterator = *action_list;
+      iterator = *action_queue;
       while (iterator && iterator->next)
 	iterator = iterator->next;
       iterator->next = new_action;
     }
 }
 
-t_action	*remove_action(t_action **action_list, t_action *action)
+void		pop_action(t_action **action_queue)
+{
+  t_action	*action;
+
+  if (*action_queue)
+    {
+      action = *action_queue;
+      *action_queue = (*action_queue)->next;
+      free(action);
+    }
+}
+
+t_action	*remove_action(t_action **action_queue, t_action *action)
 {
   t_action	*iterator;
   t_action	*next_action;
 
-  if (action == *action_list)
+  if (action == *action_queue)
     {
-      *action_list = action->next;
+      *action_queue = action->next;
       next_action = action->next;
     }
   else
     {
-      iterator = *action_list;
+      iterator = *action_queue;
       while (iterator)
 	{
 	  if (iterator->next == action)
