@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Mon Jun 20 13:12:30 2016 Barthelemy Gouby
+** Last update Mon Jun 20 14:14:12 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -22,7 +22,6 @@ void					take_ressource(t_server *server,
 						       t_client *client,
 						       e_ressource_type type)
 {
-  printf("found ressource type\n");
   if (client->character->current_case->quantities[type] > 0)
     {
       client->character->current_case->quantities[type]--;
@@ -46,24 +45,55 @@ int					event_take_ressource(t_server *server, va_list ap)
   i = -1;
   client = va_arg(ap, t_client *);
   ressource_type = va_arg(ap, char *);
-  printf("trying to take ressource: %s\n", ressource_type);
   while (++i < 7)
     {
       if (strcmp(ressource_type, g_correspondances[i].name) == 0)
-	take_ressource(server, client, g_correspondances[i].type_identifier);
+	{
+	  take_ressource(server, client, g_correspondances[i].type_identifier);
+	  break;
+	}
     }
   if (i == 7)
     write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
   return (RETURN_SUCCESS);
 }
 
+void					throw_ressource(t_server *server,
+							t_client *client,
+							e_ressource_type type)
+{
+  if (client->character->quantities[type] > 0)
+    {
+      client->character->quantities[type]--;
+      client->character->current_case->quantities[type]++;
+      sprintf(server->buffer, "pdr %i %i\n",
+	      client->character->id,
+	      type);
+      write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
+    }
+  else
+    write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
+}
+
 int					event_throw_ressource(t_server *server, va_list ap)
 {
   t_client			*client;
+  char				*ressource_type;
+  int				i;
 
-  (void) client;
+  i = -1;
   client = va_arg(ap, t_client *);
-  (void) server;
+  ressource_type = va_arg(ap, char *);
+  while (++i < 7)
+    {
+      if (strcmp(ressource_type, g_correspondances[i].name) == 0)
+	{
+	  throw_ressource(server, client, g_correspondances[i].type_identifier);
+	  break;
+	}
+    }
+  if (i == 7)
+    write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
   return (RETURN_SUCCESS);
 }
 
@@ -91,20 +121,5 @@ int					event_inventaire(t_server *server, va_list ap)
 	  client->character->quantities[THYSTAME]
 	  );
   write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
-  return (RETURN_SUCCESS);
-}
-
-int					event_incantation(t_server *server, va_list ap)
-{
-  t_client				*client;
-
-  (void)server;
-  client = va_arg(ap, t_client *);
-  if (try_incantation(client->character->current_case, client->character->level + 1) == RETURN_FAILURE)
-    {
-      printf("[-] Incantation Fail\n");
-      return (RETURN_SUCCESS);
-    }
-  printf("[+] Incantation Success !\n");
   return (RETURN_SUCCESS);
 }
