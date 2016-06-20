@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:45:12 2016 Erwan Dupard
-** Last update Mon Jun 20 16:04:42 2016 Erwan Dupard
+** Last update Mon Jun 20 16:30:54 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -46,6 +46,7 @@ int					expulse_player(t_map *map, t_character *character, e_orientation orienta
 {
   t_case				next_case;
   int					i;
+  t_case				*new_case;
 
   i = -1;
   next_case.characters = NULL;
@@ -58,9 +59,12 @@ int					expulse_player(t_map *map, t_character *character, e_orientation orienta
 			    (int *)&next_case.y);
     }
   next_case.x = next_case.x % map->width;
-  next_case.y = next_case.y % map->height;
-  /*
-   * Move player to next case and send to it the payload
-   */
+  next_case.y = next_case.y % map->height;  
+  new_case = map_get_case_at(next_case.x, next_case.y, map);
+  remove_character_from_case(character->current_case, character);
+  character->current_case = new_case;
+  add_character_to_case(new_case, character);
+  /* Broadcast graphic */
+  /* drone payload */
   return (RETURN_SUCCESS);
 }
