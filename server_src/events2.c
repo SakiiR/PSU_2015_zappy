@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Mon Jun 20 12:01:01 2016 Barthelemy Gouby
+** Last update Mon Jun 20 14:07:47 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -34,7 +34,7 @@ int					event_turn(t_server *server, va_list ap)
   else if (client->character->orientation < 1)
     client->character->orientation = 4;
   sprintf(server->buffer, "ppo %i %i %i %i\n",
-	  client->character->id, 
+	  client->character->id,
 	  client->character->current_case->x,
 	  client->character->current_case->y,
 	  client->character->orientation);
@@ -47,7 +47,6 @@ void					change_coordinate(unsigned int *coordinate,
 							  int change,
 							  unsigned int max_value)
 {
-  
   if (*coordinate == 0 && change == -1)
     *coordinate = max_value - 1;
   else if (*coordinate + change >= max_value)
@@ -58,15 +57,15 @@ void					change_coordinate(unsigned int *coordinate,
 
 void					change_case(t_server *server, t_client *client)
 {
-  unsigned int			x;
-  unsigned int			y;
+  t_u64					x;
+  t_u64					y;
 
   x = client->character->current_case->x;
   y = client->character->current_case->y;
   if (client->character->orientation == NORTH)
     change_coordinate(&y, -1, server->game_data.map.height);
   else if (client->character->orientation == SOUTH)
-    change_coordinate(&y, 1, server->game_data.map.height);    
+    change_coordinate(&y, 1, server->game_data.map.height);
   else if (client->character->orientation == WEST)
     change_coordinate(&x, -1, server->game_data.map.width);
   else if (client->character->orientation == EAST)

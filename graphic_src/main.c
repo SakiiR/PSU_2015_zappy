@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Thu Jun 16 13:27:14 2016 Thomas Billot
+** Last update Mon Jun 20 13:56:13 2016 Erwan Dupard
 */
 
 #include <netinet/in.h>
@@ -42,7 +42,7 @@ int			check_options(t_option *options, char **argv)
     return (RETURN_FAILURE);
   options->ip = argv[2];
   options->port = atoi(argv[4]);
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int			main(int argc, char *argv[])
@@ -63,5 +63,5 @@ int			main(int argc, char *argv[])
    return (RETURN_FAILURE);
   if (launch_client(&server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  return (0);
+  return (RETURN_SUCCESS);
 }

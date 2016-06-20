@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 18 17:23:13 2016 Thomas Billot
+** Last update Mon Jun 20 14:12:04 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -15,8 +15,9 @@
 # include <arpa/inet.h>
 # include <SDL2/SDL.h>
 
-# define RETURN_SUCESS		(0)
+# define RETURN_SUCCESS		(0)
 # define RETURN_FAILURE		(-1)
+
 # define SOCKET_ERROR		(-1)
 # define USAGE			"./console -h [host-ip] -p [host-port]\n"
 # define MSZ			"msz" /* Taille de la carte */
@@ -47,8 +48,10 @@
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
-# define TILE_W			(64) /* temporaire */
-# define TILE_H			(64) /* temporaire (Nice !!)*/
+# define TILE_W			(32)
+# define TILE_H			(32)
+# define WIN_X			(800)
+# define WIN_Y			(600)
 
 /*
 ** Simple Typedefs
@@ -126,14 +129,14 @@ typedef struct		       	s_map
   t_tile			*tiles;
 }				t_map;
 
-typedef struct			s_res
+typedef struct			s_render
 {
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
   SDL_Texture			*texture;
   Uint32			*pixels;
-}				t_res;
+}				t_render;
 
 /*
 ** Function declaration
@@ -147,10 +150,10 @@ int				launch_client(t_server *server);
 */
 
 int				sdl_init();
-void				draw_backg(t_res *ress);
+void				draw_backg(t_render *ress);
 void				put_delay(int delay);
-int				sdl_create_win(t_res *ress, t_map *map);
-int				sdl_event(t_res *ress);
+int				sdl_create_win(t_render *ress, t_map *map);
+int				sdl_event(t_render *ress);
 void				sdl_quit();
 
 /*
