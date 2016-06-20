@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 13:50:10 2016 Erwan Dupard
+## Last update Mon Jun 20 14:14:30 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -88,6 +88,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
 		  server_src/events3.c		 		\
+		  server_src/events4.c				\
 		  server_src/trigger_event.c		 	\
 		  server_src/event_handling.c			\
 		  server_src/action.c				\
