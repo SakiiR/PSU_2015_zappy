@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:52:56 2016 Barthelemy Gouby
+** Last update Mon Jun 20 16:54:47 2016 Erwan Dupard
 */
 
 #include <time.h>
@@ -45,13 +45,11 @@ t_case					*map_get_case_at(const t_u64 x,
 							 const t_map *map)
 {
   t_u64					index;
+  t_case				*c;
 
-  printf("looking for case at x: %i y: %i\n", x, y);
   index = y * map->width + x;
-  if (index >= map->height * map->width)
-    return (NULL);
-  printf("found case %i at x: %i y: %i\n", index, map->cases[index].x, map->cases[index].y);
-  return (&map->cases[index]);
+  c = (index >= map->height * map->width ? NULL : &map->cases[index]);
+  return (c);
 }
 
 void					spread_ressource(const e_ressource_type type,
