@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Mon Jun 20 15:13:56 2016 Erwan Dupard
+** Last update Mon Jun 20 15:32:28 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -58,7 +58,7 @@ static int				check_incantation_req(t_incantation *incantation,
   i = -1;
   while (++i < NUMBER_OF_TYPES)
     {
-      if (c->quantities[i] < incantation->obj[i])
+      if (c->quantities[i] != incantation->obj[i])
 	return (RETURN_FAILURE);
     }
   return (RETURN_SUCCESS);
