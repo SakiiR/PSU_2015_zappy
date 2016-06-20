@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Mon Jun 20 16:16:51 2016 Thomas Billot
+** Last update Mon Jun 20 17:31:16 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -21,7 +21,8 @@ int		map_rendering(t_map *map)
     {
       x = (i % map->x);
       y = (i / map->x);
-      printf("__ x=%d -- y=%d __\n", x, y);
     }
+  (void)x;
+  (void)y;
   return (0);
 }
