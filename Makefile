@@ -5,11 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-<<<<<<< HEAD
-## Last update Mon Jun 20 15:31:15 2016 Thomas Billot
-=======
-## Last update Mon Jun 20 15:47:34 2016 Erwan Dupard
->>>>>>> 9857e04a84bff10e117423b4766c84a466fb19ae
+## Last update Mon Jun 20 16:14:38 2016 Thomas Billot
 ##
 
 CC		= gcc
