@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 18 17:23:13 2016 Thomas Billot
+** Last update Mon Jun 20 13:55:37 2016 Erwan Dupard
 */
 
 #ifndef GRAPHICAL_H_
@@ -15,8 +15,9 @@
 # include <arpa/inet.h>
 # include <SDL2/SDL.h>
 
-# define RETURN_SUCESS		(0)
+# define RETURN_SUCCESS		(0)
 # define RETURN_FAILURE		(-1)
+
 # define SOCKET_ERROR		(-1)
 # define USAGE			"./console -h [host-ip] -p [host-port]\n"
 # define MSZ			"msz" /* Taille de la carte */

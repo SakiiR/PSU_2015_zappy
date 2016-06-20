@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Sat Jun 18 16:32:51 2016 Thomas Billot
+** Last update Mon Jun 20 13:57:16 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -56,7 +56,7 @@ int		generate_map(t_map *map)
 	  map->tiles[(x * y)].players = 0;
 	}
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int		fct_msz(t_map *map,
@@ -76,7 +76,7 @@ int		fct_msz(t_map *map,
       while (cmd[++i])
 	printf(" %s |", cmd[i]);
       printf("\n");
-      return (RETURN_SUCESS);
+      return (RETURN_SUCCESS);
     }
   return (RETURN_FAILURE);
 }
