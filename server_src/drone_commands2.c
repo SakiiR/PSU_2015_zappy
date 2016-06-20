@@ -5,12 +5,13 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Mon Jun 20 14:06:39 2016 Erwan Dupard
+** Last update Mon Jun 20 15:25:16 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
-int				        avance_command(t_server *server,
+int				        avance_command(t_server *server
+						       __attribute__((unused)),
 						       t_client *client,
 						       char *operands
 						       __attribute__((unused)))
@@ -25,12 +26,13 @@ int				        avance_command(t_server *server,
       new_action->origin = client;
       new_action->duration = 7;
       new_action->next = NULL;
-      add_action(&server->game_data.pending_actions, new_action);
+      add_action(&client->character->action_queue, new_action);
     }
   return (RETURN_SUCCESS);
 }
 
-int					incantation_command(t_server *server,
+int					incantation_command(t_server *server
+							    __attribute__((unused)),
 							    t_client *client,
 							    char *operands
 							    __attribute__((unused)))
@@ -45,12 +47,13 @@ int					incantation_command(t_server *server,
       new_action->origin = client;
       new_action->duration = 300;
       new_action->next = NULL;
-      add_action(&server->game_data.pending_actions, new_action);
+      add_action(&client->character->action_queue, new_action);
     }
   return (RETURN_SUCCESS);
 }
 
-int					prend_command(t_server *server,
+int					prend_command(t_server *server
+						      __attribute__((unused)),
 						      t_client *client,
 						      char *operands)
 {
@@ -63,14 +66,17 @@ int					prend_command(t_server *server,
       new_action->type = TAKE_RESOURCE;
       new_action->origin = client;
       new_action->duration = 7;
-      new_action->argument = operands;
+      if (!(new_action->argument = malloc(strlen(operands))))
+	return (RETURN_FAILURE);
+      strcpy(new_action->argument, operands);
       new_action->next = NULL;
-      add_action(&server->game_data.pending_actions, new_action);
+      add_action(&client->character->action_queue, new_action);
     }
   return (RETURN_SUCCESS);
 }
 
-int					pose_command(t_server *server,
+int					pose_command(t_server *server
+						     __attribute__((unused)),
 						     t_client *client,
 						     char *operands)
 {
@@ -87,7 +93,7 @@ int					pose_command(t_server *server,
 	return (RETURN_FAILURE);
       strcpy(new_action->argument, operands);
       new_action->next = NULL;
-      add_action(&server->game_data.pending_actions, new_action);
+      add_action(&client->character->action_queue, new_action);
     }
   return (RETURN_SUCCESS);
 }

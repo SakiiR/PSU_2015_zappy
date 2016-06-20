@@ -5,7 +5,11 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 20 13:55:37 2016 Erwan Dupard
+<<<<<<< HEAD
+** Last update Mon Jun 20 16:44:47 2016 Thomas Billot
+=======
+** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
+>>>>>>> ddf8922ecf6f91190d9e6bf5a0832b19968244da
 */
 
 #ifndef GRAPHICAL_H_
@@ -14,6 +18,7 @@
 # include <circular_buffer/circular_buffer.h>
 # include <arpa/inet.h>
 # include <SDL2/SDL.h>
+# include <stdint.h>
 
 # define RETURN_SUCCESS		(0)
 # define RETURN_FAILURE		(-1)
@@ -48,8 +53,10 @@
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
-# define TILE_W			(64) /* temporaire */
-# define TILE_H			(64) /* temporaire (Nice !!)*/
+# define TILE_W			(32)
+# define TILE_H			(32)
+# define WIN_X			(800)
+# define WIN_Y			(600)
 
 /*
 ** Simple Typedefs
@@ -108,7 +115,7 @@ typedef struct			s_character
   t_u64				level;
   t_u64			        id;
   char 				*team;
-  t_quantity   			quantities[NUMBER_OF_TYPES];
+  t_quantity   			inventory[NUMBER_OF_TYPES];
   e_orientation		        orientation;
   struct s_character   		*next_in_case;
 }			       	t_character;
@@ -127,31 +134,33 @@ typedef struct		       	s_map
   t_tile			*tiles;
 }				t_map;
 
-typedef struct			s_res
+typedef struct			s_render
 {
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
-  SDL_Texture			*texture;
-  Uint32			*pixels;
-}				t_res;
+  /*  SDL_Texture			*texture;
+      Uint32			*pixels; */
+}				t_render;
 
 /*
 ** Function declaration
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server);
+int				launch_client(t_server *server, t_render *render);
+t_character			*get_player_by_id(t_map *map, t_u64 id);
+int				map_rendering(t_map *map);
 
 /*
 ** SDL fucntions declaration
 */
 
 int				sdl_init();
-void				draw_backg(t_res *ress);
+void				draw_backg(t_render *ress);
 void				put_delay(int delay);
-int				sdl_create_win(t_res *ress, t_map *map);
-int				sdl_event(t_res *ress);
+int				sdl_create_win(t_render *ress/*, t_map *map*/);
+int				sdl_event(t_render *ress);
 void				sdl_quit();
 
 /*
