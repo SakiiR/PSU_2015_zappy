@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 12:03:28 2016 Thomas Billot
-** Last update Wed Jun 15 12:19:32 2016 Thomas Billot
+** Last update Mon Jun 20 13:59:11 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ int		xconnect(int sockfd,
 {
   if (connect(sockfd, adress, socklen) == -1)
     {
-      fprintf(stderr, "Error in connect(): %s", strerror(errno));
+      fprintf(stderr, "Error in connect(): %s\n", strerror(errno));
       return (-1);
     }
   return (0);
