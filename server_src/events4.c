@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:13:49 2016 Barthelemy Gouby
-** Last update Mon Jun 20 14:14:41 2016 Barthelemy Gouby
+** Last update Mon Jun 20 16:03:24 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -22,5 +22,25 @@ int					event_incantation(t_server *server, va_list ap)
       return (RETURN_SUCCESS);
     }
   printf("[+] Incantation Success !\n");
+  return (RETURN_SUCCESS);
+}
+
+int					event_expulse(t_server *server, va_list ap)
+{
+  t_client				*client;
+  t_case				*c;
+  t_character				*iterator;
+
+  client = va_arg(ap, t_client *);
+  c = client->character->current_case;
+  iterator = c->characters;
+  while (iterator)
+    {
+      if (iterator->id != client->character->id)
+	expulse_player(&server->game_data.map,
+		       iterator,
+		       client->character->orientation);
+      iterator = iterator->next_in_case;
+    }
   return (RETURN_SUCCESS);
 }
