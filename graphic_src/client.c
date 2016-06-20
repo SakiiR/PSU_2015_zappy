@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Mon Jun 20 13:56:38 2016 Erwan Dupard
+** Last update Mon Jun 20 15:33:21 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -154,9 +154,12 @@ void		aff_map_info(t_map *map)
   t_character	*current;
 
   i = -1;
+  (void)current;
+  (void)i;
   if ((map->x == 0) || (map->x == 0))
     return;
-  while (++i <= (map->x * map->y))
+  map_rendering(map);
+  /*  while (++i <= (map->x * map->y))
     {
       if ((map->tiles == NULL))
 	return;
@@ -174,4 +177,5 @@ void		aff_map_info(t_map *map)
 	    }
 	}
     }
+  */
 }

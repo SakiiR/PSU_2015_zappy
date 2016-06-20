@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Mon Jun 20 14:12:04 2016 Thomas Billot
+** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -110,7 +110,7 @@ typedef struct			s_character
   t_u64				level;
   t_u64			        id;
   char 				*team;
-  t_quantity   			quantities[NUMBER_OF_TYPES];
+  t_quantity   			inventory[NUMBER_OF_TYPES];
   e_orientation		        orientation;
   struct s_character   		*next_in_case;
 }			       	t_character;
@@ -144,6 +144,8 @@ typedef struct			s_render
 
 int				setup_networking(t_option *options);
 int				launch_client(t_server *server);
+t_character			*get_player_by_id(t_map *map, t_u64 id);
+int				map_rendering(t_map *map);
 
 /*
 ** SDL fucntions declaration
