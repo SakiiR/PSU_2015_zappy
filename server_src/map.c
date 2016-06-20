@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Fri Jun 17 14:05:14 2016 Barthelemy Gouby
+** Last update Mon Jun 20 13:52:56 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -24,7 +24,7 @@ int					initialize_map(t_map *map)
   while (i < map->width * map->height)
     {
       cases[i].characters = NULL;
-      cases[i].quantities[FOOD] = 0;
+      cases[i].quantities[NOURRITURE] = 0;
       cases[i].quantities[LINEMATE] = 0;
       cases[i].quantities[DERAUMERE] = 0;
       cases[i].quantities[SIBUR] = 0;
@@ -54,7 +54,7 @@ t_case					*map_get_case_at(const t_u64 x,
   return (&map->cases[index]);
 }
 
-void					spread_ressource(const e_object_type type,
+void					spread_ressource(const e_ressource_type type,
 							 t_u64 quantity,
 							 t_map *map)
 {
@@ -75,7 +75,7 @@ void					initialize_ressources(t_server *server)
   base_max_members = server->game_data.base_max_members;
   map = &server->game_data.map;
   srand(time(NULL));
-  spread_ressource(FOOD, nbr_of_teams * base_max_members * 100, map);
+  spread_ressource(NOURRITURE, nbr_of_teams * base_max_members * 100, map);
   spread_ressource(LINEMATE, nbr_of_teams * base_max_members * 6, map);
   spread_ressource(DERAUMERE, nbr_of_teams * base_max_members * 5, map);
   spread_ressource(SIBUR, nbr_of_teams * base_max_members * 4, map);
@@ -94,7 +94,7 @@ void					text_display_map(t_map *map)
       printf("--------- case at x: %i y: %i\n",
 	     i % map->height,
 	     i / map->height);
-      printf("Food: %i\n", map->cases[i].quantities[FOOD]);
+      printf("Food: %i\n", map->cases[i].quantities[NOURRITURE]);
       printf("Linemate: %i\n", map->cases[i].quantities[LINEMATE]);
       printf("Deraumere: %i\n", map->cases[i].quantities[DERAUMERE]);
       printf("Sibur: %i\n", map->cases[i].quantities[SIBUR]);

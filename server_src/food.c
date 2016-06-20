@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:48:16 2016 Barthelemy Gouby
-** Last update Fri Jun 17 16:48:32 2016 Barthelemy Gouby
+** Last update Mon Jun 20 13:52:11 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -14,9 +14,9 @@ void			consume_food(t_server *server, t_client *client)
 {
   if (client->character->hunger_timer <= 0)
     {
-      if (client->character->quantities[FOOD] > 0)
+      if (client->character->quantities[NOURRITURE] > 0)
 	{
-	  client->character->quantities[FOOD]--;
+	  client->character->quantities[NOURRITURE]--;
 	  client->character->hunger_timer = 126;
 	}
       else

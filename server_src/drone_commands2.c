@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:50:20 2016 Barthelemy Gouby
+** Last update Mon Jun 20 13:51:42 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -83,9 +83,9 @@ int					pose_command(t_server *server,
       new_action->type = THROW_RESOURCE;
       new_action->origin = client;
       new_action->duration = 7;
-      if (!(new_action->argument = malloc(strlen(operands)))
-	  return (RETURN_FAILURE);
-      new_action->argument = operands;
+      if (!(new_action->argument = malloc(strlen(operands))))
+	return (RETURN_FAILURE);
+      strcpy(new_action->argument, operands);
       new_action->next = NULL;
       add_action(&server->game_data.pending_actions, new_action);
     }
