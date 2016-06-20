@@ -5,10 +5,18 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 16 16:45:43 2016 Erwan Dupard
-** Last update Fri Jun 17 18:07:18 2016 Karine Aknin
+** Last update Mon Jun 20 17:15:23 2016 Karine Aknin
 */
 
 #include "server.h"
+
+static const t_voir	g_voir[] = {
+  {NORTH, &voir_north},
+  {EAST, &voir_east},
+  {SOUTH, &voir_south},
+  {WEST, &voir_west},
+  {10, NULL}
+};
 
 int		generate_max_size(t_u64 level)
 {
@@ -26,65 +34,28 @@ int		generate_max_size(t_u64 level)
   return (size);
 }
 
-t_case		*find_first_case(t_map *map, t_character *character,
-				 int level, int base_size)
-{
-  t_case	*first_case;
-  int		x;
-  int		y;
-
-  if (character->orientation == NORTH)
-    {
-      if (character->current_case->y == 0)
-	y
-    }
-}
-
-void		take_cases_line(t_map *map, t_character *character,
-				t_case *cases, int level)
-{
-  int		base_size;
-  t_case	*case_it;
-
-  base_size = generate_max_size(level) - 1;
-  case_it = find_first_case(map, character, level, base_size);
-  while (base_size > 0)
-    {
-      
-      --base_size;
-    }
-  
-}
-
-void		find_my_cases(t_map *map, t_character *character,
-			      t_case *cases, int max_size)
-{
-  int		level;
-  int		base_size;
-
-  level = 1;
-  cases[0] = charater->current_case;
-  while (level <= character->level)
-    {
-      take_cases_line(map, character, cases, level);
-      ++level;
-    }
-}
-
 int		event_voir(t_server *server, va_list ap)
 {
   t_client	*client;
   t_map		*map;
-  t_case	*cases;
+  t_case	**cases;
   int		max_size;
+  int		i;
 
-  client = (t_client *)va_arg(ap, (t_client *));
-  printf("client : %p\n", client);
+  i = 0;
+  client = (t_client *)va_arg(ap, t_client *);
+  printf("client : %p\n", (void *)client);
   map = &(server->game_data.map);
   max_size = generate_max_size(client->character->level);
-  if (!(cases = malloc(sizeof(*character) * (max_size + 1))))
+  if (!(cases = malloc(sizeof(*cases) * (max_size + 1))))
     return (RETURN_FAILURE);
-  cases[max_size] = NULL;
-  find_my_cases(map, client->character, cases, max_size);
+  while (i <= max_size)
+    cases[i] = NULL;
+  i = -1;
+  while (g_voir[++i].orientation != 10)
+    {
+      if (g_voir[i].orientation == client->character->orientation)
+	return (g_voir[i].f(map, client->character, cases, max_size));
+    }
   return (RETURN_SUCCESS);
 }
