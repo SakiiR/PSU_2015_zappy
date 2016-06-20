@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sat Jun 18 17:22:46 2016 Thomas Billot
+** Last update Mon Jun 20 13:56:38 2016 Erwan Dupard
 */
 
 #include <sys/select.h>
@@ -57,7 +57,7 @@ int			handle_command(t_map *map,
       i = -1;
       while (g_ftab[++i].id != NULL)
 	{
-	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCESS
+	  if (strcmp(cmd[0], g_ftab[i].id) == RETURN_SUCCESS
 	      && g_ftab[i].f != NULL)
 	    {
 	      if (g_ftab[i].f(map, server, cmd) == RETURN_FAILURE)
@@ -66,7 +66,7 @@ int			handle_command(t_map *map,
 	}
       free_word_tab(cmd);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int		        handle_server_input(t_map *map,
@@ -92,7 +92,7 @@ int		        handle_server_input(t_map *map,
       if (next_message)
 	free(next_message);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int			handle_server_output(t_map *map,
@@ -112,7 +112,7 @@ int			handle_server_output(t_map *map,
 	write(server->socket, next_message, strlen(next_message));
       free(next_message);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 int			launch_client(t_server *server)
@@ -143,7 +143,7 @@ int			launch_client(t_server *server)
 	return (RETURN_FAILURE);
       aff_map_info(&map);
     }
-  return (RETURN_SUCESS);
+  return (RETURN_SUCCESS);
 }
 
 /* DEBUGGING PRUPOSE */
