@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Mon Jun 20 15:33:21 2016 Thomas Billot
+** Last update Mon Jun 20 16:16:30 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -115,6 +115,15 @@ int			handle_server_output(t_map *map,
   return (RETURN_SUCCESS);
 }
 
+void			init_struct(t_map *map, struct timeval *tv)
+{
+  map->x = 0;
+  map->y = 0;
+  map->tiles = NULL;
+  tv->tv_sec = 0;
+  tv->tv_usec = 50;
+}
+
 int			launch_client(t_server *server)
 {
   t_map			map;
@@ -123,11 +132,7 @@ int			launch_client(t_server *server)
   fd_set		so;
   int			max_socket;
 
-  tv.tv_usec = 50;
-  tv.tv_sec = 0;
-  map.x = 0;
-  map.y = 0;
-  map.tiles = NULL;
+  init_struct(&map, &tv);
   while (1)
     {
       FD_ZERO(&si);
@@ -159,6 +164,8 @@ void		aff_map_info(t_map *map)
   if ((map->x == 0) || (map->x == 0))
     return;
   map_rendering(map);
+}
+
   /*  while (++i <= (map->x * map->y))
     {
       if ((map->tiles == NULL))
@@ -168,7 +175,6 @@ void		aff_map_info(t_map *map)
 	  current = map->tiles[i].characters;
 	  while (current != NULL)
 	    {
-	      printf("-- id: [%d], level: [%d], team: [%s], orientation: [%d] --\n",
 		     current->id,
 		     current->level,
 		     current->team,
@@ -178,4 +184,3 @@ void		aff_map_info(t_map *map)
 	}
     }
   */
-}
