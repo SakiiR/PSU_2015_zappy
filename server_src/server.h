@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:03:45 2016 Barthelemy Gouby
+** Last update Mon Jun 20 16:05:23 2016 Erwan Dupard
 */
 
 #ifndef _SERVER_H_
@@ -37,7 +37,8 @@ typedef enum
     NORTH				= 1,
     EAST				= 2,
     SOUTH				= 3,
-    WEST				= 4
+    WEST				= 4,
+    UNDEFINED				= 5
   }					e_orientation;
 
 typedef enum
@@ -75,6 +76,9 @@ typedef unsigned int			t_quantity;
 
 struct					s_case;
 
+struct					s_action;
+typedef struct s_action			t_action;
+
 typedef struct				s_character
 {
   t_u64					level;
@@ -82,7 +86,8 @@ typedef struct				s_character
   char					*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
-  unsigned int			        hunger_timer;
+  t_action				*action_queue;
+  t_u64					hunger_timer;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -91,8 +96,8 @@ typedef struct				s_case
 {
   t_character				*characters;
   t_quantity				quantities[NUMBER_OF_TYPES];
-  unsigned int				x;
-  unsigned int				y;
+  t_u64					x;
+  t_u64					y;
 }					t_case;
 
 typedef struct				s_map
@@ -121,9 +126,6 @@ typedef struct				s_team
   t_u64					max_members;
   t_u64					nbr_of_members;
 }					t_team;
-
-struct					s_action;
-typedef struct s_action			t_action;
 
 typedef struct				s_game_data
 {
@@ -295,7 +297,6 @@ int					pose_command(t_server *server,
 /*
  * Incantations
  */
-
 typedef struct				s_incantation
 {
   int					level;
@@ -304,6 +305,23 @@ typedef struct				s_incantation
 }					t_incantation;
 
 int					try_incantation(t_case *c, t_u64 next_level);
+
+/*
+ * Expulse
+ */
+int					expulse_player(t_map *map,
+						       t_character *character,
+						       e_orientation orientation);
+typedef struct				s_expulse_case
+{
+  e_orientation				type;
+  void					(*f)(int x, int y, int *new_x, int *new_y);
+}					t_expulse_case;
+
+void					expulse_north(int x, int y, int *new_x, int *new_y);
+void					expulse_south(int x, int y, int *new_x, int *new_y);
+void					expulse_west(int x, int y, int *new_x, int *new_y);
+void					expulse_est(int x, int y, int *new_x, int *new_y);
 
 # include "events.h"
 
