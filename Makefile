@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 19:05:54 2016 Karine Aknin
+## Last update Mon Jun 20 19:06:45 2016 Karine Aknin
 ##
 
 CC		= gcc
@@ -101,14 +101,11 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/action.c				\
 		  server_src/food.c				\
 		  server_src/voir.c				\
-<<<<<<< HEAD
 		  server_src/voir_north.c			\
 		  server_src/voir_south.c			\
 		  server_src/voir_east.c			\
 		  server_src/voir_west.c			\
-=======
 		  server_src/expulse.c				\
->>>>>>> 6fd0412bb924a557cb979c6762e04d805997461d
 		  server_src/incantations.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
