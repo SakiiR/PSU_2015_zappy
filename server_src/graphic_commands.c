@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Wed Jun 15 11:55:28 2016 Erwan Dupard
+** Last update Mon Jun 20 13:53:31 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -49,7 +49,7 @@ int					send_case_content(t_server *server,
 				 &server->game_data.map);
       sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
 	      atoi(x), atoi(y),
-	      map_case->quantities[FOOD],
+	      map_case->quantities[NOURRITURE],
 	      map_case->quantities[LINEMATE],
 	      map_case->quantities[DERAUMERE],
 	      map_case->quantities[SIBUR],
@@ -74,7 +74,7 @@ int					send_map_content(t_server *server,
       sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
 	      i % server->game_data.map.width,
 	      i / server->game_data.map.width,
-	      server->game_data.map.cases[i].quantities[FOOD],
+	      server->game_data.map.cases[i].quantities[NOURRITURE],
 	      server->game_data.map.cases[i].quantities[LINEMATE],
 	      server->game_data.map.cases[i].quantities[DERAUMERE],
 	      server->game_data.map.cases[i].quantities[SIBUR],
