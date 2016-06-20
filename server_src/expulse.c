@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:45:12 2016 Erwan Dupard
-** Last update Mon Jun 20 16:30:54 2016 Erwan Dupard
+** Last update Mon Jun 20 16:35:05 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -65,6 +65,6 @@ int					expulse_player(t_map *map, t_character *character, e_orientation orienta
   character->current_case = new_case;
   add_character_to_case(new_case, character);
   /* Broadcast graphic */
-  /* drone payload */
+  /* Drone payload */
   return (RETURN_SUCCESS);
 }
