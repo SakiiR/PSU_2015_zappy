@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Mon Jun 20 14:02:09 2016 Barthelemy Gouby
+** Last update Mon Jun 20 14:16:51 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -16,7 +16,7 @@ int				        avance_command(t_server *server,
 						       __attribute__((unused)))
 {
   t_action				*new_action;
-  
+
   if (client->type == DRONE)
     {
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
@@ -36,7 +36,7 @@ int					incantation_command(t_server *server,
 							    __attribute__((unused)))
 {
   t_action				*new_action;
-  
+
   if (client->type == DRONE)
     {
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
@@ -55,7 +55,7 @@ int					prend_command(t_server *server,
 						      char *operands)
 {
   t_action				*new_action;
- 
+
   if (client->type == DRONE)
     {
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
@@ -69,7 +69,7 @@ int					prend_command(t_server *server,
       new_action->next = NULL;
       add_action(&server->game_data.pending_actions, new_action);
     }
-  return (RETURN_SUCCESS);  
+  return (RETURN_SUCCESS);
 }
 
 int					pose_command(t_server *server,
@@ -77,7 +77,7 @@ int					pose_command(t_server *server,
 						     char *operands)
 {
   t_action				*new_action;
-  
+
   if (client->type == DRONE)
     {
       if (!(new_action = malloc(sizeof(*new_action))))
@@ -91,5 +91,5 @@ int					pose_command(t_server *server,
       new_action->next = NULL;
       add_action(&server->game_data.pending_actions, new_action);
     }
-  return (RETURN_SUCCESS);  
+  return (RETURN_SUCCESS);
 }

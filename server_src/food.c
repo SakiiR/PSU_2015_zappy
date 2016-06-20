@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:48:16 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:52:11 2016 Barthelemy Gouby
+** Last update Mon Jun 20 13:58:31 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -16,7 +16,7 @@ void			consume_food(t_server *server, t_client *client)
     {
       if (client->character->quantities[NOURRITURE] > 0)
 	{
-	  client->character->quantities[NOURRITURE]--;
+	  --client->character->quantities[NOURRITURE];
 	  client->character->hunger_timer = 126;
 	}
       else
@@ -30,7 +30,7 @@ void			consume_food(t_server *server, t_client *client)
 	}
     }
   else
-    client->character->hunger_timer--;
+    --client->character->hunger_timer;
 }
 
 int			player_food_consumption(t_server *server)
@@ -38,7 +38,7 @@ int			player_food_consumption(t_server *server)
   int			i;
 
   i = -1;
-  while (++i <MAX_CLIENTS)
+  while (++i < MAX_CLIENTS)
     {
       if (server->clients[i].socket != 0 && server->clients[i].type == DRONE)
 	consume_food(server, &server->clients[i]);

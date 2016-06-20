@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 13:51:36 2016 Thomas Billot
-** Last update Sat Jun 18 16:31:43 2016 Thomas Billot
+** Last update Mon Jun 20 13:57:26 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -33,7 +33,7 @@ int		fct_bct(t_map *map,
 	  map->tiles[(x * y)].obj[PHIRAS] = atoi(cmd[8]);
 	  map->tiles[(x * y)].obj[THYSTAME] = atoi(cmd[9]);
 	}
-      return (RETURN_SUCESS);
+      return (RETURN_SUCCESS);
     }
   return (RETURN_FAILURE);
 }

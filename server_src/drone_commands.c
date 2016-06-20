@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 13:10:02 2016 Barthelemy Gouby
-** Last update Fri Jun 17 12:41:58 2016 Barthelemy Gouby
+** Last update Mon Jun 20 14:07:18 2016 Erwan Dupard
 */
 
 #include <math.h>
@@ -61,7 +61,7 @@ int					droite_command(t_server *server,
   t_action				*new_action;
 
   if (client->type == DRONE)
-    {  
+    {
       printf("creating droite action\n");
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
