@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 21 14:54:30 2016 Gabriel Goude
+** Last update Tue Jun 21 15:16:03 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -75,6 +75,8 @@ int					get_world_size(t_infos *infos, char *s)
   infos->client->x = 0;
   infos->client->y = 0;
   infos->client->level = 1;
+  infos->client->alive = 1;
+  infos->client->orientation = 0;
   return (RETURN_SUCCESS);
 }
 
