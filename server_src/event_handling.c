@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:27:52 2016 Barthelemy Gouby
+** Last update Mon Jun 20 18:51:33 2016 Barthelemy Gouby
 */
 
 #define _BSD_SOURCE
@@ -59,7 +59,31 @@ int			handle_actions(t_server *server)
 
 int			eggs_life_cycle(t_server *server)
 {
-  (void) server;
+  t_u64			i;
+  t_egg			*iterator;
+
+  i = 0;
+  while (i < server->game_data.nbr_of_teams)
+    {
+      iterator = server->game_data.teams[i].eggs;
+      while (iterator)
+      	{
+      	  if (!iterator->hatched)
+      	    {
+      	      if (iterator->timer == 0)
+		{
+		  iterator->hatched = 1;
+		  sprintf(server->buffer, "eht %i\n",
+			  iterator->id);
+		  graphic_broadcast(server, server->buffer);
+		}
+      	      else
+      		iterator->timer--;
+      	    }
+	  iterator = iterator->next;
+      	}
+      i++;
+    }
   return (RETURN_SUCCESS);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:34:58 2016 Barthelemy Gouby
+** Last update Mon Jun 20 16:56:33 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -38,32 +38,4 @@ void		pop_action(t_action **action_queue)
       *action_queue = (*action_queue)->next;
       free(action);
     }
-}
-
-t_action	*remove_action(t_action **action_queue, t_action *action)
-{
-  t_action				*iterator;
-  t_action				*next_action;
-
-  if (action == *action_queue)
-    {
-      *action_queue = action->next;
-      next_action = action->next;
-    }
-  else
-    {
-      iterator = *action_queue;
-      while (iterator)
-	{
-	  if (iterator->next == action)
-	    {
-	      iterator->next = action->next;
-	      next_action = action->next;
-	      break;
-	    }
-	  iterator = iterator->next;
-	}
-    }
-  free(action);
-  return (next_action);
 }
