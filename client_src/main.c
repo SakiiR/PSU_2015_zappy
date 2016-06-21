@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 21 15:03:55 2016 Gabriel Goude
+** Last update Tue Jun 21 15:10:02 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -46,7 +46,7 @@ int			init_client(int ac, char **av, t_infos *infos)
 
 int			play_loop(t_infos *infos)
 {
-  while (1)
+  while (infos->client->alive)
   {
     if (update(infos) == RETURN_FAILURE)
       return (RETURN_FAILURE);

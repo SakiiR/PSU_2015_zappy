@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 14:32:57 2016 Gabriel Goude
-** Last update Tue Jun 21 14:46:58 2016 Gabriel Goude
+** Last update Tue Jun 21 16:27:28 2016 Gabriel Goude
 */
 
 #include <sys/select.h>
@@ -26,8 +26,12 @@ char				*read_buf(t_infos *infos)
     i = read(infos->socket, s, 4096);
     if (i > 0)
       write_to_buffer(&(infos->buffer), s, i);
-    return (msg = get_next_message(&(infos->buffer)));
   }
+  msg = get_next_message(&(infos->buffer));
+  if (msg && msg[0])
+    return (msg);
+  if (msg)
+    free(msg);
   return (NULL);
 }
 

@@ -5,14 +5,19 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:56:28 2016 Gabriel Goude
-** Last update Tue Jun 21 14:48:19 2016 Gabriel Goude
+** Last update Tue Jun 21 16:30:25 2016 Gabriel Goude
 */
 
 #include "resources.h"
 
 int				update(t_infos *infos)
 {
-  (void)infos;
+  char				*msg;
+
+  while ((msg = read_buf(infos)) != NULL)
+  {
+    printf("msg received : %s", msg);
+  }
   return (RETURN_SUCCESS);
 }
 
