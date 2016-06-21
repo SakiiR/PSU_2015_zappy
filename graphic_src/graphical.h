@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Tue Jun 21 18:15:44 2016 Thomas Billot
+** Last update Tue Jun 21 18:30:04 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -162,7 +162,8 @@ typedef struct			s_render
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server, t_render *render);
+int				launch_client(t_server *server,
+					      t_render *render);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
 SDL_Surface			*load_bmp(const char *file);
@@ -171,8 +172,8 @@ SDL_Texture			*create_texture(t_render *render,
 int				preload_textures(t_render *render);
 int				display_texture(t_render *ress,
 						t_texture *texture,
-						int x,
-						int y);
+						int x, int y);
+int				clear_surface(t_render *ress);
 
 /*
 ** SDL functions declaration
@@ -181,7 +182,7 @@ int				display_texture(t_render *ress,
 int				sdl_init();
 void				draw_backg(t_render *ress);
 void				put_delay(int delay);
-int				sdl_create_win(t_render *ress/*, t_map *map*/);
+int				sdl_create_win(t_render *ress);
 int				sdl_event(t_render *ress);
 void				sdl_quit();
 
