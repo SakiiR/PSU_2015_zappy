@@ -5,11 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Mon Jun 20 16:44:47 2016 Thomas Billot
-=======
-** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
->>>>>>> ddf8922ecf6f91190d9e6bf5a0832b19968244da
+** Last update Tue Jun 21 13:08:59 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -58,6 +54,10 @@
 # define WIN_X			(800)
 # define WIN_Y			(600)
 
+# define T_GRASS		"graphical_srcs/Media/back.bmp"
+# define T_BORDER_DARK		"graphical_srcs/Media/border_back.bmp"
+# define T_BORDER_LIGHT		"graphical_srcs/Media/border_side.bmp"
+
 /*
 ** Simple Typedefs
 */
@@ -89,6 +89,14 @@ typedef struct			s_option
 /*
 ** Graphical related
 */
+
+typedef enum
+  {
+    GRASS			= 0,
+    BORDER_BLACK		= 1,
+    BORDER_LIGHT		= 2,
+    NUMBER_OF_TEXTURES		= 3
+  }				e_textures;
 
 typedef enum
   {
@@ -131,6 +139,7 @@ typedef struct		       	s_map
 {
   int				x;
   int				y;
+  SDL_Surface			*textures[NUMBER_OF_TEXTURES];
   t_tile			*tiles;
 }				t_map;
 
