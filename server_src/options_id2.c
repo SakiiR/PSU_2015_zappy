@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:17:21 2016 Erwan Dupard
-** Last update Wed Jun 15 14:51:28 2016 Barthelemy Gouby
+** Last update Tue Jun 21 11:41:09 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -26,8 +26,9 @@ int					option_id_teams(char **args, t_server *server)
     {
       teams[i].name = args[i];
       teams[i].members = NULL;
+      teams[i].eggs = NULL;
       teams[i].max_members = 0;
-      teams[i].nbr_of_members = 0;
+      teams[i].base_members = 0;
       ++i;
     }
   server->game_data.teams = teams;

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Mon Jun 20 14:07:29 2016 Erwan Dupard
+** Last update Mon Jun 20 16:59:23 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -40,13 +40,6 @@ int					event_end_incantation(t_server *server, va_list ap)
 }
 
 int					event_new_incantation(t_server *server, va_list ap)
-{
-  (void)server;
-  (void)ap;
-  return (RETURN_SUCCESS);
-}
-
-int					event_lay_egg(t_server *server, va_list ap)
 {
   (void)server;
   (void)ap;
