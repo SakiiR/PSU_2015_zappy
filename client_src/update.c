@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:56:28 2016 Gabriel Goude
-** Last update Tue Jun 21 16:30:25 2016 Gabriel Goude
+** Last update Tue Jun 21 17:09:00 2016 Gabriel Goude
 */
 
 #include "resources.h"
@@ -16,7 +16,10 @@ int				update(t_infos *infos)
 
   while ((msg = read_buf(infos)) != NULL)
   {
-    printf("msg received : %s", msg);
+    if (strncmp(msg, "mort\n", 5) != 0 && strncmp(msg, "broadcast", 9) != 0)
+      handle_msg(infos, msg);
+    else
+      printf("%s", msg);
   }
   return (RETURN_SUCCESS);
 }
