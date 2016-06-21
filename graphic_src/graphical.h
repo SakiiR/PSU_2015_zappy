@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Tue Jun 21 16:21:40 2016 Thomas Billot
+** Last update Tue Jun 21 18:15:44 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -51,8 +51,8 @@
 
 # define TILE_W			(32)
 # define TILE_H			(32)
-# define WIN_X			(800)
-# define WIN_Y			(600)
+# define WIN_W			(800)
+# define WIN_H			(600)
 
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
@@ -166,9 +166,13 @@ int				launch_client(t_server *server, t_render *render);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
 SDL_Surface			*load_bmp(const char *file);
-SDL_Texture			*create_texture(t_render *render, SDL_Surface *bmp);
+SDL_Texture			*create_texture(t_render *render,
+						SDL_Surface *bmp);
 int				preload_textures(t_render *render);
-int				display_texture(t_render *ress, t_texture *texture, int x, int y);
+int				display_texture(t_render *ress,
+						t_texture *texture,
+						int x,
+						int y);
 
 /*
 ** SDL functions declaration
