@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:48:16 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:58:31 2016 Erwan Dupard
+** Last update Tue Jun 21 12:04:44 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -24,6 +24,8 @@ void			consume_food(t_server *server, t_client *client)
 	  write_to_buffer(&client->buffer_out, "mort\n", strlen("mort\n"));
 	  sprintf(server->buffer, "pdi %i\n", client->character->id);
 	  graphic_broadcast(server, server->buffer);
+	  if (client->character->base_member)
+	    --client->character->team->base_members;
 	  close(client->socket);
 	  client->socket = 0;
 	  client->type = UNSPECIFIED;

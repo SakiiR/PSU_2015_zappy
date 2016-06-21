@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:25:34 2016 Barthelemy Gouby
+** Last update Tue Jun 21 12:07:59 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -25,22 +25,19 @@ int					initialize_character(t_server *server,
   client->character->action_queue = NULL;
   client->character->orientation = NORTH;
   client->character->id = server->game_data.next_drone_id++;
-  client->character->team = team->name;
-  place_character_randomly(&server->game_data.map, client->character);
-  sprintf(server->buffer, "%i\n%i %i\n",
-	  team->max_members - team->nbr_of_members,
-	  server->game_data.map.width,
-	  server->game_data.map.height);
-  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
-  team->nbr_of_members++;
-  sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
-  	  client->character->id,
-  	  client->character->current_case->x,
-  	  client->character->current_case->y,
-  	  client->character->orientation,
-  	  client->character->level,
-  	  client->character->team);
-  graphic_broadcast(server, server->buffer);
+  client->character->team = team;
+  client->character->next_in_case = NULL;
+  if (number_of_hatched_eggs(team->eggs) == 0)
+    {
+      place_character_randomly(&server->game_data.map, client->character);
+      client->character->base_member = 1;
+      team->base_members++;
+    }
+  else
+    {
+      place_character_at_egg(&server->game_data.map, client->character, &team->eggs);
+      client->character->base_member = 0;
+    }
   return (RETURN_SUCCESS);
 }
 
@@ -48,18 +45,28 @@ int					add_character_if_possible(t_server *server,
 								  t_client *client,
 								  t_team *team)
 {
-  if (team->nbr_of_members >=
-      team->max_members)
-    {
-      sprintf(server->buffer, "0\n");
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
-    }
+  if (team->base_members >=
+      team->max_members && number_of_hatched_eggs(team->eggs) == 0)
+    write_to_buffer(&client->buffer_out, "0\n", strlen("0\n"));
   else
     {
       if (initialize_character(server,
 			       client,
 			       team) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      sprintf(server->buffer, "%i\n%i %i\n",
+	      team->max_members - team->base_members + number_of_hatched_eggs(team->eggs),
+	      server->game_data.map.width,
+	      server->game_data.map.height);
+      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
+	      client->character->id,
+	      client->character->current_case->x,
+	      client->character->current_case->y,
+	      client->character->orientation,
+	      client->character->level,
+	      client->character->team->name);
+      graphic_broadcast(server, server->buffer);
     }
   return (RETURN_SUCCESS);
 }

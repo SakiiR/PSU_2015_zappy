@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 14:14:30 2016 Barthelemy Gouby
+## Last update Mon Jun 20 17:52:39 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -84,6 +84,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/graphic_commands2.c		\
 		  server_src/drone_commands.c			\
 		  server_src/drone_commands2.c			\
+		  server_src/drone_commands3.c			\
 		  server_src/client_identification.c		\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
@@ -95,6 +96,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/food.c				\
 		  server_src/voir.c				\
 		  server_src/incantations.c			\
+		  server_src/egg.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
