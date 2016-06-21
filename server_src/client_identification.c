@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Tue Jun 21 12:07:59 2016 Barthelemy Gouby
+** Last update Tue Jun 21 14:01:02 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -63,7 +63,7 @@ int					add_character_if_possible(t_server *server,
 	      client->character->id,
 	      client->character->current_case->x,
 	      client->character->current_case->y,
-	      client->character->orientation,
+	      client->character->orientation + 1,
 	      client->character->level,
 	      client->character->team->name);
       graphic_broadcast(server, server->buffer);
