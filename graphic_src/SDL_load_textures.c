@@ -5,14 +5,14 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Tue Jun 21 13:59:58 2016 Thomas Billot
+** Last update Tue Jun 21 16:31:15 2016 Thomas Billot
 */
 
 #include "graphical.h"
 
 SDL_Surface			*load_bmp(const char *file)
 {
-  SDL_Surface		*bmp;
+  SDL_Surface			*bmp;
 
   if ((bmp = SDL_LoadBMP(file)) == NULL)
     {
@@ -26,7 +26,7 @@ SDL_Surface			*load_bmp(const char *file)
 
 SDL_Texture			*create_texture(t_render *ress, SDL_Surface *bmp)
 {
-  SDL_Texture		*texture;
+  SDL_Texture			*texture;
 
   if ((texture = SDL_CreateTextureFromSurface(ress->rend, bmp)) == NULL)
     {
@@ -38,19 +38,16 @@ SDL_Texture			*create_texture(t_render *ress, SDL_Surface *bmp)
   return (texture);
 }
 
-int				display_texture(t_render *ress,
-						SDL_Surface *bmp,
-						SDL_Texture *texture)
+int				display_texture(t_render *ress, t_texture *tile, int x, int y)
 {
   if (ress->rend)
     {
-      ress->dest_rect.x = WIN_X / 2 - bmp->w / 2;
-      ress->dest_rect.y = WIN_Y / 2 - bmp->h / 2;
-      ress->dest_rect.w = bmp->w;
-      ress->dest_rect.h = bmp->h;
-      SDL_RenderCopy(ress->rend, texture, NULL, &ress->dest_rect);
+      ress->dest_rect.x = x - tile->bmp->w / 2;
+      ress->dest_rect.y = y - tile->bmp->h / 2;
+      ress->dest_rect.w = tile->bmp->w;
+      ress->dest_rect.h = tile->bmp->h;
+      SDL_RenderCopy(ress->rend, tile->texture, NULL, &ress->dest_rect);
       SDL_RenderPresent(ress->rend);
-      SDL_DestroyTexture(texture);
     }
   else if (!ress->rend)
     {
