@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Tue Jun 21 15:08:59 2016 Gabriel Goude
+** Last update Tue Jun 21 18:02:13 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -102,6 +102,12 @@ typedef struct				s_map
 */
 int					init_client(int ac, char **av, t_infos *infos);
 int					play_loop(t_infos *infos);
+void					init_fct(int (**fct)(t_infos *, char *));
+
+/*
+** handle.c
+*/
+int					handle_msg(t_infos *infos, char *msg);
 
 /*
 ** update.c
@@ -146,5 +152,28 @@ int					get_next_param(int i, char **av, t_infos *infos);
 */
 int					add_elem(t_infos *infos, int id);
 int					remove_elem(t_infos *infos);
+
+/*
+** handle1.c
+*/
+int					handle_avance(t_infos *infos, char *msg);
+int					handle_droite(t_infos *infos, char *msg);
+int					handle_gauche(t_infos *infos, char *msg);
+int					handle_voir(t_infos *infos, char *msg);
+int					handle_inventaire(t_infos *infos, char *msg);
+
+/*
+** handle2.c
+*/
+int					handle_prend(t_infos *infos, char *msg);
+int					handle_pose(t_infos *infos, char *msg);
+int					handle_expulse(t_infos *infos, char *msg);
+int					handle_broadcast(t_infos *infos, char *msg);
+int					handle_incantation(t_infos *infos, char *msg);
+
+/*
+** handle3.c
+*/
+int					handle_connect_nbr(t_infos *infos, char *msg);
 
 #endif /* ! RESOURCES_H_ */
