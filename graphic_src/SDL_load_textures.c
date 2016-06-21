@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Tue Jun 21 13:11:43 2016 Thomas Beaudet
+** Last update Tue Jun 21 13:21:09 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
@@ -42,6 +42,17 @@ int				display_texture(t_render *ress,
 {
   if (ress->rend)
     {
-      ress->dest_rect = {640 / 2 - bmp->w / 2, }
+      ress->dest_rect = {640 / 2 - bmp->w / 2, 480 / 2 - bmp->h / 2, bmp->w, bmp->h};
+      SDL_RenderCopy(ress->rend, texture, NULL, &dest_rect);
+
+      SDL_RenderPresent(ress->rend);
+
+      SDL_DestroyTexture(texturexs);
+    }
+  else if (!ress->rend)
+    {
+      fprintf(stderr,
+	      "Problem encountered while finding renderer -> SDL Error : %s\n",
+	      SDL_GetError());
     }
 }
