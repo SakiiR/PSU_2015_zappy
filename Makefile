@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Tue Jun 21 18:02:26 2016 Gabriel Goude
+## Last update Tue Jun 21 18:06:40 2016 Gabriel Goude
 ##
 
 CC		= gcc
@@ -46,7 +46,7 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/client.c				\
 		  graphic_src/my_strdup.c			\
 		  graphic_src/map_rendering.c			\
-		  graphic_src/preload_textures.c		\
+		  graphic_src/textures.c			\
 		  graphic_src/get_player_by_id.c		\
 		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
