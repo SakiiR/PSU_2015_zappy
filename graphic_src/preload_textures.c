@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Tue Jun 21 12:59:05 2016 Thomas Billot
-** Last update Tue Jun 21 13:26:46 2016 Thomas Billot
+** Last update Tue Jun 21 13:52:36 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -17,16 +17,23 @@ static char	*g_textures[] =
     T_BORDER_LIGHT
   }; 
 
-int		preload_textures(t_map *map)
+int		preload_textures(t_render *ress)
 {
   int		i;
 
   i = -1;
   while (++i < NUMBER_OF_TEXTURES)
     {
-      if ((map->textures[i] = load_bmp(g_textures[i])) != NULL)
-	printf("Loaded texture: %s\n", g_textures[i]);
+      if ((ress->tileset[i].bmps[i] = load_bmp(g_textures[i])) != NULL)
+	printf("Loaded bmp: %s\n", g_textures[i]);
+      else
+	return (RETURN_FAILURE);
+      if ((ress->tileset[i].textures[i] = create_texture(ress,
+							  ress->tileset[i].bmps[i])) != NULL)
+	printf("Loaded texture for: %s\n", g_textures[i]);
+      else
+	return (RETURN_FAILURE);
     }
-  printf("Successfully loaded textures\n");
-  return (0);
+  printf("\nSuccessfully loaded textures\n");
+  return (RETURN_SUCCESS);
 }
