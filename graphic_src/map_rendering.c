@@ -5,12 +5,12 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Tue Jun 21 13:17:13 2016 Thomas Billot
+** Last update Tue Jun 21 16:25:19 2016 Thomas Billot
 */
 
 #include "graphical.h"
 
-int		map_rendering(t_map *map)
+int		map_rendering(t_render *render, t_map *map)
 {
   int		i;
   int		x;
@@ -21,10 +21,8 @@ int		map_rendering(t_map *map)
     {
       x = (i % map->x);
       y = (i / map->x);
+      display_texture(render, &render->tileset[GRASS], x, y);
     }
-  (void)x;
-  (void)y;
-  (void)map;
   return (0);
 }
 
