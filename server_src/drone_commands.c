@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 13:10:02 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:24:56 2016 Barthelemy Gouby
+** Last update Mon Jun 20 16:06:25 2016 Erwan Dupard
 */
 
 #include <math.h>
@@ -97,6 +97,30 @@ int				        gauche_command(t_server *server
       new_action->argument = (char *) LEFT;
       new_action->next = NULL;
       add_action(&client->character->action_queue, new_action);
+      printf("finished creating action\n");
+    }
+  return (RETURN_SUCCESS);
+}
+
+
+int				        expulse_command(t_server *server,
+							t_client *client,
+							char *operands
+							__attribute__((unused)))
+{
+  t_action				*new_action;
+
+  if (client->type == DRONE)
+    {
+      printf("creating expulse action\n");
+      if ((new_action = malloc(sizeof(*new_action))) == NULL)
+	return (RETURN_FAILURE);
+      new_action->type = EXPULSE;
+      new_action->origin = client;
+      new_action->duration = 7;
+      new_action->argument = NULL;
+      new_action->next = NULL;
+      add_action(&server->game_data.pending_actions, new_action);
       printf("finished creating action\n");
     }
   return (RETURN_SUCCESS);

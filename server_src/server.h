@@ -5,7 +5,11 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Tue Jun 21 12:02:56 2016 Barthelemy Gouby
+<<<<<<< HEAD
+** Last update Tue Jun 21 12:11:40 2016 Barthelemy Gouby
+=======
+** Last update Mon Jun 20 20:37:10 2016 Karine Aknin
+>>>>>>> af39434200291ab1f68d9823b85f8a23ece3276d
 */
 
 #ifndef _SERVER_H_
@@ -34,10 +38,11 @@ typedef unsigned int			t_u64;
 
 typedef enum
   {
-    NORTH				= 1,
-    EAST				= 2,
-    SOUTH				= 3,
-    WEST				= 4
+    NORTH				= 0,
+    EAST				= 1,
+    SOUTH				= 2,
+    WEST				= 3,
+    UNDEFINED				= 4
   }					e_orientation;
 
 typedef enum
@@ -172,6 +177,13 @@ typedef struct				s_command
 					     t_client *client,
 					     char *operands);
 }					t_command;
+
+typedef struct				s_voir
+{
+  e_orientation				orientation;
+  int					(*f)(t_map *map, t_character *character,
+					     t_case **cases, int max_size);
+}					t_voir;
 
 int					process_server(t_server *server);
 int					handle_command(char *command,
@@ -311,6 +323,14 @@ int					fork_command(t_server *server,
 int					connect_nbr_command(t_server *server,
 							    t_client *client,
 							    char *operands);
+int					voir_north(t_map *map, t_character *character,
+						   t_case **cases, int max_size);
+int					voir_south(t_map *map, t_character *character,
+                                                   t_case **cases, int max_size);
+int					voir_west(t_map *map, t_character *character,
+                                                   t_case **cases, int max_size);
+int					voir_east(t_map *map, t_character *character,
+                                                   t_case **cases, int max_size);
 
 /*
  * Incantations
@@ -323,6 +343,23 @@ typedef struct				s_incantation
 }					t_incantation;
 
 int					try_incantation(t_case *c, t_u64 next_level);
+
+/*
+ * Expulse
+ */
+int					expulse_player(t_map *map,
+						       t_character *character,
+						       e_orientation orientation);
+typedef struct				s_expulse_case
+{
+  e_orientation				type;
+  void					(*f)(int x, int y, int *new_x, int *new_y);
+}					t_expulse_case;
+
+void					expulse_north(int x, int y, int *new_x, int *new_y);
+void					expulse_south(int x, int y, int *new_x, int *new_y);
+void					expulse_west(int x, int y, int *new_x, int *new_y);
+void					expulse_east(int x, int y, int *new_x, int *new_y);
 
 # include "events.h"
 

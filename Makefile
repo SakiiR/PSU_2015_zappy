@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 17:52:39 2016 Barthelemy Gouby
+## Last update Tue Jun 21 12:12:09 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -40,6 +40,8 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/xclose.c 				\
 		  graphic_src/client.c				\
 		  graphic_src/my_strdup.c			\
+		  graphic_src/map_rendering.c			\
+		  graphic_src/get_player_by_id.c		\
 		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
 		  graphic_src/FCT/fct_bct.c 			\
@@ -66,6 +68,11 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/FCT/fct_suc.c 			\
 		  graphic_src/FCT/fct_sbp.c 			\
 		  graphic_src/get_next_line.c			\
+		  graphic_src/SDL_init.c			\
+		  graphic_src/SDL_quit.c			\
+		  graphic_src/SDL_event.c			\
+		  graphic_src/SDL_window.c			\
+		  graphic_src/SDL_draw_backg.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
@@ -95,6 +102,11 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/action.c				\
 		  server_src/food.c				\
 		  server_src/voir.c				\
+		  server_src/voir_north.c			\
+		  server_src/voir_south.c			\
+		  server_src/voir_east.c			\
+		  server_src/voir_west.c			\
+		  server_src/expulse.c				\
 		  server_src/incantations.c			\
 		  server_src/egg.c				\
 		  utils/circular_buffer/circular_buffer.c	\
@@ -117,7 +129,7 @@ $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2 -lSDL2main -lSDL2_image
 
 clean:
 	$(RM) $(CLIENT_OBJS)

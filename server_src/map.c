@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:52:56 2016 Barthelemy Gouby
+** Last update Mon Jun 20 20:49:45 2016 Karine Aknin
 */
 
 #include <time.h>
@@ -15,13 +15,13 @@
 int					initialize_map(t_map *map)
 {
   t_case				*cases;
-  t_u64					i;
+  int					i;
 
-  i = 0;
-  if (!(cases = malloc(sizeof(*cases) * map->width * map->height)))
+  i = -1;
+  if ((cases = malloc(sizeof(*cases) * map->width * map->height)) == NULL)
     return (RETURN_FAILURE);
   printf("building map\n");
-  while (i < map->width * map->height)
+  while (++i < (int)(map->width * map->height))
     {
       cases[i].characters = NULL;
       cases[i].quantities[NOURRITURE] = 0;
@@ -32,9 +32,8 @@ int					initialize_map(t_map *map)
       cases[i].quantities[PHIRAS] = 0;
       cases[i].quantities[THYSTAME] = 0;
       cases[i].x = i % map->width;
-      cases[i].y = i / map->height;
-      printf("case %i x: %i y: %i\n", i, cases[i].x, cases[i].y);
-      i++;
+      cases[i].y = i / map->width;
+      printf("fuck %i x: %i y: %i\n", i, cases[i].x, cases[i].y);
     }
   map->cases = cases;
   return (RETURN_SUCCESS);
@@ -45,13 +44,13 @@ t_case					*map_get_case_at(const t_u64 x,
 							 const t_map *map)
 {
   t_u64					index;
+  t_case				*c;
 
-  printf("looking for case at x: %i y: %i\n", x, y);
+  printf("x = %d, y = %d\n", x, y);
   index = y * map->width + x;
-  if (index >= map->height * map->width)
-    return (NULL);
-  printf("found case %i at x: %i y: %i\n", index, map->cases[index].x, map->cases[index].y);
-  return (&map->cases[index]);
+  c = (index >= map->height * map->width ? NULL : &map->cases[index]);
+  printf("x2 = %d y2 = %d\n", c->x, c->y);
+  return (c);
 }
 
 void					spread_ressource(const e_ressource_type type,
