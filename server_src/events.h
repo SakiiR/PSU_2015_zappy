@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Mon Jun 20 15:27:09 2016 Barthelemy Gouby
+** Last update Mon Jun 20 16:06:10 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -34,7 +34,7 @@ typedef enum
     TURN,
     ADVANCE,
     INCANTATION,
-    ETC
+    EXPULSE
   }					e_event_type;
 
 struct					s_action
@@ -79,6 +79,7 @@ int					event_advance(t_server *server, va_list ap);
 int					event_incantation(t_server *server, va_list ap);
 int					event_take_ressource(t_server *server, va_list ap);
 int					event_throw_ressource(t_server *server, va_list ap);
+int					event_expulse(t_server *server, va_list ap);
 int					event_fork(t_server *server, va_list ap);
 
 #endif /* ! EVENTS_H_ */
