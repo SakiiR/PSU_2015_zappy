@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Mon Jun 20 14:07:47 2016 Erwan Dupard
+** Last update Tue Jun 21 14:01:24 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -37,7 +37,7 @@ int					event_turn(t_server *server, va_list ap)
 	  client->character->id,
 	  client->character->current_case->x,
 	  client->character->current_case->y,
-	  client->character->orientation);
+	  client->character->orientation + 1);
   graphic_broadcast(server, server->buffer);
   write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
   return (RETURN_SUCCESS);
@@ -87,7 +87,7 @@ int					event_advance(t_server *server, va_list ap)
 	  client->character->id,
 	  client->character->current_case->x,
 	  client->character->current_case->y,
-	  client->character->orientation);
+	  client->character->orientation + 1);
   graphic_broadcast(server, server->buffer);
   write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
   return (RETURN_SUCCESS);
