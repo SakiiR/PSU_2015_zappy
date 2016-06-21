@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Tue Jun 21 14:47:21 2016 Gabriel Goude
+## Last update Tue Jun 21 18:02:26 2016 Gabriel Goude
 ##
 
 CC		= gcc
@@ -31,6 +31,10 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/list_fct.c				\
 		  client_src/buf.c				\
 		  client_src/update.c			\
+		  client_src/handle.c			\
+		  client_src/handle1.c			\
+		  client_src/handle2.c			\
+		  client_src/handle3.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
