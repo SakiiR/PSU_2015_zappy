@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Tue Jun 21 13:08:35 2016 Thomas Billot
+## Last update Tue Jun 21 13:16:30 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -74,6 +74,7 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/SDL_event.c			\
 		  graphic_src/SDL_window.c			\
 		  graphic_src/SDL_draw_backg.c			\
+		  graphic_src/SDL_load_textures.c		\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
