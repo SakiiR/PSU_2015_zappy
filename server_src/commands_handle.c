@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Mon Jun 20 15:35:04 2016 Erwan Dupard
+** Last update Tue Jun 21 12:10:26 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -27,6 +27,8 @@ static const t_command			g_commands[] = {
     {"avance", &avance_command},
     {"prend", &prend_command},
     {"pose", &pose_command},
+    {"fork", &fork_command},
+    {"connect_nbr", &connect_nbr_command},
     {NULL, NULL}
 };
 

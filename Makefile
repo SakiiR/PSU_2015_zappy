@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 19:06:45 2016 Karine Aknin
+## Last update Tue Jun 21 13:08:35 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -41,6 +41,7 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/client.c				\
 		  graphic_src/my_strdup.c			\
 		  graphic_src/map_rendering.c			\
+		  graphic_src/preload_textures.c		\
 		  graphic_src/get_player_by_id.c		\
 		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
@@ -91,6 +92,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/graphic_commands2.c		\
 		  server_src/drone_commands.c			\
 		  server_src/drone_commands2.c			\
+		  server_src/drone_commands3.c			\
 		  server_src/client_identification.c		\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
@@ -107,6 +109,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/voir_west.c			\
 		  server_src/expulse.c				\
 		  server_src/incantations.c			\
+		  server_src/egg.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
