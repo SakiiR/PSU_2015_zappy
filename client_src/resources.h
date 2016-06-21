@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Tue Jun 21 14:46:32 2016 Gabriel Goude
+** Last update Tue Jun 21 15:08:59 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -81,6 +81,7 @@ typedef struct				s_client
   t_quantity			        inventory[NUMBER_OF_TYPES];
   unsigned int				level;
   unsigned int				orientation;
+  unsigned int				alive;
 }					t_client;
 
 typedef struct				s_tile
