@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Tue Jun 21 13:52:05 2016 Thomas Billot
+** Last update Tue Jun 21 16:21:40 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -144,8 +144,8 @@ typedef struct		       	s_map
 
 typedef struct			s_texture
 {
-  SDL_Surface			*bmps[NUMBER_OF_TEXTURES];
-  SDL_Texture			*textures[NUMBER_OF_TEXTURES];
+  SDL_Surface			*bmp;
+  SDL_Texture			*texture;
 }				t_texture;
 
 typedef struct			s_render
@@ -164,10 +164,11 @@ typedef struct			s_render
 int				setup_networking(t_option *options);
 int				launch_client(t_server *server, t_render *render);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
-int				map_rendering(t_map *map);
+int				map_rendering(t_render *render, t_map *map);
 SDL_Surface			*load_bmp(const char *file);
 SDL_Texture			*create_texture(t_render *render, SDL_Surface *bmp);
 int				preload_textures(t_render *render);
+int				display_texture(t_render *ress, t_texture *texture, int x, int y);
 
 /*
 ** SDL functions declaration
