@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Tue Jun 21 15:21:25 2016 Thomas Billot
+** Last update Tue Jun 21 15:29:00 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -39,7 +39,6 @@ int		generate_map(t_map *map)
     {
       if ((map->tiles[i].characters = init_characters()) == NULL)
 	return (RETURN_FAILURE);
-      memset(map->tiles[i].obj, 0, NUMBER_OF_TYPES);
       map->tiles[i].players = 0;
     }
   return (RETURN_SUCCESS);

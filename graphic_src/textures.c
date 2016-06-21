@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Tue Jun 21 12:59:05 2016 Thomas Billot
-** Last update Tue Jun 21 13:52:36 2016 Thomas Billot
+** Last update Tue Jun 21 16:29:29 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -24,12 +24,12 @@ int		preload_textures(t_render *ress)
   i = -1;
   while (++i < NUMBER_OF_TEXTURES)
     {
-      if ((ress->tileset[i].bmps[i] = load_bmp(g_textures[i])) != NULL)
+      if ((ress->tileset[i].bmp = load_bmp(g_textures[i])) != NULL)
 	printf("Loaded bmp: %s\n", g_textures[i]);
       else
 	return (RETURN_FAILURE);
-      if ((ress->tileset[i].textures[i] = create_texture(ress,
-							  ress->tileset[i].bmps[i])) != NULL)
+      if ((ress->tileset[i].texture = create_texture(ress,
+							  ress->tileset[i].bmp)) != NULL)
 	printf("Loaded texture for: %s\n", g_textures[i]);
       else
 	return (RETURN_FAILURE);
