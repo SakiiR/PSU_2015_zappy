@@ -6,7 +6,7 @@
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
 <<<<<<< HEAD
-** Last update Mon Jun 20 16:44:47 2016 Thomas Billot
+** Last update Tue Jun 21 13:11:07 2016 Thomas Beaudet
 =======
 ** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
 >>>>>>> ddf8922ecf6f91190d9e6bf5a0832b19968244da
@@ -131,7 +131,7 @@ typedef struct		       	s_map
 {
   int				x;
   int				y;
-  t_tile			*tiles;
+  t_tile			*tiles; /* tileset */
 }				t_map;
 
 typedef struct			s_render
@@ -139,6 +139,7 @@ typedef struct			s_render
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
+  SDL_Rect			dest_rect;
   /*  SDL_Texture			*texture;
       Uint32			*pixels; */
 }				t_render;
