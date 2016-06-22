@@ -6,10 +6,14 @@
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
 <<<<<<< HEAD
+** Last update Wed Jun 22 17:08:43 2016 Thomas Billot
+=======
+<<<<<<< HEAD
 ** Last update Wed Jun 22 16:15:47 2016 Thomas Beaudet
 =======
 ** Last update Wed Jun 22 15:53:36 2016 Thomas Billot
 >>>>>>> 2985de004257fc1eda403abc4cde41c9d87dd168
+>>>>>>> b5f2806dc7e8df340d9884d6f5335bf368266861
 */
 
 #ifndef GRAPHICAL_H_
