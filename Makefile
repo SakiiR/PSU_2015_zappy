@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Mon Jun 20 19:06:45 2016 Karine Aknin
+## Last update Wed Jun 22 14:44:04 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -30,17 +30,21 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/map.c				\
 		  client_src/list_fct.c				\
 		  client_src/buf.c				\
+		  client_src/update.c			\
+		  client_src/handle.c			\
+		  client_src/handle1.c			\
+		  client_src/handle2.c			\
+		  client_src/handle3.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
 GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/network.c 			\
-		  graphic_src/xsocket.c 			\
-		  graphic_src/xconnect.c 			\
-		  graphic_src/xclose.c 				\
+		  graphic_src/xfunc.c				\
 		  graphic_src/client.c				\
 		  graphic_src/my_strdup.c			\
 		  graphic_src/map_rendering.c			\
+		  graphic_src/textures.c			\
 		  graphic_src/get_player_by_id.c		\
 		  graphic_src/FCT/fct_welcome.c 		\
 		  graphic_src/FCT/fct_msz.c 			\
@@ -73,6 +77,7 @@ GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/SDL_event.c			\
 		  graphic_src/SDL_window.c			\
 		  graphic_src/SDL_draw_backg.c			\
+		  graphic_src/SDL_load_textures.c		\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
@@ -91,6 +96,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/graphic_commands2.c		\
 		  server_src/drone_commands.c			\
 		  server_src/drone_commands2.c			\
+		  server_src/drone_commands3.c			\
 		  server_src/client_identification.c		\
 		  server_src/events.c		 		\
 		  server_src/events2.c		 		\
@@ -107,6 +113,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/voir_west.c			\
 		  server_src/expulse.c				\
 		  server_src/incantations.c			\
+		  server_src/egg.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
@@ -127,7 +134,7 @@ $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2 -lSDL2main -lSDL2_image
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2main -lSDL2  -lSDL2_image
 
 clean:
 	$(RM) $(CLIENT_OBJS)

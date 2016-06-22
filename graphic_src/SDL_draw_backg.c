@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:31:27 2016 Thomas Beaudet
-** Last update Mon Jun 20 15:53:21 2016 Thomas Beaudet
+** Last update Wed Jun 22 14:36:50 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -18,28 +18,20 @@ void			draw_backg(t_render *ress)
   SDL_RenderPresent(ress->rend);
 }
 
+int			clear_surface(t_render *ress)
+{
+  if ((SDL_RenderClear(ress->rend)) < 0)
+    {
+      fprintf(stderr,
+	      "Problem encountered while clearing renderer -> SDL Error : %s\n",
+	      SDL_GetError());
+      SDL_Quit();
+      return (RETURN_FAILURE);
+    }
+  return (RETURN_SUCCESS);
+}
+
 void			put_delay(int delay)
 {
   SDL_Delay(delay);
-}
-
-void			draw_loop(/*t_render *ress,*/ t_map *map)
-{
-  int			i;
-  int			j;
-  int			map_size;
-  int			t_map_size;
-
-  i = 0;
-  map_size = map->x * map->y;
-  t_map_size = map->x;
-  while (i < map_size)
-    {
-      j = t_map_size;
-      while (j >= 0)
-	{
-	  j--;
-	}
-      i++;
-    }
 }

@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 17 17:08:01 2016 Gabriel Goude
+** Last update Tue Jun 21 18:00:29 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -46,6 +46,32 @@ int			init_client(int ac, char **av, t_infos *infos)
 
 int			play_loop(t_infos *infos)
 {
-  ai(infos);
+  int			(*fct[NUMBER_OF_REQUESTS])(t_infos *, char *);
+
+  init_fct(fct);
+  while (infos->client->alive)
+  {
+    if (update(infos) == RETURN_FAILURE)
+      return (RETURN_FAILURE);
+    if (ai(infos) == RETURN_FAILURE)
+      return (RETURN_FAILURE);
+    if (send_update(infos) == RETURN_FAILURE)
+      return (RETURN_FAILURE);
+  }
   return (RETURN_SUCCESS);
+}
+
+void			init_fct(int (**fct)(t_infos *, char *))
+{
+  fct[AVANCE] = handle_avance;
+  fct[DROITE] = handle_droite;
+  fct[GAUCHE] = handle_gauche;
+  fct[VOIR] = handle_voir;
+  fct[INVENTAIRE] = handle_inventaire;
+  fct[PREND] = handle_prend;
+  fct[POSE] = handle_pose;
+  fct[EXPULSE] = handle_expulse;
+  fct[BROADCAST] = handle_broadcast;
+  fct[INCANTATION] = handle_incantation;
+  fct[CONNECT_NBR] = handle_connect_nbr;
 }

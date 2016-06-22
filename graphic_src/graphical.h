@@ -5,11 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Mon Jun 20 16:44:47 2016 Thomas Billot
-=======
-** Last update Mon Jun 20 15:30:29 2016 Thomas Billot
->>>>>>> ddf8922ecf6f91190d9e6bf5a0832b19968244da
+** Last update Wed Jun 22 14:58:33 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -18,6 +14,7 @@
 # include <circular_buffer/circular_buffer.h>
 # include <arpa/inet.h>
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # include <stdint.h>
 
 # define RETURN_SUCCESS		(0)
@@ -55,8 +52,19 @@
 
 # define TILE_W			(32)
 # define TILE_H			(32)
-# define WIN_X			(800)
-# define WIN_Y			(600)
+# define WIN_W			(800)
+# define WIN_H			(600)
+
+# define T_GRASS		"graphic_src/Media/back.bmp"
+# define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
+# define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
+
+/*
+** Convertion map coord to screen cord
+*/
+
+# define CONVERT_X(x, y) ((x - y) * (TILE_W / 2))
+# define CONVERT_Y(x, y) ((x + y) * (TILE_H / 2))
 
 /*
 ** Simple Typedefs
@@ -89,6 +97,14 @@ typedef struct			s_option
 /*
 ** Graphical related
 */
+
+typedef enum
+  {
+    GRASS			= 0,
+    BORDER_BLACK		= 1,
+    BORDER_LIGHT		= 2,
+    NUMBER_OF_TEXTURES		= 3
+  }				e_textures;
 
 typedef enum
   {
@@ -134,13 +150,19 @@ typedef struct		       	s_map
   t_tile			*tiles;
 }				t_map;
 
+typedef struct			s_texture
+{
+  SDL_Surface			*bmp;
+  SDL_Texture			*texture;
+}				t_texture;
+
 typedef struct			s_render
 {
   SDL_Window			*screen;
   SDL_Renderer			*rend;
   SDL_Event			event;
-  /*  SDL_Texture			*texture;
-      Uint32			*pixels; */
+  SDL_Rect			dest_rect;
+  t_texture			tileset[NUMBER_OF_TEXTURES];
 }				t_render;
 
 /*
@@ -148,18 +170,27 @@ typedef struct			s_render
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server, t_render *render);
+int				launch_client(t_server *server,
+					      t_render *render);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
-int				map_rendering(t_map *map);
+int				map_rendering(t_render *render, t_map *map);
+SDL_Surface			*load_bmp(const char *file);
+SDL_Texture			*create_texture(t_render *render,
+						SDL_Surface *bmp);
+int				preload_textures(t_render *render);
+int				display_texture(t_render *ress,
+						t_texture *texture,
+						int x, int y);
+int				clear_surface(t_render *ress);
 
 /*
-** SDL fucntions declaration
+** SDL functions declaration
 */
 
 int				sdl_init();
 void				draw_backg(t_render *ress);
 void				put_delay(int delay);
-int				sdl_create_win(t_render *ress/*, t_map *map*/);
+int				sdl_create_win(t_render *ress);
 int				sdl_event(t_render *ress);
 void				sdl_quit();
 

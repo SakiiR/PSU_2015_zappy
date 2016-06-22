@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Fri Jun 17 15:00:51 2016 Gabriel Goude
+** Last update Tue Jun 21 15:16:03 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -18,9 +18,6 @@
 #include <string.h>
 #include "resources.h"
 
-/*
-** WIP
-*/
 int					enter_game(t_infos *infos)
 {
   char					*msg;
@@ -31,6 +28,7 @@ int					enter_game(t_infos *infos)
   {
     free(msg);
     write_buf(infos, infos->client->team_name);
+    send_update(infos);
     if ((msg = read_buf(infos)) == NULL)
       return (RETURN_FAILURE);
     if (atoi(msg) > 0)
@@ -77,6 +75,8 @@ int					get_world_size(t_infos *infos, char *s)
   infos->client->x = 0;
   infos->client->y = 0;
   infos->client->level = 1;
+  infos->client->alive = 1;
+  infos->client->orientation = 0;
   return (RETURN_SUCCESS);
 }
 
