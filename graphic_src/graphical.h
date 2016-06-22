@@ -5,7 +5,15 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
+<<<<<<< HEAD
 ** Last update Wed Jun 22 17:08:43 2016 Thomas Billot
+=======
+<<<<<<< HEAD
+** Last update Wed Jun 22 16:15:47 2016 Thomas Beaudet
+=======
+** Last update Wed Jun 22 15:53:36 2016 Thomas Billot
+>>>>>>> 2985de004257fc1eda403abc4cde41c9d87dd168
+>>>>>>> b5f2806dc7e8df340d9884d6f5335bf368266861
 */
 
 #ifndef GRAPHICAL_H_
@@ -160,9 +168,15 @@ typedef struct			s_render
 {
   SDL_Window			*screen;
   SDL_Renderer			*rend;
-  SDL_Event			event;
   SDL_Rect			dest_rect;
   t_texture			tileset[NUMBER_OF_TEXTURES];
+  SDL_Event			event;
+  int				mouse_x;
+  int				mouse_y;
+  int				mouse_x_rel;
+  int				mouse_y_rel;
+  char				mouse_buttons[8];
+  char				quit;
 }				t_render;
 
 /*
@@ -193,6 +207,7 @@ void				put_delay(int delay);
 int				sdl_create_win(t_render *ress);
 int				sdl_event(t_render *ress);
 void				sdl_quit();
+SDL_Rect				sdl_mouse_motion(t_render *ress);
 
 /*
 ** Function pointer definition
