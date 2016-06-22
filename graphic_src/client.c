@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Tue Jun 21 13:19:52 2016 Thomas Billot
+** Last update Tue Jun 21 16:28:31 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -120,7 +120,6 @@ void			init_struct(t_map *map, struct timeval *tv)
   map->x = 0;
   map->y = 0;
   map->tiles = NULL;
-  preload_textures(map);
   tv->tv_sec = 0;
   tv->tv_usec = 50;
 }
@@ -134,6 +133,7 @@ int			launch_client(t_server *server, t_render *render)
   int			max_socket;
 
   init_struct(&map, &tv);
+  preload_textures(render);
   while (SDL_PollEvent(&render->event) || 1)
     {
       FD_ZERO(&si);
@@ -147,7 +147,7 @@ int			launch_client(t_server *server, t_render *render)
 	return (RETURN_FAILURE);
       if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      aff_map_info(&map);
+      map_rendering(render, &map);
       if (sdl_event(render) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
@@ -155,19 +155,6 @@ int			launch_client(t_server *server, t_render *render)
 }
 
 /* DEBUGGING PRUPOSE */
-
-void		aff_map_info(t_map *map)
-{
-  int		i;
-  t_character	*current;
-
-  i = -1;
-  (void)current;
-  (void)i;
-  if ((map->x == 0) || (map->x == 0))
-    return;
-  map_rendering(map);
-}
 
   /*  while (++i <= (map->x * map->y))
     {
