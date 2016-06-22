@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:23:26 2016 Thomas Beaudet
-** Last update Tue Jun 21 12:18:13 2016 Thomas Billot
+** Last update Tue Jun 21 18:32:08 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -13,7 +13,7 @@
 
 int			sdl_create_win(t_render *ress)
 {
-  SDL_CreateWindowAndRenderer(WIN_X, WIN_Y, 0, &ress->screen, &ress->rend);
+  SDL_CreateWindowAndRenderer(WIN_W, WIN_H, 0, &ress->screen, &ress->rend);
   if (!ress->screen || !ress->rend)
     {
       fprintf(stderr,

@@ -5,7 +5,11 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:31:27 2016 Thomas Beaudet
+<<<<<<< HEAD
 ** Last update Tue Jun 21 18:14:19 2016 Thomas Beaudet
+=======
+** Last update Tue Jun 21 18:31:49 2016 Thomas Billot
+>>>>>>> eb5d5d57b206155313296dfbe3212d9810546515
 */
 
 #include <stdio.h>
@@ -22,7 +26,8 @@ int			clear_surface(t_render *ress)
 {
   if ((SDL_RenderClear(ress->rend)) < 0)
     {
-      fprintf(stderr, "Problem encountered while clearing renderer -> SDL Error : %s\n",
+      fprintf(stderr,
+	      "Problem encountered while clearing renderer -> SDL Error : %s\n",
 	      SDL_GetError());
       SDL_Quit();
       return (-1);
