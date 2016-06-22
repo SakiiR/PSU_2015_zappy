@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:52:53 2016 Gabriel Goude
-** Last update Tue Jun 21 17:58:38 2016 Gabriel Goude
+** Last update Wed Jun 22 16:12:01 2016 Erwan Dupard
 */
 
 #include "resources.h"
@@ -33,9 +33,6 @@ int				handle_expulse(t_infos *infos, char *msg)
 
 int				handle_broadcast(t_infos *infos, char *msg)
 {
-  /*
-  ** update map
-  */
   (void)msg;
   remove_elem(infos);
   return (RETURN_SUCCESS);
@@ -43,9 +40,6 @@ int				handle_broadcast(t_infos *infos, char *msg)
 
 int				handle_incantation(t_infos *infos, char *msg)
 {
-  /*
-  ** update inventaire
-  */
   (void)msg;
   remove_elem(infos);
   return (RETURN_SUCCESS);
