@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 21 15:16:03 2016 Gabriel Goude
+** Last update Wed Jun 22 16:11:50 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -82,9 +82,13 @@ int					get_world_size(t_infos *infos, char *s)
 
 int					init_connection(t_infos *infos)
 {
-  if ((infos->socket = socket(AF_INET, SOCK_STREAM, getprotobyname("tcp")->p_proto)) < 0)
+  if ((infos->socket = socket(AF_INET,
+			      SOCK_STREAM,
+			      getprotobyname("tcp")->p_proto)) < 0)
     return (RETURN_FAILURE);
-  if (connect(infos->socket, (struct sockaddr *) &(infos->in), sizeof(infos->in)) < 0)
+  if (connect(infos->socket,
+	      (struct sockaddr *) &(infos->in),
+	      sizeof(infos->in)) < 0)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }

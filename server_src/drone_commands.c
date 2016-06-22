@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 13:10:02 2016 Barthelemy Gouby
-** Last update Mon Jun 20 16:06:25 2016 Erwan Dupard
+** Last update Wed Jun 22 15:00:50 2016 Erwan Dupard
 */
 
 #include <math.h>
@@ -101,7 +101,6 @@ int				        gauche_command(t_server *server
     }
   return (RETURN_SUCCESS);
 }
-
 
 int				        expulse_command(t_server *server,
 							t_client *client,

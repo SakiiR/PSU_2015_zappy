@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Tue Jun 21 14:01:02 2016 Barthelemy Gouby
+** Last update Wed Jun 22 15:00:33 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -35,7 +35,9 @@ int					initialize_character(t_server *server,
     }
   else
     {
-      place_character_at_egg(&server->game_data.map, client->character, &team->eggs);
+      place_character_at_egg(&server->game_data.map,
+			     client->character,
+			     &team->eggs);
       client->character->base_member = 0;
     }
   return (RETURN_SUCCESS);
@@ -58,7 +60,9 @@ int					add_character_if_possible(t_server *server,
 	      team->max_members - team->base_members + number_of_hatched_eggs(team->eggs),
 	      server->game_data.map.width,
 	      server->game_data.map.height);
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out,
+		      server->buffer,
+		      strlen(server->buffer));
       sprintf(server->buffer, "pnw %i %i %i %i %i %s\n",
 	      client->character->id,
 	      client->character->current_case->x,

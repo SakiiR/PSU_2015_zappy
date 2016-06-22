@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Thu Jun 16 17:27:28 2016 Barthelemy Gouby
+** Last update Wed Jun 22 15:06:39 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -44,8 +44,6 @@ static int			handle_clients_input(t_server *server, fd_set *set_in)
 	{
 	  size_read = read(server->clients[i].socket, buffer, PAGE_SIZE);
 	  buffer[size_read] = 0;
-	  if (size_read > 0)
-	    printf("buffer : %s\n", buffer);
 	  write_to_buffer(&(server->clients[i].buffer_in), buffer, size_read);
 	  while ((next_message = get_next_message(&(server->clients[i].buffer_in)))
 		 && next_message[0])
@@ -55,8 +53,7 @@ static int			handle_clients_input(t_server *server, fd_set *set_in)
 		return (RETURN_FAILURE);
 	      free(next_message);
 	    }
-	  if (next_message)
-	    free(next_message);
+	  free(next_message ? next_message : NULL);
 	}
     }
   return (RETURN_SUCCESS);
