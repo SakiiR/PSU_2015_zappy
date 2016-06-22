@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 16:03:26 2016 Erwan Dupard
+** Last update Wed Jun 22 16:03:56 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -358,7 +358,10 @@ int					expulse_player(t_map *map,
 typedef struct				s_expulse_case
 {
   e_orientation				type;
-  void					(*f)(int x, int y, int *new_x, int *new_y);
+  void					(*f)(int x,
+					     int y,
+					     int *new_x,
+					     int *new_y);
 }					t_expulse_case;
 
 void					expulse_north(int x,
