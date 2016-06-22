@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Wed Jun 22 14:58:33 2016 Thomas Billot
+** Last update Wed Jun 22 15:53:36 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -50,10 +50,10 @@
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
-# define TILE_W			(32)
 # define TILE_H			(32)
-# define WIN_W			(800)
-# define WIN_H			(600)
+# define TILE_W			(64)
+# define WIN_W			(1280)
+# define WIN_H			(1024)
 
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
@@ -101,7 +101,7 @@ typedef struct			s_option
 typedef enum
   {
     GRASS			= 0,
-    BORDER_BLACK		= 1,
+    BORDER_DARK			= 1,
     BORDER_LIGHT		= 2,
     NUMBER_OF_TEXTURES		= 3
   }				e_textures;
