@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Tue Jun 21 18:08:02 2016 Thomas Beaudet
+** Last update Tue Jun 21 18:30:04 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -51,8 +51,8 @@
 
 # define TILE_W			(32)
 # define TILE_H			(32)
-# define WIN_X			(800)
-# define WIN_Y			(600)
+# define WIN_W			(800)
+# define WIN_H			(600)
 
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"

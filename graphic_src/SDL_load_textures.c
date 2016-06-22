@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Tue Jun 21 16:31:15 2016 Thomas Billot
+** Last update Tue Jun 21 18:25:54 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -42,10 +42,10 @@ int				display_texture(t_render *ress, t_texture *tile, int x, int y)
 {
   if (ress->rend)
     {
-      ress->dest_rect.x = x - tile->bmp->w / 2;
-      ress->dest_rect.y = y - tile->bmp->h / 2;
-      ress->dest_rect.w = tile->bmp->w;
-      ress->dest_rect.h = tile->bmp->h;
+      ress->dest_rect.x = x;
+      ress->dest_rect.y = y;
+      ress->dest_rect.w = TILE_W;
+      ress->dest_rect.h = TILE_H;
       SDL_RenderCopy(ress->rend, tile->texture, NULL, &ress->dest_rect);
       SDL_RenderPresent(ress->rend);
     }
