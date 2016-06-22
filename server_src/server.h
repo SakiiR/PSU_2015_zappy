@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 14:29:44 2016 Erwan Dupard
+** Last update Wed Jun 22 14:30:52 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -319,14 +319,22 @@ int					fork_command(t_server *server,
 int					connect_nbr_command(t_server *server,
 							    t_client *client,
 							    char *operands);
-int					voir_north(t_map *map, t_character *character,
-						   t_case **cases, int max_size);
-int					voir_south(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
-int					voir_west(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
-int					voir_east(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
+int					voir_north(t_map *map,
+						   t_character *character,
+						   t_case **cases,
+						   int max_size);
+int					voir_south(t_map *map,
+						   t_character *character,
+                                                   t_case **cases,
+						   int max_size);
+int					voir_west(t_map *map,
+						  t_character *character,
+                                                   t_case **cases,
+						  int max_size);
+int					voir_east(t_map *map,
+						  t_character *character,
+                                                   t_case **cases,
+						  int max_size);
 
 /*
  * Incantations
