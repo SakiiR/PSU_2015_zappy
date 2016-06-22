@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Mon Jun 20 18:51:33 2016 Barthelemy Gouby
+** Last update Wed Jun 22 15:42:09 2016 Erwan Dupard
 */
 
 #define _BSD_SOURCE
@@ -21,9 +21,12 @@ void			initialize_time(t_server *server)
 
   length = 1.0 / server->game_data.speed;
   server->game_data.tick_length.tv_sec = (int) length;
-  server->game_data.tick_length.tv_usec = (int)((length - (int) length) * 1000000);
-  printf("unit length second:  %i\n", (int) length);
-  printf("unit length usecond:  %i\n", (int)((length - (int) length) * 1000000));
+  server->game_data.tick_length.tv_usec =
+    (int)((length - (int) length) * 1000000);
+  printf("unit length second:  %i\n",
+	 (int)length);
+  printf("unit length usecond:  %i\n",
+	 (int)((length - (int) length) * 1000000));
   gettimeofday(&server->game_data.last_tick, NULL);
 }
 
@@ -42,7 +45,6 @@ int			handle_actions(t_server *server)
 	  next_action = server->clients[i].character->action_queue;
 	  if (next_action->duration <= 0)
 	    {
-	      printf("executing action\n");
 	      if (trigger_event(server,
 				next_action->type,
 			        next_action->origin,
@@ -59,11 +61,11 @@ int			handle_actions(t_server *server)
 
 int			eggs_life_cycle(t_server *server)
 {
-  t_u64			i;
+  int			i;
   t_egg			*iterator;
 
-  i = 0;
-  while (i < server->game_data.nbr_of_teams)
+  i = -1;
+  while (++i < (int)server->game_data.nbr_of_teams)
     {
       iterator = server->game_data.teams[i].eggs;
       while (iterator)
@@ -78,11 +80,10 @@ int			eggs_life_cycle(t_server *server)
 		  graphic_broadcast(server, server->buffer);
 		}
       	      else
-      		iterator->timer--;
+      		--iterator->timer;
       	    }
 	  iterator = iterator->next;
       	}
-      i++;
     }
   return (RETURN_SUCCESS);
 }

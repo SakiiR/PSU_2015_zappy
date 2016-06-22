@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Wed Jun 22 15:00:36 2016 Thomas Billot
+** Last update Wed Jun 22 15:08:44 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -47,7 +47,6 @@ int				display_texture(t_render *ress, t_texture *tile, int x, int y)
       ress->dest_rect.w = TILE_W;
       ress->dest_rect.h = TILE_H;
       SDL_RenderCopy(ress->rend, tile->texture, NULL, &ress->dest_rect);
-      SDL_RenderPresent(ress->rend);
     }
   else if (!ress->rend)
     {

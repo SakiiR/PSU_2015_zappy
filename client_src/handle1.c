@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:52:53 2016 Gabriel Goude
-** Last update Tue Jun 21 17:58:44 2016 Gabriel Goude
+** Last update Wed Jun 22 16:10:34 2016 Erwan Dupard
 */
 
 #include "resources.h"
@@ -33,9 +33,6 @@ int				handle_gauche(t_infos *infos, char *msg)
 
 int				handle_voir(t_infos *infos, char *msg)
 {
-  /*
-  ** update map
-  */
   (void)msg;
   remove_elem(infos);
   return (RETURN_SUCCESS);
@@ -43,9 +40,6 @@ int				handle_voir(t_infos *infos, char *msg)
 
 int				handle_inventaire(t_infos *infos, char *msg)
 {
-  /*
-  ** update inventaire
-  */
   (void)msg;
   remove_elem(infos);
   return (RETURN_SUCCESS);
