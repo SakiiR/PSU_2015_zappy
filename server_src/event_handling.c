@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:03:50 2016 Erwan Dupard
+** Last update Wed Jun 22 15:17:01 2016 Erwan Dupard
 */
 
 #define _BSD_SOURCE
@@ -24,7 +24,7 @@ void			initialize_time(t_server *server)
   server->game_data.tick_length.tv_usec =
     (int)((length - (int) length) * 1000000);
   printf("unit length second:  %i\n",
-	 (int) length);
+	 (int)length);
   printf("unit length usecond:  %i\n",
 	 (int)((length - (int) length) * 1000000));
   gettimeofday(&server->game_data.last_tick, NULL);
