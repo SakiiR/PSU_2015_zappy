@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 16:03:56 2016 Erwan Dupard
+** Last update Wed Jun 22 17:55:16 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -342,13 +342,22 @@ int					voir_east(t_map *map,
  */
 typedef struct				s_incantation
 {
-  int					level;
+  t_u64					level;
   int					players;
   t_quantity				obj[NUMBER_OF_TYPES];
 }					t_incantation;
 
-int					try_incantation(t_case *c, t_u64 next_level);
-
+int					do_incantation(t_case *c,
+						       t_incantation *incantation);
+int					check_incantation(t_incantation *incantation,
+							  t_case *c,
+							  t_character **characters
+							  __attribute__((unused)));
+int					check_resources(t_case *c,
+							t_incantation *incantation);
+int					check_characters_incase(t_case *c,
+								t_character **characters);
+t_incantation				*get_incantation_by_level(t_u64 level);
 /*
  * Expulse
  */
