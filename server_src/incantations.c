@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Wed Jun 22 17:54:52 2016 Erwan Dupard
+** Last update Wed Jun 22 18:13:33 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -74,7 +74,7 @@ int					check_resources(t_case *c,
 
 int					check_incantation(t_incantation *incantation,
 							  t_case *c,
-							  t_character **characters
+							  t_character ***characters
 							  __attribute__((unused)))
 {
   t_character				*iterator;
@@ -100,7 +100,7 @@ int					check_incantation(t_incantation *incantation,
       iterator = iterator->next_in_case;
     }
   players[i] = NULL;
-  characters = players;
+  characters = &players;
   return (RETURN_SUCCESS);
 }
 
