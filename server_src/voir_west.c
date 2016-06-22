@@ -5,18 +5,17 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Mon Jun 20 17:11:46 2016 Karine Aknin
+** Last update Wed Jun 22 17:21:18 2016 Karine Aknin
 */
 
 #include "server.h"
 
 int	voir_west(t_map *map, t_character *character,
-		   t_case **cases, int max_size)
+		   t_case **cases)
 {
   printf("inside voir_west\n");
   return (RETURN_SUCCESS);
   (void)map;
   (void)character;
   (void)cases;
-  (void)max_size;
 }
