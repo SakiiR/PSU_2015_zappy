@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:03:50 2016 Erwan Dupard
+** Last update Wed Jun 22 15:42:09 2016 Erwan Dupard
 */
 
 #define _BSD_SOURCE
@@ -24,7 +24,7 @@ void			initialize_time(t_server *server)
   server->game_data.tick_length.tv_usec =
     (int)((length - (int) length) * 1000000);
   printf("unit length second:  %i\n",
-	 (int) length);
+	 (int)length);
   printf("unit length usecond:  %i\n",
 	 (int)((length - (int) length) * 1000000));
   gettimeofday(&server->game_data.last_tick, NULL);
@@ -65,7 +65,7 @@ int			eggs_life_cycle(t_server *server)
   t_egg			*iterator;
 
   i = -1;
-  while (++i < server->game_data.nbr_of_teams)
+  while (++i < (int)server->game_data.nbr_of_teams)
     {
       iterator = server->game_data.teams[i].eggs;
       while (iterator)
@@ -80,7 +80,7 @@ int			eggs_life_cycle(t_server *server)
 		  graphic_broadcast(server, server->buffer);
 		}
       	      else
-      		iterator->timer--;
+      		--iterator->timer;
       	    }
 	  iterator = iterator->next;
       	}
