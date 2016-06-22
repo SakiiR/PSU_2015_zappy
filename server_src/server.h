@@ -5,11 +5,15 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
+<<<<<<< HEAD
 ** Last update Wed Jun 22 14:42:43 2016 Barthelemy Gouby
+=======
+** Last update Wed Jun 22 14:30:52 2016 Erwan Dupard
+>>>>>>> 55905a42fae1bf99afef099f011d21dd70e5c3b1
 */
 
-#ifndef _SERVER_H_
-# define _SERVER_H_
+#ifndef SERVER_H_
+# define SERVER_H_
 
 # include <stdlib.h>
 # include <arpa/inet.h>
@@ -320,14 +324,22 @@ int					fork_command(t_server *server,
 int					connect_nbr_command(t_server *server,
 							    t_client *client,
 							    char *operands);
-int					voir_north(t_map *map, t_character *character,
-						   t_case **cases, int max_size);
-int					voir_south(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
-int					voir_west(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
-int					voir_east(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
+int					voir_north(t_map *map,
+						   t_character *character,
+						   t_case **cases,
+						   int max_size);
+int					voir_south(t_map *map,
+						   t_character *character,
+                                                   t_case **cases,
+						   int max_size);
+int					voir_west(t_map *map,
+						  t_character *character,
+                                                   t_case **cases,
+						  int max_size);
+int					voir_east(t_map *map,
+						  t_character *character,
+                                                   t_case **cases,
+						  int max_size);
 
 /*
  * Incantations
@@ -360,4 +372,4 @@ void					expulse_east(int x, int y, int *new_x, int *new_y);
 
 # include "events.h"
 
-#endif /* !_SERVER_H_ */
+#endif /* !SERVER_H_ */

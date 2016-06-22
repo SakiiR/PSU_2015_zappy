@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Tue Jun 21 16:28:31 2016 Thomas Billot
+** Last update Wed Jun 22 14:34:19 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -153,24 +153,3 @@ int			launch_client(t_server *server, t_render *render)
     }
   return (RETURN_SUCCESS);
 }
-
-/* DEBUGGING PRUPOSE */
-
-  /*  while (++i <= (map->x * map->y))
-    {
-      if ((map->tiles == NULL))
-	return;
-      if (map->tiles[i].players > 0)
-	{
-	  current = map->tiles[i].characters;
-	  while (current != NULL)
-	    {
-		     current->id,
-		     current->level,
-		     current->team,
-		     (int)current->orientation);
-	      current = current->next_in_case;
-	    }
-	}
-    }
-  */
