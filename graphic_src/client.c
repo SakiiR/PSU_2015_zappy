@@ -1,11 +1,11 @@
 /*
 ** g_client.c for PSU_2015_zappy in /home/mikaz3
-** 
+**
 ** Made by Thomas Billot
 ** Login   <mikaz3@epitech.net>
-** 
+**
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Wed Jun 22 14:34:19 2016 Thomas Billot
+** Last update Wed Jun 22 15:56:08 2016 Thomas Beaudet
 */
 
 #include <sys/select.h>
@@ -150,6 +150,7 @@ int			launch_client(t_server *server, t_render *render)
       map_rendering(render, &map);
       if (sdl_event(render) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      sdl_mouse_motion(render);
     }
   return (RETURN_SUCCESS);
 }
