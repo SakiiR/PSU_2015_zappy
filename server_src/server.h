@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:01:45 2016 Erwan Dupard
+** Last update Wed Jun 22 17:21:44 2016 Karine Aknin
 */
 
 #ifndef SERVER_H_
@@ -179,7 +179,7 @@ typedef struct				s_voir
 {
   e_orientation				orientation;
   int					(*f)(t_map *map, t_character *character,
-					     t_case **cases, int max_size);
+					     t_case **cases);
 }					t_voir;
 
 int					process_server(t_server *server);
@@ -322,20 +322,17 @@ int					connect_nbr_command(t_server *server,
 							    char *operands);
 int					voir_north(t_map *map,
 						   t_character *character,
-						   t_case **cases,
-						   int max_size);
+						   t_case **cases);
 int					voir_south(t_map *map,
 						   t_character *character,
-                                                   t_case **cases,
-						   int max_size);
+                                                   t_case **cases);
 int					voir_west(t_map *map,
 						  t_character *character,
-                                                   t_case **cases,
-						  int max_size);
+                                                   t_case **cases);
 int					voir_east(t_map *map,
 						  t_character *character,
-                                                   t_case **cases,
-						  int max_size);
+                                                   t_case **cases);
+int					generate_base_size_level(int level);
 
 /*
  * Incantations
