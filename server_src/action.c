@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:01:54 2016 Erwan Dupard
+** Last update Wed Jun 22 15:57:15 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -14,12 +14,9 @@ int		number_of_actions(t_action *action_queue)
 {
   int		number_of_actions;
 
-  number_of_actions = 0;
-  while (action_queue)
-    {
-      number_of_actions++;
-      action_queue = action_queue->next;
-    }
+  number_of_actions = -1;
+  while (++number_of_actions && action_queue)
+    action_queue = action_queue->next;
   return (number_of_actions);
 }
 
@@ -30,10 +27,7 @@ void		add_action(t_action **action_queue, t_action *new_action)
   if (number_of_actions(*action_queue) < 10)
     {
       if (*action_queue == NULL)
-	{
-	  *action_queue = new_action;
-	  printf("null add\n");
-	}
+	*action_queue = new_action;
       else
 	{
 	  iterator = *action_queue;
