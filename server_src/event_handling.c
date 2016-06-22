@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:41:03 2016 Erwan Dupard
+** Last update Wed Jun 22 15:42:09 2016 Erwan Dupard
 */
 
 #define _BSD_SOURCE
@@ -80,7 +80,7 @@ int			eggs_life_cycle(t_server *server)
 		  graphic_broadcast(server, server->buffer);
 		}
       	      else
-      		iterator->timer--;
+      		--iterator->timer;
       	    }
 	  iterator = iterator->next;
       	}
