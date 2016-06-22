@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Tue Jun 21 18:25:54 2016 Thomas Billot
+** Last update Wed Jun 22 14:37:19 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -54,7 +54,7 @@ int				display_texture(t_render *ress, t_texture *tile, int x, int y)
       fprintf(stderr,
 	      "Problem encountered while finding renderer -> SDL Error : %s\n",
 	      SDL_GetError());
-      return (-1);
+      return (RETURN_FAILURE);
     }
-  return (0);
+  return (RETURN_SUCCESS);
 }

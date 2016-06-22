@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:23:26 2016 Thomas Beaudet
-** Last update Tue Jun 21 18:32:08 2016 Thomas Billot
+** Last update Wed Jun 22 14:37:39 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -20,7 +20,7 @@ int			sdl_create_win(t_render *ress)
 	      "Problem encountered while creating windows -> SDL Error : %s\n",
 	      SDL_GetError());
       SDL_Quit();
-      return (-1);
+      return (RETURN_FAILURE);
     }
-  return (0);
+  return (RETURN_SUCCESS);
 }

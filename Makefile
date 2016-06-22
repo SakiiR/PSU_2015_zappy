@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Wed Jun 22 14:17:25 2016 Barthelemy Gouby
+## Last update Wed Jun 22 14:44:04 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -40,9 +40,7 @@ CLIENT_SRCS	= client_src/main.c				\
 
 GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/network.c 			\
-		  graphic_src/xsocket.c 			\
-		  graphic_src/xconnect.c 			\
-		  graphic_src/xclose.c 				\
+		  graphic_src/xfunc.c				\
 		  graphic_src/client.c				\
 		  graphic_src/my_strdup.c			\
 		  graphic_src/map_rendering.c			\

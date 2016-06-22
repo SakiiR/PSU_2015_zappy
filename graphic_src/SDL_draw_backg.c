@@ -5,11 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:31:27 2016 Thomas Beaudet
-<<<<<<< HEAD
-** Last update Tue Jun 21 18:14:19 2016 Thomas Beaudet
-=======
-** Last update Tue Jun 21 18:31:49 2016 Thomas Billot
->>>>>>> eb5d5d57b206155313296dfbe3212d9810546515
+** Last update Wed Jun 22 14:36:50 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -30,33 +26,12 @@ int			clear_surface(t_render *ress)
 	      "Problem encountered while clearing renderer -> SDL Error : %s\n",
 	      SDL_GetError());
       SDL_Quit();
-      return (-1);
+      return (RETURN_FAILURE);
     }
-  return (0);
+  return (RETURN_SUCCESS);
 }
 
 void			put_delay(int delay)
 {
   SDL_Delay(delay);
-}
-
-void			draw_loop(/*t_render *ress,*/ t_map *map)
-{
-  int			i;
-  int			j;
-  int			map_size;
-  int			t_map_size;
-
-  i = 0;
-  map_size = map->x * map->y;
-  t_map_size = map->x;
-  while (i < map_size)
-    {
-      j = t_map_size;
-      while (j >= 0)
-	{
-	  j--;
-	}
-      i++;
-    }
 }
