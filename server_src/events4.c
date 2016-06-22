@@ -1,11 +1,11 @@
 /*
-** events4.c for zappy in /home/barthe_g/rendu/tek2/unix_reseau/PSU_2015_zappy/server_src
+** events4.c for zappy in /home/dupard_e/rendus/PSU_2015_zappy
 ** 
-** Made by Barthelemy Gouby
-** Login   <barthe_g@epitech.net>
+** Made by Erwan Dupard
+** Login   <dupard_e@epitech.net>
 ** 
-** Started on  Mon Jun 20 14:13:49 2016 Barthelemy Gouby
-** Last update Tue Jun 21 12:11:55 2016 Barthelemy Gouby
+** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
+** Last update Wed Jun 22 14:57:39 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -16,7 +16,8 @@ int					event_incantation(t_server *server, va_list ap)
 
   (void)server;
   client = va_arg(ap, t_client *);
-  if (try_incantation(client->character->current_case, client->character->level + 1) == RETURN_FAILURE)
+  if (try_incantation(client->character->current_case,
+		      client->character->level + 1) == RETURN_FAILURE)
     {
       printf("[-] Incantation Fail\n");
       return (RETURN_SUCCESS);
@@ -62,7 +63,10 @@ int					event_lay_egg(t_server *server, va_list ap)
   new_egg->y = client->character->current_case->y;
   new_egg->next = NULL;
   add_egg(&client->character->team->eggs, new_egg);
-  sprintf(server->buffer, "enw %i %i %i %i\n", new_egg->id, client->character->id, new_egg->x, new_egg->y);
+  sprintf(server->buffer, "enw %i %i %i %i\n", new_egg->id,
+	  client->character->id,
+	  new_egg->x,
+	  new_egg->y);
   graphic_broadcast(server, server->buffer);
   printf("finished hatching\n");
   return (RETURN_SUCCESS);

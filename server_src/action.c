@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Tue Jun 21 14:27:13 2016 Barthelemy Gouby
+** Last update Wed Jun 22 15:01:54 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -26,7 +26,6 @@ int		number_of_actions(t_action *action_queue)
 void		add_action(t_action **action_queue, t_action *new_action)
 {
   t_action				*iterator;
-
 
   if (number_of_actions(*action_queue) < 10)
     {
