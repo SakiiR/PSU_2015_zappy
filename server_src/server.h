@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 17:21:44 2016 Karine Aknin
+** Last update Wed Jun 22 18:51:39 2016 Karine Aknin
 */
 
 #ifndef SERVER_H_
@@ -339,13 +339,22 @@ int					generate_base_size_level(int level);
  */
 typedef struct				s_incantation
 {
-  int					level;
+  t_u64					level;
   int					players;
   t_quantity				obj[NUMBER_OF_TYPES];
 }					t_incantation;
 
-int					try_incantation(t_case *c, t_u64 next_level);
-
+int					do_incantation(t_case *c,
+						       t_incantation *incantation);
+int					check_incantation(t_incantation *incantation,
+							  t_case *c,
+							  t_character ***characters
+							  __attribute__((unused)));
+int					check_resources(t_case *c,
+							t_incantation *incantation);
+int					check_characters_incase(t_case *c,
+								t_character **characters);
+t_incantation				*get_incantation_by_level(t_u64 level);
 /*
  * Expulse
  */
@@ -355,13 +364,28 @@ int					expulse_player(t_map *map,
 typedef struct				s_expulse_case
 {
   e_orientation				type;
-  void					(*f)(int x, int y, int *new_x, int *new_y);
+  void					(*f)(int x,
+					     int y,
+					     int *new_x,
+					     int *new_y);
 }					t_expulse_case;
 
-void					expulse_north(int x, int y, int *new_x, int *new_y);
-void					expulse_south(int x, int y, int *new_x, int *new_y);
-void					expulse_west(int x, int y, int *new_x, int *new_y);
-void					expulse_east(int x, int y, int *new_x, int *new_y);
+void					expulse_north(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
+void					expulse_south(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
+void					expulse_west(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
+void					expulse_east(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
 
 # include "events.h"
 

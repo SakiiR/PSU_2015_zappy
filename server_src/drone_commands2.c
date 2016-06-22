@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:25:16 2016 Barthelemy Gouby
+** Last update Wed Jun 22 18:17:57 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -38,13 +38,19 @@ int					incantation_command(t_server *server
 							    __attribute__((unused)))
 {
   t_action				*new_action;
+  t_incantation				*incantation;
+  t_character				**players;
 
-  if (client->type == DRONE)
+  incantation = get_incantation_by_level(client->character->level + 1);
+  if (check_incantation(incantation, client->character->current_case, &players) == RETURN_FAILURE)
+    return (RETURN_SUCCESS);
+  if (client->type == DRONE && incantation)
     {
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = INCANTATION;
       new_action->origin = client;
+      new_action->argument = players;
       new_action->duration = 300;
       new_action->next = NULL;
       add_action(&client->character->action_queue, new_action);

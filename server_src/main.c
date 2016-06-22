@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Tue Jun 14 15:39:21 2016 Barthelemy Gouby
+** Last update Wed Jun 22 16:06:47 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -80,7 +80,8 @@ int				main(int argc, char **argv)
   initialize_ressources(&server);
   if (initialize_socket(&server) == RETURN_FAILURE)
     {
-      printf("[-] Failed to initialize connection ..\n");
+      printf("[-] Failed to initialize connection .. \n");
+      printf("[-] You Should use an other port    ..\n");
       return (RETURN_FAILURE);
     }
   if (process_server(&server) == RETURN_FAILURE)

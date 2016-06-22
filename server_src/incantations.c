@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Mon Jun 20 15:32:28 2016 Erwan Dupard
+** Last update Wed Jun 22 18:49:33 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-static  t_incantation			g_incatations[] = {
+static  t_incantation			g_incantations[] = {
   {2, 1, {0, 1, 0, 0, 0, 0, 0}},
   {3, 2, {0, 1, 1, 1, 0, 0, 0}},
   {4, 2, {0, 2, 0, 1, 0, 2, 0}},
@@ -21,37 +21,45 @@ static  t_incantation			g_incatations[] = {
   {0, 0, {0, 0, 0, 0, 0, 0, 0}}
 };
 
-static t_u64				count_client_by_level(t_case *c, t_u64 level)
-{
-  t_u64					i;
-  t_character				*iterator;
-
-  i = 0;
-  iterator = c->characters;
-  while (iterator)
-    {
-      if (iterator->level == level - 1)
-	++i;
-      iterator = iterator->next_in_case;
-    }
-  return (i);
-}
-
-static t_incantation			*get_incantation_by_level(t_u64 level)
+t_incantation				*get_incantation_by_level(t_u64 level)
 {
   int					i;
 
   i = -1;
-  while (g_incatations[++i].level > 0)
+  while (g_incantations[++i].level)
     {
-      if (g_incatations[i].level == (int)level)
-	return (&g_incatations[i]);
+      if (g_incantations[i].level == level)
+	return (&g_incantations[i]);
     }
   return (NULL);
 }
 
-static int				check_incantation_req(t_incantation *incantation,
-							      t_case *c)
+int					check_characters_incase(t_case *c,
+								t_character **characters)
+{
+  t_character				*iterator;
+  int					i;
+  int					found;
+
+  iterator = c->characters;
+  while (iterator)
+    {
+      i = -1;
+      found = 0;
+      while (characters[++i])
+	{
+	  if (iterator == characters[i])
+	    found = 1;
+	}
+      if (!found)
+	return (RETURN_FAILURE);
+      iterator = iterator->next_in_case;
+    }
+  return (RETURN_SUCCESS);
+}
+
+int					check_resources(t_case *c,
+							t_incantation *incantation)
 {
   int					i;
 
@@ -64,37 +72,52 @@ static int				check_incantation_req(t_incantation *incantation,
   return (RETURN_SUCCESS);
 }
 
-static void			        do_incantation(t_case *c, t_u64 level)
+int					check_incantation(t_incantation *incantation,
+							  t_case *c,
+							  t_character ***characters
+							  __attribute__((unused)))
 {
   t_character				*iterator;
-  t_incantation				*incantation;
+  int				        i;
+  t_character				**players;
+
+  iterator = c->characters;
+  while (iterator)
+    {
+      if (iterator->level != incantation->level)
+	return (RETURN_FAILURE);
+      iterator = iterator->next_in_case;
+      ++i;
+    }
+  if (i != incantation->players)
+    return (RETURN_FAILURE);
+  if ((players = malloc(sizeof(*players) * (i + 1))) == NULL)
+    return (RETURN_FAILURE);
+  i = 0;
+  while (iterator)
+    {
+      players[i] = iterator;
+      iterator = iterator->next_in_case;
+    }
+  players[i] = NULL;
+  characters = &players;
+  return (RETURN_SUCCESS);
+}
+
+int					do_incantation(t_case *c,
+						       t_incantation *incantation)
+{
+  t_character				*iterator;
   int					i;
 
   iterator = c->characters;
   while (iterator)
     {
-      if (iterator->level == level - 1)
-	++iterator->level;
+      iterator->level = incantation->level + 1;
       iterator = iterator->next_in_case;
     }
-  if ((incantation = get_incantation_by_level(level - 1)) != NULL)
-    {
-      i = -1;
-      while (++i < 7)
-	c->quantities[i] -= incantation->obj[i];
-    }
-}
-
-int					try_incantation(t_case *c, t_u64 next_level)
-{
-  t_incantation				*incantation;
-  t_u64					players_count;
-
-  if ((incantation = get_incantation_by_level(next_level)) == NULL)
-    return (RETURN_FAILURE);
-  players_count = count_client_by_level(c, next_level);
-  if ((int)players_count == incantation->level &&
-      check_incantation_req(incantation, c) == RETURN_SUCCESS)
-    do_incantation(c, next_level);
-  return (RETURN_FAILURE);
+  i = -1;
+  while (++i < NUMBER_OF_TYPES)
+    c->quantities[i] -= incantation->obj[i];
+  return (RETURN_SUCCESS);
 }

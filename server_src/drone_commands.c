@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 13:10:02 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:00:50 2016 Erwan Dupard
+** Last update Wed Jun 22 17:50:54 2016 Erwan Dupard
 */
 
 #include <math.h>
@@ -111,16 +111,16 @@ int				        expulse_command(t_server *server,
 
   if (client->type == DRONE)
     {
-      printf("creating expulse action\n");
+
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
+      write_to_buffer(&client->buffer_out, "elevation en cours", strlen("elevation en cours"));
       new_action->type = EXPULSE;
       new_action->origin = client;
       new_action->duration = 7;
       new_action->argument = NULL;
       new_action->next = NULL;
       add_action(&server->game_data.pending_actions, new_action);
-      printf("finished creating action\n");
     }
   return (RETURN_SUCCESS);
 }

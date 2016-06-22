@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 18:35:00 2016 Gabriel Goude
-** Last update Tue Jun 14 13:48:19 2016 Gabriel Goude
+** Last update Wed Jun 22 16:12:15 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -14,7 +14,9 @@
 
 int					create_map(t_infos *infos)
 {
-  if ((infos->map->tiles = malloc(sizeof(t_tile) * (infos->map->x * infos->map->y + 1))) == NULL)
+  if ((infos->map->tiles = malloc(sizeof(t_tile) *
+				  (infos->map->x *
+				   infos->map->y + 1))) == NULL)
     return (RETURN_FAILURE);
   init_map(infos->map);
   return (RETURN_SUCCESS);
