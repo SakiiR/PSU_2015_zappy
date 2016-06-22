@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 16 16:45:43 2016 Erwan Dupard
-** Last update Mon Jun 20 19:44:35 2016 Karine Aknin
+** Last update Mon Jun 20 20:59:29 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -46,6 +46,7 @@ int		event_voir(t_server *server, va_list ap)
   client = (t_client *)va_arg(ap, t_client *);
   printf("client : %p inside event_voir\n", (void *)client);
   map = &(server->game_data.map);
+  client->character->level = 4;
   max_size = generate_max_size(client->character->level);
   if (!(cases = malloc(sizeof(*cases) * (max_size + 1))))
     return (RETURN_FAILURE);

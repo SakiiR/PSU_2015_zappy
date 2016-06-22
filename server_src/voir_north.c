@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Mon Jun 20 20:27:07 2016 Karine Aknin
+** Last update Mon Jun 20 21:05:21 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -39,7 +39,6 @@ t_case		*find_first_case(t_map *map, t_character *character,
 	{
 	  if ((y -= 1) < 0)
 	    y = map->height - 1;
-	  printf("inside find_case y = %d\n", y);
 	  --y_count;
 	}
     }
@@ -93,7 +92,6 @@ int		take_cases_line(t_map *map, t_character *character,
   base_size = generate_base_size_level(level);
   case_it = find_first_case(map, character, level, base_size);
   printf("case_it->x = %d ->y = %d\n", case_it->x, case_it->y);
-  /* printf("currrent->case->x = %d ->y = %d\ncase->x = %d case->y = %d\n", character->current_case->x, character->current_case->y, case_it->x, case_it->y); */
   save_case_line(map, cases, case_it, base_size);
   printf("current case x = %d  y = %d\n", character->current_case->x, character->current_case->y);
   while (cases[i])
@@ -102,8 +100,6 @@ int		take_cases_line(t_map *map, t_character *character,
       i++;
     }
   return (RETURN_SUCCESS);
-  (void)case_it;
-  (void)cases;
 }
 
 int		voir_north(t_map *map, t_character *character,
