@@ -5,11 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-<<<<<<< HEAD
-** Last update Tue Jun 21 12:11:40 2016 Barthelemy Gouby
-=======
-** Last update Mon Jun 20 20:37:10 2016 Karine Aknin
->>>>>>> af39434200291ab1f68d9823b85f8a23ece3276d
+** Last update Wed Jun 22 14:42:43 2016 Barthelemy Gouby
 */
 
 #ifndef _SERVER_H_
@@ -38,6 +34,7 @@ typedef unsigned int			t_u64;
 
 typedef enum
   {
+    MIN					= -1,
     NORTH				= 0,
     EAST				= 1,
     SOUTH				= 2,
@@ -45,7 +42,7 @@ typedef enum
     UNDEFINED				= 4
   }					e_orientation;
 
-typedef enum
+typedef enum 
   {
     RIGHT				= 0,
     LEFT				= 1
