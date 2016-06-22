@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 17:55:16 2016 Erwan Dupard
+** Last update Wed Jun 22 18:13:21 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -351,7 +351,7 @@ int					do_incantation(t_case *c,
 						       t_incantation *incantation);
 int					check_incantation(t_incantation *incantation,
 							  t_case *c,
-							  t_character **characters
+							  t_character ***characters
 							  __attribute__((unused)));
 int					check_resources(t_case *c,
 							t_incantation *incantation);
