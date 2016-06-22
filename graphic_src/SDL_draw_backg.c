@@ -5,11 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:31:27 2016 Thomas Beaudet
-<<<<<<< HEAD
-** Last update Tue Jun 21 18:14:19 2016 Thomas Beaudet
-=======
-** Last update Tue Jun 21 18:31:49 2016 Thomas Billot
->>>>>>> eb5d5d57b206155313296dfbe3212d9810546515
+** Last update Wed Jun 22 14:18:06 2016 Erwan Dupard
 */
 
 #include <stdio.h>
@@ -54,9 +50,7 @@ void			draw_loop(/*t_render *ress,*/ t_map *map)
     {
       j = t_map_size;
       while (j >= 0)
-	{
-	  j--;
-	}
+	--j;
       i++;
     }
 }
