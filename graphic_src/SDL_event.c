@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Thu Jun 16 14:44:04 2016 Thomas Beaudet
-** Last update Tue Jun 21 17:39:07 2016 Thomas Beaudet
+** Last update Wed Jun 22 16:23:48 2016 Thomas Beaudet
 */
 
 #include <SDL2/SDL.h>
@@ -27,4 +27,36 @@ int			sdl_event(t_render *ress)
       return (RETURN_FAILURE);
     }
   return (RETURN_SUCCESS);
+}
+
+SDL_Rect		sdl_mouse_motion(t_render *ress)
+{
+  int			state;
+  SDL_Rect		surface_pos;
+
+  state = 0;
+  if (ress->event.type == SDL_MOUSEBUTTONDOWN)
+    {
+      ress->mouse_buttons[ress->event.button.button] = 1;
+      state = 1;
+    }
+  if (ress->event.type == SDL_MOUSEBUTTONUP)
+    {
+      ress->mouse_buttons[ress->event.button.button] = 0;
+      state = 0;
+    }
+  if (ress->event.type == SDL_MOUSEMOTION)
+    {
+      if (state)
+	{
+	  surface_pos.x = ress->event.motion.x;
+	  surface_pos.y = ress->event.motion.y;
+	  /*      ress->mouse_x = ress->event.motion.x;
+		  ress->mouse_y = ress->event.motion.y;
+		  ress->mouse_x_rel = ress->event.motion.xrel;
+		  ress->mouse_y_rel = ress->event.motion.yrel;*/
+	  printf("Mousemotion and mousebutton\n");
+	}
+    }
+  return (surface_pos);
 }
