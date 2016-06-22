@@ -5,12 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 11:54:05 2016 Erwan Dupard
-** Last update Tue Jun 21 11:03:42 2016 Barthelemy Gouby
+** Last update Wed Jun 22 15:02:36 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-void					add_character_to_case(t_case *c, t_character *character)
+void					add_character_to_case(
+							      t_case *c,
+							      t_character *character)
 {
   t_character				*iterator;
 
@@ -25,7 +27,8 @@ void					add_character_to_case(t_case *c, t_character *character)
     }
 }
 
-void					remove_character_from_case(t_case *c, t_character *character)
+void					remove_character_from_case(t_case *c,
+								   t_character *character)
 {
   t_character				*iterator;
 
@@ -64,7 +67,8 @@ void					place_character_at_egg(t_map *map,
   t_egg					*hatched_egg;
 
   hatched_egg = retrieve_hatched_egg(eggs);
-  character->current_case = map_get_case_at(hatched_egg->x, hatched_egg->y, map);
+  character->current_case = map_get_case_at(hatched_egg->x,
+					    hatched_egg->y, map);
   add_character_to_case(character->current_case, character);
   free(hatched_egg);
 }
