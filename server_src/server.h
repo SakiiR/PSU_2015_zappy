@@ -5,11 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-<<<<<<< HEAD
-** Last update Wed Jun 22 14:42:43 2016 Barthelemy Gouby
-=======
-** Last update Wed Jun 22 14:30:52 2016 Erwan Dupard
->>>>>>> 55905a42fae1bf99afef099f011d21dd70e5c3b1
+** Last update Wed Jun 22 15:01:45 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -46,7 +42,7 @@ typedef enum
     UNDEFINED				= 4
   }					e_orientation;
 
-typedef enum 
+typedef enum
   {
     RIGHT				= 0,
     LEFT				= 1
@@ -64,11 +60,11 @@ typedef enum
     NUMBER_OF_TYPES			= 7
   }					e_ressource_type;
 
-typedef struct				s_ressource_name_correspondance
+typedef struct				s_ressource_name_c
 {
   char					*name;
   e_ressource_type			type_identifier;
-}					t_ressource_name_correspondance;
+}					t_ressource_name_c;
 
 typedef enum
   {
