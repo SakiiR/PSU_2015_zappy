@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Tue Jun 21 18:06:40 2016 Gabriel Goude
+## Last update Wed Jun 22 14:17:25 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -136,7 +136,7 @@ $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2 -lSDL2main -lSDL2_image
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2main -lSDL2  -lSDL2_image
 
 clean:
 	$(RM) $(CLIENT_OBJS)
