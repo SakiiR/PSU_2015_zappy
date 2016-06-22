@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Wed Jun 22 14:37:19 2016 Thomas Billot
+** Last update Wed Jun 22 15:00:36 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -14,7 +14,7 @@ SDL_Surface			*load_bmp(const char *file)
 {
   SDL_Surface			*bmp;
 
-  if ((bmp = SDL_LoadBMP(file)) == NULL)
+  if ((bmp = IMG_Load(file)) == NULL)
     {
       fprintf(stderr,
               "Problem encountered while loading bmp -> SDL Error : %s\n",

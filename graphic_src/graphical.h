@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Wed Jun 22 14:26:18 2016 Thomas Billot
+** Last update Wed Jun 22 14:58:33 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -14,6 +14,7 @@
 # include <circular_buffer/circular_buffer.h>
 # include <arpa/inet.h>
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # include <stdint.h>
 
 # define RETURN_SUCCESS		(0)
