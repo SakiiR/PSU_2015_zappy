@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Wed Jun 22 14:57:39 2016 Erwan Dupard
+** Last update Wed Jun 22 17:50:36 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -15,13 +15,11 @@ int					event_incantation(t_server *server, va_list ap)
   t_client				*client;
 
   (void)server;
+  (void)client;
   client = va_arg(ap, t_client *);
-  if (try_incantation(client->character->current_case,
-		      client->character->level + 1) == RETURN_FAILURE)
-    {
-      printf("[-] Incantation Fail\n");
-      return (RETURN_SUCCESS);
-    }
+  /*
+   * Todo: Check Incatation
+   */
   printf("[+] Incantation Success !\n");
   return (RETURN_SUCCESS);
 }
