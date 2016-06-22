@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Wed Jun 22 18:13:33 2016 Erwan Dupard
+** Last update Wed Jun 22 18:49:33 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -86,7 +86,7 @@ int					check_incantation(t_incantation *incantation,
     {
       if (iterator->level != incantation->level)
 	return (RETURN_FAILURE);
-      iterator = iterator->next_in_case;;
+      iterator = iterator->next_in_case;
       ++i;
     }
   if (i != incantation->players)
