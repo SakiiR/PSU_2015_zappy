@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:56:28 2016 Gabriel Goude
-** Last update Tue Jun 21 17:09:00 2016 Gabriel Goude
+** Last update Wed Jun 22 16:11:03 2016 Erwan Dupard
 */
 
 #include "resources.h"
@@ -30,7 +30,11 @@ int				send_update(t_infos *infos)
   int				retval;
 
   fill_set(infos);
-  while ((retval = select(infos->socket + 1, NULL, &(infos->select.wfds), NULL, &(infos->select.tv))) < 0)
+  while ((retval = select(infos->socket + 1,
+			  NULL,
+			  &(infos->select.wfds),
+			  NULL,
+			  &(infos->select.tv))) < 0)
     fill_set(infos);
   if (FD_ISSET(infos->socket, &(infos->select.wfds)))
   {
