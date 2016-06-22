@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Wed Jun 22 14:14:15 2016 Erwan Dupard
+** Last update Wed Jun 22 14:26:18 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -57,6 +57,13 @@
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
 # define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
+
+/*
+** Convertion map coord to screen cord
+*/
+
+# define CONVERT_X(x, y) ((x - y) * (TILE_W / 2))
+# define CONVERT_Y(x, y) ((x + y) * (TILE_H / 2))
 
 /*
 ** Simple Typedefs
