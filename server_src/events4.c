@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Wed Jun 22 18:22:51 2016 Erwan Dupard
+** Last update Wed Jun 22 18:41:52 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -14,12 +14,27 @@ int					event_incantation(t_server *server, va_list ap)
 {
   t_client				*client;
   t_character				**characters;
+  t_incantation				*incantation;
 
   (void)server;
-  (void)client;
-  (void)characters;
   client = va_arg(ap, t_client *);
   characters = va_arg(ap, t_character **);
+  incantation = get_incantation_by_level(client->character->level + 1);
+  if (check_characters_incase(client->character->current_case, characters) == RETURN_FAILURE)
+    {
+      /*
+       * Fail, players changed !
+       */
+      return (RETURN_FAILURE);
+    }
+  if (check_resources(client->character->current_case, incantation) == RETURN_FAILURE)
+    {
+      /*
+       * Fail ! Bad resources in case
+       */
+      return (RETURN_FAILURE);
+    }
+  do_incantation(client->character->current_case, incantation);
   return (RETURN_SUCCESS);
 }
 
