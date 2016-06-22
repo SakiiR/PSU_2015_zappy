@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 17:59:09 2016 Thomas Beaudet
-** Last update Mon Jun 20 14:55:27 2016 Thomas Beaudet
+** Last update Wed Jun 22 14:37:00 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -20,5 +20,5 @@ int			sdl_init()
 	      SDL_GetError());
       exit (EXIT_FAILURE);
     }
-  return (0);
+  return (RETURN_SUCCESS);
 }

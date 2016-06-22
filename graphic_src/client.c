@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Mon Jun 20 16:56:35 2016 Thomas Billot
+** Last update Wed Jun 22 15:09:24 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -133,6 +133,7 @@ int			launch_client(t_server *server, t_render *render)
   int			max_socket;
 
   init_struct(&map, &tv);
+  preload_textures(render);
   while (SDL_PollEvent(&render->event) || 1)
     {
       FD_ZERO(&si);
@@ -146,43 +147,11 @@ int			launch_client(t_server *server, t_render *render)
 	return (RETURN_FAILURE);
       if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      aff_map_info(&map);
+      map_rendering(render, &map);
+      SDL_RenderPresent(render->rend);
+      clear_surface(render);
       if (sdl_event(render) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
   return (RETURN_SUCCESS);
 }
-
-/* DEBUGGING PRUPOSE */
-
-void		aff_map_info(t_map *map)
-{
-  int		i;
-  t_character	*current;
-
-  i = -1;
-  (void)current;
-  (void)i;
-  if ((map->x == 0) || (map->x == 0))
-    return;
-  map_rendering(map);
-}
-
-  /*  while (++i <= (map->x * map->y))
-    {
-      if ((map->tiles == NULL))
-	return;
-      if (map->tiles[i].players > 0)
-	{
-	  current = map->tiles[i].characters;
-	  while (current != NULL)
-	    {
-		     current->id,
-		     current->level,
-		     current->team,
-		     (int)current->orientation);
-	      current = current->next_in_case;
-	    }
-	}
-    }
-  */

@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Mon Jun 20 21:05:21 2016 Karine Aknin
+** Last update Wed Jun 22 15:40:09 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -93,7 +93,9 @@ int		take_cases_line(t_map *map, t_character *character,
   case_it = find_first_case(map, character, level, base_size);
   printf("case_it->x = %d ->y = %d\n", case_it->x, case_it->y);
   save_case_line(map, cases, case_it, base_size);
-  printf("current case x = %d  y = %d\n", character->current_case->x, character->current_case->y);
+  printf("current case x = %d  y = %d\n",
+	 character->current_case->x,
+	 character->current_case->y);
   while (cases[i])
     {
       printf("case %d  x = %d  y = %d\n", i, cases[i]->x, cases[i]->y);

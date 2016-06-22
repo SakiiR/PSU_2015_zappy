@@ -5,11 +5,11 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Mon Jun 20 20:37:10 2016 Karine Aknin
+** Last update Wed Jun 22 15:01:45 2016 Erwan Dupard
 */
 
-#ifndef _SERVER_H_
-# define _SERVER_H_
+#ifndef SERVER_H_
+# define SERVER_H_
 
 # include <stdlib.h>
 # include <arpa/inet.h>
@@ -34,6 +34,7 @@ typedef unsigned int			t_u64;
 
 typedef enum
   {
+    MIN					= -1,
     NORTH				= 0,
     EAST				= 1,
     SOUTH				= 2,
@@ -59,11 +60,11 @@ typedef enum
     NUMBER_OF_TYPES			= 7
   }					e_ressource_type;
 
-typedef struct				s_ressource_name_correspondance
+typedef struct				s_ressource_name_c
 {
   char					*name;
   e_ressource_type			type_identifier;
-}					t_ressource_name_correspondance;
+}					t_ressource_name_c;
 
 typedef enum
   {
@@ -79,15 +80,19 @@ struct					s_case;
 struct					s_action;
 typedef struct s_action			t_action;
 
+struct					s_team;
+typedef struct s_team			t_team;
+
 typedef struct				s_character
 {
   t_u64					level;
   t_u64				        id;
-  char					*team;
+  t_team				*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
   e_orientation			        orientation;
   t_action				*action_queue;
   t_u64					hunger_timer;
+  char					base_member;
   struct s_case				*current_case;
   struct s_character			*next_in_case;
 }					t_character;
@@ -119,13 +124,24 @@ typedef struct				s_client
   t_character				*character;
 }					t_client;
 
-typedef struct				s_team
+typedef struct				s_egg
+{
+  t_u64					id;
+  int					hatched;
+  t_u64					timer;
+  t_u64					x;
+  t_u64					y;
+  struct s_egg				*next;
+}					t_egg;
+
+struct				s_team
 {
   char					*name;
   t_client				*members;
+  t_egg					*eggs;
   t_u64					max_members;
-  t_u64					nbr_of_members;
-}					t_team;
+  t_u64					base_members;
+};
 
 typedef struct				s_game_data
 {
@@ -137,6 +153,7 @@ typedef struct				s_game_data
   t_team				*teams;
   t_u64					nbr_of_teams;
   t_u64					next_drone_id;
+  t_u64					next_egg_id;
   t_action				*pending_actions;
 }					t_game_data;
 
@@ -187,7 +204,14 @@ void					remove_character_from_case(t_case *c,
 								   t_character *character);
 void					place_character_randomly(t_map *map,
 								 t_character *character);
+void					place_character_at_egg(t_map *map,
+							       t_character *character,
+							       t_egg **eggs);
 void					text_display_map(t_map *map);
+void					add_egg(t_egg **egg_list, t_egg *new_egg);
+t_egg					*remove_egg(t_egg **egg_list, t_egg *egg);
+int					number_of_hatched_eggs(t_egg *egg_list);
+t_egg					*retrieve_hatched_egg(t_egg **egg_list);
 
 # define WELCOME			("BIENVENUE\n")
 
@@ -243,38 +267,31 @@ int					option_id_teams(char **args,
 int				        graphic_broadcast(t_server *server, char *message);
 int					send_map_size(t_server *server,
 						      t_client *client,
-						      char *operands
-						      __attribute__((unused)));
+						      char *operands);
 int					send_speed(t_server *server,
 						   t_client *client,
-						   char *operands
-						   __attribute__((unused)));
+						   char *operands);
 int					send_case_content(t_server *server,
 							  t_client *client,
 							  char *operands);
 int					send_map_content(t_server *server,
 							 t_client *client,
-							 char *operands
-							 __attribute__((unused)));
+							 char *operands);
 int					send_team_names(t_server *server,
 							t_client *client,
-							char *operands __attribute__((unused)));
+							char *operands);
 int					change_time_unit(t_server *server,
 							 t_client *client,
-							 char *operands
-							 __attribute__((unused)));
+							 char *operands);
 int				        send_player_level(t_server *server,
-							 t_client *client,
-							 char *operands
-							 __attribute__((unused)));
+							  t_client *client,
+							  char *operands);
 int				        send_player_inventory(t_server *server,
-							 t_client *client,
-							 char *operands
-							 __attribute__((unused)));
+							      t_client *client,
+							      char *operands);
 int				        send_player_position(t_server *server,
-							 t_client *client,
-							 char *operands
-							 __attribute__((unused)));
+							     t_client *client,
+							     char *operands);
 
 int					voir_command(t_server *server,
 						     t_client *client,
@@ -284,30 +301,41 @@ int				        inventaire_command(t_server *server,
 							   char *operands);
 int					droite_command(t_server *server,
 						       t_client *client,
-						       char *operands
-						       __attribute__((unused)));
+						       char *operands);
 int					gauche_command(t_server *server,
 						       t_client *client,
-						       char *operands
-						       __attribute__((unused)));
+						       char *operands);
 int				        avance_command(t_server *server,
 						       t_client *client,
-						       char *operands
-						       __attribute__((unused)));
+						       char *operands);
 int					prend_command(t_server *server,
 						      t_client *client,
 						      char *operands);
 int					pose_command(t_server *server,
 						     t_client *client,
 						     char *operands);
-int					voir_north(t_map *map, t_character *character,
-						   t_case **cases, int max_size);
-int					voir_south(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
-int					voir_west(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
-int					voir_east(t_map *map, t_character *character,
-                                                   t_case **cases, int max_size);
+int					fork_command(t_server *server,
+						     t_client *client,
+						     char *operands);
+int					connect_nbr_command(t_server *server,
+							    t_client *client,
+							    char *operands);
+int					voir_north(t_map *map,
+						   t_character *character,
+						   t_case **cases,
+						   int max_size);
+int					voir_south(t_map *map,
+						   t_character *character,
+                                                   t_case **cases,
+						   int max_size);
+int					voir_west(t_map *map,
+						  t_character *character,
+                                                   t_case **cases,
+						  int max_size);
+int					voir_east(t_map *map,
+						  t_character *character,
+                                                   t_case **cases,
+						  int max_size);
 
 /*
  * Incantations
@@ -340,4 +368,4 @@ void					expulse_east(int x, int y, int *new_x, int *new_y);
 
 # include "events.h"
 
-#endif /* !_SERVER_H_ */
+#endif /* !SERVER_H_ */

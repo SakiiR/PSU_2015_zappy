@@ -5,26 +5,42 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Mon Jun 20 15:34:58 2016 Barthelemy Gouby
+** Last update Wed Jun 22 15:01:54 2016 Erwan Dupard
 */
 
 #include "server.h"
+
+int		number_of_actions(t_action *action_queue)
+{
+  int		number_of_actions;
+
+  number_of_actions = 0;
+  while (action_queue)
+    {
+      number_of_actions++;
+      action_queue = action_queue->next;
+    }
+  return (number_of_actions);
+}
 
 void		add_action(t_action **action_queue, t_action *new_action)
 {
   t_action				*iterator;
 
-  if (*action_queue == NULL)
+  if (number_of_actions(*action_queue) < 10)
     {
-      *action_queue = new_action;
-      printf("null add\n");
-    }
-  else
-    {
-      iterator = *action_queue;
-      while (iterator && iterator->next)
-	iterator = iterator->next;
-      iterator->next = new_action;
+      if (*action_queue == NULL)
+	{
+	  *action_queue = new_action;
+	  printf("null add\n");
+	}
+      else
+	{
+	  iterator = *action_queue;
+	  while (iterator && iterator->next)
+	    iterator = iterator->next;
+	  iterator->next = new_action;
+	}
     }
 }
 
@@ -38,32 +54,4 @@ void		pop_action(t_action **action_queue)
       *action_queue = (*action_queue)->next;
       free(action);
     }
-}
-
-t_action	*remove_action(t_action **action_queue, t_action *action)
-{
-  t_action				*iterator;
-  t_action				*next_action;
-
-  if (action == *action_queue)
-    {
-      *action_queue = action->next;
-      next_action = action->next;
-    }
-  else
-    {
-      iterator = *action_queue;
-      while (iterator)
-	{
-	  if (iterator->next == action)
-	    {
-	      iterator->next = action->next;
-	      next_action = action->next;
-	      break;
-	    }
-	  iterator = iterator->next;
-	}
-    }
-  free(action);
-  return (next_action);
 }

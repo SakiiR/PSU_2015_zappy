@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:45:12 2016 Erwan Dupard
-** Last update Mon Jun 20 16:55:20 2016 Erwan Dupard
+** Last update Wed Jun 22 15:04:04 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -42,7 +42,9 @@ void					expulse_west(int x, int y, int *new_x, int *new_y)
   *new_y = y;
 }
 
-int					expulse_player(t_map *map, t_character *character, e_orientation orientation)
+int					expulse_player(t_map *map,
+						       t_character *character,
+						       e_orientation orientation)
 {
   t_case				next_case;
   int					i;
@@ -59,12 +61,10 @@ int					expulse_player(t_map *map, t_character *character, e_orientation orienta
 			    (int *)&next_case.y);
     }
   next_case.x = next_case.x % map->width;
-  next_case.y = next_case.y % map->height;  
+  next_case.y = next_case.y % map->height;
   new_case = map_get_case_at(next_case.x, next_case.y, map);
   remove_character_from_case(character->current_case, character);
   character->current_case = new_case;
   add_character_to_case(new_case, character);
-  /* Broadcast graphic */
-  /* Drone payload */
   return (RETURN_SUCCESS);
 }

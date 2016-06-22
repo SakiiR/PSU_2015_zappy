@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Mon Jun 20 17:33:11 2016 Thomas Billot
+** Last update Tue Jun 21 15:29:00 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -26,15 +26,6 @@ t_character	*init_characters(void)
   return (new);
 }
 
-void		init_obj(t_quantity *obj)
-{
-  int		i;
-
-  i = -1;
-  while (obj && obj[++i])
-    obj[i] = 0;
-}
-
 int		generate_map(t_map *map)
 {
   t_tile	*new;
@@ -48,7 +39,6 @@ int		generate_map(t_map *map)
     {
       if ((map->tiles[i].characters = init_characters()) == NULL)
 	return (RETURN_FAILURE);
-      init_obj(map->tiles[i].obj);
       map->tiles[i].players = 0;
     }
   return (RETURN_SUCCESS);
