@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:01:45 2016 Erwan Dupard
+** Last update Wed Jun 22 16:03:26 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -361,10 +361,22 @@ typedef struct				s_expulse_case
   void					(*f)(int x, int y, int *new_x, int *new_y);
 }					t_expulse_case;
 
-void					expulse_north(int x, int y, int *new_x, int *new_y);
-void					expulse_south(int x, int y, int *new_x, int *new_y);
-void					expulse_west(int x, int y, int *new_x, int *new_y);
-void					expulse_east(int x, int y, int *new_x, int *new_y);
+void					expulse_north(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
+void					expulse_south(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
+void					expulse_west(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
+void					expulse_east(int x,
+						      int y,
+						      int *new_x,
+						      int *new_y);
 
 # include "events.h"
 
