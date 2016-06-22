@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Wed Jun 22 17:50:36 2016 Erwan Dupard
+** Last update Wed Jun 22 18:22:51 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -13,14 +13,13 @@
 int					event_incantation(t_server *server, va_list ap)
 {
   t_client				*client;
+  t_character				**characters;
 
   (void)server;
   (void)client;
+  (void)characters;
   client = va_arg(ap, t_client *);
-  /*
-   * Todo: Check Incatation
-   */
-  printf("[+] Incantation Success !\n");
+  characters = va_arg(ap, t_character **);
   return (RETURN_SUCCESS);
 }
 
