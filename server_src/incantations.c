@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Wed Jun 22 18:49:33 2016 Erwan Dupard
+** Last update Thu Jun 23 18:25:35 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -84,7 +84,7 @@ int					check_incantation(t_incantation *incantation,
   iterator = c->characters;
   while (iterator)
     {
-      if (iterator->level != incantation->level)
+      if (iterator->level + 1 != incantation->level)
 	return (RETURN_FAILURE);
       iterator = iterator->next_in_case;
       ++i;
