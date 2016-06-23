@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 23 09:19:47 2016 Thomas Beaudet
+** Last update Thu Jun 23 13:43:28 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -61,6 +61,13 @@
 # define T_CHARACTER		"graphic_src/Media/mage_charset2.bmp"
 # define T_STONES		"graphic_src/Media/resources.bmp"
 # define T_EGG			"graphic_src/Media/egg.bmp"
+
+/*
+** Defines for zoom function
+*/
+
+# define SCALE_W		(0)
+# define SCALE_H		(0)
 
 /*
 ** Convertion map coord to screen cord
@@ -167,12 +174,8 @@ typedef struct			s_render
   SDL_Rect			dest_rect;
   t_texture			tileset[NUMBER_OF_TEXTURES];
   SDL_Event			event;
-  int				mouse_x;
-  int				mouse_y;
-  int				mouse_x_rel;
-  int				mouse_y_rel;
-  char				mouse_buttons[8];
-  char				quit;
+  int				scaleW;
+  int				scaleH;
 }				t_render;
 
 /*
@@ -181,7 +184,7 @@ typedef struct			s_render
 
 int				setup_networking(t_option *options);
 int				launch_client(t_server *server,
-					      t_render *render);
+					      t_render *render, t_texture *tile);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
 SDL_Surface			*load_bmp(const char *file);
@@ -201,9 +204,12 @@ int				sdl_init();
 void				draw_backg(t_render *ress);
 void				put_delay(int delay);
 int				sdl_create_win(t_render *ress);
-int				sdl_event(t_render *ress);
+int				sdl_event(t_render *ress, t_texture *tile);
+void				zoom(t_render *ress, t_texture *tile,
+				     int x, int y,
+				     float scale_W, float scale_H);
 void				sdl_quit();
-SDL_Rect				sdl_mouse_motion(t_render *ress);
+/*SDL_Rect			sdl_mouse_motion(t_render *ress);*/
 
 /*
 ** Function pointer definition
