@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:02:20 2016 Barthelemy Gouby
+** Last update Thu Jun 23 17:28:10 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -39,13 +39,8 @@ t_case		**get_surrounding_cases(t_map *map, t_character *character)
     return (NULL);
   i = 0;
   get_starting_coordinates(character, &x, &y);
-  printf("character case x: %i y: %i\n",
-	 character->current_case->x,
-	 character->current_case->y);
-  printf("starting case coordinates: x: %i y: %i\n", x, y);
   while (i < 8)
     {
-      printf(" x: %i    y: %i\n", x, y);
       cases[i++] = map_get_case_circular(x, y, map);
       if (y < (int) character->current_case->y && 
 	  x <= (int) character->current_case->x)
@@ -60,13 +55,6 @@ t_case		**get_surrounding_cases(t_map *map, t_character *character)
 	       y >= (int) character->current_case->y)
 	y--;
     }
-  i = 0;
-  printf("surrouding cases:\n");
-  while (i < 8)
-    {
-      printf("--- case %i --- x: %i y: %i\n", i, cases[i]->x, cases[i]->y);
-      i++;
-    }
   return (cases);
 }
 
@@ -79,7 +67,6 @@ double		calculate_spheric_distance(t_case *case_1, t_case *case_2, t_map *map)
   double	spheric_up_distance;
 
   distance = hypot((int) case_1->x - (int) case_2->x, (int) case_1->y - (int) case_2->y);
-  printf("basic distance: %f ", distance);
   spheric_right_distance = hypot(((int) case_1->x + (int) map->width) - (int) case_2->x,
 				 (int) case_1->y - (int) case_2->y);
   if (spheric_right_distance < distance)
@@ -96,11 +83,6 @@ double		calculate_spheric_distance(t_case *case_1, t_case *case_2, t_map *map)
 			      ((int) case_1->y - (int) map->width) - (int) case_2->y);
   if (spheric_up_distance < distance)
     distance = spheric_up_distance;
-  printf("left %f right %f down %f up %f\n",
-	 spheric_left_distance,
-	 spheric_right_distance,
-	 spheric_down_distance,
-	 spheric_up_distance);
   return (distance);
 }
 
@@ -121,16 +103,12 @@ int		get_closest_case(t_map *map, t_character *sender, t_character *receiver)
       distance = calculate_spheric_distance(surrouding_cases[i],
 					    sender->current_case,
 					    map);
-      printf("distance from case %i: %f\n", i + 1, distance);
       if (distance < shortest_distance || shortest_distance < 0)
 	{
 	  shortest_distance = distance;
 	  closest_case = i + 1;
 	}
     }
-  printf("shortest_distance: %f --- closest_case: %i\n",
-	 shortest_distance,
-	 closest_case);
   return (closest_case);
 }
 
@@ -149,7 +127,7 @@ int		send_broadcast_to_drone(t_server *server,
 					    receiver->character))
 	   == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  sprintf(server->buffer, "message %i\n", closest_case);
+  sprintf(server->buffer, "message %i,%s\n", closest_case, message);
   write_to_buffer(&receiver->buffer_out, server->buffer, strlen(server->buffer));
   return (RETURN_SUCCESS);
 }
