@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 21 16:25:24 2016 Gabriel Goude
+** Last update Thu Jun 23 16:14:21 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -34,11 +34,6 @@ int			get_param(int ac, char **av, t_infos *infos)
   return (RETURN_SUCCESS);
 }
 
-/*
- * Ca ne va pas ça .. essaye de trouver mieux !
- * Tu peux utiliser gethostbyname il me semble
- * getaddrinfo();
- */
 int			get_next_param(int i, char **av, t_infos *infos)
 {
   if (strcmp(av[i], "-n") == 0)
