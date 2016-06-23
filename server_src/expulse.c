@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:45:12 2016 Erwan Dupard
-** Last update Wed Jun 22 15:47:06 2016 Erwan Dupard
+** Last update Thu Jun 23 17:18:17 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -66,5 +66,6 @@ int					expulse_player(t_map *map,
   remove_character_from_case(character->current_case, character);
   character->current_case = new_case;
   add_character_to_case(new_case, character);
+  
   return (RETURN_SUCCESS);
 }

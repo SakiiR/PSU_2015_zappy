@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Wed Jun 22 14:59:05 2016 Erwan Dupard
+** Last update Thu Jun 23 17:33:01 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -17,7 +17,8 @@ t_ressource_name_c			g_correspondances[7] = {
   {"sibur", SIBUR},
   {"mendiane", MENDIANE},
   {"phiras", PHIRAS},
-  {"thystame", THYSTAME}
+  {"thystame", THYSTAME},
+  {NULL, -1}
 };
 
 void					take_ressource(t_server *server,
