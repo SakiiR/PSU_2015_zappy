@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:06:17 2016 Barthelemy Gouby
+** Last update Thu Jun 23 20:02:50 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -81,20 +81,22 @@ void					spread_ressource(const e_ressource_type type,
 void					initialize_ressources(t_server *server)
 {
   t_u64					nbr_of_teams;
-  t_u64					base_max_members;
   t_map					*map;
+  t_u64					width;
+  t_u64					height;
 
+  width = server->game_data.map.width;
+  height = server->game_data.map.height;
   nbr_of_teams = server->game_data.nbr_of_teams;
-  base_max_members = server->game_data.base_max_members;
   map = &server->game_data.map;
   srand(time(NULL));
-  spread_ressource(NOURRITURE, nbr_of_teams * base_max_members * 100, map);
-  spread_ressource(LINEMATE, nbr_of_teams * base_max_members * 6, map);
-  spread_ressource(DERAUMERE, nbr_of_teams * base_max_members * 5, map);
-  spread_ressource(SIBUR, nbr_of_teams * base_max_members * 4, map);
-  spread_ressource(MENDIANE, nbr_of_teams * base_max_members * 3, map);
-  spread_ressource(PHIRAS, nbr_of_teams * base_max_members * 2, map);
-  spread_ressource(THYSTAME, nbr_of_teams * base_max_members, map);
+  spread_ressource(NOURRITURE, nbr_of_teams * (width * height / 50) * 50, map);
+  spread_ressource(LINEMATE, nbr_of_teams * (width * height / 50) * 6, map);
+  spread_ressource(DERAUMERE, nbr_of_teams * (width * height / 50) * 5, map);
+  spread_ressource(SIBUR, nbr_of_teams * (width * height / 50) * 4 , map);
+  spread_ressource(MENDIANE, nbr_of_teams * (width * height / 50) * 3, map);
+  spread_ressource(PHIRAS, nbr_of_teams * (width * height / 50) * 2, map);
+  spread_ressource(THYSTAME, nbr_of_teams * (width * height / 50), map);
 }
 
 void					text_display_map(t_map *map)
