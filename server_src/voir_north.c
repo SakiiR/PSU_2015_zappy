@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Wed Jun 22 17:22:54 2016 Karine Aknin
+** Last update Thu Jun 23 17:43:37 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -86,32 +86,22 @@ int		save_case_line_north(t_map *map, t_case **cases,
   return (RETURN_SUCCESS);
 }
 
-int		voir_north(t_map *map, t_character *character,
+int		voir_north(t_map *map, t_client *client,
 			   t_case **cases)
 {
   unsigned int	level;
   int		base_size;
   t_case	*case_it;
-  int		i;
 
-  i = 0;
   level = 1;
-  cases[0] = character->current_case;
-  while (level <= character->level)
+  cases[0] = client->character->current_case;
+  while (level <= client->character->level)
     {
       base_size = generate_base_size_level(level);
-      case_it = find_first_case_north(map, character, level, base_size);
+      case_it = find_first_case_north(map, client->character,
+				      level, base_size);
       save_case_line_north(map, cases, case_it, base_size);
       ++level;
     }
-  printf("inside voir_north\n");
-  printf("current case x = %d  y = %d\n",
-         character->current_case->x,
-         character->current_case->y);
-  while (cases[i])
-    {
-      printf("case %d  x = %d  y = %d\n", i, cases[i]->x, cases[i]->y);
-      i++; 
-    }
-  return (RETURN_SUCCESS);
+  return (generate_message_voir(client, cases));
 }
