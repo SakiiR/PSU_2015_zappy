@@ -5,11 +5,15 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 23 15:31:36 2016 Erwan Dupard
+** Last update Thu Jun 23 17:06:04 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
 # define SERVER_H_
+
+#define _BSD_SOURCE
+#define _SVID_SOURCE
+#define _DEFAULT_SOURCE
 
 # include <stdlib.h>
 # include <arpa/inet.h>
@@ -21,6 +25,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <math.h>
 # include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
@@ -195,6 +200,9 @@ int					define_client_type(t_server *server,
 void					initialize_time(t_server *server);
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
+t_case					*map_get_case_circular(int x,
+							       int y,
+							       t_map *map);
 t_case					*map_get_case_at(const t_u64 x,
 							 const t_u64 y,
 							 const t_map *map);
@@ -207,6 +215,9 @@ void					place_character_randomly(t_map *map,
 void					place_character_at_egg(t_map *map,
 							       t_character *character,
 							       t_egg **eggs);
+void					change_coordinate(unsigned int *coordinate,
+							  int change,
+							  unsigned int max_value);
 void					text_display_map(t_map *map);
 void					add_egg(t_egg **egg_list, t_egg *new_egg);
 t_egg					*remove_egg(t_egg **egg_list, t_egg *egg);
@@ -320,6 +331,9 @@ int					fork_command(t_server *server,
 int					connect_nbr_command(t_server *server,
 							    t_client *client,
 							    char *operands);
+int					broadcast_command(t_server *server,
+							  t_client *client,
+							  char *operands);
 int					voir_north(t_map *map,
 						   t_character *character,
 						   t_case **cases);

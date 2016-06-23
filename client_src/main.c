@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Thu Jun 23 15:07:59 2016 Gabriel Goude
+** Last update Thu Jun 23 16:59:38 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -49,7 +49,6 @@ int			play_loop(t_infos *infos)
   int			(*fct[NUMBER_OF_REQUESTS])(t_infos *, char *);
 
   init_fct(fct);
-  printf("playloop\n");
   while (infos->client->alive)
   {
     if (update(infos, fct) == RETURN_FAILURE)
