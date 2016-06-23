@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:45:03 2016 Barthelemy Gouby
+** Last update Thu Jun 23 18:49:00 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -197,7 +197,7 @@ int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input);
 
-void					initialize_time(t_server *server);
+void					set_time_speed(t_server *server);
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
 t_case					*map_get_case_circular(int x,
