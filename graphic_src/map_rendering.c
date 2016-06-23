@@ -6,7 +6,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Thu Jun 23 14:18:44 2016 Thomas Beaudet
+** Last update Thu Jun 23 14:58:37 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
@@ -29,7 +29,6 @@ int		map_rendering(t_render *render, t_map *map)
     }
   display_texture(render,
 		  &render->tileset[CHARACTER],
-		  640 / 2,
-		  480 / 2);
+		  640 / 2, 480 / 2);
   return (RETURN_SUCCESS);
 }
