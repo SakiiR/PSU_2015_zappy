@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Thu Jun 23 17:33:01 2016 Erwan Dupard
+** Last update Thu Jun 23 17:43:49 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-t_ressource_name_c			g_correspondances[7] = {
+t_ressource_name_c			g_correspondances[] = {
   {"nourriture", NOURRITURE},
   {"linemate", LINEMATE},
   {"deraumere", DERAUMERE},
@@ -18,7 +18,7 @@ t_ressource_name_c			g_correspondances[7] = {
   {"mendiane", MENDIANE},
   {"phiras", PHIRAS},
   {"thystame", THYSTAME},
-  {NULL, -1}
+  {NULL, 10}
 };
 
 void					take_ressource(t_server *server,
