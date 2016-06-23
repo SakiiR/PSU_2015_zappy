@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Thu Jun 23 09:05:32 2016 Thomas Beaudet
+** Last update Thu Jun 23 13:42:18 2016 Thomas Beaudet
 */
 
 #include <sys/select.h>
@@ -124,7 +124,8 @@ void			init_struct(t_map *map, struct timeval *tv)
   tv->tv_usec = 50;
 }
 
-int			launch_client(t_server *server, t_render *render)
+int			launch_client(t_server *server, t_render *render,
+				      t_texture *tile)
 {
   t_map			map;
   struct timeval	tv;
@@ -150,9 +151,8 @@ int			launch_client(t_server *server, t_render *render)
       map_rendering(render, &map);
       SDL_RenderPresent(render->rend);
       clear_surface(render);
-      if (sdl_event(render) == RETURN_FAILURE)
+      if (sdl_event(render, tile) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      sdl_mouse_motion(render);
     }
   return (RETURN_SUCCESS);
 }
