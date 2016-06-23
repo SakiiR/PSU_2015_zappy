@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Wed Jun 22 14:34:30 2016 Barthelemy Gouby
+** Last update Thu Jun 23 18:56:39 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -33,12 +33,7 @@ int					event_turn(t_server *server, va_list ap)
     client->character->orientation = NORTH;
   else if (client->character->orientation < NORTH)
     client->character->orientation = WEST;
-  sprintf(server->buffer, "ppo %i %i %i %i\n",
-	  client->character->id,
-	  client->character->current_case->x,
-	  client->character->current_case->y,
-	  client->character->orientation + 1);
-  graphic_broadcast(server, server->buffer);
+  send_player_position(server, client, NULL);
   write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
   return (RETURN_SUCCESS);
 }
@@ -83,12 +78,7 @@ int					event_advance(t_server *server, va_list ap)
 
   client = va_arg(ap, t_client *);
   change_case(server, client);
-  sprintf(server->buffer, "ppo %i %i %i %i\n",
-	  client->character->id,
-	  client->character->current_case->x,
-	  client->character->current_case->y,
-	  client->character->orientation + 1);
-  graphic_broadcast(server, server->buffer);
+  send_player_position(server, client, NULL);
   write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
   return (RETURN_SUCCESS);
 }

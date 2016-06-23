@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Wed Jun 22 18:17:57 2016 Erwan Dupard
+** Last update Thu Jun 23 18:57:07 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -43,8 +43,12 @@ int					incantation_command(t_server *server
 
   incantation = get_incantation_by_level(client->character->level + 1);
   if (check_incantation(incantation, client->character->current_case, &players) == RETURN_FAILURE)
-    return (RETURN_SUCCESS);
-  if (client->type == DRONE && incantation)
+    {
+      strcpy(server->buffer, "ko\n");
+      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      return (RETURN_SUCCESS);
+    }
+  if (client->type == DRONE && incantation && players)
     {
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
@@ -53,6 +57,7 @@ int					incantation_command(t_server *server
       new_action->argument = players;
       new_action->duration = 300;
       new_action->next = NULL;
+      incantation_broadcast_b(server, client, incantation, players);
       add_action(&client->character->action_queue, new_action);
     }
   return (RETURN_SUCCESS);
@@ -67,6 +72,11 @@ int					prend_command(t_server *server
 
   if (client->type == DRONE)
     {
+      if (!operands)
+	{
+	  write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
+	  return (RETURN_SUCCESS);
+	}
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = TAKE_RESOURCE;
@@ -90,6 +100,11 @@ int					pose_command(t_server *server
 
   if (client->type == DRONE)
     {
+      if (!operands)
+	{
+	  write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
+	  return (RETURN_SUCCESS);
+	}
       if (!(new_action = malloc(sizeof(*new_action))))
 	return (RETURN_FAILURE);
       new_action->type = THROW_RESOURCE;
