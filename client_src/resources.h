@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Tue Jun 21 18:02:13 2016 Gabriel Goude
+** Last update Thu Jun 23 16:27:00 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -78,9 +78,9 @@ typedef struct				s_client
   unsigned int				x;
   unsigned int				y;
   char					*team_name;
-  t_quantity			        inventory[NUMBER_OF_TYPES];
+  t_quantity				inventory[NUMBER_OF_TYPES];
   unsigned int				level;
-  unsigned int				orientation;
+  int					orientation;
   unsigned int				alive;
 }					t_client;
 
@@ -107,12 +107,12 @@ void					init_fct(int (**fct)(t_infos *, char *));
 /*
 ** handle.c
 */
-int					handle_msg(t_infos *infos, char *msg);
+int					handle_msg(t_infos *infos, char *msg, int (**fct)(t_infos *, char *));
 
 /*
 ** update.c
 */
-int					update(t_infos *infos);
+int					update(t_infos *infos, int (**fct)(t_infos *, char *));
 int					send_update(t_infos *infos);
 
 /*

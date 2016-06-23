@@ -5,11 +5,15 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:41:52 2016 Karine Aknin
+** Last update Thu Jun 23 19:55:30 2016 Karine Aknin
 */
 
 #ifndef SERVER_H_
 # define SERVER_H_
+
+#define _BSD_SOURCE
+#define _SVID_SOURCE
+#define _DEFAULT_SOURCE
 
 # include <stdlib.h>
 # include <arpa/inet.h>
@@ -21,6 +25,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <math.h>
 # include <circular_buffer/circular_buffer.h>
 
 # define MAX_CLIENTS			(50)
@@ -192,9 +197,12 @@ int					define_client_type(t_server *server,
 							   t_client *client,
 							   char *input);
 
-void					initialize_time(t_server *server);
+void					set_time_speed(t_server *server);
 int					initialize_map(t_map *map);
 void					initialize_ressources(t_server *server);
+t_case					*map_get_case_circular(int x,
+							       int y,
+							       t_map *map);
 t_case					*map_get_case_at(const t_u64 x,
 							 const t_u64 y,
 							 const t_map *map);
@@ -207,6 +215,9 @@ void					place_character_randomly(t_map *map,
 void					place_character_at_egg(t_map *map,
 							       t_character *character,
 							       t_egg **eggs);
+void					change_coordinate(unsigned int *coordinate,
+							  int change,
+							  unsigned int max_value);
 void					text_display_map(t_map *map);
 void					add_egg(t_egg **egg_list, t_egg *new_egg);
 t_egg					*remove_egg(t_egg **egg_list, t_egg *egg);
@@ -320,6 +331,12 @@ int					fork_command(t_server *server,
 int					connect_nbr_command(t_server *server,
 							    t_client *client,
 							    char *operands);
+int					broadcast_command(t_server *server,
+							  t_client *client,
+							  char *operands);
+int					incantation_command(t_server *server,
+							    t_client *client,
+							    char *operands);
 int					voir_north(t_map *map,
 						   t_client *client,
 						   t_case **cases);
@@ -356,6 +373,13 @@ int					check_resources(t_case *c,
 int					check_characters_incase(t_case *c,
 								t_character **characters);
 t_incantation				*get_incantation_by_level(t_u64 level);
+int					incantation_broadcast_b(t_server *server,
+								t_client *client,
+								t_incantation *incantation,
+								t_character **players);
+int					incantation_broadcast_e(t_server *server,
+								t_client *client,
+								t_character **players);
 /*
  * Expulse
  */

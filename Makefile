@@ -5,7 +5,11 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
+<<<<<<< HEAD
 ## Last update Thu Jun 23 17:40:17 2016 Karine Aknin
+=======
+## Last update Thu Jun 23 17:08:40 2016 Barthelemy Gouby
+>>>>>>> f5cef5474139c8320f84837a8fdedfba6ea9c26e
 ##
 
 CC		= gcc
@@ -37,6 +41,8 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/handle3.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
+		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
+		  utils/my_str_to_wordtab/my_str_to_wordtab2.c 	\
 
 GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/network.c 			\
@@ -107,6 +113,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/action.c				\
 		  server_src/food.c				\
 		  server_src/voir.c				\
+		  server_src/broadcast.c			\
 		  server_src/voir_north.c			\
 		  server_src/voir_south.c			\
 		  server_src/voir_east.c			\
@@ -114,6 +121,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/generate_message_voir.c		\
 		  server_src/expulse.c				\
 		  server_src/incantations.c			\
+		  server_src/incantations2.c			\
 		  server_src/egg.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
@@ -132,7 +140,7 @@ $(CLIENT_NAME): $(CLIENT_OBJS)
 	$(CC) -o $(CLIENT_BINARY) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(SERVER_NAME): $(SERVER_OBJS)
-	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS) -lm
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
 	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2main -lSDL2  -lSDL2_image

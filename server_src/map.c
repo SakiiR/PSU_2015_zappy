@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Wed Jun 22 18:13:27 2016 Karine Aknin
+** Last update Thu Jun 23 17:06:17 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -37,6 +37,22 @@ int					initialize_map(t_map *map)
     }
   map->cases = cases;
   return (RETURN_SUCCESS);
+}
+
+t_case					*map_get_case_circular(int x,
+							       int y,
+							       t_map *map)
+{
+  if (x >= (int) map->width)
+    x = 0;
+  else if (x < 0)
+    x = map->width - 1;
+  if (y >= (int) map->height)
+    y = 0;
+  else if (y < 0)
+    y = map->height - 1;
+  printf("getting  x: %i    y: %i\n", x, y);
+  return (&map->cases[y * map->width + x]);
 }
 
 t_case					*map_get_case_at(const t_u64 x,

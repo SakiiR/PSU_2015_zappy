@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Tue Jun 21 18:00:29 2016 Gabriel Goude
+** Last update Thu Jun 23 16:59:38 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -51,7 +51,7 @@ int			play_loop(t_infos *infos)
   init_fct(fct);
   while (infos->client->alive)
   {
-    if (update(infos) == RETURN_FAILURE)
+    if (update(infos, fct) == RETURN_FAILURE)
       return (RETURN_FAILURE);
     if (ai(infos) == RETURN_FAILURE)
       return (RETURN_FAILURE);

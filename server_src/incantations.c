@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Wed Jun 22 18:49:33 2016 Erwan Dupard
+** Last update Thu Jun 23 18:52:47 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -63,7 +63,7 @@ int					check_resources(t_case *c,
 {
   int					i;
 
-  i = -1;
+  i = 0;
   while (++i < NUMBER_OF_TYPES)
     {
       if (c->quantities[i] != incantation->obj[i])
@@ -81,10 +81,11 @@ int					check_incantation(t_incantation *incantation,
   int				        i;
   t_character				**players;
 
+  i = 0;
   iterator = c->characters;
   while (iterator)
     {
-      if (iterator->level != incantation->level)
+      if (iterator->level + 1 != incantation->level)
 	return (RETURN_FAILURE);
       iterator = iterator->next_in_case;
       ++i;
@@ -93,14 +94,16 @@ int					check_incantation(t_incantation *incantation,
     return (RETURN_FAILURE);
   if ((players = malloc(sizeof(*players) * (i + 1))) == NULL)
     return (RETURN_FAILURE);
+  iterator = c->characters;
   i = 0;
   while (iterator)
     {
       players[i] = iterator;
       iterator = iterator->next_in_case;
+      ++i;
     }
   players[i] = NULL;
-  characters = &players;
+  *characters = players;
   return (RETURN_SUCCESS);
 }
 

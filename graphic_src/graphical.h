@@ -5,15 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Wed Jun 22 17:08:43 2016 Thomas Billot
-=======
-<<<<<<< HEAD
-** Last update Wed Jun 22 16:15:47 2016 Thomas Beaudet
-=======
-** Last update Wed Jun 22 15:53:36 2016 Thomas Billot
->>>>>>> 2985de004257fc1eda403abc4cde41c9d87dd168
->>>>>>> b5f2806dc7e8df340d9884d6f5335bf368266861
+** Last update Thu Jun 23 17:27:10 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -66,6 +58,16 @@
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
 # define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
+# define T_CHARACTER		"graphic_src/Media/mage_charset2.bmp"
+# define T_STONES		"graphic_src/Media/resources.bmp"
+# define T_EGG			"graphic_src/Media/egg.bmp"
+
+/*
+** Defines for animation
+*/
+
+# define STOP			(0)
+# define RUN			(1)
 
 /*
 ** Convertion map coord to screen cord
@@ -111,7 +113,8 @@ typedef enum
     GRASS			= 0,
     BORDER_DARK			= 1,
     BORDER_LIGHT		= 2,
-    NUMBER_OF_TEXTURES		= 3
+    CHARACTER			= 3,
+    NUMBER_OF_TEXTURES		= 4
   }				e_textures;
 
 typedef enum
@@ -171,13 +174,38 @@ typedef struct			s_render
   SDL_Rect			dest_rect;
   t_texture			tileset[NUMBER_OF_TEXTURES];
   SDL_Event			event;
-  int				mouse_x;
-  int				mouse_y;
-  int				mouse_x_rel;
-  int				mouse_y_rel;
-  char				mouse_buttons[8];
-  char				quit;
+  int				scaleW;
+  int				scaleH;
 }				t_render;
+
+/*
+** Animation structures
+*/
+
+typedef struct			s_charset
+{
+  SDL_Surface			*charset_;
+  int				nbX;
+  int				nbY;
+  int				w;
+  int				h;
+}				t_charset;
+
+typedef struct			s_anim
+{
+  int				begin_frame;
+  int				nb_frames;
+  int				delay;
+}				t_anim;
+
+typedef struct			s_sprite
+{
+  t_charset			*charset;
+  t_anim			*anim;
+  SDL_Rect			pos;
+  int				way;
+  int				state;
+}				t_sprite;
 
 /*
 ** Function declaration
@@ -185,7 +213,7 @@ typedef struct			s_render
 
 int				setup_networking(t_option *options);
 int				launch_client(t_server *server,
-					      t_render *render);
+					      t_render *render, t_texture *tile);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
 SDL_Surface			*load_bmp(const char *file);
@@ -205,9 +233,12 @@ int				sdl_init();
 void				draw_backg(t_render *ress);
 void				put_delay(int delay);
 int				sdl_create_win(t_render *ress);
-int				sdl_event(t_render *ress);
+int				sdl_event(t_render *ress, t_texture *tile);
+void				zoom(t_render *ress, t_texture *tile,
+				     int x, int y,
+				     float scale_W, float scale_H);
 void				sdl_quit();
-SDL_Rect				sdl_mouse_motion(t_render *ress);
+/*SDL_Rect			sdl_mouse_motion(t_render *ress);*/
 
 /*
 ** Function pointer definition

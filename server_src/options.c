@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Fri Jun 17 10:24:49 2016 Barthelemy Gouby
+** Last update Thu Jun 23 16:25:18 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -93,7 +93,10 @@ int					check_options(t_server *server, char *file_name)
       !(server->game_data.map.width >= MIN_WORLD_X) ||
       !(server->game_data.map.height >= MIN_WORLD_Y) ||
       !(server->game_data.base_max_members >= MIN_MAX_CLIENTS) ||
-      !(server->game_data.speed >= MIN_SPEED)
+      !(server->game_data.speed >= MIN_SPEED) ||
+      !(server->game_data.teams[0].name &&
+	server->game_data.teams[1].name)
+      
       )
     {
       usage(file_name);
