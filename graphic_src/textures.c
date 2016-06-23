@@ -1,11 +1,11 @@
 /*
 ** preload_textures.c for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy
-** 
+**
 ** Made by Thomas Billot
 ** Login   <mikaz3@epitech.net>
-** 
+**
 ** Started on  Tue Jun 21 12:59:05 2016 Thomas Billot
-** Last update Tue Jun 21 16:29:29 2016 Thomas Billot
+** Last update Thu Jun 23 09:52:46 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
@@ -14,8 +14,9 @@ static char	*g_textures[] =
   {
     T_GRASS,
     T_BORDER_DARK,
-    T_BORDER_LIGHT
-  }; 
+    T_BORDER_LIGHT,
+    T_CHARACTER
+  };
 
 int		preload_textures(t_render *ress)
 {
