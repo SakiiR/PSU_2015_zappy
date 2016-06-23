@@ -1,3 +1,4 @@
+
 /*
 ** map_rendering.c for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy
 **
@@ -5,7 +6,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Wed Jun 22 14:36:14 2016 Thomas Billot
+** Last update Thu Jun 23 14:18:44 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
@@ -15,7 +16,7 @@ int		map_rendering(t_render *render, t_map *map)
   int		i;
   int		map_x;
   int		map_y;
-  
+
   i = -1;
   while (++i < (map->x * map->y))
     {
@@ -23,8 +24,12 @@ int		map_rendering(t_render *render, t_map *map)
       map_y = i / map->x;
       display_texture(render,
 		      &render->tileset[GRASS],
-		      CONVERT_X(map_x, map_y),
+		      CONVERT_X(map_x, map_y) + (WIN_W / 2),
 		      CONVERT_Y(map_x, map_y));
     }
+  display_texture(render,
+		  &render->tileset[CHARACTER],
+		  640 / 2,
+		  480 / 2);
   return (RETURN_SUCCESS);
 }

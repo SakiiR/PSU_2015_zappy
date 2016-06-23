@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 23 14:55:39 2016 Barthelemy Gouby
+** Last update Thu Jun 23 17:08:09 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -19,7 +19,7 @@ void			initialize_time(t_server *server)
   server->game_data.tick_length.tv_usec =
     (int)((length - (int) length) * 1000000);
   printf("unit length second:  %i\n",
-	 (int) length);
+	 (int)length);
   printf("unit length usecond:  %i\n",
 	 (int)((length - (int) length) * 1000000));
   gettimeofday(&server->game_data.last_tick, NULL);
@@ -75,7 +75,7 @@ int			eggs_life_cycle(t_server *server)
 		  graphic_broadcast(server, server->buffer);
 		}
       	      else
-      		iterator->timer--;
+      		--iterator->timer;
       	    }
 	  iterator = iterator->next;
       	}

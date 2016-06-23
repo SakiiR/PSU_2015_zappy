@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [[ ! -z $(find . -name "*.o" -print) ]]
+then
+    echo "[-] ARRETEZ DE PUSH LES .o"
+    exit
+fi
+
+make fclean
+clear
 echo -e "\e[1m"
 echo -e "\e[39m---------------------------------------------------------------------"
 echo -e "\e[32m"

@@ -5,7 +5,7 @@ Zappy Epitech Project
 
 # SSH Keys
 
-Simple add the content of ur ~/.ssh/id_rsa.pub to github settings
+Simply add the content of your "~/.ssh/id_rsa.pub" to github settings
 Enjoy the github powerfull
 
 # TO Push
@@ -13,8 +13,10 @@ Enjoy the github powerfull
 Just commit simple like is it
 
 ```
+first:
 git remote add github git@github.com:SakiiR/PSU_2015_zappy.git
 
+Each Commit :
 git status
 git add FILES
 git commit -m "Your Commit Message"
