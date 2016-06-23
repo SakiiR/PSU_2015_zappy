@@ -5,12 +5,12 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:56:31 2016 Erwan Dupard
+** Last update Thu Jun 23 18:48:24 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
-void			initialize_time(t_server *server)
+void			set_time_speed(t_server *server)
 {
   double		length;
 
