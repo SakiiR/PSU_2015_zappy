@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:06:04 2016 Barthelemy Gouby
+** Last update Thu Jun 23 17:45:03 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -334,6 +334,9 @@ int					connect_nbr_command(t_server *server,
 int					broadcast_command(t_server *server,
 							  t_client *client,
 							  char *operands);
+int					incantation_command(t_server *server,
+							    t_client *client,
+							    char *operands);
 int					voir_north(t_map *map,
 						   t_character *character,
 						   t_case **cases);
