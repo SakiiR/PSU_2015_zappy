@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Thu Jun 23 17:44:00 2016 Erwan Dupard
+** Last update Thu Jun 23 17:55:35 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -20,6 +20,7 @@ int					event_incantation(t_server *server, va_list ap)
   client = va_arg(ap, t_client *);
   characters = va_arg(ap, t_character **);
   incantation = get_incantation_by_level(client->character->level + 1);
+  printf("incatation!\n");
   if (check_characters_incase(client->character->current_case, characters) == RETURN_FAILURE)
     {
       printf("[-] Failed to elevate : Player(s) Changed\n");
