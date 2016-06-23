@@ -1,23 +1,23 @@
 /*
-** handle.c for zappy in /home/goude_g/src/PSU_2015_zappy/client_src
+** update.c for zappy in /home/goude_g/src/PSU_2015_zappy/client_src
 ** 
 ** Made by Gabriel Goude
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:56:28 2016 Gabriel Goude
-** Last update Tue Jun 21 17:09:00 2016 Gabriel Goude
+** Last update Thu Jun 23 15:09:37 2016 Gabriel Goude
 */
 
 #include "resources.h"
 
-int				update(t_infos *infos)
+int				update(t_infos *infos, int (**fct)(t_infos *, char *))
 {
   char				*msg;
 
   while ((msg = read_buf(infos)) != NULL)
   {
     if (strncmp(msg, "mort\n", 5) != 0 && strncmp(msg, "broadcast", 9) != 0)
-      handle_msg(infos, msg);
+      handle_msg(infos, msg, fct);
     else
       printf("%s", msg);
   }
@@ -30,7 +30,11 @@ int				send_update(t_infos *infos)
   int				retval;
 
   fill_set(infos);
-  while ((retval = select(infos->socket + 1, NULL, &(infos->select.wfds), NULL, &(infos->select.tv))) < 0)
+  while ((retval = select(infos->socket + 1,
+			  NULL,
+			  &(infos->select.wfds),
+			  NULL,
+			  &(infos->select.tv))) < 0)
     fill_set(infos);
   if (FD_ISSET(infos->socket, &(infos->select.wfds)))
   {

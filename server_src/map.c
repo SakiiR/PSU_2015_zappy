@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Thu Jun 23 15:33:39 2016 Barthelemy Gouby
+** Last update Thu Jun 23 17:06:17 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -62,10 +62,8 @@ t_case					*map_get_case_at(const t_u64 x,
   t_u64					index;
   t_case				*c;
 
-  printf("x = %d, y = %d\n", x, y);
   index = y * map->width + x;
   c = (index >= map->height * map->width ? NULL : &map->cases[index]);
-  printf("x2 = %d y2 = %d\n", c->x, c->y);
   return (c);
 }
 

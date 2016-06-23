@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Mon Jun 20 13:53:31 2016 Barthelemy Gouby
+** Last update Thu Jun 23 15:27:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -67,8 +67,8 @@ int					send_map_content(t_server *server,
 							 char *operands __attribute__((unused)))
 {
   t_u64					i;
-  i = 0;
 
+  i = 0;
   while (i  < server->game_data.map.width * server->game_data.map.height)
     {
       sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
