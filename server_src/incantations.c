@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Thu Jun 23 18:28:19 2016 Erwan Dupard
+** Last update Thu Jun 23 18:52:47 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -81,6 +81,7 @@ int					check_incantation(t_incantation *incantation,
   int				        i;
   t_character				**players;
 
+  i = 0;
   iterator = c->characters;
   while (iterator)
     {
@@ -89,19 +90,20 @@ int					check_incantation(t_incantation *incantation,
       iterator = iterator->next_in_case;
       ++i;
     }
-  printf("flag1\n");
   if (i != incantation->players)
     return (RETURN_FAILURE);
   if ((players = malloc(sizeof(*players) * (i + 1))) == NULL)
     return (RETURN_FAILURE);
+  iterator = c->characters;
   i = 0;
   while (iterator)
     {
       players[i] = iterator;
       iterator = iterator->next_in_case;
+      ++i;
     }
   players[i] = NULL;
-  characters = &players;
+  *characters = players;
   return (RETURN_SUCCESS);
 }
 

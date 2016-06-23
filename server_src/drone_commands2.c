@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Thu Jun 23 18:18:50 2016 Erwan Dupard
+** Last update Thu Jun 23 18:37:55 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -48,7 +48,7 @@ int					incantation_command(t_server *server
       write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
       return (RETURN_SUCCESS);
     }
-  if (client->type == DRONE && incantation)
+  if (client->type == DRONE && incantation && players)
     {
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
