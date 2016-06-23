@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Thu Jun 23 18:25:35 2016 Erwan Dupard
+** Last update Thu Jun 23 18:28:19 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -63,7 +63,7 @@ int					check_resources(t_case *c,
 {
   int					i;
 
-  i = -1;
+  i = 0;
   while (++i < NUMBER_OF_TYPES)
     {
       if (c->quantities[i] != incantation->obj[i])
@@ -89,6 +89,7 @@ int					check_incantation(t_incantation *incantation,
       iterator = iterator->next_in_case;
       ++i;
     }
+  printf("flag1\n");
   if (i != incantation->players)
     return (RETURN_FAILURE);
   if ((players = malloc(sizeof(*players) * (i + 1))) == NULL)
