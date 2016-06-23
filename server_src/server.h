@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 23 15:18:01 2016 Erwan Dupard
+** Last update Thu Jun 23 15:31:36 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -359,7 +359,9 @@ int					incantation_broadcast_b(t_server *server,
 								t_client *client,
 								t_incantation *incantation,
 								t_character **players);
-
+int					incantation_broadcast_e(t_server *server,
+								t_client *client,
+								t_character **players);
 /*
  * Expulse
  */

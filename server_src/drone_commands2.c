@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Thu Jun 23 15:11:01 2016 Erwan Dupard
+** Last update Thu Jun 23 15:31:11 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -53,7 +53,7 @@ int					incantation_command(t_server *server
       new_action->argument = players;
       new_action->duration = 300;
       new_action->next = NULL;
-      incantation_broadcast_b(server, incantation, players);
+      incantation_broadcast_b(server, client, incantation, players);
       add_action(&client->character->action_queue, new_action);
     }
   return (RETURN_SUCCESS);
