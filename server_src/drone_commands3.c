@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:21:45 2016 Barthelemy Gouby
-** Last update Wed Jun 22 18:26:30 2016 Barthelemy Gouby
+** Last update Thu Jun 23 17:19:30 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -48,8 +48,7 @@ int				connect_nbr_command(t_server *server,
 int				broadcast_command(t_server *server
 						  __attribute__((unused)),
 						  t_client *client,
-						  char *operands
-						  __attribute__((unused)))
+						  char *operands)
 {
   t_action				*new_action;
 
@@ -60,7 +59,7 @@ int				broadcast_command(t_server *server
       new_action->type = BROADCAST;
       new_action->origin = client;
       new_action->duration = 7;
-      new_action->argument = NULL;
+      new_action->argument = operands;
       new_action->next = NULL;
       add_action(&client->character->action_queue, new_action);
     }
