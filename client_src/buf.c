@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 14:32:57 2016 Gabriel Goude
-** Last update Wed Jun 22 16:11:17 2016 Erwan Dupard
+** Last update Thu Jun 23 17:00:41 2016 Gabriel Goude
 */
 
 #include <sys/select.h>
@@ -49,7 +49,7 @@ int				write_buf(t_infos *infos, char *str)
 void				fill_set(t_infos *infos)
 {
   infos->select.tv.tv_usec = 0;
-  infos->select.tv.tv_sec = 10;
+  infos->select.tv.tv_sec = 1;
   FD_ZERO(&(infos->select.rfds));
   FD_ZERO(&(infos->select.wfds));
   FD_SET(infos->socket, &(infos->select.rfds));

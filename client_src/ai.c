@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 10 14:31:29 2016 Gabriel Goude
-** Last update Tue Jun 21 15:04:28 2016 Gabriel Goude
+** Last update Thu Jun 23 17:04:55 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -16,20 +16,18 @@ int			prend(t_infos *infos, char *str);
 int			voir(t_infos *infos);
 int			inventaire(t_infos *infos);
 int			avance(t_infos *infos);
+int			gauche(t_infos *infos);
 
 int			ai(t_infos *infos)
 {
-  static int			i = 0;
+  static int		i = 0;
 
-  if (i == 0)
-    voir(infos);
-  else if (i == 1)
-    prend(infos, "nourriture");
-  else if (i == 2)
-    avance(infos);
-  if (i < 3)
-    inventaire(infos);
-  i++;
+  if (!i)
+  {
+    gauche(infos);
+    i++;
+  }
+  avance(infos);
   return (RETURN_SUCCESS);
 }
 
