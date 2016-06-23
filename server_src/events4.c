@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Thu Jun 23 14:53:26 2016 Erwan Dupard
+** Last update Thu Jun 23 15:32:46 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -31,6 +31,8 @@ int					event_incantation(t_server *server, va_list ap)
       return (RETURN_FAILURE);
     }
   do_incantation(client->character->current_case, incantation);
+  incantation_broadcast_e(server, client, characters);
+  free(characters);
   printf("[+] Elevation OK!\n");
   return (RETURN_SUCCESS);
 }
