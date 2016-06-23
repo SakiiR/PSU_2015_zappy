@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Thu Jun 23 17:30:18 2016 Erwan Dupard
+** Last update Thu Jun 23 17:44:00 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -42,7 +42,6 @@ int					event_expulse(t_server *server, va_list ap)
   t_client				*client;
   t_case				*c;
   t_character				*iterator;
-  int					i;
 
   client = va_arg(ap, t_client *);
   c = client->character->current_case;
