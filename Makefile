@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 23 15:41:24 2016 Gabriel Goude
+## Last update Thu Jun 23 17:08:40 2016 Barthelemy Gouby
 ##
 
 CC		= gcc
@@ -109,6 +109,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/action.c				\
 		  server_src/food.c				\
 		  server_src/voir.c				\
+		  server_src/broadcast.c			\
 		  server_src/voir_north.c			\
 		  server_src/voir_south.c			\
 		  server_src/voir_east.c			\
@@ -134,7 +135,7 @@ $(CLIENT_NAME): $(CLIENT_OBJS)
 	$(CC) -o $(CLIENT_BINARY) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
 
 $(SERVER_NAME): $(SERVER_OBJS)
-	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS) -lm
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
 	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2main -lSDL2  -lSDL2_image
