@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 22 18:51:39 2016 Karine Aknin
+** Last update Thu Jun 23 15:31:36 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -355,6 +355,13 @@ int					check_resources(t_case *c,
 int					check_characters_incase(t_case *c,
 								t_character **characters);
 t_incantation				*get_incantation_by_level(t_u64 level);
+int					incantation_broadcast_b(t_server *server,
+								t_client *client,
+								t_incantation *incantation,
+								t_character **players);
+int					incantation_broadcast_e(t_server *server,
+								t_client *client,
+								t_character **players);
 /*
  * Expulse
  */
