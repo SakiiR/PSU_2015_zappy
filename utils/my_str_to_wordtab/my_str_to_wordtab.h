@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:23:39 2016 Erwan Dupard
-** Last update Tue Jun 14 17:24:18 2016 Erwan Dupard
+** Last update Thu Jun 23 14:58:50 2016 Erwan Dupard
 */
 
 #ifndef MY_STR_TO_WORDTAB_H_
@@ -13,5 +13,10 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+
+void					free_word_tab(char **tab);
+char					**my_str_to_wordtab(const char *str,
+							    const char *forbidden);
+
 
 #endif /* ! MY_STR_TO_WORDTAB_H_ */
