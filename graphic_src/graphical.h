@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 23 13:43:28 2016 Thomas Beaudet
+** Last update Thu Jun 23 17:27:10 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -63,11 +63,11 @@
 # define T_EGG			"graphic_src/Media/egg.bmp"
 
 /*
-** Defines for zoom function
+** Defines for animation
 */
 
-# define SCALE_W		(0)
-# define SCALE_H		(0)
+# define STOP			(0)
+# define RUN			(1)
 
 /*
 ** Convertion map coord to screen cord
@@ -177,6 +177,35 @@ typedef struct			s_render
   int				scaleW;
   int				scaleH;
 }				t_render;
+
+/*
+** Animation structures
+*/
+
+typedef struct			s_charset
+{
+  SDL_Surface			*charset_;
+  int				nbX;
+  int				nbY;
+  int				w;
+  int				h;
+}				t_charset;
+
+typedef struct			s_anim
+{
+  int				begin_frame;
+  int				nb_frames;
+  int				delay;
+}				t_anim;
+
+typedef struct			s_sprite
+{
+  t_charset			*charset;
+  t_anim			*anim;
+  SDL_Rect			pos;
+  int				way;
+  int				state;
+}				t_sprite;
 
 /*
 ** Function declaration
