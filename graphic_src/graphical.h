@@ -5,15 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Wed Jun 22 17:08:43 2016 Thomas Billot
-=======
-<<<<<<< HEAD
-** Last update Wed Jun 22 16:15:47 2016 Thomas Beaudet
-=======
-** Last update Wed Jun 22 15:53:36 2016 Thomas Billot
->>>>>>> 2985de004257fc1eda403abc4cde41c9d87dd168
->>>>>>> b5f2806dc7e8df340d9884d6f5335bf368266861
+** Last update Thu Jun 23 09:19:47 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -66,6 +58,9 @@
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
 # define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
+# define T_CHARACTER		"graphic_src/Media/mage_charset2.bmp"
+# define T_STONES		"graphic_src/Media/resources.bmp"
+# define T_EGG			"graphic_src/Media/egg.bmp"
 
 /*
 ** Convertion map coord to screen cord
@@ -111,7 +106,8 @@ typedef enum
     GRASS			= 0,
     BORDER_DARK			= 1,
     BORDER_LIGHT		= 2,
-    NUMBER_OF_TEXTURES		= 3
+    CHARACTER			= 3,
+    NUMBER_OF_TEXTURES		= 4
   }				e_textures;
 
 typedef enum
