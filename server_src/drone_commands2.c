@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Thu Jun 23 18:18:50 2016 Erwan Dupard
+** Last update Thu Jun 23 18:36:03 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -72,6 +72,11 @@ int					prend_command(t_server *server
 
   if (client->type == DRONE)
     {
+      if (!operands)
+	{
+	  write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
+	  return (RETURN_SUCCESS);
+	}
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = TAKE_RESOURCE;
@@ -95,6 +100,11 @@ int					pose_command(t_server *server
 
   if (client->type == DRONE)
     {
+      if (!operands)
+	{
+	  write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
+	  return (RETURN_SUCCESS);
+	}
       if (!(new_action = malloc(sizeof(*new_action))))
 	return (RETURN_FAILURE);
       new_action->type = THROW_RESOURCE;
