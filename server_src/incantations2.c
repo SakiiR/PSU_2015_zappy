@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 23 15:09:55 2016 Erwan Dupard
-** Last update Thu Jun 23 15:18:24 2016 Erwan Dupard
+** Last update Thu Jun 23 15:31:32 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -28,13 +28,35 @@ int					incantation_broadcast_b(t_server *server,
       sprintf(buf, " %d", players[i]->id);
       strcat(server->buffer, buf);
     }
+  strcat(server->buffer, "\n");
+  i = -1;
+  graphic_broadcast(server, server->buffer);
+  return (RETURN_SUCCESS);
+}
+
+int					incantation_broadcast_e(t_server *server,
+								t_client *client,
+								t_character **players)
+{
+  int					i;
+  
+  sprintf(server->buffer, "pice %d %d 1\n",
+	  client->character->current_case->x,
+	  client->character->current_case->y);
+  graphic_broadcast(server, server->buffer);
+  i = -1;
+  while (players[++i])
+    {
+      sprintf(server->buffer, "plv %d %d\n",
+	      players[i]->id,
+	      players[i]->level);
+      graphic_broadcast(server, server->buffer);
+    }
   i = -1;
   while (server->clients[++i].host_name)
     {
       if (server->clients[i].type == GRAPHIC)
-	write_to_buffer(&server->clients[i].buffer_out,
-			server->buffer,
-			strlen(server->buffer));
+	send_map_content(server, &server->clients[i], NULL);
     }
   return (RETURN_SUCCESS);
 }
