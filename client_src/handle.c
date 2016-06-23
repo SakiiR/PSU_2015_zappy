@@ -5,15 +5,15 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 21 17:02:35 2016 Gabriel Goude
-** Last update Tue Jun 21 17:12:04 2016 Gabriel Goude
+** Last update Thu Jun 23 15:19:00 2016 Gabriel Goude
 */
 
 #include "resources.h"
 
-int				handle_msg(t_infos *infos, char *msg)
+int				handle_msg(t_infos *infos, char *msg, int (**fct)(t_infos *, char *))
 {
   printf("msg received : %s", msg);
   printf("msg is of type : %d\n", infos->request->request);
-  remove_elem(infos);
+  fct[infos->request->request](infos, msg);
   return (RETURN_SUCCESS);
 }
