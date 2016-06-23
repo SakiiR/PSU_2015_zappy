@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Wed Jun 22 18:44:47 2016 Barthelemy Gouby
+** Last update Thu Jun 23 17:44:09 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -30,6 +30,7 @@ static const t_command			g_commands[] = {
     {"fork", &fork_command},
     {"connect_nbr", &connect_nbr_command},
     {"broadcast", &broadcast_command},
+    {"incantation", &incantation_command},
     {NULL, NULL}
 };
 
