@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Tue Jun 21 15:27:55 2016 Barthelemy Gouby
+** Last update Thu Jun 23 16:59:07 2016 Barthelemy Gouby
 */
 
 #ifndef EVENTS_H_
@@ -68,6 +68,10 @@ int				        trigger_event(t_server *server,
  */
 int					event_new_player(t_server *server, va_list ap);
 int					event_broadcast(t_server *server, va_list ap);
+int					send_broadcast_to_drone(t_server *server,
+								t_client *sender,
+								t_client *receiver,
+								char *message);
 int					event_end_incantation(t_server *server, va_list ap);
 int					event_new_incantation(t_server *server, va_list ap);
 int					event_lay_egg(t_server *server, va_list ap);
