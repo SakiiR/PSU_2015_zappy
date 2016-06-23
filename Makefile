@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Wed Jun 22 14:44:04 2016 Barthelemy Gouby
+## Last update Thu Jun 23 14:55:50 2016 Gabriel Goude
 ##
 
 CC		= gcc
@@ -37,6 +37,8 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/handle3.c			\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
+		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
+		  utils/my_str_to_wordtab/my_str_to_wordtab2.c 	\
 
 GRAPHIC_SRCS	= graphic_src/main.c				\
 		  graphic_src/network.c 			\
