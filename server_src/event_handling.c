@@ -5,14 +5,9 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:03:50 2016 Erwan Dupard
+** Last update Thu Jun 23 14:55:39 2016 Barthelemy Gouby
 */
 
-#define _BSD_SOURCE
-#define _SVID_SOURCE
-#define _DEFAULT_SOURCE
-
-#include <sys/time.h>
 #include "server.h"
 
 void			initialize_time(t_server *server)
@@ -61,13 +56,13 @@ int			handle_actions(t_server *server)
 
 int			eggs_life_cycle(t_server *server)
 {
-  int			i;
+  unsigned int		i;
   t_egg			*iterator;
 
-  i = -1;
-  while (++i < server->game_data.nbr_of_teams)
+  i = 0;
+  while (i < server->game_data.nbr_of_teams)
     {
-      iterator = server->game_data.teams[i].eggs;
+      iterator = server->game_data.teams[i++].eggs;
       while (iterator)
       	{
       	  if (!iterator->hatched)
