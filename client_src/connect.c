@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Wed Jun 22 16:11:50 2016 Erwan Dupard
+** Last update Thu Jun 23 16:56:09 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -40,8 +40,8 @@ int					enter_game(t_infos *infos)
       free(msg);
       if (create_map(infos) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      return (RETURN_SUCCESS);
     }
-    return (RETURN_SUCCESS);
   }
   return (RETURN_FAILURE);
 }
