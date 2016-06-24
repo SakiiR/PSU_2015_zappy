@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Thu Jun 23 17:43:49 2016 Erwan Dupard
+** Last update Thu Jun 23 20:08:53 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -44,7 +44,7 @@ int					event_take_ressource(t_server *server, va_list ap)
   t_client			*client;
   char				*ressource_type;
   int				i;
-
+  
   i = -1;
   client = va_arg(ap, t_client *);
   ressource_type = va_arg(ap, char *);
