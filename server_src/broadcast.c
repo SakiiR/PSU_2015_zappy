@@ -5,7 +5,11 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:22:50 2016 Barthelemy Gouby
+<<<<<<< HEAD
+** Last update Fri Jun 24 16:25:54 2016 Barthelemy Gouby
+=======
+** Last update Fri Jun 24 15:44:57 2016 Erwan Dupard
+>>>>>>> 337d4aeccf74d3682541c8a0100fcc5d664266b5
 */
 
 #include "server.h"
@@ -26,9 +30,8 @@ void		get_starting_coordinates(t_character *character,
     (*x)++;
 }
 
-
-
-t_case		**get_surrounding_cases(t_map *map, t_character *character)
+t_case		**get_surrounding_cases(t_map *map,
+					t_character *character)
 {
   t_case	**cases;
   int		i;
@@ -58,7 +61,9 @@ t_case		**get_surrounding_cases(t_map *map, t_character *character)
   return (cases);
 }
 
-double		calculate_spheric_distance(t_case *case_1, t_case *case_2, t_map *map)
+double		calculate_spheric_distance(t_case *case_1,
+					   t_case *case_2,
+					   t_map *map)
 {
   double	distance;
   double	spheric_right_distance;
@@ -86,7 +91,9 @@ double		calculate_spheric_distance(t_case *case_1, t_case *case_2, t_map *map)
   return (distance);
 }
 
-int		get_closest_case(t_map *map, t_character *sender, t_character *receiver)
+int		get_closest_case(t_map *map,
+				 t_character *sender,
+				 t_character *receiver)
 {
   t_case	**surrouding_cases;
   int		closest_case;
