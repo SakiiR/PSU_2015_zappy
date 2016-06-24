@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 24 14:51:26 2016 Barthelemy Gouby
+** Last update Fri Jun 24 15:09:01 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -212,7 +212,7 @@ void					remove_character_from_case(t_case *c,
 								   t_character *character);
 void					place_character_randomly(t_map *map,
 								 t_character *character);
-void					place_character_at_egg(t_map *map,
+int					place_character_at_egg(t_map *map,
 							       t_character *character,
 							       t_egg **eggs);
 void					change_coordinate(unsigned int *coordinate,
