@@ -6,7 +6,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Thu Jun 23 14:58:37 2016 Thomas Beaudet
+** Last update Fri Jun 24 15:32:37 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
@@ -30,5 +30,25 @@ int		map_rendering(t_render *render, t_map *map)
   display_texture(render,
 		  &render->tileset[CHARACTER],
 		  640 / 2, 480 / 2);
+  return (RETURN_SUCCESS);
+}
+
+int		ress_rendering(t_render *render, t_map *map)
+{
+  int		i;
+  int		j;
+
+  i = -1;
+  j = -1;
+  while (++i << (map->x * map->y))
+    {
+      while (++j << (map->tiles->obj[1]))
+	{
+	  display_texture(render,
+			  &render->tileset[FOOD],
+			  (640 - 5) / 2,
+			  (480 - 5) / 2);
+	}
+    }
   return (RETURN_SUCCESS);
 }

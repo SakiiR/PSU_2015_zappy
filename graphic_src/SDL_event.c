@@ -5,13 +5,13 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Thu Jun 16 14:44:04 2016 Thomas Beaudet
-** Last update Thu Jun 23 13:58:15 2016 Thomas Beaudet
+** Last update Fri Jun 24 16:22:59 2016 Thomas Beaudet
 */
 
 #include <SDL2/SDL.h>
 #include "graphical.h"
 
-int			sdl_event(t_render *ress, t_texture *tile)
+int			sdl_event(t_render *ress)
 {
   const Uint8		*keys;
 
@@ -21,19 +21,10 @@ int			sdl_event(t_render *ress, t_texture *tile)
       sdl_quit();
       return (RETURN_FAILURE);
     }
-  if (keys[SDL_SCANCODE_ESCAPE])
+  else if (keys[SDL_SCANCODE_ESCAPE])
     {
       sdl_quit();
       return (RETURN_FAILURE);
-    }
-  if (keys[SDL_SCANCODE_DOWN])
-    {
-      printf("DOWN");
-    }
-  if (keys[SDL_SCANCODE_UP])
-    {
-      zoom(ress, tile, 10, 10, 2, 2);
-      printf("UP");
     }
   return (RETURN_SUCCESS);
 }
