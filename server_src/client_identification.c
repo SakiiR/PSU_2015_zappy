@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:00:33 2016 Erwan Dupard
+** Last update Fri Jun 24 15:08:05 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -14,6 +14,8 @@ int					initialize_character(t_server *server,
 							     t_client *client,
 							     t_team *team)
 {
+  int					egg_id;
+
   client->type = DRONE;
   if (!(client->character = malloc(sizeof(*(client->character)))))
     return (RETURN_FAILURE);
@@ -35,9 +37,11 @@ int					initialize_character(t_server *server,
     }
   else
     {
-      place_character_at_egg(&server->game_data.map,
-			     client->character,
-			     &team->eggs);
+      egg_id = place_character_at_egg(&server->game_data.map,
+				      client->character,
+				      &team->eggs);
+      sprintf(server->buffer, "ebo %i\n", egg_id);
+      graphic_broadcast(server, server->buffer);
       client->character->base_member = 0;
     }
   return (RETURN_SUCCESS);

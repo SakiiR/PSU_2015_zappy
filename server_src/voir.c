@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 16 16:45:43 2016 Erwan Dupard
-** Last update Fri Jun 24 13:58:07 2016 Erwan Dupard
+** Last update Fri Jun 24 15:31:23 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -17,22 +17,6 @@ static const t_voir		g_voir[] = {
   {WEST, &voir_west},
   {10, NULL}
 };
-
-int				generate_max_size(t_u64 level)
-{
-  int				size;
-  int				base_size;
-
-  size = 1;
-  base_size = 1;
-  while (level > 0)
-    {
-      base_size += 2;
-      size += base_size;
-      --level;
-    }
-  return (size);
-}
 
 int				generate_base_size_level(int level)
 {
@@ -52,16 +36,16 @@ int				event_voir(t_server *server, va_list ap)
   t_client			*client;
   t_map				*map;
   t_case			**cases;
-  int				max_size;
+  int			        number_of_cases;
   int				i;
 
   i = 0;
   client = (t_client *)va_arg(ap, t_client *);
   map = &(server->game_data.map);
-  max_size = generate_max_size(client->character->level);
-  if (!(cases = malloc(sizeof(*cases) * (max_size * 2))))
+  number_of_cases = pow(client->character->level + 1, 2);
+  if (!(cases = malloc(sizeof(*cases) * number_of_cases + 1)))
     return (RETURN_FAILURE);
-  while (i < max_size * 2)
+  while (i < number_of_cases + 1)
     {
       cases[i] = NULL;
       i++;
