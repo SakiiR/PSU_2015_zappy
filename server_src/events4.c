@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Thu Jun 23 17:55:35 2016 Erwan Dupard
+** Last update Fri Jun 24 14:08:51 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -23,12 +23,12 @@ int					event_incantation(t_server *server, va_list ap)
   printf("incatation!\n");
   if (check_characters_incase(client->character->current_case, characters) == RETURN_FAILURE)
     {
-      printf("[-] Failed to elevate : Player(s) Changed\n");
+      incantation_failed(server, client);
       return (RETURN_FAILURE);
     }
   if (check_resources(client->character->current_case, incantation) == RETURN_FAILURE)
     {
-      printf("[-] Failed to elevate : Resource(s) Changed\n");
+      incantation_failed(server, client);
       return (RETURN_FAILURE);
     }
   do_incantation(client->character->current_case, incantation);
