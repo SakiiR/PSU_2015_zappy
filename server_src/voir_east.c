@@ -5,12 +5,13 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Thu Jun 23 17:44:06 2016 Karine Aknin
+** Last update Fri Jun 24 13:59:07 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int		generate_x_east(t_character *character, int level,
+int		generate_x_east(t_character *character,
+				int level,
 				t_map *map)
 {
   int		x;
@@ -30,7 +31,8 @@ int		generate_x_east(t_character *character, int level,
   return (x);
 }
 
-int             generate_y_east(t_character *character, int base_size,
+int             generate_y_east(t_character *character,
+				int base_size,
 				t_map *map)
 {
   int           y;
@@ -50,8 +52,10 @@ int             generate_y_east(t_character *character, int base_size,
   return (y);
 }
 
-t_case		*find_first_case_east(t_map *map, t_character *character,
-				int level, int base_size)
+t_case		*find_first_case_east(t_map *map,
+				      t_character *character,
+				      int level,
+				      int base_size)
 {
   int		x;
   int		y;
@@ -61,8 +65,10 @@ t_case		*find_first_case_east(t_map *map, t_character *character,
   return (map_get_case_at(x, y, map));
 }
 
-int             save_case_line_east(t_map *map, t_case **cases,
-				    t_case *case_it, int base_size)
+int             save_case_line_east(t_map *map,
+				    t_case **cases,
+				    t_case *case_it,
+				    int base_size)
 {
   int           i;
   int           x;
@@ -86,7 +92,8 @@ int             save_case_line_east(t_map *map, t_case **cases,
   return (RETURN_SUCCESS);
 }
 
-int		voir_east(t_map *map, t_client *client,
+int		voir_east(t_map *map,
+			  t_client *client,
 			   t_case **cases)
 {
   unsigned int	level;

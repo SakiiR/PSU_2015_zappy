@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Thu Jun 23 15:27:48 2016 Erwan Dupard
+** Last update Fri Jun 24 14:37:32 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -30,13 +30,32 @@ int					send_speed(t_server *server,
   return (RETURN_SUCCESS);
 }
 
+void					write_case_content_string(t_server *server,
+								  int x,
+								  int y)
+{
+  t_case				*map_case;
+
+  map_case = map_get_case_at(x,
+			     y,
+			     &server->game_data.map);
+  sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
+	  x, y,
+	  map_case->quantities[NOURRITURE],
+	  map_case->quantities[LINEMATE],
+	  map_case->quantities[DERAUMERE],
+	  map_case->quantities[SIBUR],
+	  map_case->quantities[MENDIANE],
+	  map_case->quantities[PHIRAS],
+	  map_case->quantities[THYSTAME]);
+}
+
 int					send_case_content(t_server *server,
 							  t_client *client,
 							  char *operands)
 {
   char					*x;
   char					*y;
-  t_case				*map_case;
 
   if (!operands)
     return (RETURN_SUCCESS);
@@ -44,18 +63,7 @@ int					send_case_content(t_server *server,
   y = strtok(NULL, " ");
   if (x && y)
     {
-      map_case = map_get_case_at(atoi(x),
-				 atoi(y),
-				 &server->game_data.map);
-      sprintf(server->buffer, "bct %i %i %i %i %i %i %i %i %i\n",
-	      atoi(x), atoi(y),
-	      map_case->quantities[NOURRITURE],
-	      map_case->quantities[LINEMATE],
-	      map_case->quantities[DERAUMERE],
-	      map_case->quantities[SIBUR],
-	      map_case->quantities[MENDIANE],
-	      map_case->quantities[PHIRAS],
-	      map_case->quantities[THYSTAME]);
+      write_case_content_string(server, atoi(x), atoi(y));
       write_to_buffer(&client->buffer_out, server->buffer,
 		      strlen(server->buffer));
     }

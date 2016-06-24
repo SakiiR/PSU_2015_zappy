@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 13 18:43:41 2016 Erwan Dupard
-** Last update Thu Jun 23 19:29:45 2016 Barthelemy Gouby
+** Last update Fri Jun 24 14:34:47 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -60,6 +60,23 @@ int				        send_player_level(t_server *server,
   return (RETURN_SUCCESS);
 }
 
+void					write_inventory_string(t_server *server,
+							       t_character *character)
+{
+  sprintf(server->buffer,
+	  "pin %i %i %i %i %i %i %i %i %i %i\n",
+	  character->id,
+	  character->current_case->x,
+	  character->current_case->y,
+	  character->quantities[NOURRITURE],
+	  character->quantities[LINEMATE],
+	  character->quantities[DERAUMERE],
+	  character->quantities[SIBUR],
+	  character->quantities[MENDIANE],
+	  character->quantities[PHIRAS],
+	  character->quantities[THYSTAME]);
+}
+
 int					send_player_inventory(t_server *server,
 							 t_client *client,
 							 char *operands
@@ -72,21 +89,10 @@ int					send_player_inventory(t_server *server,
     write_to_buffer(&client->buffer_out, "sbp\n", strlen("sbp\n"));
   else
     {
-      sprintf(server->buffer,
-	      "pnw %i %i %i %i %i %i %i %i %i %i\n",
-	      client_of_character->character->id,
-	      client_of_character->character->current_case->x,
-	      client_of_character->character->current_case->y,
-	      client_of_character->character->quantities[NOURRITURE],
-	      client_of_character->character->quantities[LINEMATE],
-	      client_of_character->character->quantities[DERAUMERE],
-	      client_of_character->character->quantities[SIBUR],
-	      client_of_character->character->quantities[MENDIANE],
-	      client_of_character->character->quantities[PHIRAS],
-	      client_of_character->character->quantities[THYSTAME]);
-	      write_to_buffer(&client->buffer_out,
-			      server->buffer,
-			      strlen(server->buffer)); 
+      write_inventory_string(server, client->character);
+      write_to_buffer(&client->buffer_out,
+		      server->buffer,
+		      strlen(server->buffer)); 
     }
   return (RETURN_SUCCESS);
 }
