@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:20:24 2016 Barthelemy Gouby
+** Last update Fri Jun 24 16:24:50 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -139,7 +139,7 @@ typedef struct				s_egg
   struct s_egg				*next;
 }					t_egg;
 
-struct				s_team
+struct					s_team
 {
   char					*name;
   t_client				*members;
