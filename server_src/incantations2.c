@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 23 15:09:55 2016 Erwan Dupard
-** Last update Thu Jun 23 18:55:24 2016 Erwan Dupard
+** Last update Fri Jun 24 14:19:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -25,12 +25,10 @@ int					incantation_broadcast_b(t_server *server,
   i = -1;
   while (players && players[++i])
     {
-      printf("player : %d\n", players[i]->id);
       sprintf(buf, " %d", players[i]->id);
       strcat(server->buffer, buf);
     }
   strcat(server->buffer, "\n");
-  printf("[^] Sending : %s\n", server->buffer);
   graphic_broadcast(server, server->buffer);
   return (RETURN_SUCCESS);
 }
@@ -60,4 +58,35 @@ int					incantation_broadcast_e(t_server *server,
 	send_map_content(server, &server->clients[i], NULL);
     }
   return (RETURN_SUCCESS);
+}
+
+void					incantation_failed(t_server *server,
+							   t_client *client)
+{  
+  sprintf(server->buffer, "pie %d %d 0\n",
+	  client->character->current_case->x,
+	  client->character->current_case->y);
+  graphic_broadcast(server, server->buffer);
+  strcpy(server->buffer, "ko\n");
+  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+}
+
+t_character				**get_incantation_players(int count,
+								  t_character *all)
+{
+  t_character				**players;
+  t_character				*iterator;
+  int					i;
+
+  if ((players = malloc(sizeof(*players) * (count + 1))) == NULL)
+    return (NULL);
+  iterator = all;
+  i = 0;
+  while (iterator)
+    {
+      players[i++] = iterator;
+      iterator = iterator->next_in_case;
+    }
+  players[i] = NULL;
+  return (players);
 }
