@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Fri Jun 24 16:21:57 2016 Thomas Beaudet
+** Last update Fri Jun 24 16:25:58 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -127,7 +127,8 @@ typedef enum
     MENDIANE_T			= 8,
     PHIRAS_T			= 9,
     THYSTAME_T			= 10,
-    NUMBER_OF_TEXTURES		= 11
+    EGG_T			= 11,
+    NUMBER_OF_TEXTURES		= 12
   }				e_textures;
 
 typedef enum
