@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Fri Jun 24 13:42:15 2016 Barthelemy Gouby
+** Last update Fri Jun 24 14:40:19 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -29,9 +29,16 @@ void					take_ressource(t_server *server,
     {
       client->character->current_case->quantities[type]--;
       client->character->quantities[type]++;
-      sprintf(server->buffer, "pgt %i %i\n",
+      sprintf(server->buffer,
+	      "pgt %i %i\n",
 	      client->character->id,
 	      type);
+      graphic_broadcast(server, server->buffer);
+      write_inventory_string(server, client->character);
+      graphic_broadcast(server, server->buffer);
+      write_case_content_string(server,
+				client->character->current_case->x,
+				client->character->current_case->y);
       graphic_broadcast(server, server->buffer);
       write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
     }
@@ -72,6 +79,13 @@ void					throw_ressource(t_server *server,
       sprintf(server->buffer, "pdr %i %i\n",
 	      client->character->id,
 	      type);
+      graphic_broadcast(server, server->buffer);
+      write_inventory_string(server, client->character);
+      graphic_broadcast(server, server->buffer);
+      write_case_content_string(server,
+				client->character->current_case->x,
+				client->character->current_case->y);
+      graphic_broadcast(server, server->buffer);
       write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
     }
   else
