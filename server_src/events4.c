@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Fri Jun 24 15:38:45 2016 Erwan Dupard
+** Last update Fri Jun 24 15:42:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -16,11 +16,9 @@ int					event_incantation(t_server *server, va_list ap)
   t_character				**characters;
   t_incantation				*incantation;
 
-  (void)server;
   client = va_arg(ap, t_client *);
   characters = va_arg(ap, t_character **);
   incantation = get_incantation_by_level(client->character->level + 1);
-  printf("incatation!\n");
   if (check_characters_incase(client->character->current_case, characters) == RETURN_FAILURE)
     {
       incantation_failed(server, client);
@@ -63,7 +61,6 @@ int					event_lay_egg(t_server *server, va_list ap)
   t_client				*client;
   t_egg					*new_egg;
 
-  (void)server;
   printf("egg hatched\n");
   client = va_arg(ap, t_client *);
   if (!(new_egg = malloc(sizeof(*new_egg))))
