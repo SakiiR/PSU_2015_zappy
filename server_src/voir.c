@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 16 16:45:43 2016 Erwan Dupard
-** Last update Thu Jun 23 17:42:17 2016 Karine Aknin
+** Last update Fri Jun 24 11:55:13 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -62,7 +62,7 @@ int		event_voir(t_server *server, va_list ap)
   max_size = generate_max_size(client->character->level);
   if (!(cases = malloc(sizeof(*cases) * (max_size * 2))))
     return (RETURN_FAILURE);
-  while (i <= max_size * 2)
+  while (i < max_size * 2)
     {
       cases[i] = NULL;
       i++;
