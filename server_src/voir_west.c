@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Thu Jun 23 17:44:19 2016 Karine Aknin
+** Last update Fri Jun 24 13:59:41 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -36,7 +36,8 @@ int             generate_y_west(t_character *character, int base_size,
   int           y;
   int           y_count;
 
-  if ((y = character->current_case->y + (base_size / 2)) > (int)map->height - 1)
+  if ((y = character->current_case->y + (base_size / 2))
+      > (int)map->height - 1)
     {
       y_count = y - (map->height - 1);
       y = 0;
