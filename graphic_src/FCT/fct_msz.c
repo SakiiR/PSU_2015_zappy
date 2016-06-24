@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Tue Jun 21 15:29:00 2016 Thomas Billot
+** Last update Fri Jun 24 15:48:35 2016 Thomas Beaudet
 */
 
 #include <stdlib.h>
@@ -30,12 +30,12 @@ int		generate_map(t_map *map)
 {
   t_tile	*new;
   int		i;
-  
+
   if ((new = malloc(sizeof(*new) * (map->x * map->y))) == NULL)
     return (RETURN_FAILURE);
   map->tiles = new;
   i = -1;
-  while (++i <= (map->y * map->x))
+  while (++i < (map->y * map->x))
     {
       if ((map->tiles[i].characters = init_characters()) == NULL)
 	return (RETURN_FAILURE);
