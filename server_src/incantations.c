@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Fri Jun 24 14:20:15 2016 Erwan Dupard
+** Last update Fri Jun 24 14:35:41 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -109,7 +109,7 @@ int					do_incantation(t_case *c,
   iterator = c->characters;
   while (iterator)
     {
-      iterator->level = incantation->level + 1;
+      ++iterator->level;
       iterator = iterator->next_in_case;
     }
   i = -1;
