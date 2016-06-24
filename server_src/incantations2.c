@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 23 15:09:55 2016 Erwan Dupard
-** Last update Fri Jun 24 14:11:19 2016 Erwan Dupard
+** Last update Fri Jun 24 14:19:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -69,4 +69,24 @@ void					incantation_failed(t_server *server,
   graphic_broadcast(server, server->buffer);
   strcpy(server->buffer, "ko\n");
   write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+}
+
+t_character				**get_incantation_players(int count,
+								  t_character *all)
+{
+  t_character				**players;
+  t_character				*iterator;
+  int					i;
+
+  if ((players = malloc(sizeof(*players) * (count + 1))) == NULL)
+    return (NULL);
+  iterator = all;
+  i = 0;
+  while (iterator)
+    {
+      players[i++] = iterator;
+      iterator = iterator->next_in_case;
+    }
+  players[i] = NULL;
+  return (players);
 }

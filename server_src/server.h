@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 24 14:09:06 2016 Erwan Dupard
+** Last update Fri Jun 24 14:19:37 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -365,6 +365,8 @@ typedef struct				s_incantation
   t_quantity				obj[NUMBER_OF_TYPES];
 }					t_incantation;
 
+t_character				**get_incantation_players(int count,
+								  t_character *all);
 void					incantation_failed(t_server *server,
 							   t_client *client);
 int					do_incantation(t_case *c,
