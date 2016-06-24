@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Thu Jun 23 17:08:40 2016 Barthelemy Gouby
+## Last update Thu Jun 23 20:00:30 2016 Karine Aknin
 ##
 
 CC		= gcc
@@ -114,6 +114,8 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/voir_south.c			\
 		  server_src/voir_east.c			\
 		  server_src/voir_west.c			\
+		  server_src/generate_message_voir.c		\
+		  server_src/write_elem_case.c			\
 		  server_src/expulse.c				\
 		  server_src/incantations.c			\
 		  server_src/incantations2.c			\

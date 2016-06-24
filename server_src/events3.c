@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Thu Jun 23 20:08:53 2016 Barthelemy Gouby
+** Last update Fri Jun 24 13:42:15 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -39,7 +39,7 @@ void					take_ressource(t_server *server,
     write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
 }
 
-int					event_take_ressource(t_server *server, va_list ap)
+int				event_take_ressource(t_server *server, va_list ap)
 {
   t_client			*client;
   char				*ressource_type;

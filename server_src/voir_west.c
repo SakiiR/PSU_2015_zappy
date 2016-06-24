@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Wed Jun 22 20:17:48 2016 Karine Aknin
+** Last update Thu Jun 23 17:44:19 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -86,35 +86,22 @@ int             save_case_line_west(t_map *map, t_case **cases,
   return (RETURN_SUCCESS);
 }
 
-int		voir_west(t_map *map, t_character *character,
+int		voir_west(t_map *map, t_client *client,
 			   t_case **cases)
 {
   unsigned int	level;
   int		base_size;
   t_case	*case_it;
-  int		i;
 
-  i = 0;
   level = 1;
-  cases[0] = character->current_case;
-  printf("inside voir west\n");
-  while (level <= character->level)
+  cases[0] = client->character->current_case;
+  while (level <= client->character->level)
     {
       base_size = generate_base_size_level(level);
-      printf("là\n");
-      case_it = find_first_case_west(map, character, level, base_size);
-      printf("ici\n");
+      case_it = find_first_case_west(map, client->character,
+				     level, base_size);
       save_case_line_west(map, cases, case_it, base_size);
-      printf("bou\n");
       ++level;
     }
-  printf("current case x = %d  y = %d\n",
-         character->current_case->x,
-         character->current_case->y);
-  while (cases[i])
-    {
-      printf("case %d  x = %d  y = %d\n", i, cases[i]->x, cases[i]->y);
-      i++; 
-    }
-  return (RETURN_SUCCESS);
+  return (generate_message_voir(client, cases));
 }
