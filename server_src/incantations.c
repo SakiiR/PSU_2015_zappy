@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Fri Jun 24 14:03:57 2016 Erwan Dupard
+** Last update Fri Jun 24 14:20:15 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -92,18 +92,11 @@ int					check_incantation(t_incantation *incantation,
     }
   if (i != incantation->players)
     return (RETURN_FAILURE);
-  if ((players = malloc(sizeof(*players) * (i + 1))) == NULL)
+  if ((players = get_incantation_players(i, c->characters)) == NULL)
     return (RETURN_FAILURE);
-  iterator = c->characters;
-  i = 0;
-  while (iterator)
-    {
-      players[i] = iterator;
-      iterator = iterator->next_in_case;
-      ++i;
-    }
-  players[i] = NULL;
   *characters = players;
+  if (check_resources(c, incantation) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
 
