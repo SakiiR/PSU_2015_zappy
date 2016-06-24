@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Fri Jun 24 14:37:32 2016 Barthelemy Gouby
+** Last update Fri Jun 24 16:21:39 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -74,7 +74,7 @@ int					send_map_content(t_server *server,
 							 t_client *client,
 							 char *operands __attribute__((unused)))
 {
-  t_u64					i;
+  int					i;
 
   i = 0;
   while (i  < server->game_data.map.width * server->game_data.map.height)

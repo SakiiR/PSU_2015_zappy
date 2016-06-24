@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Thu Jun 23 20:02:50 2016 Barthelemy Gouby
+** Last update Fri Jun 24 16:21:15 2016 Barthelemy Gouby
 */
 
 #include <time.h>
@@ -59,7 +59,7 @@ t_case					*map_get_case_at(const t_u64 x,
 							 const t_u64 y,
 							 const t_map *map)
 {
-  t_u64					index;
+  int					index;
   t_case				*c;
 
   index = y * map->width + x;
@@ -101,7 +101,7 @@ void					initialize_ressources(t_server *server)
 
 void					text_display_map(t_map *map)
 {
-  t_u64					i;
+  int					i;
 
   i = 0;
   while (i < map->width * map->height)

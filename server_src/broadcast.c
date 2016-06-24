@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:35:36 2016 Barthelemy Gouby
+** Last update Fri Jun 24 16:22:50 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -14,8 +14,8 @@ void		get_starting_coordinates(t_character *character,
 					 int *x,
 					 int *y)
 {
-  *x = (int) character->current_case->x;
-  *y = (int) character->current_case->y;
+  *x = character->current_case->x;
+  *y = character->current_case->y;
   if (character->orientation == NORTH)
     (*y)--;
   else if (character->orientation == SOUTH)
@@ -42,17 +42,17 @@ t_case		**get_surrounding_cases(t_map *map, t_character *character)
   while (i < 8)
     {
       cases[i++] = map_get_case_circular(x, y, map);
-      if (y < (int) character->current_case->y && 
-	  x >= (int) character->current_case->x)
+      if (y < character->current_case->y && 
+	  x >= character->current_case->x)
 	x--;
-      else if (x < (int) character->current_case->x && 
-	       y <= (int) character->current_case->y)
+      else if (x < character->current_case->x && 
+	       y <= character->current_case->y)
 	y++;
-      else if (y > (int) character->current_case->y && 
-	       x <= (int) character->current_case->x)
+      else if (y > character->current_case->y && 
+	       x <= character->current_case->x)
 	x++;
-      else if (x > (int) character->current_case->x && 
-	       y >= (int) character->current_case->y)
+      else if (x > character->current_case->x && 
+	       y >= character->current_case->y)
 	y--;
     }
   return (cases);
@@ -66,21 +66,21 @@ double		calculate_spheric_distance(t_case *case_1, t_case *case_2, t_map *map)
   double	spheric_down_distance;
   double	spheric_up_distance;
 
-  distance = hypot((int) case_1->x - (int) case_2->x, (int) case_1->y - (int) case_2->y);
-  spheric_right_distance = hypot(((int) case_1->x + (int) map->width) - (int) case_2->x,
-				 (int) case_1->y - (int) case_2->y);
+  distance = hypot(case_1->x - case_2->x, case_1->y - case_2->y);
+  spheric_right_distance = hypot((case_1->x + map->width) - case_2->x,
+				 case_1->y - case_2->y);
   if (spheric_right_distance < distance)
     distance = spheric_right_distance;
-  spheric_left_distance = hypot(((int) case_1->x - (int) map->width) - (int) case_2->x,
-				(int) case_1->y - (int) case_2->y);
+  spheric_left_distance = hypot((case_1->x - map->width) - case_2->x,
+				case_1->y - case_2->y);
   if (spheric_left_distance < distance)
     distance = spheric_left_distance;
-  spheric_down_distance = hypot((int) case_1->x - (int) case_2->x,
-				((int) case_1->y + (int) map->width) - (int) case_2->y);
+  spheric_down_distance = hypot(case_1->x - case_2->x,
+				(case_1->y + map->width) - case_2->y);
   if (spheric_down_distance < distance)
     distance = spheric_down_distance;
-  spheric_up_distance = hypot((int) case_1->x - (int) case_2->x,
-			      ((int) case_1->y - (int) map->width) - (int) case_2->y);
+  spheric_up_distance = hypot(case_1->x - case_2->x,
+			      (case_1->y - map->width) - case_2->y);
   if (spheric_up_distance < distance)
     distance = spheric_up_distance;
   return (distance);
@@ -115,11 +115,11 @@ int		get_closest_case(t_map *map, t_character *sender, t_character *receiver)
 int		send_broadcast_to_drone(t_server *server,
 					t_client *sender,
 					t_client *receiver,
-					char *message)
+					char *message
+					__attribute__((unused)))
 {
   int		closest_case;
 
-  (void) message;
   if (sender->character->current_case == receiver->character->current_case)
     closest_case = 0;
   else if ((closest_case = get_closest_case(&server->game_data.map,
