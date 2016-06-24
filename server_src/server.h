@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:24:50 2016 Barthelemy Gouby
+** Last update Fri Jun 24 16:50:46 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -188,6 +188,9 @@ typedef struct				s_voir
 }					t_voir;
 
 int					process_server(t_server *server);
+int					select_sockets(t_server *server,
+						       fd_set *si,
+						       fd_set *so);
 int					handle_command(char *command,
 						      t_server *server,
 						      t_client *client);
