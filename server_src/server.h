@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Thu Jun 23 19:55:30 2016 Karine Aknin
+** Last update Fri Jun 24 11:45:58 2016 Karine Aknin
 */
 
 #ifndef SERVER_H_
@@ -352,6 +352,9 @@ int					voir_east(t_map *map,
 int					generate_base_size_level(int level);
 int					generate_message_voir(t_client *client,
 							      t_case **cases);
+int					count_character(t_case *cases);
+int					write_elem_case(char *message, t_case *cases,
+							t_client *client, int i);
 /*
  * Incantations
  */
