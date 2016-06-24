@@ -5,11 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-<<<<<<< HEAD
-** Last update Fri Jun 24 16:25:54 2016 Barthelemy Gouby
-=======
-** Last update Fri Jun 24 15:44:57 2016 Erwan Dupard
->>>>>>> 337d4aeccf74d3682541c8a0100fcc5d664266b5
+** Last update Fri Jun 24 16:29:40 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -135,6 +131,8 @@ int		send_broadcast_to_drone(t_server *server,
 	   == RETURN_FAILURE)
     return (RETURN_FAILURE);
   sprintf(server->buffer, "message %i,%s\n", closest_case, message);
-  write_to_buffer(&receiver->buffer_out, server->buffer, strlen(server->buffer));
+  write_to_buffer(&receiver->buffer_out,
+		  server->buffer,
+		  strlen(server->buffer));
   return (RETURN_SUCCESS);
 }
