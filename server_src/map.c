@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Sat Jun 25 15:14:35 2016 Erwan Dupard
+** Last update Sat Jun 25 22:44:16 2016 Erwan Dupard
 */
 
 #include <time.h>
@@ -20,7 +20,6 @@ int					initialize_map(t_map *map)
   i = -1;
   if ((cases = malloc(sizeof(*cases) * map->width * map->height)) == NULL)
     return (RETURN_FAILURE);
-  printf("building map\n");
   while (++i < (int)(map->width * map->height))
     {
       cases[i].characters = NULL;
@@ -33,7 +32,6 @@ int					initialize_map(t_map *map)
       cases[i].quantities[THYSTAME] = 0;
       cases[i].x = i % map->width;
       cases[i].y = i / map->width;
-      printf("fuck %i x: %i y: %i\n", i, cases[i].x, cases[i].y);
     }
   map->cases = cases;
   return (RETURN_SUCCESS);
@@ -51,7 +49,6 @@ t_case					*map_get_case_circular(int x,
     y = 0;
   else if (y < 0)
     y = map->height - 1;
-  printf("getting  x: %i    y: %i\n", x, y);
   return (&map->cases[y * map->width + x]);
 }
 
