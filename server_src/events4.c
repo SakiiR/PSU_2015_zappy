@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 22:18:19 2016 Erwan Dupard
+** Last update Sat Jun 25 22:30:50 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -82,8 +82,9 @@ int					event_lay_egg(t_server *server
   t_egg					*new_egg;
 
   client = va_arg(ap, t_client *);
-  if (!(new_egg = malloc(sizeof(*new_egg))))
+  if ((new_egg = malloc(sizeof(*new_egg))) == NULL)
     return (RETURN_FAILURE);
+  init_egg(new_egg);
   new_egg->id = server->game_data.next_egg_id++;
   new_egg->hatched = 0;
   new_egg->timer = 600;
