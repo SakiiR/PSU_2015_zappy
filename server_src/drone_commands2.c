@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Sat Jun 25 15:09:07 2016 Erwan Dupard
+** Last update Sat Jun 25 22:40:00 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -83,7 +83,9 @@ int					prend_command(t_server *server
       new_action->type = TAKE_RESOURCE;
       new_action->origin = client;
       new_action->duration = 7;
-      if (!(new_action->argument = malloc(strlen(operands))))
+      if ((new_action->argument = malloc(sizeof(char)
+					 * (strlen(operands)
+					    + 1))) == NULL)
 	return (RETURN_FAILURE);
       strcpy(new_action->argument, operands);
       new_action->next = NULL;
