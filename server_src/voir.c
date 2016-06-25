@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 16 16:45:43 2016 Erwan Dupard
-** Last update Fri Jun 24 15:31:23 2016 Barthelemy Gouby
+** Last update Sat Jun 25 22:32:30 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -43,6 +43,7 @@ int				event_voir(t_server *server, va_list ap)
   client = (t_client *)va_arg(ap, t_client *);
   map = &(server->game_data.map);
   number_of_cases = pow(client->character->level + 1, 2);
+  printf("number of cases = %d\n", number_of_cases);
   if (!(cases = malloc(sizeof(*cases) * number_of_cases + 1)))
     return (RETURN_FAILURE);
   while (i < number_of_cases + 1)
