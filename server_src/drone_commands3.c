@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:21:45 2016 Barthelemy Gouby
-** Last update Sat Jun 25 23:04:30 2016 Erwan Dupard
+** Last update Sat Jun 25 23:41:08 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -34,9 +34,9 @@ int					fork_command(t_server *server,
 }
 
 int					connect_nbr_command(t_server *server,
-						    t_client *client,
-						    char *operands
-						    __attribute__((unused)))
+							    t_client *client,
+							    char *operands
+							    __attribute__((unused)))
 {
   sprintf(server->buffer, "%i\n",
 	  number_of_hatched_eggs(client->character->team->eggs)
