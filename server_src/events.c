@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Thu Jun 23 17:26:15 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:12:31 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -24,8 +24,6 @@ int					event_new_player(t_server *server, va_list ap)
   (void)ap;
   return (RETURN_SUCCESS);
 }
-
-
 
 int					event_broadcast(t_server *server, va_list ap)
 {
