@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 22:30:50 2016 Erwan Dupard
+** Last update Sat Jun 25 23:54:35 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -47,7 +47,7 @@ int					event_incantation(t_server *server, va_list ap)
   do_incantation(client->character->current_case, incantation);
   incantation_broadcast_e(server, client, characters);
   free(characters);
-  write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
+  sprintf(server->buffer, "niveau actuel : %d\n", client->character->level);
   if (incantation->level >= 8)
     return (end_game(server, client));
   return (RETURN_SUCCESS);
@@ -74,6 +74,17 @@ int					event_expulse(t_server *server,
   return (RETURN_SUCCESS);
 }
 
+static void				dump_buffer(t_server *server)
+{
+  int					i;
+
+  i = -1;
+  printf("buffer(");
+  while (server->buffer[++i])
+    printf("%c", server->buffer[i]);
+  printf(")\n");
+}
+
 int					event_lay_egg(t_server *server
 						      __attribute__((unused)),
 						      va_list ap)
@@ -93,6 +104,7 @@ int					event_lay_egg(t_server *server
   new_egg->next = NULL;
   add_egg(&client->character->team->eggs, new_egg);
   write_to_buffer(&client->buffer_out, "ok\n", 3);
+  dump_buffer(server);
   sprintf(server->buffer, "enw %i %i %i %i\n", new_egg->id,
 	  client->character->id,
 	  new_egg->x,
