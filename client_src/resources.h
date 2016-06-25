@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Thu Jun 23 16:27:00 2016 Gabriel Goude
+** Last update Sat Jun 25 19:11:15 2016 Gabriel Goude
 */
 
 #ifndef RESOURCES_H_
@@ -139,6 +139,7 @@ int					ai(t_infos *infos);
 int					init_connection(t_infos *infos);
 int					enter_game(t_infos *infos);
 int					get_world_size(t_infos *infos, char *s);
+void					init_pos(t_infos *infos, int x, int y);
 void					init_inv(t_infos *infos);
 
 /*
