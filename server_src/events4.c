@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 23:54:35 2016 Erwan Dupard
+** Last update Sun Jun 26 00:57:23 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -48,6 +48,7 @@ int					event_incantation(t_server *server, va_list ap)
   incantation_broadcast_e(server, client, characters);
   free(characters);
   sprintf(server->buffer, "niveau actuel : %d\n", client->character->level);
+  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
   if (incantation->level >= 8)
     return (end_game(server, client));
   return (RETURN_SUCCESS);
