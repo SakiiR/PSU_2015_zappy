@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Wed Jun 22 16:06:47 2016 Erwan Dupard
+** Last update Sat Jun 25 23:41:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -69,10 +69,20 @@ static void			close_connection(t_server *server)
   free(server->clients);
 }
 
+static void			init_buffer(t_server *server)
+{
+  int				i;
+
+  i = -1;
+  while (++i < PAGE_SIZE - 1)
+    server->buffer[i] = 0;
+}
+
 int				main(int argc, char **argv)
 {
   t_server			server;
 
+  init_buffer(&server);
   if (get_options(argc, argv, &server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   if (initialize_map(&server.game_data.map) == RETURN_FAILURE)

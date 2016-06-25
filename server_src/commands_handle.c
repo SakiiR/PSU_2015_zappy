@@ -5,10 +5,11 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sat Jun 25 22:52:36 2016 Erwan Dupard
+** Last update Sat Jun 25 23:32:28 2016 Erwan Dupard
 */
 
 #include "server.h"
+#include <my_str_to_wordtab/my_str_to_wordtab.h>
 
 static const t_command			g_commands[] = {
     {"msz", &send_map_size},
@@ -39,8 +40,7 @@ int					handle_command(char *input,
 						       t_client *client)
 {
   int					i;
-  char					*command_name;
-  char					*operands;
+  char					**line;
 
   if (strlen(input) > 1)
       input[strlen(input) - 1] = 0;
@@ -48,15 +48,16 @@ int					handle_command(char *input,
     define_client_type(server, client, input);
   else
     {
-      command_name = strtok(input, " ");
-      operands = strtok(NULL, "\n");
+      if ((line = my_str_to_wordtab(input, " \t\n")) == NULL)
+	return (RETURN_FAILURE);
       i = -1;
       while (g_commands[++i].command != NULL)
 	{
-	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)
-	    return (g_commands[i].f(server, client, operands));
+	  if (strcmp(g_commands[i].command, line[0]) == RETURN_SUCCESS)
+	    return (g_commands[i].f(server, client, line[1]));
 	}
       write_to_buffer(&client->buffer_out, "ko\n", 3);
+      free_word_tab(line);
     }
   return (RETURN_SUCCESS);
 }

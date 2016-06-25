@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:44:46 2016 Erwan Dupard
+** Last update Sat Jun 25 23:40:35 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -169,7 +169,7 @@ typedef struct				s_server
   int					port;
   t_client				*clients;
   t_game_data				game_data;
-  char					buffer[PAGE_SIZE];
+  char					buffer[PAGE_SIZE + 1];
 }					t_server;
 
 typedef struct				s_command
