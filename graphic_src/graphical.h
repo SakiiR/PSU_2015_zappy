@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 25 17:40:56 2016 Thomas Billot
+** Last update Sat Jun 25 18:58:27 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -175,6 +175,7 @@ typedef struct		       	s_map
 {
   int				x;
   int				y;
+  int				time_u;
   t_tile			*tiles;
 }				t_map;
 
