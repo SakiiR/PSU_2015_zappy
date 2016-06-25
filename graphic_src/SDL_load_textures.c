@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Sat Jun 25 10:33:47 2016 Thomas Beaudet
+** Last update Sat Jun 25 17:32:16 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -24,20 +24,6 @@ SDL_Surface			*load_bmp(const char *file)
   return (bmp);
 }
 
-/* SDL_Surface			*load_img(const char *file) */
-/* { */
-/*   SDL_Surface			*img; */
-
-/*   if ((img = SDL_LoadBMP(file)) == NULL) */
-/*     { */
-/*       fprintf(stderr, */
-/*               "Problem encountered while loading image -> SDL Error : %s\n", */
-/*               SDL_GetError()); */
-/*       return (NULL); */
-/*     } */
-/*   return (img); */
-/* } */
-
 SDL_Texture			*create_texture(t_render *ress, SDL_Surface *bmp)
 {
   SDL_Texture			*texture;
@@ -52,7 +38,10 @@ SDL_Texture			*create_texture(t_render *ress, SDL_Surface *bmp)
   return (texture);
 }
 
-int				display_texture(t_render *ress, t_texture *tile, int x, int y)
+int				display_texture(t_render *ress,
+						t_texture *tile,
+						int x,
+						int y)
 {
   if (ress->rend)
     {

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 25 15:44:59 2016 Thomas Billot
+** Last update Sat Jun 25 17:30:38 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -164,7 +164,7 @@ typedef struct			s_character
 }			       	t_character;
 
 typedef struct			s_tile
-{  
+{
   t_character			*characters;
   t_quantity			obj[NUMBER_OF_TYPES];
   unsigned int			players;
@@ -254,7 +254,6 @@ void				zoom(t_render *ress, t_texture *tile,
 				     int x, int y,
 				     float scale_W, float scale_H);
 void				sdl_quit();
-/*SDL_Rect			sdl_mouse_motion(t_render *ress);*/
 
 /*
 ** Function pointer definition
