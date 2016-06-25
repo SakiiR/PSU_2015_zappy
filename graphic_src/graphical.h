@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 25 12:57:39 2016 Thomas Beaudet
+** Last update Sat Jun 25 15:11:42 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
