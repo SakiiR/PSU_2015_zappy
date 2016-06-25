@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 19:51:33 2016 Erwan Dupard
+** Last update Sat Jun 25 19:56:11 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -48,7 +48,7 @@ int					event_incantation(t_server *server, va_list ap)
   incantation_broadcast_e(server, client, characters);
   free(characters);
   write_to_buffer(&client->buffer_out, "ok\n", strlen("ok\n"));
-  if (incantation->level >= 7)
+  if (incantation->level >= 8)
     return (end_game(server, client));
   return (RETURN_SUCCESS);
 }
