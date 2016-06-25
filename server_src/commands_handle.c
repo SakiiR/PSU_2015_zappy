@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sat Jun 25 22:12:15 2016 Erwan Dupard
+** Last update Sat Jun 25 22:52:36 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -42,7 +42,6 @@ int					handle_command(char *input,
   char					*command_name;
   char					*operands;
 
-  i = -1;
   if (strlen(input) > 1)
       input[strlen(input) - 1] = 0;
   if (client->type == UNSPECIFIED)
@@ -51,6 +50,7 @@ int					handle_command(char *input,
     {
       command_name = strtok(input, " ");
       operands = strtok(NULL, "\n");
+      i = -1;
       while (g_commands[++i].command != NULL)
 	{
 	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)

@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:21:45 2016 Barthelemy Gouby
-** Last update Sat Jun 25 19:45:03 2016 Erwan Dupard
+** Last update Sat Jun 25 22:51:30 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -55,7 +55,7 @@ int				broadcast_command(t_server *server
 
   if (client->type == DRONE)
     {
-      if (!(new_action = malloc(sizeof(*new_action))))
+      if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = BROADCAST;
       new_action->origin = client;
