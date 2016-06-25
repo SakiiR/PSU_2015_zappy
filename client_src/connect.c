@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Thu Jun 23 16:56:09 2016 Gabriel Goude
+** Last update Sat Jun 25 19:10:42 2016 Gabriel Goude
 */
 
 #include <stdlib.h>
@@ -27,15 +27,16 @@ int					enter_game(t_infos *infos)
   if (strcmp(msg, "BIENVENUE\n") == 0)
   {
     free(msg);
-    write_buf(infos, infos->client->team_name);
-    send_update(infos);
+    if (write_buf(infos, infos->client->team_name) == RETURN_FAILURE ||
+	send_update(infos) == RETURN_FAILURE)
+      return (RETURN_FAILURE);
     if ((msg = read_buf(infos)) == NULL)
       return (RETURN_FAILURE);
     if (atoi(msg) > 0)
     {
       free(msg);
       msg = read_buf(infos);
-      if (get_world_size(infos, msg) == RETURN_FAILURE)
+      if (msg == NULL || get_world_size(infos, msg) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       free(msg);
       if (create_map(infos) == RETURN_FAILURE)
@@ -70,14 +71,19 @@ int					get_world_size(t_infos *infos, char *s)
     j++;
   }
   y[j] = 0;
-  infos->map->x = atoi(x);
-  infos->map->y = atoi(y);
+  init_pos(infos, atoi(x), atoi(y));
+  return (RETURN_SUCCESS);
+}
+
+void					init_pos(t_infos *infos, int x, int y)
+{
+  infos->map->x = x;
+  infos->map->y = y;
   infos->client->x = 0;
   infos->client->y = 0;
   infos->client->level = 1;
   infos->client->alive = 1;
   infos->client->orientation = 0;
-  return (RETURN_SUCCESS);
 }
 
 int					init_connection(t_infos *infos)
