@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 16:55:00 2016 Barthelemy Gouby
-** Last update Tue Jun 21 11:29:35 2016 Barthelemy Gouby
+** Last update Sat Jun 25 22:02:08 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -61,7 +61,7 @@ int		number_of_hatched_eggs(t_egg *egg_list)
   while (egg_list)
     {
       if (egg_list->hatched)
-	number_of_eggs++;
+	++number_of_eggs;
       egg_list = egg_list->next;
     }
   return (number_of_eggs);

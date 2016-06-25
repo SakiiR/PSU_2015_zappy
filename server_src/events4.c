@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 19:56:11 2016 Erwan Dupard
+** Last update Sat Jun 25 22:18:19 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -91,21 +91,11 @@ int					event_lay_egg(t_server *server
   new_egg->y = client->character->current_case->y;
   new_egg->next = NULL;
   add_egg(&client->character->team->eggs, new_egg);
+  write_to_buffer(&client->buffer_out, "ok\n", 3);
   sprintf(server->buffer, "enw %i %i %i %i\n", new_egg->id,
 	  client->character->id,
 	  new_egg->x,
 	  new_egg->y);
   graphic_broadcast(server, server->buffer);
-  return (RETURN_SUCCESS);
-}
-
-int					event_fork(t_server *server, va_list ap)
-{
-  t_client				*client;
-
-  client = va_arg(ap, t_client *);
-  (void)server;
-  (void)ap;
-  write_to_buffer(&client->buffer_out, "ok\n", 3);
   return (RETURN_SUCCESS);
 }
