@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:21:45 2016 Barthelemy Gouby
-** Last update Sat Jun 25 19:10:59 2016 Erwan Dupard
+** Last update Sat Jun 25 19:45:03 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -64,5 +64,20 @@ int				broadcast_command(t_server *server
       new_action->next = NULL;
       add_action(&client->character->action_queue, new_action);
     }
+  return (RETURN_SUCCESS);
+}
+
+int					end_command(t_client *client)
+{
+  t_action				*new_action;
+
+  if (!(new_action = malloc(sizeof(*new_action))))
+    return (RETURN_FAILURE);
+  new_action->type = END_GAME;
+  new_action->origin = NULL;
+  new_action->duration = 7;
+  new_action->argument = NULL;
+  new_action->next = NULL;
+  add_action(&client->character->action_queue, new_action);
   return (RETURN_SUCCESS);
 }
