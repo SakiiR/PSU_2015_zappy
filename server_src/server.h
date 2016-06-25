@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sat Jun 25 19:49:01 2016 Erwan Dupard
+** Last update Sat Jun 25 19:52:03 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -427,7 +427,6 @@ void					expulse_east(int x,
 						      int y,
 						      int *new_x,
 						      int *new_y);
-
 
 # include "events.h"
 
