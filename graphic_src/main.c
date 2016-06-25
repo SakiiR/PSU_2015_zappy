@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Thu Jun 23 12:35:31 2016 Thomas Beaudet
+** Last update Fri Jun 24 14:02:02 2016 Thomas Beaudet
 */
 
 #include <netinet/in.h>
@@ -50,7 +50,6 @@ int			main(int argc, char *argv[])
   t_option		options;
   t_server		server;
   t_render		render;
-  t_texture		tile;
 
   if (argc != 5 || check_options(&options, argv) == RETURN_FAILURE)
     {
@@ -66,7 +65,7 @@ int			main(int argc, char *argv[])
   sdl_init();
   sdl_create_win(&render);
   draw_backg(&render);
-  if (launch_client(&server, &render, &tile) == RETURN_FAILURE)
+  if (launch_client(&server, &render) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }

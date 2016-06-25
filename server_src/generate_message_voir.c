@@ -5,15 +5,15 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 17:39:05 2016 Karine Aknin
-** Last update Fri Jun 24 12:03:26 2016 Karine Aknin
+** Last update Sat Jun 25 15:13:43 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int		count_character(t_case *cases)
+int					count_character(t_case *cases)
 {
-  int		i;
-  t_character	*tmp;
+  int					i;
+  t_character				*tmp;
 
   i = 0;
   tmp = cases->characters;
@@ -25,10 +25,10 @@ int		count_character(t_case *cases)
   return (i);
 }
 
-int		count_ressources(t_case *cases)
+int					count_ressources(t_case *cases)
 {
-  int		i;
-  unsigned int	size;
+  int					i;
+  t_u64					size;
 
   i = 0;
   size = 0;
@@ -40,10 +40,10 @@ int		count_ressources(t_case *cases)
   return (size);
 }
 
-int	count_elem(t_case **cases)
+int					count_elem(t_case **cases)
 {
-  int	size;
-  int	i;
+  int					size;
+  int					i;
 
   size = 0;
   i = 0;
@@ -59,21 +59,17 @@ int	count_elem(t_case **cases)
   return (size);
 }
 
-int	generate_message_voir(t_client *client, t_case **cases)
+int					generate_message_voir(t_client *client, t_case **cases)
 {
-  int	i;
-  char	*message;
-  int	size;
-  int	it;
+  int					i;
+  char					*message;
+  int					size;
+  int					it;
 
-  i = 0;
+  i = -1;
   it = 1;
-  printf("direction = %d\n", client->character->orientation);
-  while (cases[i])
-    {
-      printf("case %d  x = %d  y = %d\n", i, cases[i]->x, cases[i]->y);
-      i++;
-    }
+  while (cases[++i])
+    printf("case %d  x = %d  y = %d\n", i, cases[i]->x, cases[i]->y);
   size = count_elem(cases);
   if (!(message = malloc(sizeof(*message) * (size))))
     return (RETURN_FAILURE);

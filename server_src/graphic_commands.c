@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Sun Jun 12 17:17:56 2016 Barthelemy Gouby
-** Last update Fri Jun 24 14:37:32 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:04:36 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -74,7 +74,7 @@ int					send_map_content(t_server *server,
 							 t_client *client,
 							 char *operands __attribute__((unused)))
 {
-  t_u64					i;
+  int					i;
 
   i = 0;
   while (i  < server->game_data.map.width * server->game_data.map.height)
@@ -93,23 +93,6 @@ int					send_map_content(t_server *server,
 		      server->buffer,
 		      strlen(server->buffer));
       i++;
-    }
-  return (RETURN_SUCCESS);
-}
-
-int					send_team_names(t_server *server,
-							t_client *client,
-							char *operands __attribute__((unused)))
-{
-  t_u64					i;
-
-  i = 0;
-  while (i < server->game_data.nbr_of_teams)
-    {
-      sprintf(server->buffer, "tna %s\n", server->game_data.teams[i++].name);
-      write_to_buffer(&client->buffer_out,
-		      server->buffer,
-		      strlen(server->buffer));
     }
   return (RETURN_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 23 15:09:55 2016 Erwan Dupard
-** Last update Fri Jun 24 14:19:48 2016 Erwan Dupard
+** Last update Sat Jun 25 15:06:00 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -38,7 +38,7 @@ int					incantation_broadcast_e(t_server *server,
 								t_character **players)
 {
   int					i;
-  
+
   sprintf(server->buffer, "pie %d %d 1\n",
 	  client->character->current_case->x,
 	  client->character->current_case->y);
@@ -62,7 +62,7 @@ int					incantation_broadcast_e(t_server *server,
 
 void					incantation_failed(t_server *server,
 							   t_client *client)
-{  
+{
   sprintf(server->buffer, "pie %d %d 0\n",
 	  client->character->current_case->x,
 	  client->character->current_case->y);

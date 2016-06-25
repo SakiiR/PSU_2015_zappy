@@ -5,16 +5,12 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Thu Jun 23 13:42:18 2016 Thomas Beaudet
+** Last update Sat Jun 25 13:10:11 2016 Thomas Billot
 */
 
 #include <sys/select.h>
 #include "graphical.h"
 #include "xfunc.h"
-
-/* DEBUGGING */
-void		aff_map_info(t_map *map);
-/**/
 
 static t_ptr	g_ftab[] =
   {
@@ -124,8 +120,7 @@ void			init_struct(t_map *map, struct timeval *tv)
   tv->tv_usec = 50;
 }
 
-int			launch_client(t_server *server, t_render *render,
-				      t_texture *tile)
+int			launch_client(t_server *server, t_render *render)
 {
   t_map			map;
   struct timeval	tv;
@@ -151,7 +146,7 @@ int			launch_client(t_server *server, t_render *render,
       map_rendering(render, &map);
       SDL_RenderPresent(render->rend);
       clear_surface(render);
-      if (sdl_event(render, tile) == RETURN_FAILURE)
+      if (sdl_event(render) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
   return (RETURN_SUCCESS);
