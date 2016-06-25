@@ -1,4 +1,3 @@
-
 /*
 ** map_rendering.c for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy
 **
@@ -6,12 +5,13 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Sat Jun 25 15:15:08 2016 Thomas Billot
+** Last update Sat Jun 25 17:29:07 2016 Thomas Billot
 */
 
 #include "graphical.h"
 
-void		render_characters(t_render *render, t_character *root, int x, int y)
+void		render_characters(t_render *render, t_character *root,
+				  int x, int y)
 {
   t_character	*current;
 
@@ -26,7 +26,6 @@ void		render_characters(t_render *render, t_character *root, int x, int y)
 			    x, y);
 	  current = current->next_in_case;
 	}
-      
     }
 }
 
@@ -37,7 +36,7 @@ int		map_rendering(t_render *render, t_map *map)
   int		map_y;
   int		screen_x;
   int		screen_y;
-  
+
   i = -1;
   while (++i < (map->x * map->y))
     {
