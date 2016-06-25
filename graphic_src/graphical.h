@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Fri Jun 24 16:25:58 2016 Thomas Beaudet
+** Last update Sat Jun 25 12:57:39 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -59,13 +59,13 @@
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
 # define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
 # define T_CHARACTER		"graphic_src/Media/villager_idle_00000.png"
-# define T_FOOD			"graphic_src/Media/food.jpg"
-# define T_LINEMATE		"graphic_src/Media/linemate.png"
-# define T_DERAUMERE		"graphic_src/Media/deraumere.png"
-# define T_MENDIANE		"graphic_src/Media/mendiane.png"
-# define T_PHIRAS		"graphic_src/Media/phiras.png"
-# define T_SIBUR		"graphic_src/Media/sibur.png"
-# define T_THYSTAME		"graphic_src/Media/thystame.png"
+# define T_FOOD			"graphic_src/Media/Food.png"
+# define T_LINEMATE		"graphic_src/Media/Linemate.png"
+# define T_DERAUMERE		"graphic_src/Media/Deraumere.png"
+# define T_MENDIANE		"graphic_src/Media/Mendiane.png"
+# define T_PHIRAS		"graphic_src/Media/Phiras.png"
+# define T_SIBUR		"graphic_src/Media/Sibur.png"
+# define T_THYSTAME		"graphic_src/Media/Thystame.png"
 # define T_EGG			"graphic_src/Media/egg.bmp"
 
 /*
