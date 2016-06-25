@@ -5,12 +5,12 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 16:55:00 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:31:59 2016 Erwan Dupard
+** Last update Sat Jun 25 22:32:57 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-voir		init_egg(t_egg *egg)
+void		init_egg(t_egg *egg)
 {
   egg->id = 0;
   egg->hatched = 0;
