@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 23 18:48:24 2016 Barthelemy Gouby
+** Last update Sat Jun 25 23:03:12 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -59,10 +59,10 @@ int			eggs_life_cycle(t_server *server)
   unsigned int		i;
   t_egg			*iterator;
 
-  i = 0;
-  while (i < server->game_data.nbr_of_teams)
+  i = -1;
+  while (++i < server->game_data.nbr_of_teams)
     {
-      iterator = server->game_data.teams[i++].eggs;
+      iterator = server->game_data.teams[i].eggs;
       while (iterator)
       	{
       	  if (!iterator->hatched)

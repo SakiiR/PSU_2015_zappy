@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:47:39 2016 Erwan Dupard
+** Last update Sat Jun 25 23:04:30 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -134,7 +134,7 @@ int		send_broadcast_to_drone(t_server *server,
   printf("[^] Sending message : (%s)\n", message);
   sprintf(server->buffer, "message %i,%s\n",
 	  closest_case,
-	  (strlen(message) < 512 ? message : NULL));
+	  (message && strlen(message) < 512 ? message : NULL));
   write_to_buffer(&receiver->buffer_out,
 		  server->buffer,
 		  strlen(server->buffer));

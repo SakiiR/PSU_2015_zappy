@@ -5,15 +5,15 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:21:45 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:51:30 2016 Erwan Dupard
+** Last update Sat Jun 25 23:41:08 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int				fork_command(t_server *server,
-					     t_client *client,
-					     char *operands
-					     __attribute__((unused)))
+int					fork_command(t_server *server,
+						     t_client *client,
+						     char *operands
+						     __attribute__((unused)))
 {
   t_action				*new_action;
 
@@ -33,10 +33,10 @@ int				fork_command(t_server *server,
   return (RETURN_SUCCESS);
 }
 
-int				connect_nbr_command(t_server *server,
-						    t_client *client,
-						    char *operands
-						    __attribute__((unused)))
+int					connect_nbr_command(t_server *server,
+							    t_client *client,
+							    char *operands
+							    __attribute__((unused)))
 {
   sprintf(server->buffer, "%i\n",
 	  number_of_hatched_eggs(client->character->team->eggs)
@@ -46,10 +46,10 @@ int				connect_nbr_command(t_server *server,
   return (RETURN_SUCCESS);
 }
 
-int				broadcast_command(t_server *server
-						  __attribute__((unused)),
-						  t_client *client,
-						  char *operands)
+int					broadcast_command(t_server *server
+							  __attribute__((unused)),
+							  t_client *client,
+							  char *operands)
 {
   t_action				*new_action;
 

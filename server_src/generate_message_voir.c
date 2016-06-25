@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 17:39:05 2016 Karine Aknin
-** Last update Sat Jun 25 22:27:02 2016 Erwan Dupard
+** Last update Sat Jun 25 23:41:34 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -81,7 +81,6 @@ int					generate_message_voir(t_client *client, t_case **cases)
   message[it] = '}';
   message[++it] = '\n';
   message[++it] = '\0';
-  printf("message voir = %s\n", message);
   write_to_buffer(&client->buffer_out, message, strlen(message));
   return (RETURN_SUCCESS);
 }
