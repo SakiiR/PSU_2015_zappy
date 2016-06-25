@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sat Jun 25 13:10:11 2016 Thomas Billot
+** Last update Sat Jun 25 19:23:35 2016 Thomas Beaudet
 */
 
 #include <sys/select.h>
@@ -116,6 +116,7 @@ void			init_struct(t_map *map, struct timeval *tv)
   map->x = 0;
   map->y = 0;
   map->tiles = NULL;
+  map->time_u = 0;
   tv->tv_sec = 0;
   tv->tv_usec = 50;
 }
