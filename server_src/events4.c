@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 19:47:45 2016 Erwan Dupard
+** Last update Sat Jun 25 19:51:33 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -39,7 +39,10 @@ int					event_incantation(t_server *server, va_list ap)
   client = va_arg(ap, t_client *);
   characters = va_arg(ap, t_character **);
   incantation = get_incantation_by_level(client->character->level + 1);
-  if (check_incantation_event(characters, client, incantation,server) == RETURN_FAILURE)
+  if (check_incantation_event(characters,
+			      client,
+			      incantation,
+			      server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   do_incantation(client->character->current_case, incantation);
   incantation_broadcast_e(server, client, characters);
