@@ -5,18 +5,17 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 18:40:06 2016 Karine Aknin
-** Last update Sat Jun 25 17:05:28 2016 Karine Aknin
+** Last update Sat Jun 25 18:35:27 2016 Karine Aknin
 */
 
 #include "server.h"
 
-extern t_ressource_name_c			g_correspondances[];
+extern t_ressource_name_c	g_correspondances[];
 
-int						write_joueur(char *message,
-							     int i,
-							     char *str)
+int				write_joueur(char *message, int i,
+					     char *str)
 {
-  int						it;
+  int				it;
 
   it = 0;
   while (str[it])
@@ -28,12 +27,10 @@ int						write_joueur(char *message,
   return (i);
 }
 
-int						write_characters(char *message,
-								 t_case *cases,
-								 t_client *client,
-								 int i)
+int				write_characters(char *message, t_case *cases,
+						 t_client *client, int i)
 {
-  int						nb_characters;
+  int				nb_characters;
 
   nb_characters = 0;
   nb_characters = count_character(cases);
@@ -51,54 +48,45 @@ int						write_characters(char *message,
   return (i);
 }
 
-int						edit_message_ressource(char *message,
-								       int i,
-								       int it,
-								       int ressources)
+int				edit_message_ressource(char *message, int i,
+						       int it, int ressources)
 {
-  char						*name_ressource;
-  int						a;
+  char				*name_ressource;
+  int				a;
 
-  a = 0;
-  while (g_correspondances[a].name)
+  a = -1;
+  while (g_correspondances[++a].name)
     {
       if (g_correspondances[a].type_identifier == (unsigned int)it)
 	{
 	  name_ressource = g_correspondances[a].name;
 	  break ;
 	}
-      a++;
     }
-  a = 0;
-  printf("name_ressource = %s\nrressources = %d\n", name_ressource, ressources);
-  while (ressources > 0)
+  if (name_ressource)
     {
-      a = 0;
-      while (name_ressource[a])
+      while (ressources > 0)
 	{
-	  if (a == 0)
-	    {
-	      message[i] = ' ';
-	      i++;
-	    }
-	message[i++] = name_ressource[a++];
+	  a = 0;
+	  message[i] = ' ';
+	  i++;
+	  while (name_ressource[a])
+	    message[i++] = name_ressource[a++];
+	  ressources--;
 	}
-      ressources--;
     }
   return (i);
 }
 
-int						write_ressources(char *message,
-								 t_case *cases,
-								 int i)
+int				write_ressources(char *message, t_case *cases,
+						 int i)
 {
-  int						ressources;
-  int						it;
+  int				ressources;
+  int				it;
 
   it = 0;
   while (it < NUMBER_OF_TYPES)
     {
-      printf("it = %d cases->quantities[it] = %d\n", it, cases->quantities[it]);
       ressources = cases->quantities[it];
       if (ressources > 0)
 	i = edit_message_ressource(message, i, it, ressources);
@@ -107,10 +95,8 @@ int						write_ressources(char *message,
   return (i);
 }
 
-int						write_elem_case(char *message,
-								t_case *cases,
-								t_client *client,
-								int i)
+int				write_elem_case(char *message, t_case *cases,
+						t_client *client, int i)
 {
   i = write_characters(message, cases, client, i);
   i = write_ressources(message, cases, i);
