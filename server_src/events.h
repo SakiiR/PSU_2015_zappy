@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Sat Jun 25 19:44:26 2016 Erwan Dupard
+** Last update Sat Jun 25 20:40:03 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -35,7 +35,6 @@ typedef enum
     ADVANCE,
     INCANTATION,
     EXPULSE,
-    FORK,
     END_GAME
   }					e_event_type;
 
@@ -86,7 +85,6 @@ int					event_incantation(t_server *server, va_list ap);
 int					event_take_ressource(t_server *server, va_list ap);
 int					event_throw_ressource(t_server *server, va_list ap);
 int					event_expulse(t_server *server, va_list ap);
-int					event_fork(t_server *server, va_list ap);
 int					event_endgame(t_server *server, va_list ap);
 
 int				        end_game(t_server *server, t_client *emetter);
