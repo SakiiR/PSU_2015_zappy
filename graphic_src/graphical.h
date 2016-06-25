@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 25 17:35:37 2016 Thomas Billot
+** Last update Sat Jun 25 17:40:56 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -161,6 +161,7 @@ typedef struct			s_character
   e_orientation		        orientation;
   e_textures			texture;
   struct s_character   		*next_in_case;
+  struct s_character   		*prev_in_case;
 }			       	t_character;
 
 typedef struct			s_tile
