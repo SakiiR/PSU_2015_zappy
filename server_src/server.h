@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:32:42 2016 Erwan Dupard
+** Last update Sat Jun 25 22:44:46 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -222,7 +222,6 @@ int					place_character_at_egg(t_map *map,
 void					change_coordinate(unsigned int *coordinate,
 							  int change,
 							  unsigned int max_value);
-void					text_display_map(t_map *map);
 void					add_egg(t_egg **egg_list, t_egg *new_egg);
 t_egg					*remove_egg(t_egg **egg_list, t_egg *egg);
 int					number_of_hatched_eggs(t_egg *egg_list);
