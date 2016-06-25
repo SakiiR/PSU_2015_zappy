@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 17:39:05 2016 Karine Aknin
-** Last update Sat Jun 25 18:37:17 2016 Karine Aknin
+** Last update Sat Jun 25 19:10:06 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -69,7 +69,6 @@ int					generate_message_voir(t_client *client, t_case **cases)
   i = 0;
   it = 1;
   size = count_elem(cases);
-  printf("size = %d\n", size);
   if (!(message = malloc(sizeof(*message) * (size))))
     return (RETURN_FAILURE);
   bzero(message, size);
