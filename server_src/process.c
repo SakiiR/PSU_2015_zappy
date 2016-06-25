@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Fri Jun 24 16:52:47 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:11:13 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -52,7 +52,8 @@ static int			handle_server_output(t_server *server, fd_set *set_out)
 	{
 	  data = read_data_from_buffer(&(server->clients[i].buffer_out));
 	  free(data);
-	  while ((next_message = get_next_message(&(server->clients[i].buffer_out)))
+	  while ((next_message =
+		  get_next_message(&(server->clients[i].buffer_out)))
 		 && next_message[0])
 	    {
 	      write(server->clients[i].socket, next_message, strlen(next_message));
@@ -76,10 +77,7 @@ static int			add_client(t_server *server)
   while (++i < MAX_CLIENTS)
     {
       if (server->clients[i].socket == 0)
-	{
-	  new_client = &server->clients[i];
-	  break;
-	}
+	new_client = &server->clients[i];
     }
   if (new_client == NULL)
     return (RETURN_FAILURE);

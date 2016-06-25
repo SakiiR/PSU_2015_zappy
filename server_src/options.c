@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun  7 15:51:44 2016 Erwan Dupard
-** Last update Thu Jun 23 16:25:18 2016 Erwan Dupard
+** Last update Sat Jun 25 15:03:36 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -96,7 +96,6 @@ int					check_options(t_server *server, char *file_name)
       !(server->game_data.speed >= MIN_SPEED) ||
       !(server->game_data.teams[0].name &&
 	server->game_data.teams[1].name)
-      
       )
     {
       usage(file_name);
