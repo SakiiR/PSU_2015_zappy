@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sat Jun 25 15:18:55 2016 Erwan Dupard
+## Last update Sat Jun 25 19:20:40 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -122,6 +122,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/incantations.c			\
 		  server_src/incantations2.c			\
 		  server_src/egg.c				\
+		  server_src/end.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 
