@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:47:53 2016 Thomas Billot
-** Last update Thu Jun 16 17:23:13 2016 Thomas Beaudet
+** Last update Sat Jun 25 18:34:32 2016 Thomas Beaudet
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@ int		fct_sgt(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  int		i;
+  int           i;
 
   (void)map;
   i = 0;

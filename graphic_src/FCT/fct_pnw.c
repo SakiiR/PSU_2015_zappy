@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:25:33 2016 Thomas Billot
-** Last update Sat Jun 25 15:42:20 2016 Thomas Billot
+** Last update Sat Jun 25 17:42:06 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -64,5 +64,6 @@ int		fct_pnw(t_map *map,
   while (current->next_in_case != NULL)
     current = current->next_in_case;
   current->next_in_case = new;
+  new->prev_in_case = current;
   return (RETURN_SUCCESS);
 }

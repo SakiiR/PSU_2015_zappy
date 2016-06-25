@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Sat Jun 25 15:26:35 2016 Thomas Beaudet
+** Last update Sat Jun 25 17:35:23 2016 Thomas Billot
 */
 
 #include "graphical.h"
@@ -40,7 +40,8 @@ SDL_Texture			*create_texture(t_render *ress, SDL_Surface *bmp)
 
 int				display_texture(t_render *ress,
 						t_texture *tile,
-						int x, int y)
+						int x,
+						int y)
 {
   if (ress->rend)
     {
