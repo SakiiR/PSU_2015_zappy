@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 16:55:00 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:32:57 2016 Erwan Dupard
+** Last update Sun Jun 26 00:07:06 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -29,7 +29,7 @@ void		add_egg(t_egg **egg_list, t_egg *new_egg)
   else
     {
       iterator = *egg_list;
-      while (iterator && iterator->next)
+      while (iterator->next)
 	iterator = iterator->next;
       iterator->next = new_egg;
     }
@@ -37,30 +37,23 @@ void		add_egg(t_egg **egg_list, t_egg *new_egg)
 
 t_egg		*remove_egg(t_egg **egg_list, t_egg *egg)
 {
-  t_egg				*iterator;
-  t_egg				*next_egg;
+  t_egg		*iterator;
 
-  if (egg == *egg_list)
+  iterator = *egg_list;
+  if (!iterator)
+    return (NULL);
+  if (*egg_list == egg)
     {
       *egg_list = egg->next;
-      next_egg = egg->next;
+      return (*egg_list);
     }
-  else
+  while (iterator && iterator->next)
     {
-      iterator = *egg_list;
-      while (iterator)
-	{
-	  if (iterator->next == egg)
-	    {
-	      iterator->next = egg->next;
-	      next_egg = egg->next;
-	      break;
-	    }
-	  iterator = iterator->next;
-	}
+      if (iterator->next == egg)
+	iterator->next = egg->next;
+      free(egg);
     }
-  free(egg);
-  return (next_egg);
+  return (*egg_list);
 }
 
 int		number_of_hatched_eggs(t_egg *egg_list)
