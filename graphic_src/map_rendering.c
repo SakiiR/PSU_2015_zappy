@@ -5,12 +5,13 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Sat Jun 25 15:56:23 2016 Thomas Beaudet
+** Last update Sat Jun 25 17:34:24 2016 Thomas Billot
 */
 
 #include "graphical.h"
 
-void		render_characters(t_render *render, t_character *root, int x, int y)
+void		render_characters(t_render *render, t_character *root,
+				  int x, int y)
 {
   t_character	*current;
 
@@ -25,7 +26,6 @@ void		render_characters(t_render *render, t_character *root, int x, int y)
 			    x, y);
 	  current = current->next_in_case;
 	}
-
     }
 }
 
