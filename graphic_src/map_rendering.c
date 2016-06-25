@@ -1,4 +1,3 @@
-
 /*
 ** map_rendering.c for PSU_2015_zappy in /home/mikaz3/Tek2/PSU_2015_zappy
 **
@@ -6,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Sat Jun 25 13:01:28 2016 Thomas Beaudet
+** Last update Sat Jun 25 15:23:54 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
