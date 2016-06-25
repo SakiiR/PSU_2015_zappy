@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:56:28 2016 Gabriel Goude
-** Last update Sat Jun 25 15:44:51 2016 Gabriel Goude
+** Last update Sat Jun 25 18:59:29 2016 Gabriel Goude
 */
 
 #include "resources.h"
@@ -43,6 +43,8 @@ int				send_update(t_infos *infos)
   {
     while ((msg = get_next_message(&(infos->buffer))) && msg[0])
       {
+	if (!msg)
+	  return (RETURN_FAILURE);
 	write(infos->socket, msg, strlen(msg));
 	free(msg);
       }

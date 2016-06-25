@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sat Jun 25 19:30:47 2016 Karine Aknin
+** Last update Sat Jun 25 19:39:20 2016 Karine Aknin
 */
 
 #ifndef SERVER_H_
@@ -427,6 +427,7 @@ void					expulse_east(int x,
 						      int *new_x,
 						      int *new_y);
 
+int					end_game(t_server *server, t_client *emetter);
 # include "events.h"
 
 #endif /* !SERVER_H_ */
