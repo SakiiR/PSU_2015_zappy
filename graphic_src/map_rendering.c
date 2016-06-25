@@ -5,7 +5,11 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
+<<<<<<< HEAD
 ** Last update Sat Jun 25 17:29:07 2016 Thomas Billot
+=======
+** Last update Sat Jun 25 15:56:23 2016 Thomas Beaudet
+>>>>>>> a98d0bc76efafd10e863c61f66656e6eee5d5b49
 */
 
 #include "graphical.h"
@@ -26,6 +30,10 @@ void		render_characters(t_render *render, t_character *root,
 			    x, y);
 	  current = current->next_in_case;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> a98d0bc76efafd10e863c61f66656e6eee5d5b49
     }
 }
 
