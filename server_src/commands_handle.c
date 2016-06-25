@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sat Jun 25 18:29:45 2016 Erwan Dupard
+** Last update Sat Jun 25 18:37:06 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -56,7 +56,7 @@ int					handle_command(char *input,
 	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)
 	    return (g_commands[i].f(server, client, operands));
 	}
+      write_to_buffer(&client->buffer_out, "ko\n", 3);
     }
-  write_to_buffer(&client->buffer_out, "ko\n", 3);
   return (RETURN_SUCCESS);
 }
