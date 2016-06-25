@@ -5,16 +5,12 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Fri Jun 24 14:00:11 2016 Thomas Beaudet
+** Last update Sat Jun 25 13:10:11 2016 Thomas Billot
 */
 
 #include <sys/select.h>
 #include "graphical.h"
 #include "xfunc.h"
-
-/* DEBUGGING */
-void		aff_map_info(t_map *map);
-/**/
 
 static t_ptr	g_ftab[] =
   {
