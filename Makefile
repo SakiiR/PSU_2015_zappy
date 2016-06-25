@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Fri Jun 24 16:51:12 2016 Barthelemy Gouby
+## Last update Sat Jun 25 15:18:55 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -97,6 +97,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/graphic.c				\
 		  server_src/graphic_commands.c			\
 		  server_src/graphic_commands2.c		\
+		  server_src/graphic_commands3.c		\
 		  server_src/drone_commands.c			\
 		  server_src/drone_commands2.c			\
 		  server_src/drone_commands3.c			\

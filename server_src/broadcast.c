@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Fri Jun 24 17:09:53 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:15:39 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -41,16 +41,16 @@ t_case		**get_surrounding_cases(t_map *map,
   while (i < 8)
     {
       cases[i++] = map_get_case_circular(x, y, map);
-      if (y < character->current_case->y && 
+      if (y < character->current_case->y &&
 	  x >= character->current_case->x)
 	x--;
-      else if (x < character->current_case->x && 
+      else if (x < character->current_case->x &&
 	       y <= character->current_case->y)
 	y++;
-      else if (y > character->current_case->y && 
+      else if (y > character->current_case->y &&
 	       x <= character->current_case->x)
 	x++;
-      else if (x > character->current_case->x && 
+      else if (x > character->current_case->x &&
 	       y >= character->current_case->y)
 	y--;
     }

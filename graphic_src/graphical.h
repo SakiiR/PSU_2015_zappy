@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 25 15:27:00 2016 Thomas Beaudet
+** Last update Sat Jun 25 15:55:58 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -69,11 +69,11 @@
 # define T_EGG			"graphic_src/Media/egg.bmp"
 
 /*
-** Defines for animation
+** Defines for status
 */
 
-# define STOP			(0)
-# define RUN			(1)
+# define DEAD			(0)
+# define ALIVE			(1)
 
 /*
 ** Convertion map coord to screen cord
@@ -154,10 +154,12 @@ typedef enum
 typedef struct			s_character
 {
   t_u64				level;
-  t_u64			        id;
+  t_u64 			id;
+  int				status;
   char 				*team;
   t_quantity   			inventory[NUMBER_OF_TYPES];
   e_orientation		        orientation;
+  e_textures			texture;
   struct s_character   		*next_in_case;
 }			       	t_character;
 
