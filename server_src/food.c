@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:48:16 2016 Barthelemy Gouby
-** Last update Sat Jun 25 19:32:09 2016 Karine Aknin
+** Last update Sat Jun 25 19:51:55 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -26,7 +26,8 @@ void			consume_food(t_server *server, t_client *client)
 	  graphic_broadcast(server, server->buffer);
 	  if (client->character->base_member)
 	    --client->character->team->base_members;
-	  remove_character_from_case(client->character->current_case, client->character);
+	  remove_character_from_case(client->character->current_case,
+				     client->character);
 	  close(client->socket);
 	  client->socket = 0;
 	  client->type = UNSPECIFIED;
