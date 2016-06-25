@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Sat Jun 25 15:12:31 2016 Erwan Dupard
+** Last update Sun Jun 26 00:44:07 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -47,6 +47,7 @@ int					event_broadcast(t_server *server, va_list ap)
 	    return (RETURN_FAILURE);
 	}
     }
+  write_to_buffer(&sender->buffer_out, "ok\n", 3);
   sprintf(server->buffer, "pbc %i %s\n", sender->character->id, message);
   graphic_broadcast(server, server->buffer);
   return (RETURN_SUCCESS);
