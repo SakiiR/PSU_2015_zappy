@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Thu Jun 23 17:06:39 2016 Barthelemy Gouby
+** Last update Sat Jun 25 18:13:28 2016 Erwan Dupard
 */
 
 #ifndef EVENTS_H_
@@ -34,7 +34,8 @@ typedef enum
     TURN,
     ADVANCE,
     INCANTATION,
-    EXPULSE
+    EXPULSE,
+    FORK
   }					e_event_type;
 
 struct					s_action
