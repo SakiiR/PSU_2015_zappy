@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Thu Jun 23 18:57:07 2016 Erwan Dupard
+** Last update Sat Jun 25 15:09:07 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -42,10 +42,11 @@ int					incantation_command(t_server *server
   t_character				**players;
 
   incantation = get_incantation_by_level(client->character->level + 1);
-  if (check_incantation(incantation, client->character->current_case, &players) == RETURN_FAILURE)
+  if (check_incantation(incantation,
+			client->character->current_case,
+			&players) == RETURN_FAILURE)
     {
-      strcpy(server->buffer, "ko\n");
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out, "ko\n", 3);
       return (RETURN_SUCCESS);
     }
   if (client->type == DRONE && incantation && players)

@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 14:21:45 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:19:30 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:05:28 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -40,7 +40,8 @@ int				connect_nbr_command(t_server *server,
 {
   sprintf(server->buffer, "%i\n",
 	  number_of_hatched_eggs(client->character->team->eggs)
-	  + server->game_data.base_max_members - client->character->team->base_members);
+	  + server->game_data.base_max_members
+	  - client->character->team->base_members);
   write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
   return (RETURN_SUCCESS);
 }

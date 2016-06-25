@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 24 16:44:11 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:51:48 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:14:07 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -34,7 +34,7 @@ int	select_sockets(t_server *server, fd_set *si, fd_set *so)
 {
   struct timeval		tv;
   int				max_socket;
-  
+
   max_socket = 0;
   tv.tv_usec = 50;
   tv.tv_sec = 0;

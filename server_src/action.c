@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Sat Jun 25 15:01:19 2016 Erwan Dupard
+** Last update Sat Jun 25 15:13:57 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -20,7 +20,8 @@ int					number_of_actions(t_action *action_queue)
   return (number_of_actions);
 }
 
-void					add_action(t_action **action_queue, t_action *new_action)
+void					add_action(t_action **action_queue,
+						   t_action *new_action)
 {
   t_action				*iterator;
 
