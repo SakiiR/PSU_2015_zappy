@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 18:40:06 2016 Karine Aknin
-** Last update Fri Jun 24 11:57:28 2016 Karine Aknin
+** Last update Sat Jun 25 17:00:00 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -64,12 +64,17 @@ int	edit_message_ressource(char *message, int i,
       a++;
     }
   a = 0;
+  printf("name_ressource = %s\nrressources = %d\n", name_ressource, ressources);
   while (ressources > 0)
     {
-      message[i] = ' ';
-      i++;
+      a = 0;
       while (name_ressource[a])
 	{
+	  if (a == 0)
+	    {
+	      message[i] = ' ';
+	      i++;
+	    }
 	  message[i] = name_ressource[a];
 	  i++;
 	  a++;
@@ -87,6 +92,7 @@ int	write_ressources(char *message, t_case *cases, int i)
   it = 0;
   while (it < NUMBER_OF_TYPES)
     {
+      printf("it = %d cases->quantities[it] = %d\n", it, cases->quantities[it]);
       ressources = cases->quantities[it];
       if (ressources > 0)
 	i = edit_message_ressource(message, i, it, ressources);
