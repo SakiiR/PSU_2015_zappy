@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 17:39:05 2016 Karine Aknin
-** Last update Sat Jun 25 19:10:06 2016 Karine Aknin
+** Last update Sat Jun 25 22:27:02 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -47,7 +47,7 @@ int					count_elem(t_case **cases)
 
   size = 0;
   i = 0;
-  while (cases[i])
+  while (cases && cases[i])
     {
       size += count_character(cases[i]);
       size += count_ressources(cases[i]);
@@ -73,7 +73,7 @@ int					generate_message_voir(t_client *client, t_case **cases)
     return (RETURN_FAILURE);
   bzero(message, size);
   message[0] = '{';
-  while (cases[i])
+  while (cases && cases[i])
     {
       it = write_elem_case(message, cases[i], client, it);
       i++;
