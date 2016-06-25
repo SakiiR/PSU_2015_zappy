@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:52:53 2016 Gabriel Goude
-** Last update Thu Jun 23 17:05:54 2016 Gabriel Goude
+** Last update Sat Jun 25 15:43:10 2016 Gabriel Goude
 */
 
 #include "resources.h"
@@ -67,14 +67,18 @@ int				handle_inventaire(t_infos *infos, char *msg)
   int				i;
 
   i = 0;
-  tab = my_str_to_wordtab(msg, "}");
-  tab2 = my_str_to_wordtab(tab[0], "{");
+  if ((tab = my_str_to_wordtab(msg, "}")) == NULL)
+    return (RETURN_FAILURE);
+  if ((tab2 = my_str_to_wordtab(tab[0], "{")) == NULL)
+    return (RETURN_FAILURE);
   free_word_tab(tab);
-  tab = my_str_to_wordtab(tab2[0], ",");
+  if ((tab = my_str_to_wordtab(tab2[0], ",")) == NULL)
+    return (RETURN_FAILURE);
   free_word_tab(tab2);
   while (tab[i])
   {
-    tab2 = my_str_to_wordtab(tab[i], " ");
+    if ((tab2 = my_str_to_wordtab(tab[i], " ")) == NULL)
+      return (RETURN_FAILURE);
     infos->client->inventory[i] = atoi(tab2[1]);
     free_word_tab(tab2);
     i++;

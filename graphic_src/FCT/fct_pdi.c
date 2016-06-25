@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:41:17 2016 Thomas Billot
-** Last update Thu Jun 16 17:20:33 2016 Thomas Beaudet
+** Last update Sat Jun 25 15:42:54 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -16,13 +16,10 @@ int		fct_pdi(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  int		i;
+  t_character	*drone;
 
-  (void)map;
-  i = 0;
-  printf("fct_%s args:", cmd[i]);
-  while (cmd[++i])
-    printf(" %s |", cmd[i]);
-  printf("\n");
+  if ((drone = get_player_by_id(map, (t_u64)atoi(cmd[1]))) == NULL)
+    return (-1);
+  drone->status = DEAD;
   return (0);
 }

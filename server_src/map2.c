@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 11:54:05 2016 Erwan Dupard
-** Last update Fri Jun 24 15:16:42 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:18:58 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -73,4 +73,25 @@ int					place_character_at_egg(t_map *map,
   egg_id = hatched_egg->id;
   free(hatched_egg);
   return (egg_id);
+}
+
+void					text_display_map(t_map *map)
+{
+  int					i;
+
+  i = 0;
+  while (i < map->width * map->height)
+    {
+      printf("--------- case at x: %i y: %i\n",
+	     i % map->height,
+	     i / map->height);
+      printf("Food: %i\n", map->cases[i].quantities[NOURRITURE]);
+      printf("Linemate: %i\n", map->cases[i].quantities[LINEMATE]);
+      printf("Deraumere: %i\n", map->cases[i].quantities[DERAUMERE]);
+      printf("Sibur: %i\n", map->cases[i].quantities[SIBUR]);
+      printf("Mendiane: %i\n", map->cases[i].quantities[MENDIANE]);
+      printf("Phiras: %i\n", map->cases[i].quantities[PHIRAS]);
+      printf("Thystame: %i\n", map->cases[i].quantities[THYSTAME]);
+      i++;
+    }
 }

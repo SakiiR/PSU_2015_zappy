@@ -5,13 +5,13 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Thu Jun 16 14:44:04 2016 Thomas Beaudet
-** Last update Thu Jun 23 13:58:15 2016 Thomas Beaudet
+** Last update Sat Jun 25 15:21:55 2016 Thomas Beaudet
 */
 
 #include <SDL2/SDL.h>
 #include "graphical.h"
 
-int			sdl_event(t_render *ress, t_texture *tile)
+int			sdl_event(t_render *ress)
 {
   const Uint8		*keys;
 
@@ -21,19 +21,10 @@ int			sdl_event(t_render *ress, t_texture *tile)
       sdl_quit();
       return (RETURN_FAILURE);
     }
-  if (keys[SDL_SCANCODE_ESCAPE])
+  else if (keys[SDL_SCANCODE_ESCAPE])
     {
       sdl_quit();
       return (RETURN_FAILURE);
-    }
-  if (keys[SDL_SCANCODE_DOWN])
-    {
-      printf("DOWN");
-    }
-  if (keys[SDL_SCANCODE_UP])
-    {
-      zoom(ress, tile, 10, 10, 2, 2);
-      printf("UP");
     }
   return (RETURN_SUCCESS);
 }
@@ -64,35 +55,3 @@ void			zoom(t_render *ress, t_texture *tile,
       SDL_RenderCopy(ress->rend, tile->texture, NULL, &ress->dest_rect);
     }
 }
-
-/*SDL_Rect		sdl_mouse_motion(t_render *ress)
-{
-  int			state;
-  SDL_Rect		surface_pos;
-
-  state = 0;
-  if (ress->event.type == SDL_MOUSEBUTTONDOWN)
-    {
-      ress->mouse_buttons[ress->event.button.button] = 1;
-      state = 1;
-    }
-  if (ress->event.type == SDL_MOUSEBUTTONUP)
-    {
-      ress->mouse_buttons[ress->event.button.button] = 0;
-      state = 0;
-    }
-  if (ress->event.type == SDL_MOUSEMOTION)
-    {
-      if (state)
-	{
-	  surface_pos.x = ress->event.motion.x;
-	  surface_pos.y = ress->event.motion.y;
-	        ress->mouse_x = ress->event.motion.x;
-		  ress->mouse_y = ress->event.motion.y;
-		  ress->mouse_x_rel = ress->event.motion.xrel;
-		  ress->mouse_y_rel = ress->event.motion.yrel;
-	  printf("Mousemotion and mousebutton\n");
-	}
-    }
-  return (surface_pos);
-}*/
