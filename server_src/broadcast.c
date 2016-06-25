@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Sat Jun 25 15:15:39 2016 Erwan Dupard
+** Last update Sat Jun 25 20:00:28 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -26,10 +26,9 @@ void		get_starting_coordinates(t_character *character,
     (*x)++;
 }
 
-t_case		**get_surrounding_cases(t_map *map,
-					t_character *character)
+t_case		**get_surrounding_cases(t_map *map, t_character *character,
+					t_case **cases)
 {
-  t_case	**cases;
   int		i;
   int		x;
   int		y;
@@ -97,7 +96,9 @@ int		get_closest_case(t_map *map,
   double	distance;
   double	shortest_distance;
 
-  if (!(surrouding_cases = get_surrounding_cases(map, receiver)))
+  surrouding_cases = NULL;
+  if (!(surrouding_cases = get_surrounding_cases(map, receiver,
+						 surrouding_cases)))
     return (RETURN_FAILURE);
   i = -1;
   shortest_distance = -1;
