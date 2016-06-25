@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Sat Jun 25 18:13:03 2016 Erwan Dupard
+** Last update Sat Jun 25 19:43:28 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -26,6 +26,7 @@ static const t_event_handler		g_events[] = {
   {EXPULSE, &event_expulse},
   {VOIR, &event_voir},
   {FORK, &event_fork},
+  {END_GAME, &event_endgame},
   {0, NULL}
 };
 
