@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Sat Jun 25 15:11:13 2016 Erwan Dupard
+** Last update Sat Jun 25 22:57:43 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -101,6 +101,7 @@ int				process_server(t_server *server)
 
   server->game_data.next_drone_id = 1;
   server->game_data.pending_actions = NULL;
+  bzero(server->buffer, sizeof(server->buffer));
   set_time_speed(server);
   while (1)
     {
