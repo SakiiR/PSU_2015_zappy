@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:47:53 2016 Thomas Billot
-** Last update Sat Jun 25 18:34:32 2016 Thomas Beaudet
+** Last update Sat Jun 25 19:25:43 2016 Thomas Beaudet
 */
 
 #include <stdlib.h>
@@ -16,13 +16,7 @@ int		fct_sgt(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  int           i;
-
-  (void)map;
-  i = 0;
-  printf("fct_%s args:", cmd[i]);
-  while (cmd[++i])
-    printf(" %s |", cmd[i]);
-  printf("\n");
-  return (0);
+  map->time_u = atoi(cmd[1]);
+  printf("%d\n", map->time_u);
+  return (RETURN_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Sat Jun 25 17:41:22 2016 Thomas Billot
+** Last update Sat Jun 25 19:17:37 2016 Thomas Beaudet
 */
 
 #include <stdlib.h>
