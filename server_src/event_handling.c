@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Sat Jun 25 23:03:12 2016 Erwan Dupard
+** Last update Sun Jun 26 00:08:16 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -70,8 +70,7 @@ int			eggs_life_cycle(t_server *server)
       	      if (iterator->timer == 0)
 		{
 		  iterator->hatched = 1;
-		  sprintf(server->buffer, "eht %i\n",
-			  iterator->id);
+		  sprintf(server->buffer, "eht %i\n", iterator->id);
 		  graphic_broadcast(server, server->buffer);
 		}
       	      else
