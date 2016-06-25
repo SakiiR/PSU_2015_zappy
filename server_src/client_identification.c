@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:35:28 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:09:31 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -52,8 +52,8 @@ int					initialize_character(t_server *server,
   client->character->next_in_case = NULL;
   place_character(server, client, team);
   sprintf(server->buffer, "%i\n%i %i\n",
-	  team->max_members - team->base_members +
-	  number_of_hatched_eggs(team->eggs),
+	  team->max_members - team->base_members
+	  + number_of_hatched_eggs(team->eggs),
 	  server->game_data.map.width,
 	  server->game_data.map.height);
   write_to_buffer(&client->buffer_out,

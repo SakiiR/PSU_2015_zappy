@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:21:15 2016 Barthelemy Gouby
+** Last update Sat Jun 25 15:14:35 2016 Erwan Dupard
 */
 
 #include <time.h>
@@ -97,25 +97,4 @@ void					initialize_ressources(t_server *server)
   spread_ressource(MENDIANE, nbr_of_teams * (width * height / 50) * 3, map);
   spread_ressource(PHIRAS, nbr_of_teams * (width * height / 50) * 2, map);
   spread_ressource(THYSTAME, nbr_of_teams * (width * height / 50), map);
-}
-
-void					text_display_map(t_map *map)
-{
-  int					i;
-
-  i = 0;
-  while (i < map->width * map->height)
-    {
-      printf("--------- case at x: %i y: %i\n",
-	     i % map->height,
-	     i / map->height);
-      printf("Food: %i\n", map->cases[i].quantities[NOURRITURE]);
-      printf("Linemate: %i\n", map->cases[i].quantities[LINEMATE]);
-      printf("Deraumere: %i\n", map->cases[i].quantities[DERAUMERE]);
-      printf("Sibur: %i\n", map->cases[i].quantities[SIBUR]);
-      printf("Mendiane: %i\n", map->cases[i].quantities[MENDIANE]);
-      printf("Phiras: %i\n", map->cases[i].quantities[PHIRAS]);
-      printf("Thystame: %i\n", map->cases[i].quantities[THYSTAME]);
-      i++;
-    }
 }
