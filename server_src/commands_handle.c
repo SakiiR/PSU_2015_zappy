@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sat Jun 25 23:29:52 2016 Erwan Dupard
+** Last update Sat Jun 25 23:32:28 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -54,10 +54,7 @@ int					handle_command(char *input,
       while (g_commands[++i].command != NULL)
 	{
 	  if (strcmp(g_commands[i].command, line[0]) == RETURN_SUCCESS)
-	    {
-	      free_word_tab(line);
-	      return (g_commands[i].f(server, client, line[1]));
-	    }
+	    return (g_commands[i].f(server, client, line[1]));
 	}
       write_to_buffer(&client->buffer_out, "ko\n", 3);
       free_word_tab(line);
