@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Thu Jun 23 17:27:10 2016 Thomas Beaudet
+** Last update Sat Jun 25 12:57:39 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -58,8 +58,14 @@
 # define T_GRASS		"graphic_src/Media/back.bmp"
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
 # define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
-# define T_CHARACTER		"graphic_src/Media/mage_charset2.bmp"
-# define T_STONES		"graphic_src/Media/resources.bmp"
+# define T_CHARACTER		"graphic_src/Media/villager_idle_00000.png"
+# define T_FOOD			"graphic_src/Media/Food.png"
+# define T_LINEMATE		"graphic_src/Media/Linemate.png"
+# define T_DERAUMERE		"graphic_src/Media/Deraumere.png"
+# define T_MENDIANE		"graphic_src/Media/Mendiane.png"
+# define T_PHIRAS		"graphic_src/Media/Phiras.png"
+# define T_SIBUR		"graphic_src/Media/Sibur.png"
+# define T_THYSTAME		"graphic_src/Media/Thystame.png"
 # define T_EGG			"graphic_src/Media/egg.bmp"
 
 /*
@@ -114,7 +120,15 @@ typedef enum
     BORDER_DARK			= 1,
     BORDER_LIGHT		= 2,
     CHARACTER			= 3,
-    NUMBER_OF_TEXTURES		= 4
+    FOOD_T			= 4,
+    LINEMATE_T			= 5,
+    DERAUMERE_T			= 6,
+    SIBUR_T			= 7,
+    MENDIANE_T			= 8,
+    PHIRAS_T			= 9,
+    THYSTAME_T			= 10,
+    EGG_T			= 11,
+    NUMBER_OF_TEXTURES		= 12
   }				e_textures;
 
 typedef enum
@@ -212,10 +226,10 @@ typedef struct			s_sprite
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server,
-					      t_render *render, t_texture *tile);
+int				launch_client(t_server *server, t_render *render);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
+int				ress_rendering(t_render *ress, t_map *map);
 SDL_Surface			*load_bmp(const char *file);
 SDL_Texture			*create_texture(t_render *render,
 						SDL_Surface *bmp);
@@ -233,7 +247,7 @@ int				sdl_init();
 void				draw_backg(t_render *ress);
 void				put_delay(int delay);
 int				sdl_create_win(t_render *ress);
-int				sdl_event(t_render *ress, t_texture *tile);
+int				sdl_event(t_render *ress);
 void				zoom(t_render *ress, t_texture *tile,
 				     int x, int y,
 				     float scale_W, float scale_H);

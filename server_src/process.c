@@ -5,30 +5,10 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Thu Jun 23 18:50:56 2016 Barthelemy Gouby
+** Last update Fri Jun 24 16:52:47 2016 Barthelemy Gouby
 */
 
 #include "server.h"
-
-static void			adding_sockets(t_server *server,
-					       fd_set *set_in,
-					       fd_set *set_out,
-					       int *max)
-{
-  int				i;
-
-  i = -1;
-  while (++i < MAX_CLIENTS)
-    {
-      if (server->clients[i].socket > 0)
-	{
-	  FD_SET(server->clients[i].socket, set_in);
-	  FD_SET(server->clients[i].socket, set_out);
-	}
-	if (server->clients[i].socket > *max)
-	  *max = server->clients[i].socket;
-    }
-}
 
 static int			handle_clients_input(t_server *server, fd_set *set_in)
 {
@@ -118,25 +98,15 @@ static int			add_client(t_server *server)
 
 int				process_server(t_server *server)
 {
-  struct timeval		tv;
   fd_set		        si;
   fd_set			so;
-  int				max_socket;
 
-  max_socket = 0;
   server->game_data.next_drone_id = 1;
   server->game_data.pending_actions = NULL;
-  tv.tv_usec = 50;
-  tv.tv_sec = 0;
   set_time_speed(server);
   while (1)
     {
-      FD_ZERO(&si);
-      FD_ZERO(&so);
-      FD_SET(server->socket, &si);
-      max_socket = server->socket;
-      adding_sockets(server, &si, &so, &max_socket);
-      if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
+      if (select_sockets(server, &si, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (FD_ISSET(server->socket, &si))
 	{
