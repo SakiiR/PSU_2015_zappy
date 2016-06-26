@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Sat Jun 25 20:40:10 2016 Erwan Dupard
+** Last update Sun Jun 26 15:13:42 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -13,8 +13,6 @@
 static const t_event_handler		g_events[] = {
   {NEW_PLAYER, &event_new_player},
   {BROADCAST, &event_broadcast},
-  {END_INCANTATION, &event_end_incantation},
-  {NEW_INCANTATION, &event_new_incantation},
   {LAY_EGG, &event_lay_egg},
   {PLAYER_EXPULSED, &event_player_expulsed},
   {TAKE_RESOURCE, &event_take_ressource},
@@ -42,7 +40,8 @@ int				        trigger_event(t_server *server,
     {
       if (type == g_events[i].type)
 	{
-	  g_events[i].f(server, argp);
+	  if (g_events[i].f(server, argp) == RETURN_FAILURE)
+	    return (RETURN_FAILURE);
 	}
     }
   va_end(argp);
