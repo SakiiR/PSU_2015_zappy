@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Fri Jun 24 13:59:07 2016 Erwan Dupard
+** Last update Sun Jun 26 17:22:46 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -31,12 +31,12 @@ int		generate_x_east(t_character *character,
   return (x);
 }
 
-int             generate_y_east(t_character *character,
+int		generate_y_east(t_character *character,
 				int base_size,
 				t_map *map)
 {
-  int           y;
-  int           y_count;
+  int		y;
+  int		y_count;
 
   if ((y = character->current_case->y - (base_size / 2)) < 0)
     {
@@ -70,9 +70,9 @@ int             save_case_line_east(t_map *map,
 				    t_case *case_it,
 				    int base_size)
 {
-  int           i;
-  int           x;
-  int           y;
+  int		i;
+  int		x;
+  int		y;
 
   i = 0;
   x = case_it->x;
