@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Sun Jun 26 17:18:11 2016 Erwan Dupard
+** Last update Sun Jun 26 17:33:26 2016 Erwan Dupard
 */
 
 #ifndef RESOURCES_H_
@@ -183,7 +183,6 @@ int					voir(t_infos *infos);
 int					inventaire(t_infos *infos);
 int					avance(t_infos *infos);
 int					gauche(t_infos *infos);
-
 
 /*
 ** handle3.c
