@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Sun Jun 26 17:20:13 2016 Karine Aknin
+** Last update Sun Jun 26 17:44:40 2016 Erwan Dupard
 */
 
 #include "server.h"
