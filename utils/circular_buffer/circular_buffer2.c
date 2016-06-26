@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun  3 11:54:36 2016 Erwan Dupard
-** Last update Sun Jun 26 01:11:40 2016 Erwan Dupard
+** Last update Sun Jun 26 16:09:49 2016 Erwan Dupard
 */
 
 #include "circular_buffer.h"
@@ -27,7 +27,8 @@ static int				circular_write(unsigned int data_size,
   strncpy(&buffer->memory[buffer->valid_data_end],
 	  data,
 	  buffer->size - buffer->valid_data_end);
-  if (!((remaining_data_size + (buffer->size - buffer->valid_data_end)) > buffer->size))
+  if (!((remaining_data_size + (buffer->size
+				- buffer->valid_data_end)) > buffer->size))
     {
       strncpy(buffer->memory,
 	      &(data[buffer->size - buffer->valid_data_end]),

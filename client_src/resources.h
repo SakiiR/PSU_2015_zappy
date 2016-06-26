@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Sat Jun 25 19:11:15 2016 Gabriel Goude
+** Last update Sun Jun 26 16:08:08 2016 Erwan Dupard
 */
 
 #ifndef RESOURCES_H_
@@ -100,26 +100,32 @@ typedef struct				s_map
 /*
 ** main.c
 */
-int					init_client(int ac, char **av, t_infos *infos);
+int					init_client(int ac,
+						    char **av,
+						    t_infos *infos);
 int					play_loop(t_infos *infos);
 void					init_fct(int (**fct)(t_infos *, char *));
 
 /*
 ** handle.c
 */
-int					handle_msg(t_infos *infos, char *msg, int (**fct)(t_infos *, char *));
+int					handle_msg(t_infos *infos,
+						   char *msg,
+						   int (**fct)(t_infos *, char *));
 
 /*
 ** update.c
 */
-int					update(t_infos *infos, int (**fct)(t_infos *, char *));
+int					update(t_infos *infos,
+					       int (**fct)(t_infos *, char *));
 int					send_update(t_infos *infos);
 
 /*
 ** buf.c
 */
 char					*read_buf(t_infos *infos);
-int					write_buf(t_infos *infos, char *str);
+int					write_buf(t_infos *infos,
+						  char *str);
 void					fill_set(t_infos *infos);
 
 /*
