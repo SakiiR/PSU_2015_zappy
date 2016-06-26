@@ -5,11 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Sun Jun 26 19:06:40 2016 Thomas Billot
-=======
-** Last update Sun Jun 26 17:15:32 2016 Thomas Beaudet
->>>>>>> 9a0fcdd707c3329cb5846385cf65744c755b0503
+** Last update Sun Jun 26 20:53:37 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -233,7 +229,9 @@ typedef struct			s_sprite
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server, t_render *render);
+int				launch_client(t_server *server,
+					      t_render *render,
+					      t_map *map);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
 int				ress_rendering(t_render *ress, t_map *map);
