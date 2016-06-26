@@ -5,12 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun 25 19:14:57 2016 Erwan Dupard
-** Last update Sat Jun 25 19:45:52 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:36 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int				        end_game(t_server *server, t_client *emetter)
+int		end_game(t_server *server, t_client *emetter)
 {
   end_command(emetter);
   sprintf(server->buffer, "seg %s\n", emetter->character->team->name);
@@ -18,7 +18,7 @@ int				        end_game(t_server *server, t_client *emetter)
   return (RETURN_SUCCESS);
 }
 
-int				        event_endgame(t_server *server, va_list ap)
+int		event_endgame(t_server *server, va_list ap)
 {
   (void)server;
   (void)ap;

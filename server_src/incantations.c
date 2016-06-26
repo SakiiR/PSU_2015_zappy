@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Sun Jun 26 15:09:08 2016 Erwan Dupard
+** Last update Sun Jun 26 17:44:00 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -78,7 +78,7 @@ int					check_incantation(t_incantation *incantation,
 							  __attribute__((unused)))
 {
   t_character				*iterator;
-  int				        i;
+  int					i;
   t_character				**players;
 
   i = 0;

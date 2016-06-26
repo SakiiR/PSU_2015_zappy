@@ -5,13 +5,12 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Sun Jun 26 15:13:42 2016 Erwan Dupard
+** Last update Sun Jun 26 17:44:40 2016 Erwan Dupard
 */
 
 #include "server.h"
 
 static const t_event_handler		g_events[] = {
-  {NEW_PLAYER, &event_new_player},
   {BROADCAST, &event_broadcast},
   {LAY_EGG, &event_lay_egg},
   {PLAYER_EXPULSED, &event_player_expulsed},
@@ -27,11 +26,11 @@ static const t_event_handler		g_events[] = {
   {0, NULL}
 };
 
-int				        trigger_event(t_server *server,
+int					trigger_event(t_server *server,
 						      e_event_type type,
 						      ...)
 {
-  va_list			        argp;
+  va_list				argp;
   int					i;
 
   va_start(argp, type);

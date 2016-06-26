@@ -5,14 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon May 30 14:55:52 2016 Barthelemy Gouby
-** Last update Fri Jun 10 17:03:33 2016 Barthelemy Gouby
+** Last update Sun Jun 26 00:35:24 2016 Karine Aknin
 */
 
 #include "circular_buffer.h"
 
 int		initialize_buffer(t_circular_buffer *buffer, int size)
 {
-  if (!(buffer->memory = malloc(size)))
+  if (!(buffer->memory = malloc(sizeof(*buffer->memory) * (size + 1))))
     return (-1);
   buffer->memory = memset(buffer->memory, 0, size);
   buffer->valid_data_start = 0;
