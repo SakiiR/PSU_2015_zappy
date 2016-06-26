@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sat Jun 25 23:54:35 2016 Erwan Dupard
+** Last update Sun Jun 26 15:18:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -39,6 +39,7 @@ int					event_incantation(t_server *server, va_list ap)
   client = va_arg(ap, t_client *);
   characters = va_arg(ap, t_character **);
   incantation = get_incantation_by_level(client->character->level + 1);
+  printf("[+] Incantation !\n");
   if (check_incantation_event(characters,
 			      client,
 			      incantation,
@@ -48,6 +49,7 @@ int					event_incantation(t_server *server, va_list ap)
   incantation_broadcast_e(server, client, characters);
   free(characters);
   sprintf(server->buffer, "niveau actuel : %d\n", client->character->level);
+  write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
   if (incantation->level >= 8)
     return (end_game(server, client));
   return (RETURN_SUCCESS);
@@ -63,6 +65,7 @@ int					event_expulse(t_server *server,
   client = va_arg(ap, t_client *);
   c = client->character->current_case;
   iterator = c->characters;
+  printf("[^] Expulse.\n");
   while (iterator)
     {
       if (iterator->id != client->character->id)
@@ -74,17 +77,6 @@ int					event_expulse(t_server *server,
   return (RETURN_SUCCESS);
 }
 
-static void				dump_buffer(t_server *server)
-{
-  int					i;
-
-  i = -1;
-  printf("buffer(");
-  while (server->buffer[++i])
-    printf("%c", server->buffer[i]);
-  printf(")\n");
-}
-
 int					event_lay_egg(t_server *server
 						      __attribute__((unused)),
 						      va_list ap)
@@ -93,6 +85,7 @@ int					event_lay_egg(t_server *server
   t_egg					*new_egg;
 
   client = va_arg(ap, t_client *);
+  printf("[^] Lay egg.\n");
   if ((new_egg = malloc(sizeof(*new_egg))) == NULL)
     return (RETURN_FAILURE);
   init_egg(new_egg);
@@ -104,7 +97,6 @@ int					event_lay_egg(t_server *server
   new_egg->next = NULL;
   add_egg(&client->character->team->eggs, new_egg);
   write_to_buffer(&client->buffer_out, "ok\n", 3);
-  dump_buffer(server);
   sprintf(server->buffer, "enw %i %i %i %i\n", new_egg->id,
 	  client->character->id,
 	  new_egg->x,

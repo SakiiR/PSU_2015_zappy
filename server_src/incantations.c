@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Sat Jun 25 23:31:32 2016 Karine Aknin
+** Last update Sun Jun 26 15:09:08 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -106,7 +106,7 @@ int					do_incantation(t_case *c,
   t_character				*iterator;
   int					i;
 
-  printf("try to do incantation\n");
+  printf("[+] Incantation on (%d, %d)\n", c->x, c->y);
   iterator = c->characters;
   while (iterator)
     {
