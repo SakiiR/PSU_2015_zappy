@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sun Jun 26 20:53:37 2016 Thomas Billot
+** Last update Sun Jun 26 20:55:38 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -85,7 +85,7 @@
 ** Simple Typedefs
 */
 
-typedef unsigned int	       	t_u64;
+typedef unsigned int		t_u64;
 typedef unsigned int		t_quantity;
 typedef int			t_socket;
 typedef struct sockaddr_in	t_sockaddr;
@@ -96,12 +96,12 @@ typedef struct protoent		t_protocol;
 ** Networking
 */
 
-typedef struct		       	s_server
+typedef struct			s_server
 {
-  t_socket	       	       	socket;
-  t_circular_buffer    		buffer_in;
-  t_circular_buffer    		buffer_out;
-}	       			t_server;
+  t_socket			socket;
+  t_circular_buffer		buffer_in;
+  t_circular_buffer		buffer_out;
+}				t_server;
 
 typedef struct			s_option
 {
@@ -132,11 +132,11 @@ typedef enum
 
 typedef enum
   {
-    NORTH		       	= 1,
-    EAST		       	= 2,
-    SOUTH		       	= 3,
-    WEST		       	= 4
-  }			       	e_orientation;
+    NORTH			= 1,
+    EAST			= 2,
+    SOUTH			= 3,
+    WEST			= 4
+  }				e_orientation;
 
 typedef enum
   {
@@ -157,11 +157,11 @@ typedef struct			s_character
   int				status;
   char 				*team;
   t_quantity   			inventory[NUMBER_OF_TYPES];
-  e_orientation		        orientation;
+  e_orientation			orientation;
   e_textures			texture;
-  struct s_character   		*next_in_case;
-  struct s_character   		*prev_in_case;
-}			       	t_character;
+  struct s_character		*next_in_case;
+  struct s_character		*prev_in_case;
+}				t_character;
 
 typedef struct			s_tile
 {
@@ -170,7 +170,7 @@ typedef struct			s_tile
   unsigned int			players;
 }				t_tile;
 
-typedef struct		       	s_map
+typedef struct			s_map
 {
   int				x;
   int				y;

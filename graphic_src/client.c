@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sun Jun 26 20:50:18 2016 Thomas Billot
+** Last update Sun Jun 26 20:56:05 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -85,8 +85,7 @@ int		        handle_server_input(t_map *map,
 	    return (RETURN_FAILURE);
 	  free(next_message);
 	}
-      if (next_message)
-	free(next_message);
+      free(next_message);
     }
   return (RETURN_SUCCESS);
 }

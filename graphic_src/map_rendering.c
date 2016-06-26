@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Sun Jun 26 20:41:19 2016 Thomas Billot
+** Last update Sun Jun 26 20:54:52 2016 Thomas Billot
 */
 
 #include "xfunc.h"

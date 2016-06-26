@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:27:39 2016 Thomas Billot
-** Last update Sat Jun 25 19:53:30 2016 Thomas Beaudet
+** Last update Sun Jun 26 20:44:23 2016 Karine Aknin
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@ int		fct_plv(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  int           i;
+  int		i;
 
   (void)map;
   i = 0;

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:26:57 2016 Thomas Billot
-** Last update Sun Jun 26 16:11:18 2016 Erwan Dupard
+** Last update Sun Jun 26 20:45:16 2016 Karine Aknin
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@ int		fct_ppo(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  int           i;
+  int		i;
 
   (void)map;
   i = 0;
