@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:57:17 2016 Erwan Dupard
-** Last update Sun Jun 26 17:42:59 2016 Erwan Dupard
+** Last update Sun Jun 26 18:22:13 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -46,7 +46,7 @@ int					event_incantation(t_server *server, va_list ap)
 			      server) == RETURN_FAILURE)
     {
       printf("[-] Incantation Failure :(\n");
-      return (RETURN_FAILURE);
+      return (RETURN_SUCCESS);
     }
   do_incantation(client->character->current_case, incantation);
   incantation_broadcast_e(server, client, characters);
