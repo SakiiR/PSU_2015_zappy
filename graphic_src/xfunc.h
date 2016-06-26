@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Sat Jun 18 14:30:45 2016 Thomas Billot
+** Last update Sun Jun 26 18:58:28 2016 Thomas Billot
 */
 
 #ifndef XFUNC_H_
@@ -25,5 +25,6 @@ int		xconnect(int sockfd,
 int		xsocket(int domain, int type, int protocol);
 int		xclose(int fd);
 char		*my_strdup(char *str);
+int		random_number(int min, int max);
 
 #endif /* !XFUNC_H_ */
