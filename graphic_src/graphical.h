@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sat Jun 25 18:58:27 2016 Thomas Beaudet
+** Last update Sun Jun 26 12:04:37 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -248,7 +248,7 @@ int				clear_surface(t_render *ress);
 */
 
 int				sdl_init();
-void				draw_backg(t_render *ress);
+int				draw_backg(t_render *ress);
 void				put_delay(int delay);
 int				sdl_create_win(t_render *ress);
 int				sdl_event(t_render *ress);
