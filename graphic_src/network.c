@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:59:16 2016 Thomas Billot
-** Last update Sun Jun 26 16:36:54 2016 Erwan Dupard
+** Last update Sun Jun 26 16:39:49 2016 Erwan Dupard
 */
 
 #include <sys/socket.h>
@@ -17,14 +17,8 @@
 #include <string.h>
 #include <errno.h>
 #include <netdb.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h> 
 #include "graphical.h"
 #include "xfunc.h"
 
