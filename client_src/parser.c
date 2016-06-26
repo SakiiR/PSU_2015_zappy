@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Sun Jun 26 17:32:36 2016 Erwan Dupard
+** Last update Sun Jun 26 18:15:33 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -13,6 +13,11 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include "resources.h"
+
+static void		usage()
+{
+  printf("Usage : ./zappy_ai -n team_name -p port -h host\n");
+}
 
 int			get_param(int ac, char **av, t_infos *infos)
 {
@@ -54,6 +59,9 @@ int			get_next_param(int i, char **av, t_infos *infos)
 	}
     }
   else
-    return (RETURN_FAILURE);
+    {
+      usage();
+      return (RETURN_FAILURE);
+    }
   return (RETURN_SUCCESS);
 }
