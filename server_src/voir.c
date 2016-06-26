@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Thu Jun 16 16:45:43 2016 Erwan Dupard
-** Last update Sat Jun 25 22:39:26 2016 Karine Aknin
+** Last update Sun Jun 26 17:20:49 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -36,7 +36,7 @@ int				event_voir(t_server *server, va_list ap)
   t_client			*client;
   t_map				*map;
   t_case			**cases;
-  int			        number_of_cases;
+  int				number_of_cases;
   int				i;
 
   i = 0;

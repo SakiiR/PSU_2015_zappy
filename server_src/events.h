@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:06:44 2016 Erwan Dupard
-** Last update Sat Jun 25 20:40:03 2016 Erwan Dupard
+** Last update Sun Jun 26 16:41:21 2016 Karine Aknin
 */
 
 #ifndef EVENTS_H_
@@ -60,7 +60,7 @@ typedef struct				s_event_handler
 					     va_list ap);
 }					t_event_handler;
 
-int				        trigger_event(t_server *server,
+int					trigger_event(t_server *server,
 						      e_event_type type,
 						      ...);
 
@@ -86,7 +86,6 @@ int					event_take_ressource(t_server *server, va_list ap);
 int					event_throw_ressource(t_server *server, va_list ap);
 int					event_expulse(t_server *server, va_list ap);
 int					event_endgame(t_server *server, va_list ap);
-
-int				        end_game(t_server *server, t_client *emetter);
+int					end_game(t_server *server, t_client *emetter);
 
 #endif /* ! EVENTS_H_ */

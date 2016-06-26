@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Sun Jun 26 15:17:42 2016 Erwan Dupard
+** Last update Sun Jun 26 16:36:22 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -21,9 +21,9 @@ t_ressource_name_c			g_correspondances[] = {
   {NULL, 10}
 };
 
-void					take_ressource(t_server *server,
-						       t_client *client,
-						       e_ressource_type type)
+void				take_ressource(t_server *server,
+					       t_client *client,
+					       e_ressource_type type)
 {
   if (client->character->current_case->quantities[type] > 0)
     {
@@ -46,11 +46,11 @@ void					take_ressource(t_server *server,
     write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
 }
 
-int					event_take_ressource(t_server *server, va_list ap)
+int				event_take_ressource(t_server *server, va_list ap)
 {
-  t_client				*client;
-  char					*ressource_type;
-  int					i;
+  t_client			*client;
+  char				*ressource_type;
+  int				i;
 
   i = -1;
   printf("[^] Take resource.\n");
@@ -69,9 +69,9 @@ int					event_take_ressource(t_server *server, va_list ap)
   return (RETURN_SUCCESS);
 }
 
-void					throw_ressource(t_server *server,
-							t_client *client,
-							e_ressource_type type)
+void				throw_ressource(t_server *server,
+						t_client *client,
+						e_ressource_type type)
 {
   if (client->character->quantities[type] > 0)
     {
@@ -93,7 +93,7 @@ void					throw_ressource(t_server *server,
     write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
 }
 
-int					event_throw_ressource(t_server *server, va_list ap)
+int				event_throw_ressource(t_server *server, va_list ap)
 {
   t_client			*client;
   char				*ressource_type;
@@ -116,9 +116,9 @@ int					event_throw_ressource(t_server *server, va_list ap)
   return (RETURN_SUCCESS);
 }
 
-int					event_inventaire(t_server *server, va_list ap)
+int				event_inventaire(t_server *server, va_list ap)
 {
-  t_client				*client;
+  t_client			*client;
 
   (void)server;
   printf("[^] Inventory.\n");

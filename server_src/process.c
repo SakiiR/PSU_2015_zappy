@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Sat Jun 25 23:37:56 2016 Erwan Dupard
+** Last update Sun Jun 26 17:14:23 2016 Karine Aknin
 */
 
 #include "server.h"
@@ -16,8 +16,8 @@ static int			handle_clients_input(t_server *server, fd_set *set_in)
   int				size_read;
   char				buffer[PAGE_SIZE];
   char				*next_message;
-  i = -1;
 
+  i = -1;
   while (++i < MAX_CLIENTS)
     {
       if (FD_ISSET(server->clients[i].socket, set_in))
@@ -96,7 +96,7 @@ static int			add_client(t_server *server)
 
 int				process_server(t_server *server)
 {
-  fd_set		        si;
+  fd_set			si;
   fd_set			so;
 
   server->game_data.next_drone_id = 1;
