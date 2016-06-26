@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:26:57 2016 Thomas Billot
-** Last update Sat Jun 25 18:33:25 2016 Thomas Beaudet
+** Last update Sun Jun 26 16:11:18 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -16,13 +16,6 @@ int		fct_ppo(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  /* t_character	*drone; */
-
-  /* if ((drone = get_player_by_id(map, (t_u64)atoi(cmd[1]))) == NULL) */
-  /*   return (RETURN_FAILURE); */
-  /* drone->orientation = atoi(cmd[4]); */
-  /* printf("%d\n", drone->orientation); */
-  /* return (RETURN_SUCCESS); */
   int           i;
 
   (void)map;

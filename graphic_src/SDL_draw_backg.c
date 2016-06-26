@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:31:27 2016 Thomas Beaudet
-** Last update Sun Jun 26 12:07:58 2016 Thomas Beaudet
+** Last update Sun Jun 26 16:10:41 2016 Erwan Dupard
 */
 
 #include <stdio.h>
@@ -13,10 +13,6 @@
 
 int			draw_backg(t_render *ress)
 {
-  /* SDL_SetRenderDrawColor(ress->rend, 0, 204, 0, 255); */
-  /* SDL_RenderClear(ress->rend); */
-  /* SDL_RenderPresent(ress->rend); */
-
   SDL_Surface		*backg;
   SDL_Texture		*backg_texture;
 

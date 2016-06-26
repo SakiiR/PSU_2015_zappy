@@ -5,12 +5,14 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 21 17:02:35 2016 Gabriel Goude
-** Last update Sat Jun 25 15:43:42 2016 Gabriel Goude
+** Last update Sun Jun 26 16:08:54 2016 Erwan Dupard
 */
 
 #include "resources.h"
 
-int				handle_msg(t_infos *infos, char *msg, int (**fct)(t_infos *, char *))
+int				handle_msg(t_infos *infos,
+					   char *msg,
+					   int (**fct)(t_infos *, char *))
 {
   printf("msg received : %s", msg);
   printf("msg is of type : %d\n", infos->request->request);
