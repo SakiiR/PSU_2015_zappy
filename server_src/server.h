@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sun Jun 26 00:25:19 2016 Erwan Dupard
+** Last update Sun Jun 26 17:44:38 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -91,10 +91,10 @@ typedef struct s_team			t_team;
 typedef struct				s_character
 {
   t_u64					level;
-  t_u64				        id;
+  t_u64					id;
   t_team				*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
-  e_orientation			        orientation;
+  e_orientation				orientation;
   t_action				*action_queue;
   t_u64					hunger_timer;
   char					base_member;
@@ -278,7 +278,8 @@ int					option_id_speed(char **args,
 int					option_id_teams(char **args,
 							t_server *server);
 
-int				        graphic_broadcast(t_server *server, char *message);
+int					graphic_broadcast(t_server *server,
+							  char *message);
 int					send_map_size(t_server *server,
 						      t_client *client,
 						      char *operands);
@@ -297,7 +298,7 @@ int					send_team_names(t_server *server,
 int					change_time_unit(t_server *server,
 							 t_client *client,
 							 char *operands);
-int				        send_player_level(t_server *server,
+int					send_player_level(t_server *server,
 							  t_client *client,
 							  char *operands);
 void					write_inventory_string(t_server *server,
@@ -305,10 +306,10 @@ void					write_inventory_string(t_server *server,
 void					write_case_content_string(t_server *server,
 								  int x,
 								  int y);
-int				        send_player_inventory(t_server *server,
+int					send_player_inventory(t_server *server,
 							      t_client *client,
 							      char *operands);
-int				        send_player_position(t_server *server,
+int					send_player_position(t_server *server,
 							     t_client *client,
 							     char *operands);
 
@@ -316,7 +317,7 @@ int					end_command(t_client *client);
 int					voir_command(t_server *server,
 						     t_client *client,
 						     char *operands);
-int				        inventaire_command(t_server *server,
+int					inventaire_command(t_server *server,
 							   t_client *client,
 							   char *operands);
 int					droite_command(t_server *server,
@@ -325,7 +326,7 @@ int					droite_command(t_server *server,
 int					gauche_command(t_server *server,
 						       t_client *client,
 						       char *operands);
-int				        avance_command(t_server *server,
+int					avance_command(t_server *server,
 						       t_client *client,
 						       char *operands);
 int					prend_command(t_server *server,
