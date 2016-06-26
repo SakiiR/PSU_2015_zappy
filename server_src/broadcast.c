@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Sat Jun 25 23:04:30 2016 Karine Aknin
+** Last update Sun Jun 26 00:42:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -131,7 +131,6 @@ int		send_broadcast_to_drone(t_server *server,
 					    receiver->character))
 	   == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  printf("[^] Sending message : (%s)\n", message);
   sprintf(server->buffer, "message %i,%s\n",
 	  closest_case,
 	  (message && strlen(message) < 512 ? message : NULL));

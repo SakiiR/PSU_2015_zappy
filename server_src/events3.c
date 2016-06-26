@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Sat Jun 25 23:59:47 2016 Karine Aknin
+** Last update Sun Jun 26 15:17:42 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -53,6 +53,7 @@ int					event_take_ressource(t_server *server, va_list ap)
   int					i;
 
   i = -1;
+  printf("[^] Take resource.\n");
   client = va_arg(ap, t_client *);
   ressource_type = va_arg(ap, char *);
   while (++i < 7)
@@ -101,6 +102,7 @@ int					event_throw_ressource(t_server *server, va_list ap)
   i = -1;
   client = va_arg(ap, t_client *);
   ressource_type = va_arg(ap, char *);
+  printf("[^] Throwing resource.\n");
   while (++i < 7)
     {
       if (strcmp(ressource_type, g_correspondances[i].name) == 0)
@@ -119,6 +121,7 @@ int					event_inventaire(t_server *server, va_list ap)
   t_client				*client;
 
   (void)server;
+  printf("[^] Inventory.\n");
   client = va_arg(ap, t_client *);
   sprintf(server->buffer,
 	  "{nourriture %d"

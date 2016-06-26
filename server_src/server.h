@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Sat Jun 25 23:40:35 2016 Erwan Dupard
+** Last update Sun Jun 26 00:25:19 2016 Erwan Dupard
 */
 
 #ifndef SERVER_H_
@@ -133,7 +133,7 @@ typedef struct				s_egg
 {
   t_u64					id;
   int					hatched;
-  t_u64					timer;
+  int					timer;
   t_u64					x;
   t_u64					y;
   struct s_egg				*next;

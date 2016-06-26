@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:52:50 2016 Barthelemy Gouby
-** Last update Sat Jun 25 22:44:16 2016 Erwan Dupard
+** Last update Sun Jun 26 15:10:17 2016 Erwan Dupard
 */
 
 #include <time.h>
@@ -18,6 +18,7 @@ int					initialize_map(t_map *map)
   int					i;
 
   i = -1;
+  printf("[^] Creating Map.\n");
   if ((cases = malloc(sizeof(*cases) * map->width * map->height)) == NULL)
     return (RETURN_FAILURE);
   while (++i < (int)(map->width * map->height))

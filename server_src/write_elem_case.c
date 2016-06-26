@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Thu Jun 23 18:40:06 2016 Karine Aknin
-** Last update Sat Jun 25 23:53:25 2016 Karine Aknin
+** Last update Sun Jun 26 16:02:20 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -36,9 +36,6 @@ int				write_characters(char *message, t_case *cases,
   nb_characters = count_character(cases);
   if (nb_characters > 0)
     {
-      /* if (cases->x == client->character->current_case->x && */
-      /* 	  cases->y == client->character->current_case->y) */
-      /* 	nb_characters--; */
       while (nb_characters > 0)
 	{
 	  i = write_joueur(message, i , " joueur");

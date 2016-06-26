@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Sun Jun 26 00:08:16 2016 Erwan Dupard
+** Last update Sun Jun 26 15:09:38 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -18,10 +18,6 @@ void			set_time_speed(t_server *server)
   server->game_data.tick_length.tv_sec = (int) length;
   server->game_data.tick_length.tv_usec =
     (int)((length - (int) length) * 1000000);
-  printf("unit length second:  %i\n",
-	 (int)length);
-  printf("unit length usecond:  %i\n",
-	 (int)((length - (int) length) * 1000000));
   gettimeofday(&server->game_data.last_tick, NULL);
 }
 
@@ -67,7 +63,7 @@ int			eggs_life_cycle(t_server *server)
       	{
       	  if (!iterator->hatched)
       	    {
-      	      if (iterator->timer == 0)
+      	      if (iterator->timer <= 0)
 		{
 		  iterator->hatched = 1;
 		  sprintf(server->buffer, "eht %i\n", iterator->id);
