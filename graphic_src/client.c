@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sat Jun 25 19:23:35 2016 Thomas Beaudet
+** Last update Sun Jun 26 19:16:23 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -133,6 +133,7 @@ int			launch_client(t_server *server, t_render *render)
   preload_textures(render);
   while (SDL_PollEvent(&render->event) || 1)
     {
+      draw_backg(render);
       FD_ZERO(&si);
       FD_ZERO(&so);
       FD_SET(server->socket, &si);

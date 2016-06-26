@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:25:33 2016 Thomas Billot
-** Last update Sat Jun 25 17:42:06 2016 Thomas Billot
+** Last update Sun Jun 26 19:27:51 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -52,6 +52,7 @@ int		fct_pnw(t_map *map,
 
   x = atoi(cmd[2]);
   y = atoi(cmd[3]);
+  printf("x = %d, y=%d\n", x,y);
   if ((map->x * map->y) < (x * y))
     return (RETURN_FAILURE);
   if ((new = create_new_player(atoi(cmd[1]),

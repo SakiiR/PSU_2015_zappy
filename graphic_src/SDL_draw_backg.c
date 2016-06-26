@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Wed Jun 15 18:31:27 2016 Thomas Beaudet
-** Last update Sun Jun 26 12:07:58 2016 Thomas Beaudet
+** Last update Sun Jun 26 19:17:06 2016 Thomas Billot
 */
 
 #include <stdio.h>
@@ -25,7 +25,6 @@ int			draw_backg(t_render *ress)
   if ((backg_texture = create_texture(ress, backg)) == NULL)
     return (RETURN_FAILURE);
   SDL_RenderCopy(ress->rend, backg_texture, NULL, NULL);
-  SDL_RenderPresent(ress->rend);
   return (RETURN_SUCCESS);
 }
 

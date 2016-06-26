@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sun Jun 26 12:04:37 2016 Thomas Beaudet
+** Last update Sun Jun 26 19:06:40 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -19,7 +19,6 @@
 
 # define RETURN_SUCCESS		(0)
 # define RETURN_FAILURE		(-1)
-
 # define SOCKET_ERROR		(-1)
 # define USAGE			"./console -h [host-ip] -p [host-port]\n"
 # define MSZ			"msz" /* Taille de la carte */
@@ -46,7 +45,6 @@
 # define SMG			"smg" /* Message du serveur */
 # define SUC			"suc" /* Commande du serveur */
 # define SBP			"sbp" /* Mauvais parametres de commande */
-
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
