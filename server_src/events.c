@@ -5,23 +5,16 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Sun Jun 26 15:12:38 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:39 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int					event_new_player(t_server *server, va_list ap)
+int			event_broadcast(t_server *server, va_list ap)
 {
-  (void)ap;
-  (void)server;
-  return (RETURN_SUCCESS);
-}
-
-int					event_broadcast(t_server *server, va_list ap)
-{
-  int					i;
-  t_client				*sender;
-  char					*message;
+  int			i;
+  t_client		*sender;
+  char			*message;
 
   i = -1;
   sender = va_arg(ap, t_client *);

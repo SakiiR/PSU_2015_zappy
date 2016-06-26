@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 16:55:00 2016 Barthelemy Gouby
-** Last update Sun Jun 26 00:16:42 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:33 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -22,7 +22,7 @@ void		init_egg(t_egg *egg)
 
 void		add_egg(t_egg **egg_list, t_egg *new_egg)
 {
-  t_egg				*iterator;
+  t_egg		*iterator;
 
   if (*egg_list == NULL)
     *egg_list = new_egg;

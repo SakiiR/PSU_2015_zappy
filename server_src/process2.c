@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 24 16:44:11 2016 Barthelemy Gouby
-** Last update Sat Jun 25 15:14:07 2016 Erwan Dupard
+** Last update Sun Jun 26 17:44:35 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -30,7 +30,7 @@ static void			adding_sockets(t_server *server,
     }
 }
 
-int	select_sockets(t_server *server, fd_set *si, fd_set *so)
+int				select_sockets(t_server *server, fd_set *si, fd_set *so)
 {
   struct timeval		tv;
   int				max_socket;

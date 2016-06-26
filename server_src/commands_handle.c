@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sun Jun 26 16:01:49 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:17 2016 Erwan Dupard
 */
 
 #include <my_str_to_wordtab/my_str_to_wordtab.h>
