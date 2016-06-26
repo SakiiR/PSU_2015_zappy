@@ -5,18 +5,18 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Sun Jun 26 00:18:17 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:25 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int				        avance_command(t_server *server
-						       __attribute__((unused)),
-						       t_client *client,
-						       char *operands
-						       __attribute__((unused)))
+int			avance_command(t_server *server
+				       __attribute__((unused)),
+				       t_client *client,
+				       char *operands
+				       __attribute__((unused)))
 {
-  t_action				*new_action;
+  t_action		*new_action;
 
   if (client->type == DRONE)
     {
@@ -31,15 +31,15 @@ int				        avance_command(t_server *server
   return (RETURN_SUCCESS);
 }
 
-int					incantation_command(t_server *server
-							    __attribute__((unused)),
-							    t_client *client,
-							    char *operands
-							    __attribute__((unused)))
+int			incantation_command(t_server *server
+					    __attribute__((unused)),
+					    t_client *client,
+					    char *operands
+					    __attribute__((unused)))
 {
-  t_action				*new_action;
-  t_incantation				*incantation;
-  t_character				**players;
+  t_action		*new_action;
+  t_incantation		*incantation;
+  t_character		**players;
 
   incantation = get_incantation_by_level(client->character->level + 1);
   if (check_incantation(incantation,
@@ -64,12 +64,12 @@ int					incantation_command(t_server *server
   return (RETURN_SUCCESS);
 }
 
-int					prend_command(t_server *server
-						      __attribute__((unused)),
-						      t_client *client,
-						      char *operands)
+int			prend_command(t_server *server
+				      __attribute__((unused)),
+				      t_client *client,
+				      char *operands)
 {
-  t_action				*new_action;
+  t_action		*new_action;
 
   if (client->type == DRONE)
     {
@@ -94,12 +94,12 @@ int					prend_command(t_server *server
   return (RETURN_SUCCESS);
 }
 
-int					pose_command(t_server *server
-						     __attribute__((unused)),
-						     t_client *client,
-						     char *operands)
+int			pose_command(t_server *server
+				     __attribute__((unused)),
+				     t_client *client,
+				     char *operands)
 {
-  t_action				*new_action;
+  t_action		*new_action;
 
   if (client->type == DRONE)
     {

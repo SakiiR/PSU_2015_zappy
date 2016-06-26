@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Sun Jun 26 15:09:38 2016 Erwan Dupard
+** Last update Sun Jun 26 17:43:03 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -38,8 +38,8 @@ int			handle_actions(t_server *server)
 	    {
 	      if (trigger_event(server,
 				next_action->type,
-			        next_action->origin,
-			        next_action->argument) == RETURN_FAILURE)
+				next_action->origin,
+				next_action->argument) == RETURN_FAILURE)
 		return (RETURN_FAILURE);
 	      pop_action(&server->clients[i].character->action_queue);
 	    }

@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 14:32:57 2016 Gabriel Goude
-** Last update Sat Jun 25 18:57:15 2016 Gabriel Goude
+** Last update Sun Jun 26 17:14:54 2016 Erwan Dupard
 */
 
 #include <sys/select.h>
@@ -19,9 +19,7 @@ char				*read_buf(t_infos *infos)
   char				*msg;
 
   fill_set(infos);
-  while ((retval = select(infos->socket + 1,
-			  &(infos->select.rfds),
-			  NULL,
+  while ((retval = select(infos->socket + 1, &(infos->select.rfds), NULL,
 			  NULL,
 			  &(infos->select.tv))) < 0)
     fill_set(infos);

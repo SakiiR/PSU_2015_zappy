@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sun Jun 26 18:59:18 2016 Thomas Billot
+## Last update Sun Jun 26 19:42:08 2016 Thomas Billot
 ##
 
 CC		= gcc
@@ -30,11 +30,11 @@ CLIENT_SRCS	= client_src/main.c				\
 		  client_src/map.c				\
 		  client_src/list_fct.c				\
 		  client_src/buf.c				\
-		  client_src/update.c			\
-		  client_src/handle.c			\
-		  client_src/handle1.c			\
-		  client_src/handle2.c			\
-		  client_src/handle3.c			\
+		  client_src/update.c				\
+		  client_src/handle.c				\
+		  client_src/handle1.c				\
+		  client_src/handle2.c				\
+		  client_src/handle3.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 		  utils/my_str_to_wordtab/my_str_to_wordtab.c 	\
@@ -131,11 +131,11 @@ CLIENT_OBJS	= $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS	= $(SERVER_SRCS:.c=.o)
 GRAPHIC_OBJS	= $(GRAPHIC_SRCS:.c=.o)
 
-CFLAGS		+= -g3 -W -Wall -Werror -Wextra -pedantic -ansi -I./utils
+CFLAGS		+= -W -Wall -Werror -Wextra -pedantic -ansi -I./utils
 
 LDFLAGS		+=
 
-all: $(CLIENT_NAME) $(SERVER_NAME) $(GRAPHIC_NAME)
+all: $(SERVER_NAME) $(CLIENT_NAME) $(GRAPHIC_NAME)
 
 $(CLIENT_NAME): $(CLIENT_OBJS)
 	$(CC) -o $(CLIENT_BINARY) $(CLIENT_OBJS) $(CFLAGS) $(LDFLAGS)
@@ -144,7 +144,7 @@ $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) -o $(SERVER_BINARY) $(SERVER_OBJS) $(CFLAGS) $(LDFLAGS) -lm
 
 $(GRAPHIC_NAME): $(GRAPHIC_OBJS)
-	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2main -lSDL2  -lSDL2_image
+	$(CC) -o $(GRAPHIC_BINARY) $(GRAPHIC_OBJS) $(CFLAGS) $(LDFLAGS) -lm -lSDL2main -lSDL2 -lSDL2_image
 
 clean:
 	$(RM) $(CLIENT_OBJS)
