@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Sun Jun 26 12:04:37 2016 Thomas Beaudet
+** Last update Sun Jun 26 17:15:32 2016 Thomas Beaudet
 */
 
 #ifndef GRAPHICAL_H_
@@ -74,6 +74,7 @@
 
 # define DEAD			(0)
 # define ALIVE			(1)
+# define EGG			(2)
 
 /*
 ** Convertion map coord to screen cord
