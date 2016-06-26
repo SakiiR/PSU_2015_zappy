@@ -5,11 +5,11 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:52:53 2016 Gabriel Goude
-** Last update Sat Jun 25 15:43:10 2016 Gabriel Goude
+** Last update Sun Jun 26 16:06:40 2016 Erwan Dupard
 */
 
-#include "resources.h"
 #include <my_str_to_wordtab/my_str_to_wordtab.h>
+#include "resources.h"
 
 int				handle_avance(t_infos *infos, char *msg)
 {
