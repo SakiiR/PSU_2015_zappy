@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Sun Jun 26 17:17:11 2016 Erwan Dupard
+** Last update Sun Jun 26 17:32:36 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -17,7 +17,7 @@
 int			get_param(int ac, char **av, t_infos *infos)
 {
   int			i;
-  
+
   i = 1;
   if (ac != 7)
     return (RETURN_FAILURE);
