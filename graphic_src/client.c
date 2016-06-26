@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sun Jun 26 20:00:45 2016 Thomas Billot
+** Last update Sun Jun 26 20:22:25 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -143,11 +143,14 @@ int			launch_client(t_server *server, t_render *render)
 	return (RETURN_FAILURE);
       if (handle_server_input(&map, server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
+      else
+	{
+	  map_rendering(render, &map);
+	  SDL_RenderPresent(render->rend);
+	  clear_surface(render);
+	}
       if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      map_rendering(render, &map);
-      SDL_RenderPresent(render->rend);
-      clear_surface(render);
       if (sdl_event(render) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
     }
