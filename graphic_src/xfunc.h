@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Sun Jun 26 18:58:28 2016 Thomas Billot
+** Last update Sun Jun 26 20:37:52 2016 Karine Aknin
 */
 
 #ifndef XFUNC_H_
@@ -14,7 +14,7 @@
 # define BUFF_SIZE (1024)
 # define IS_NUMBER(c) ((c >= '0' && c <= '9'))
 
-#include <sys/socket.h>
+# include <sys/socket.h>
 
 char		*get_next_line(const int fd);
 char		**my_str_to_wordtab(const char *str, const char *forbidden);
