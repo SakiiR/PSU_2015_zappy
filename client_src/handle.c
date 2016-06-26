@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 21 17:02:35 2016 Gabriel Goude
-** Last update Sun Jun 26 16:08:54 2016 Erwan Dupard
+** Last update Sun Jun 26 17:41:42 2016 Karine Aknin
 */
 
 #include "resources.h"
