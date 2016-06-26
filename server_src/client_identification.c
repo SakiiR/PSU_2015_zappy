@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Sat Jun 25 15:09:31 2016 Erwan Dupard
+** Last update Sun Jun 26 15:15:34 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -94,6 +94,7 @@ int					initialize_drone(t_server *server,
   t_u64					i;
 
   i = 0;
+  printf("[^] New Drone.\n");
   while (i < server->game_data.nbr_of_teams)
     {
       if (strcmp(input, server->game_data.teams[i].name) == 0)
@@ -118,6 +119,7 @@ int					define_client_type(t_server *server,
 {
   if (strcmp(input, "GRAPHIC") == 0)
     {
+      printf("[^] New Graphic Client !\n");
       client->type = GRAPHIC;
       send_map_size(server, client, NULL);
       send_speed(server, client, NULL);
