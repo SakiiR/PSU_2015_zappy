@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Sun Jun 26 17:42:17 2016 Erwan Dupard
+** Last update Sun Jun 26 18:35:37 2016 Erwan Dupard
 */
 
 #include <my_str_to_wordtab/my_str_to_wordtab.h>
@@ -51,7 +51,7 @@ int					handle_command(char *input,
       if ((line = my_str_to_wordtab(input, " \t\n")) == NULL)
 	return (RETURN_FAILURE);
       i = -1;
-      while (g_commands[++i].command != NULL)
+      while (g_commands[++i].command != NULL && line && line[0])
 	{
 	  if (strcmp(g_commands[i].command, line[0]) == RETURN_SUCCESS)
 	    return (g_commands[i].f(server, client, line[1]));
