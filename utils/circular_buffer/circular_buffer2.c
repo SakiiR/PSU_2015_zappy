@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun  3 11:54:36 2016 Erwan Dupard
-** Last update Fri Jun  3 12:05:57 2016 Erwan Dupard
+** Last update Sun Jun 26 00:30:41 2016 Karine Aknin
 */
 
 #include "circular_buffer.h"
