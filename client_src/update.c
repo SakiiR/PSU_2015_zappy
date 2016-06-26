@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:56:28 2016 Gabriel Goude
-** Last update Sun Jun 26 17:18:36 2016 Erwan Dupard
+** Last update Sun Jun 26 17:33:20 2016 Erwan Dupard
 */
 
 #include "resources.h"
@@ -13,7 +13,7 @@
 int				update(t_infos *infos, int (**fct)(t_infos *, char *))
 {
   char				*msg;
-  
+
   while ((msg = read_buf(infos)) != NULL)
     {
       if (strncmp(msg, "mort\n", 5) != 0 && strncmp(msg, "broadcast", 9) != 0)
