@@ -5,11 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Sun Jun 26 19:15:50 2016 Thomas Billot
-=======
-** Last update Sun Jun 26 16:40:33 2016 Erwan Dupard
->>>>>>> 9a0fcdd707c3329cb5846385cf65744c755b0503
+** Last update Sun Jun 26 20:52:42 2016 Thomas Billot
 */
 
 #include <netinet/in.h>
@@ -47,6 +43,7 @@ int			check_options(t_option *options, char **argv)
 
 int			main(int argc, char *argv[])
 {
+  t_map			map;
   t_option		options;
   t_server		server;
   t_render		render;
@@ -64,7 +61,8 @@ int			main(int argc, char *argv[])
    return (RETURN_FAILURE);
   sdl_init();
   sdl_create_win(&render);
-  if (launch_client(&server, &render) == RETURN_FAILURE)
+  preload_textures(&render);
+  if (launch_client(&server, &render, &map) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Fri Jun 10 14:56:18 2016 Thomas Billot
-** Last update Sun Jun 26 20:22:25 2016 Thomas Billot
+** Last update Sun Jun 26 20:50:18 2016 Thomas Billot
 */
 
 #include <sys/select.h>
@@ -121,19 +121,16 @@ void			init_struct(t_map *map, struct timeval *tv)
   tv->tv_usec = 50;
 }
 
-int			launch_client(t_server *server, t_render *render)
+int			launch_client(t_server *server, t_render *render, t_map *map)
 {
-  t_map			map;
   struct timeval	tv;
   fd_set		si;
   fd_set		so;
   int			max_socket;
 
-  init_struct(&map, &tv);
-  preload_textures(render);
+  init_struct(map, &tv);
   while (SDL_PollEvent(&render->event) || 1)
     {
-      draw_backg(render);
       FD_ZERO(&si);
       FD_ZERO(&so);
       FD_SET(server->socket, &si);
@@ -141,15 +138,11 @@ int			launch_client(t_server *server, t_render *render)
       max_socket = server->socket;
       if (select(max_socket + 1, &si, &so, NULL, &tv) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
-      if (handle_server_input(&map, server, &si) == RETURN_FAILURE)
+      if (handle_server_input(map, server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       else
-	{
-	  map_rendering(render, &map);
-	  SDL_RenderPresent(render->rend);
-	  clear_surface(render);
-	}
-      if (handle_server_output(&map, server, &so) == RETURN_FAILURE)
+	map_rendering(render, map);
+      if (handle_server_output(map, server, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (sdl_event(render) == RETURN_FAILURE)
 	return (RETURN_FAILURE);

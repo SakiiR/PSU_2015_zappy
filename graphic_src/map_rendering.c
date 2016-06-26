@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Mon Jun 20 15:14:51 2016 Thomas Billot
-** Last update Sun Jun 26 20:06:46 2016 Thomas Billot
+** Last update Sun Jun 26 20:41:19 2016 Thomas Billot
 */
 
 #include "xfunc.h"
@@ -69,6 +69,7 @@ int		map_rendering(t_render *render, t_map *map)
   int		screen_y;
 
   i = map->x * map->y;
+  draw_backg(render);
   while (i-- > 0)
     {
       map_x = i % map->x;
@@ -82,5 +83,7 @@ int		map_rendering(t_render *render, t_map *map)
 	render_characters(render, map->tiles[i].characters, screen_x, screen_y);
       render_ressources(render, map->tiles[i].obj, screen_x, screen_y);
     }
+  SDL_RenderPresent(render->rend);
+  clear_surface(render);
   return (RETURN_SUCCESS);
 }
