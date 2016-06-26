@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Sat Jun 25 17:35:23 2016 Thomas Billot
+** Last update Sun Jun 26 20:35:12 2016 Karine Aknin
 */
 
 #include "graphical.h"

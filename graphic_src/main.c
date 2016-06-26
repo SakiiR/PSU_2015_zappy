@@ -5,11 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-<<<<<<< HEAD
-** Last update Sun Jun 26 19:15:50 2016 Thomas Billot
-=======
-** Last update Sun Jun 26 16:40:33 2016 Erwan Dupard
->>>>>>> 9a0fcdd707c3329cb5846385cf65744c755b0503
+** Last update Sun Jun 26 20:29:00 2016 Karine Aknin
 */
 
 #include <netinet/in.h>
