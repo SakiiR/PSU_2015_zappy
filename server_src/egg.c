@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 20 16:55:00 2016 Barthelemy Gouby
-** Last update Sun Jun 26 16:27:58 2016 Karine Aknin
+** Last update Sun Jun 26 17:42:33 2016 Erwan Dupard
 */
 
 #include "server.h"
