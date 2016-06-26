@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:52:53 2016 Gabriel Goude
-** Last update Sun Jun 26 17:15:41 2016 Erwan Dupard
+** Last update Sun Jun 26 17:39:56 2016 Karine Aknin
 */
 
 #include <my_str_to_wordtab/my_str_to_wordtab.h>
@@ -94,4 +94,3 @@ int				handle_voir(t_infos *infos, char *msg)
   remove_elem(infos);
   return (RETURN_SUCCESS);
 }
-

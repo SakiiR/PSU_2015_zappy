@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:52:53 2016 Gabriel Goude
-** Last update Wed Jun 22 16:12:01 2016 Erwan Dupard
+** Last update Sun Jun 26 17:40:40 2016 Karine Aknin
 */
 
 #include "resources.h"
@@ -44,4 +44,3 @@ int				handle_incantation(t_infos *infos, char *msg)
   remove_elem(infos);
   return (RETURN_SUCCESS);
 }
-
