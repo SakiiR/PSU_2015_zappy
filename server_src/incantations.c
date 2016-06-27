@@ -10,7 +10,8 @@
 
 #include "server.h"
 
-static  t_incantation			g_incantations[] = {
+static  t_incantation			g_incantations[] =
+{
   {2, 1, {0, 1, 0, 0, 0, 0, 0}},
   {3, 2, {0, 1, 1, 1, 0, 0, 0}},
   {4, 2, {0, 2, 0, 1, 0, 2, 0}},
