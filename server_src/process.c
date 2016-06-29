@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Sun Jun 26 17:44:32 2016 Erwan Dupard
+** Last update Wed Jun 29 14:57:26 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -66,34 +66,6 @@ static int			handle_server_output(t_server *server, fd_set *set_out)
   return (RETURN_SUCCESS);
 }
 
-static int			add_client(t_server *server)
-{
-  socklen_t			length;
-  int				i;
-  t_client			*new_client;
-
-  new_client = NULL;
-  i = -1;
-  while (++i < MAX_CLIENTS)
-    {
-      if (server->clients[i].socket == 0)
-	new_client = &server->clients[i];
-    }
-  if (new_client == NULL)
-    return (RETURN_FAILURE);
-  length = sizeof(new_client->in);
-  if ((new_client->socket = accept(server->socket,
-				   (struct sockaddr *)&new_client->in,
-				   &length)) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
-  new_client->type = UNSPECIFIED;
-  printf("[^] New connection : %s:%d\n",
-	 inet_ntoa(new_client->in.sin_addr),
-	 ntohs(new_client->in.sin_port));
-  write_to_buffer(&new_client->buffer_out, WELCOME, strlen(WELCOME));
-  return (RETURN_SUCCESS);
-}
-
 int				process_server(t_server *server)
 {
   fd_set			si;
@@ -107,10 +79,7 @@ int				process_server(t_server *server)
       if (select_sockets(server, &si, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (FD_ISSET(server->socket, &si))
-	{
-	  if (add_client(server) == RETURN_FAILURE)
-	    return (RETURN_FAILURE);
-	}
+	add_client(server);
       if (handle_clients_input(server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (handle_events(server) == RETURN_FAILURE)

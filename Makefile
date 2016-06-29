@@ -5,7 +5,7 @@
 ## Login   <dupard_e@epitech.net>
 ## 
 ## Started on  Sat Jun  4 17:39:33 2016 Erwan Dupard
-## Last update Sun Jun 26 21:02:16 2016 Erwan Dupard
+## Last update Wed Jun 29 14:50:21 2016 Erwan Dupard
 ##
 
 CC		= gcc
@@ -123,6 +123,7 @@ SERVER_SRCS	= server_src/main.c				\
 		  server_src/incantations2.c			\
 		  server_src/egg.c				\
 		  server_src/end.c				\
+		  server_src/client.c				\
 		  utils/circular_buffer/circular_buffer.c	\
 		  utils/circular_buffer/circular_buffer2.c	\
 		  utils/my_str_to_wordtab/my_str_to_wordtab.c	\
