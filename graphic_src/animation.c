@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Thu Jun 23 15:25:48 2016 Thomas Beaudet
-** Last update Thu Jun 23 17:52:02 2016 Thomas Beaudet
+** Last update Sat Jun 25 15:23:37 2016 Thomas Beaudet
 */
 
 #include "graphical.h"
@@ -58,34 +58,3 @@ void			set_anim(t_anim *anim, int beg_frame,
   anim->nb_frames = frames_nb;
   anim->delay = delay;
 }
-
-int			get_frame(t_anim *anim)
-{
-  return (anim->beg_frame + (SDL_GetTicks() / anim->delay) % anim->nb_frames);
-}
-
-void			setup_sprite(t_sprite *sprite,
-				     int x, int y,
-				     t_charset *charset_, int begin_frame)
-{
-  sprite->pos.x = (Sint16) x;
-  sprite->pos.y = (Sint16) y;
-  sprite->charset = charset_;
-  set_anim(&sprite->anim, begin_frame, 1, 1);
-  sprite->way = NORTH;
-  sprite->state = STOP;
-}
-
-void			display_sprite(t_render *ress, t_sprite *sprite)
-{
-  SDL_Rect		src;
-  int			frame;
-
-  frame = get_frame(&sprite->anim);
-  get_src_charset(sprite->charset, &src, frame);
-  SDL_RenderCopy(sprite->charset->charset_, &src, ress->screen, &sprite->pos);
-}
-
-/*    Anim function */
-
-void			Update(t_sprite sp[1], char *action, int start_frame[1])

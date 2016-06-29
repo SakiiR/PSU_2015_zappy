@@ -5,19 +5,20 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:46:39 2016 Erwan Dupard
-** Last update Fri Jun 24 17:10:12 2016 Barthelemy Gouby
+** Last update Sun Jun 26 17:44:00 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-static  t_incantation			g_incantations[] = {
+static  t_incantation			g_incantations[] =
+{
   {2, 1, {0, 1, 0, 0, 0, 0, 0}},
   {3, 2, {0, 1, 1, 1, 0, 0, 0}},
   {4, 2, {0, 2, 0, 1, 0, 2, 0}},
-  {4, 4, {0, 1, 1, 2, 0, 1, 0}},
-  {5, 4, {0, 1, 2, 1, 3, 0, 0}},
-  {6, 6, {0, 1, 2, 3, 0, 1, 0}},
-  {7, 6, {0, 2, 2, 2, 2, 2, 1}},
+  {5, 4, {0, 1, 1, 2, 0, 1, 0}},
+  {6, 4, {0, 1, 2, 1, 3, 0, 0}},
+  {7, 6, {0, 1, 2, 3, 0, 1, 0}},
+  {8, 6, {0, 2, 2, 2, 2, 2, 1}},
   {0, 0, {0, 0, 0, 0, 0, 0, 0}}
 };
 
@@ -78,7 +79,7 @@ int					check_incantation(t_incantation *incantation,
 							  __attribute__((unused)))
 {
   t_character				*iterator;
-  int				        i;
+  int					i;
   t_character				**players;
 
   i = 0;
@@ -106,6 +107,7 @@ int					do_incantation(t_case *c,
   t_character				*iterator;
   int					i;
 
+  printf("[+] Incantation on (%d, %d)\n", c->x, c->y);
   iterator = c->characters;
   while (iterator)
     {

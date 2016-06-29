@@ -5,17 +5,18 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:48:27 2016 Erwan Dupard
-** Last update Wed Jun 22 16:06:47 2016 Erwan Dupard
+** Last update Wed Jun 29 16:02:48 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
-static t_client			*init_clients(t_client *clients)
+static t_client			*init_clients(t_client *clients, t_server *server)
 {
   int				i;
 
   i = -1;
-  while (++i < MAX_CLIENTS)
+  server->client_pool_size = MAX_CLIENTS;
+  while (++i < server->client_pool_size)
     {
       clients[i].socket = 0;
       clients[i].host_name = NULL;
@@ -47,7 +48,7 @@ static int			initialize_socket(t_server *server)
   if (listen(server->socket, 10) == -1)
     return (RETURN_FAILURE);
   printf("[^] Listenning on port %d\n", server->port);
-  if (!(server->clients = init_clients(server->clients)))
+  if (!(server->clients = init_clients(server->clients, server)))
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }
@@ -57,7 +58,7 @@ static void			close_connection(t_server *server)
   int				i;
 
   i = -1;
-  while (i < MAX_CLIENTS)
+  while (i < server->client_pool_size)
     {
       if (server->clients[i].socket > 0)
 	close(server->clients[i].socket);
@@ -69,10 +70,20 @@ static void			close_connection(t_server *server)
   free(server->clients);
 }
 
+static void			init_buffer(t_server *server)
+{
+  int				i;
+
+  i = -1;
+  while (++i < PAGE_SIZE - 1)
+    server->buffer[i] = 0;
+}
+
 int				main(int argc, char **argv)
 {
   t_server			server;
 
+  init_buffer(&server);
   if (get_options(argc, argv, &server) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   if (initialize_map(&server.game_data.map) == RETURN_FAILURE)

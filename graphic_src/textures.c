@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Tue Jun 21 12:59:05 2016 Thomas Billot
-** Last update Thu Jun 23 09:52:46 2016 Thomas Beaudet
+** Last update Sun Jun 26 20:36:43 2016 Karine Aknin
 */
 
 #include "graphical.h"
@@ -15,7 +15,15 @@ static char	*g_textures[] =
     T_GRASS,
     T_BORDER_DARK,
     T_BORDER_LIGHT,
-    T_CHARACTER
+    T_CHARACTER,
+    T_FOOD,
+    T_LINEMATE,
+    T_DERAUMERE,
+    T_MENDIANE,
+    T_PHIRAS,
+    T_SIBUR,
+    T_THYSTAME,
+    T_EGG
   };
 
 int		preload_textures(t_render *ress)
@@ -29,8 +37,8 @@ int		preload_textures(t_render *ress)
 	printf("Loaded bmp: %s\n", g_textures[i]);
       else
 	return (RETURN_FAILURE);
-      if ((ress->tileset[i].texture = create_texture(ress,
-							  ress->tileset[i].bmp)) != NULL)
+      if ((ress->tileset[i].texture =
+	   create_texture(ress, ress->tileset[i].bmp)) != NULL)
 	printf("Loaded texture for: %s\n", g_textures[i]);
       else
 	return (RETURN_FAILURE);

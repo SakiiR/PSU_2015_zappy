@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Wed Jun 29 14:58:00 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:58:25 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -22,12 +22,6 @@ void			set_time_speed(t_server *server)
 	 (int)length);
   printf("unit length usecond:  %i\n",
 	 (int)((length - (int) length) * 1000000));
-  server->select_timeout.tv_sec = server->game_data.tick_length.tv_sec / 2;
-  server->select_timeout.tv_usec = server->game_data.tick_length.tv_usec / 2;
-  printf("timeout length second:  %i\n",
-	 (int) server->select_timeout.tv_sec);
-  printf("timeout length usecond:  %i\n",
-	 (int) server->select_timeout.tv_usec);
   gettimeofday(&server->game_data.last_tick, NULL);
 }
 
@@ -37,7 +31,7 @@ int			handle_actions(t_server *server)
   t_action		*next_action;
 
   i = -1;
-  while (++i < MAX_CLIENTS)
+  while (++i < server->client_pool_size)
     {
       if (server->clients[i].socket != 0
 	  && server->clients[i].type == DRONE
@@ -48,8 +42,8 @@ int			handle_actions(t_server *server)
 	    {
 	      if (trigger_event(server,
 				next_action->type,
-			        next_action->origin,
-			        next_action->argument) == RETURN_FAILURE)
+				next_action->origin,
+				next_action->argument) == RETURN_FAILURE)
 		return (RETURN_FAILURE);
 	      pop_action(&server->clients[i].character->action_queue);
 	    }
@@ -65,19 +59,18 @@ int			eggs_life_cycle(t_server *server)
   unsigned int		i;
   t_egg			*iterator;
 
-  i = 0;
-  while (i < server->game_data.nbr_of_teams)
+  i = -1;
+  while (++i < server->game_data.nbr_of_teams)
     {
-      iterator = server->game_data.teams[i++].eggs;
+      iterator = server->game_data.teams[i].eggs;
       while (iterator)
       	{
       	  if (!iterator->hatched)
       	    {
-      	      if (iterator->timer == 0)
+      	      if (iterator->timer <= 0)
 		{
 		  iterator->hatched = 1;
-		  sprintf(server->buffer, "eht %i\n",
-			  iterator->id);
+		  sprintf(server->buffer, "eht %i\n", iterator->id);
 		  graphic_broadcast(server, server->buffer);
 		}
       	      else

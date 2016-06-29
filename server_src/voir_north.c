@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Thu Jun 23 17:43:37 2016 Karine Aknin
+** Last update Sun Jun 26 17:44:48 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -43,7 +43,7 @@ int		generate_x_north(t_character *character, int base_size,
       while (x_count > 0)
         {
           if ((x -= 1) < 0)
-            x = map->width - 1;
+	    x = map->width - 1;
           --x_count;
         }
     }

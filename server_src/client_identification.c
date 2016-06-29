@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon Jun 13 12:11:17 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:35:28 2016 Barthelemy Gouby
+** Last update Sun Jun 26 17:42:14 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -52,8 +52,8 @@ int					initialize_character(t_server *server,
   client->character->next_in_case = NULL;
   place_character(server, client, team);
   sprintf(server->buffer, "%i\n%i %i\n",
-	  team->max_members - team->base_members +
-	  number_of_hatched_eggs(team->eggs),
+	  team->max_members - team->base_members
+	  + number_of_hatched_eggs(team->eggs),
 	  server->game_data.map.width,
 	  server->game_data.map.height);
   write_to_buffer(&client->buffer_out,
@@ -94,6 +94,7 @@ int					initialize_drone(t_server *server,
   t_u64					i;
 
   i = 0;
+  printf("[^] New Drone.\n");
   while (i < server->game_data.nbr_of_teams)
     {
       if (strcmp(input, server->game_data.teams[i].name) == 0)
@@ -118,6 +119,7 @@ int					define_client_type(t_server *server,
 {
   if (strcmp(input, "GRAPHIC") == 0)
     {
+      printf("[^] New Graphic Client !\n");
       client->type = GRAPHIC;
       send_map_size(server, client, NULL);
       send_speed(server, client, NULL);

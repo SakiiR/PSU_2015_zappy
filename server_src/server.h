@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 29 14:49:09 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:52:08 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -91,10 +91,10 @@ typedef struct s_team			t_team;
 typedef struct				s_character
 {
   t_u64					level;
-  t_u64				        id;
+  t_u64					id;
   t_team				*team;
   t_quantity				quantities[NUMBER_OF_TYPES];
-  e_orientation			        orientation;
+  e_orientation				orientation;
   t_action				*action_queue;
   t_u64					hunger_timer;
   char					base_member;
@@ -133,7 +133,7 @@ typedef struct				s_egg
 {
   t_u64					id;
   int					hatched;
-  t_u64					timer;
+  int					timer;
   t_u64					x;
   t_u64					y;
   struct s_egg				*next;
@@ -168,9 +168,10 @@ typedef struct				s_server
   struct sockaddr_in			in;
   int					port;
   t_client				*clients;
+  int					client_pool_size;
   struct timeval			select_timeout;
   t_game_data				game_data;
-  char					buffer[PAGE_SIZE];
+  char					buffer[PAGE_SIZE + 1];
 }					t_server;
 
 typedef struct				s_command
@@ -187,6 +188,8 @@ typedef struct				s_voir
   int					(*f)(t_map *map, t_client *client,
 					     t_case **cases);
 }					t_voir;
+
+int					add_client(t_server *server);
 
 int					process_server(t_server *server);
 int					select_sockets(t_server *server,
@@ -216,13 +219,13 @@ void					remove_character_from_case(t_case *c,
 								   t_character *character);
 void					place_character_randomly(t_map *map,
 								 t_character *character);
+void					init_egg(t_egg *egg);
 int					place_character_at_egg(t_map *map,
 							       t_character *character,
 							       t_egg **eggs);
 void					change_coordinate(unsigned int *coordinate,
 							  int change,
 							  unsigned int max_value);
-void					text_display_map(t_map *map);
 void					add_egg(t_egg **egg_list, t_egg *new_egg);
 t_egg					*remove_egg(t_egg **egg_list, t_egg *egg);
 int					number_of_hatched_eggs(t_egg *egg_list);
@@ -279,7 +282,8 @@ int					option_id_speed(char **args,
 int					option_id_teams(char **args,
 							t_server *server);
 
-int				        graphic_broadcast(t_server *server, char *message);
+int					graphic_broadcast(t_server *server,
+							  char *message);
 int					send_map_size(t_server *server,
 						      t_client *client,
 						      char *operands);
@@ -298,7 +302,7 @@ int					send_team_names(t_server *server,
 int					change_time_unit(t_server *server,
 							 t_client *client,
 							 char *operands);
-int				        send_player_level(t_server *server,
+int					send_player_level(t_server *server,
 							  t_client *client,
 							  char *operands);
 void					write_inventory_string(t_server *server,
@@ -306,17 +310,18 @@ void					write_inventory_string(t_server *server,
 void					write_case_content_string(t_server *server,
 								  int x,
 								  int y);
-int				        send_player_inventory(t_server *server,
+int					send_player_inventory(t_server *server,
 							      t_client *client,
 							      char *operands);
-int				        send_player_position(t_server *server,
+int					send_player_position(t_server *server,
 							     t_client *client,
 							     char *operands);
 
+int					end_command(t_client *client);
 int					voir_command(t_server *server,
 						     t_client *client,
 						     char *operands);
-int				        inventaire_command(t_server *server,
+int					inventaire_command(t_server *server,
 							   t_client *client,
 							   char *operands);
 int					droite_command(t_server *server,
@@ -325,7 +330,7 @@ int					droite_command(t_server *server,
 int					gauche_command(t_server *server,
 						       t_client *client,
 						       char *operands);
-int				        avance_command(t_server *server,
+int					avance_command(t_server *server,
 						       t_client *client,
 						       char *operands);
 int					prend_command(t_server *server,
@@ -427,6 +432,10 @@ void					expulse_east(int x,
 						      int y,
 						      int *new_x,
 						      int *new_y);
+
+int					connect_nbr(t_server *server,
+						    t_client *client,
+						    char *operands);
 
 # include "events.h"
 

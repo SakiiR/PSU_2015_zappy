@@ -5,13 +5,15 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Wed Jun 22 14:29:48 2016 Thomas Billot
-** Last update Wed Jun 22 14:32:14 2016 Thomas Billot
+** Last update Sun Jun 26 19:00:37 2016 Thomas Billot
 */
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
+#include <time.h>
 #include "xfunc.h"
 
 int		xsocket(int domain, int type, int protocol)
@@ -46,4 +48,28 @@ int		xclose(int fd)
       return (-1);
     }
   return (0);
+}
+
+int		random_number(int min, int max)
+{
+  int		result;
+  int		max_gen;
+  int		min_gen;
+
+  result = 0;
+  max_gen = 0;
+  min_gen = 0;
+  if (min < max)
+    {
+      min_gen = min;
+      max_gen = max + 1;
+    }
+  else
+    {
+      min_gen = max;
+      max_gen = min + 1;
+    }
+  srand(time(NULL));
+  result = (rand() % (max_gen - min_gen - min_gen)) + min_gen;
+  return (result);
 }

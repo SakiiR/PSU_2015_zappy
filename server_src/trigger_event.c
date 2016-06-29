@@ -5,16 +5,13 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 10:32:53 2016 Erwan Dupard
-** Last update Mon Jun 20 19:28:50 2016 Karine Aknin
+** Last update Sun Jun 26 17:44:40 2016 Erwan Dupard
 */
 
 #include "server.h"
 
 static const t_event_handler		g_events[] = {
-  {NEW_PLAYER, &event_new_player},
   {BROADCAST, &event_broadcast},
-  {END_INCANTATION, &event_end_incantation},
-  {NEW_INCANTATION, &event_new_incantation},
   {LAY_EGG, &event_lay_egg},
   {PLAYER_EXPULSED, &event_player_expulsed},
   {TAKE_RESOURCE, &event_take_ressource},
@@ -25,14 +22,15 @@ static const t_event_handler		g_events[] = {
   {INCANTATION, &event_incantation},
   {EXPULSE, &event_expulse},
   {VOIR, &event_voir},
+  {END_GAME, &event_endgame},
   {0, NULL}
 };
 
-int				        trigger_event(t_server *server,
+int					trigger_event(t_server *server,
 						      e_event_type type,
 						      ...)
 {
-  va_list			        argp;
+  va_list				argp;
   int					i;
 
   va_start(argp, type);
@@ -41,7 +39,8 @@ int				        trigger_event(t_server *server,
     {
       if (type == g_events[i].type)
 	{
-	  g_events[i].f(server, argp);
+	  if (g_events[i].f(server, argp) == RETURN_FAILURE)
+	    return (RETURN_FAILURE);
 	}
     }
   va_end(argp);

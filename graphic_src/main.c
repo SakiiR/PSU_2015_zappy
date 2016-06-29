@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:41:15 2016 Thomas Billot
-** Last update Fri Jun 24 14:02:02 2016 Thomas Beaudet
+** Last update Sun Jun 26 20:55:16 2016 Thomas Billot
 */
 
 #include <netinet/in.h>
@@ -30,23 +30,20 @@ int			check_options(t_option *options, char **argv)
 {
   int			i;
 
-  if (strcmp(argv[1], "-h") || !(is_valid_ip(argv[2])))
-    return (RETURN_FAILURE);
-  i = -1;
-  while (argv[4][++i] != '\0')
+  i = 0;
+  while (argv[++i])
     {
-      if (!(IS_NUMBER(argv[4][i])))
-	return (RETURN_FAILURE);
+      if (strcmp(argv[i], "-h") == 0 && argv[i + 1])
+	options->ip = argv[i + 1];
+      if (strcmp(argv[i], "-p") == 0 && argv[i + 1])
+	options->port = atoi(argv[i + 1]);
     }
-  if (strcmp(argv[3], "-p"))
-    return (RETURN_FAILURE);
-  options->ip = argv[2];
-  options->port = atoi(argv[4]);
   return (RETURN_SUCCESS);
 }
 
 int			main(int argc, char *argv[])
 {
+  t_map			map;
   t_option		options;
   t_server		server;
   t_render		render;
@@ -64,8 +61,8 @@ int			main(int argc, char *argv[])
    return (RETURN_FAILURE);
   sdl_init();
   sdl_create_win(&render);
-  draw_backg(&render);
-  if (launch_client(&server, &render) == RETURN_FAILURE)
+  preload_textures(&render);
+  if (launch_client(&server, &render, &map) == RETURN_FAILURE)
     return (RETURN_FAILURE);
   return (RETURN_SUCCESS);
 }

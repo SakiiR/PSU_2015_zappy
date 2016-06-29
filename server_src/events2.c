@@ -5,24 +5,23 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 15 15:43:26 2016 Erwan Dupard
-** Last update Thu Jun 23 19:47:44 2016 Barthelemy Gouby
+** Last update Sun Jun 26 17:42:50 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int					event_player_expulsed(t_server *server, va_list ap)
+int			event_player_expulsed(t_server *server, va_list ap)
 {
   (void)server;
   (void)ap;
   return (RETURN_SUCCESS);
 }
 
-int					event_turn(t_server *server, va_list ap)
+int			event_turn(t_server *server, va_list ap)
 {
-  t_client				*client;
-  e_turn				turn;
+  t_client		*client;
+  e_turn		turn;
 
-  printf("executing turn\n");
   client = va_arg(ap, t_client *);
   turn = va_arg(ap, e_turn);
   if (turn == RIGHT)
@@ -43,9 +42,9 @@ int					event_turn(t_server *server, va_list ap)
   return (RETURN_SUCCESS);
 }
 
-void					change_coordinate(unsigned int *coordinate,
-							  int change,
-							  unsigned int max_value)
+void			change_coordinate(unsigned int *coordinate,
+					  int change,
+					  unsigned int max_value)
 {
   if (*coordinate == 0 && change == -1)
     *coordinate = max_value - 1;
@@ -55,10 +54,10 @@ void					change_coordinate(unsigned int *coordinate,
     *coordinate += change;
 }
 
-void					change_case(t_server *server, t_client *client)
+void			change_case(t_server *server, t_client *client)
 {
-  t_u64					x;
-  t_u64					y;
+  t_u64			x;
+  t_u64			y;
 
   x = client->character->current_case->x;
   y = client->character->current_case->y;
@@ -77,12 +76,13 @@ void					change_case(t_server *server, t_client *client)
   add_character_to_case(client->character->current_case, client->character);
 }
 
-int					event_advance(t_server *server, va_list ap)
+int			event_advance(t_server *server, va_list ap)
 {
-  t_client			*client;
+  t_client		*client;
 
   client = va_arg(ap, t_client *);
   change_case(server, client);
+  printf("[^] Avance.\n");
   sprintf(server->buffer, "ppo %i %i %i %i\n",
 	  client->character->id,
 	  client->character->current_case->x,

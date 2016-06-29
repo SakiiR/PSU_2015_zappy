@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon May 30 18:55:33 2016 Barthelemy Gouby
-** Last update Wed Jun 29 14:42:01 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:01:37 2016 Barthelemy Gouby
 */
 
 #ifndef _CIRCULAR_BUFFER_H_
@@ -18,7 +18,7 @@
 
 typedef struct	s_circular_buffer
 {
-  char	        *memory;
+  char		*memory;
   unsigned int	valid_data_start;
   unsigned int	valid_data_end;
   unsigned int	size;

@@ -5,14 +5,14 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 10:53:45 2016 Barthelemy Gouby
-** Last update Wed Jun 22 15:57:15 2016 Erwan Dupard
+** Last update Sun Jun 26 17:41:16 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int		number_of_actions(t_action *action_queue)
+int			number_of_actions(t_action *action_queue)
 {
-  int		number_of_actions;
+  int			number_of_actions;
 
   number_of_actions = -1;
   while (++number_of_actions && action_queue)
@@ -20,9 +20,10 @@ int		number_of_actions(t_action *action_queue)
   return (number_of_actions);
 }
 
-void		add_action(t_action **action_queue, t_action *new_action)
+void			add_action(t_action **action_queue,
+				   t_action *new_action)
 {
-  t_action				*iterator;
+  t_action		*iterator;
 
   if (number_of_actions(*action_queue) < 10)
     {
@@ -38,9 +39,9 @@ void		add_action(t_action **action_queue, t_action *new_action)
     }
 }
 
-void		pop_action(t_action **action_queue)
+void			pop_action(t_action **action_queue)
 {
-  t_action	*action;
+  t_action		*action;
 
   if (*action_queue)
     {

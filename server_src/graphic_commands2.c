@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon Jun 13 18:43:41 2016 Erwan Dupard
-** Last update Fri Jun 24 14:34:47 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:59:36 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -31,7 +31,7 @@ t_client				*get_client_by_character_id(t_server *server,
   int					i;
 
   i = -1;
-  while (++i < MAX_CLIENTS)
+  while (++i < server->client_pool_size)
     {
       if (server->clients[i].socket != 0 &&
 	  server->clients[i].type == DRONE &&
@@ -48,33 +48,19 @@ int				        send_player_level(t_server *server,
   t_client				*client_of_character;
 
   if (!operands ||
-      !(client_of_character = get_client_by_character_id(server, atoi(operands))))
+      !(client_of_character = get_client_by_character_id(server,
+							 atoi(operands))))
     write_to_buffer(&client->buffer_out, "sbp\n", strlen("sbp\n"));
   else
     {
       sprintf(server->buffer, "plv %i %i\n",
 	      client_of_character->character->id,
 	      client_of_character->character->level);
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out,
+		      server->buffer,
+		      strlen(server->buffer));
     }
   return (RETURN_SUCCESS);
-}
-
-void					write_inventory_string(t_server *server,
-							       t_character *character)
-{
-  sprintf(server->buffer,
-	  "pin %i %i %i %i %i %i %i %i %i %i\n",
-	  character->id,
-	  character->current_case->x,
-	  character->current_case->y,
-	  character->quantities[NOURRITURE],
-	  character->quantities[LINEMATE],
-	  character->quantities[DERAUMERE],
-	  character->quantities[SIBUR],
-	  character->quantities[MENDIANE],
-	  character->quantities[PHIRAS],
-	  character->quantities[THYSTAME]);
 }
 
 int					send_player_inventory(t_server *server,
@@ -85,14 +71,15 @@ int					send_player_inventory(t_server *server,
   t_client				*client_of_character;
 
   if (!operands ||
-      !(client_of_character = get_client_by_character_id(server, atoi(operands))))
+      !(client_of_character = get_client_by_character_id(server,
+							 atoi(operands))))
     write_to_buffer(&client->buffer_out, "sbp\n", strlen("sbp\n"));
   else
     {
       write_inventory_string(server, client->character);
       write_to_buffer(&client->buffer_out,
 		      server->buffer,
-		      strlen(server->buffer)); 
+		      strlen(server->buffer));
     }
   return (RETURN_SUCCESS);
 }
@@ -105,7 +92,8 @@ int					send_player_position(t_server *server,
   t_client				*client_of_character;
 
   if (!operands ||
-      !(client_of_character = get_client_by_character_id(server, atoi(operands))))
+      !(client_of_character = get_client_by_character_id(server,
+							 atoi(operands))))
     write_to_buffer(&client->buffer_out, "sbp\n", strlen("sbp\n"));
   else
     {
@@ -114,7 +102,9 @@ int					send_player_position(t_server *server,
 	      client_of_character->character->current_case->x,
 	      client_of_character->character->current_case->y,
 	      client_of_character->character->orientation + 1);
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out,
+		      server->buffer,
+		      strlen(server->buffer));
     }
   return (RETURN_SUCCESS);
 }

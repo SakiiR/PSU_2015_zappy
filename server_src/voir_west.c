@@ -5,7 +5,7 @@
 ** Login   <aknin_k@epitech.net>
 ** 
 ** Started on  Mon Jun 20 15:25:23 2016 Karine Aknin
-** Last update Fri Jun 24 13:59:41 2016 Erwan Dupard
+** Last update Sun Jun 26 17:44:55 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -30,11 +30,11 @@ int		generate_x_west(t_character *character, int level,
   return (x);
 }
 
-int             generate_y_west(t_character *character, int base_size,
+int		generate_y_west(t_character *character, int base_size,
 				t_map *map)
 {
-  int           y;
-  int           y_count;
+  int		y;
+  int		y_count;
 
   if ((y = character->current_case->y + (base_size / 2))
       > (int)map->height - 1)
@@ -62,12 +62,12 @@ t_case		*find_first_case_west(t_map *map, t_character *character,
   return (map_get_case_at(x, y, map));
 }
 
-int             save_case_line_west(t_map *map, t_case **cases,
+int		save_case_line_west(t_map *map, t_case **cases,
 				    t_case *case_it, int base_size)
 {
-  int           i;
-  int           x;
-  int           y;
+  int		i;
+  int		x;
+  int		y;
 
   i = 0;
   x = case_it->x;

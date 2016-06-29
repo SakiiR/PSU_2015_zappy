@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:48:16 2016 Barthelemy Gouby
-** Last update Tue Jun 21 12:04:44 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:59:08 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -26,6 +26,8 @@ void			consume_food(t_server *server, t_client *client)
 	  graphic_broadcast(server, server->buffer);
 	  if (client->character->base_member)
 	    --client->character->team->base_members;
+	  remove_character_from_case(client->character->current_case,
+				     client->character);
 	  close(client->socket);
 	  client->socket = 0;
 	  client->type = UNSPECIFIED;
@@ -40,7 +42,7 @@ int			player_food_consumption(t_server *server)
   int			i;
 
   i = -1;
-  while (++i < MAX_CLIENTS)
+  while (++i < server->client_pool_size)
     {
       if (server->clients[i].socket != 0 && server->clients[i].type == DRONE)
 	consume_food(server, &server->clients[i]);

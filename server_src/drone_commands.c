@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Thu Jun 16 13:10:02 2016 Barthelemy Gouby
-** Last update Thu Jun 23 17:19:17 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:22 2016 Erwan Dupard
 */
 
 #include <math.h>
@@ -21,7 +21,6 @@ int					voir_command(t_server *server
 
   if (client->type == DRONE)
     {
-      printf("creating voir action\n");
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = VOIR;
@@ -43,7 +42,6 @@ int				        inventaire_command(t_server *server
 
   if (client->type == DRONE)
     {
-      printf("creating inventaire action\n");
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = INVENTORY;
@@ -65,7 +63,6 @@ int					droite_command(t_server *server
 
   if (client->type == DRONE)
     {
-      printf("creating droite action\n");
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = TURN;
@@ -88,7 +85,6 @@ int				        gauche_command(t_server *server
 
   if (client->type == DRONE)
     {
-      printf("creating gauche action\n");
       if ((new_action = malloc(sizeof(*new_action))) == NULL)
 	return (RETURN_FAILURE);
       new_action->type = TURN;
@@ -97,7 +93,6 @@ int				        gauche_command(t_server *server
       new_action->argument = (char *) LEFT;
       new_action->next = NULL;
       add_action(&client->character->action_queue, new_action);
-      printf("finished creating action\n");
     }
   return (RETURN_SUCCESS);
 }

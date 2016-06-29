@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:59:16 2016 Thomas Billot
-** Last update Wed Jun 15 12:18:20 2016 Thomas Billot
+** Last update Sun Jun 26 16:39:49 2016 Erwan Dupard
 */
 
 #include <sys/socket.h>
@@ -16,6 +16,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <netdb.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "graphical.h"
 #include "xfunc.h"
 
@@ -24,6 +27,7 @@ int			setup_networking(t_option *options)
   t_sockaddr		sin;
   t_socket		sock;
   t_protocol		*pe;
+  struct hostent	*host;
 
   if ((pe = getprotobyname("TCP")) == NULL)
     {
@@ -32,8 +36,10 @@ int			setup_networking(t_option *options)
     }
   if ((sock = xsocket(AF_INET, SOCK_STREAM, pe->p_proto)) == SOCKET_ERROR)
     return (SOCKET_ERROR);
+  if ((host = gethostbyname(options->ip)) == NULL)
+    return (SOCKET_ERROR);
   sin.sin_family = AF_INET;
-  sin.sin_addr.s_addr = inet_addr(options->ip);
+  bcopy(host->h_addr_list[0], &(sin.sin_addr.s_addr), host->h_length);
   sin.sin_port = htons(options->port);
   if (xconnect(sock, (struct sockaddr*)&sin, sizeof(sin)) == -1)
     {

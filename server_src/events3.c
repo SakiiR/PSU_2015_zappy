@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 17 16:28:17 2016 Erwan Dupard
-** Last update Fri Jun 24 15:03:06 2016 Barthelemy Gouby
+** Last update Sun Jun 26 17:42:56 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -21,9 +21,9 @@ t_ressource_name_c			g_correspondances[] = {
   {NULL, 10}
 };
 
-void					take_ressource(t_server *server,
-						       t_client *client,
-						       e_ressource_type type)
+void				take_ressource(t_server *server,
+					       t_client *client,
+					       e_ressource_type type)
 {
   if (client->character->current_case->quantities[type] > 0)
     {
@@ -51,8 +51,9 @@ int				event_take_ressource(t_server *server, va_list ap)
   t_client			*client;
   char				*ressource_type;
   int				i;
-  
+
   i = -1;
+  printf("[^] Take resource.\n");
   client = va_arg(ap, t_client *);
   ressource_type = va_arg(ap, char *);
   while (++i < 7)
@@ -68,9 +69,9 @@ int				event_take_ressource(t_server *server, va_list ap)
   return (RETURN_SUCCESS);
 }
 
-void					throw_ressource(t_server *server,
-							t_client *client,
-							e_ressource_type type)
+void				throw_ressource(t_server *server,
+						t_client *client,
+						e_ressource_type type)
 {
   if (client->character->quantities[type] > 0)
     {
@@ -92,7 +93,7 @@ void					throw_ressource(t_server *server,
     write_to_buffer(&client->buffer_out, "ko\n", strlen("ko\n"));
 }
 
-int					event_throw_ressource(t_server *server, va_list ap)
+int				event_throw_ressource(t_server *server, va_list ap)
 {
   t_client			*client;
   char				*ressource_type;
@@ -101,6 +102,7 @@ int					event_throw_ressource(t_server *server, va_list ap)
   i = -1;
   client = va_arg(ap, t_client *);
   ressource_type = va_arg(ap, char *);
+  printf("[^] Throwing resource.\n");
   while (++i < 7)
     {
       if (strcmp(ressource_type, g_correspondances[i].name) == 0)
@@ -114,11 +116,12 @@ int					event_throw_ressource(t_server *server, va_list ap)
   return (RETURN_SUCCESS);
 }
 
-int					event_inventaire(t_server *server, va_list ap)
+int				event_inventaire(t_server *server, va_list ap)
 {
-  t_client				*client;
+  t_client			*client;
 
   (void)server;
+  printf("[^] Inventory.\n");
   client = va_arg(ap, t_client *);
   sprintf(server->buffer,
 	  "{nourriture %d"

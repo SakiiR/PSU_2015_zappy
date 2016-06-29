@@ -5,38 +5,22 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue Jun 14 17:04:49 2016 Erwan Dupard
-** Last update Thu Jun 23 17:26:15 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:58:51 2016 Barthelemy Gouby
 */
 
 #include "server.h"
 
-int					event_new_player(t_server *server, va_list ap)
+int			event_broadcast(t_server *server, va_list ap)
 {
-  int					i;
-
-  i = -1;
-  while (server->clients[++i].host_name)
-    {
-      if (server->clients[i].type == GRAPHIC)
-	{
-	}
-    }
-  (void)ap;
-  return (RETURN_SUCCESS);
-}
-
-
-
-int					event_broadcast(t_server *server, va_list ap)
-{
-  int					i;
-  t_client				*sender;
-  char					*message;
+  int			i;
+  t_client		*sender;
+  char			*message;
 
   i = -1;
   sender = va_arg(ap, t_client *);
   message = va_arg(ap, char *);
-  while (++i < MAX_CLIENTS)
+  printf("[^] Broadcasting from %d : %s\n", sender->character->id, message);
+  while (++i < server->client_pool_size)
     {
       if (server->clients[i].socket != 0 &&
 	  server->clients[i].type == DRONE &&
@@ -49,21 +33,8 @@ int					event_broadcast(t_server *server, va_list ap)
 	    return (RETURN_FAILURE);
 	}
     }
+  write_to_buffer(&sender->buffer_out, "ok\n", 3);
   sprintf(server->buffer, "pbc %i %s\n", sender->character->id, message);
   graphic_broadcast(server, server->buffer);
-  return (RETURN_SUCCESS);
-}
-
-int					event_end_incantation(t_server *server, va_list ap)
-{
-  (void)server;
-  (void)ap;
-  return (RETURN_SUCCESS);
-}
-
-int					event_new_incantation(t_server *server, va_list ap)
-{
-  (void)server;
-  (void)ap;
   return (RETURN_SUCCESS);
 }
