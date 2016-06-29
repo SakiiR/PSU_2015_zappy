@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Fri Jun 10 16:59:26 2016 Erwan Dupard
-** Last update Thu Jun 23 16:27:00 2016 Gabriel Goude
+** Last update Sun Jun 26 17:33:26 2016 Erwan Dupard
 */
 
 #ifndef RESOURCES_H_
@@ -20,32 +20,32 @@
 # include <circular_buffer/circular_buffer.h>
 
 typedef enum
-{
-  FOOD					= 0,
-  LINEMATE				= 1,
-  DERAUMERE				= 2,
-  SIBUR					= 3,
-  MENDIANE				= 4,
-  PHIRAS				= 5,
-  THYSTAME				= 6,
-  NUMBER_OF_TYPES			= 7
-}					e_object_type;
+  {
+    FOOD				= 0,
+    LINEMATE				= 1,
+    DERAUMERE				= 2,
+    SIBUR				= 3,
+    MENDIANE				= 4,
+    PHIRAS				= 5,
+    THYSTAME				= 6,
+    NUMBER_OF_TYPES			= 7
+  }					e_object_type;
 
 typedef enum
-{
-  AVANCE				= 0,
-  DROITE				= 1,
-  GAUCHE				= 2,
-  VOIR					= 3,
-  INVENTAIRE				= 4,
-  PREND					= 5,
-  POSE					= 6,
-  EXPULSE				= 7,
-  BROADCAST				= 8,
-  INCANTATION				= 9,
-  CONNECT_NBR				= 10,
-  NUMBER_OF_REQUESTS			= 11
-}					e_request_type;
+  {
+    AVANCE				= 0,
+    DROITE				= 1,
+    GAUCHE				= 2,
+    VOIR				= 3,
+    INVENTAIRE				= 4,
+    PREND				= 5,
+    POSE				= 6,
+    EXPULSE				= 7,
+    BROADCAST				= 8,
+    INCANTATION				= 9,
+    CONNECT_NBR				= 10,
+    NUMBER_OF_REQUESTS			= 11
+  }					e_request_type;
 
 typedef struct				s_request
 {
@@ -100,26 +100,32 @@ typedef struct				s_map
 /*
 ** main.c
 */
-int					init_client(int ac, char **av, t_infos *infos);
+int					init_client(int ac,
+						    char **av,
+						    t_infos *infos);
 int					play_loop(t_infos *infos);
 void					init_fct(int (**fct)(t_infos *, char *));
 
 /*
 ** handle.c
 */
-int					handle_msg(t_infos *infos, char *msg, int (**fct)(t_infos *, char *));
+int					handle_msg(t_infos *infos,
+						   char *msg,
+						   int (**fct)(t_infos *, char *));
 
 /*
 ** update.c
 */
-int					update(t_infos *infos, int (**fct)(t_infos *, char *));
+int					update(t_infos *infos,
+					       int (**fct)(t_infos *, char *));
 int					send_update(t_infos *infos);
 
 /*
 ** buf.c
 */
 char					*read_buf(t_infos *infos);
-int					write_buf(t_infos *infos, char *str);
+int					write_buf(t_infos *infos,
+						  char *str);
 void					fill_set(t_infos *infos);
 
 /*
@@ -139,6 +145,7 @@ int					ai(t_infos *infos);
 int					init_connection(t_infos *infos);
 int					enter_game(t_infos *infos);
 int					get_world_size(t_infos *infos, char *s);
+void					init_pos(t_infos *infos, int x, int y);
 void					init_inv(t_infos *infos);
 
 /*
@@ -170,6 +177,12 @@ int					handle_pose(t_infos *infos, char *msg);
 int					handle_expulse(t_infos *infos, char *msg);
 int					handle_broadcast(t_infos *infos, char *msg);
 int					handle_incantation(t_infos *infos, char *msg);
+
+int					prend(t_infos *infos, char *str);
+int					voir(t_infos *infos);
+int					inventaire(t_infos *infos);
+int					avance(t_infos *infos);
+int					gauche(t_infos *infos);
 
 /*
 ** handle3.c

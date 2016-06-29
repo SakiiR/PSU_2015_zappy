@@ -5,18 +5,18 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Fri Jun 17 12:01:37 2016 Barthelemy Gouby
-** Last update Thu Jun 23 18:57:07 2016 Erwan Dupard
+** Last update Sun Jun 26 17:42:25 2016 Erwan Dupard
 */
 
 #include "server.h"
 
-int				        avance_command(t_server *server
-						       __attribute__((unused)),
-						       t_client *client,
-						       char *operands
-						       __attribute__((unused)))
+int			avance_command(t_server *server
+				       __attribute__((unused)),
+				       t_client *client,
+				       char *operands
+				       __attribute__((unused)))
 {
-  t_action				*new_action;
+  t_action		*new_action;
 
   if (client->type == DRONE)
     {
@@ -31,21 +31,22 @@ int				        avance_command(t_server *server
   return (RETURN_SUCCESS);
 }
 
-int					incantation_command(t_server *server
-							    __attribute__((unused)),
-							    t_client *client,
-							    char *operands
-							    __attribute__((unused)))
+int			incantation_command(t_server *server
+					    __attribute__((unused)),
+					    t_client *client,
+					    char *operands
+					    __attribute__((unused)))
 {
-  t_action				*new_action;
-  t_incantation				*incantation;
-  t_character				**players;
+  t_action		*new_action;
+  t_incantation		*incantation;
+  t_character		**players;
 
   incantation = get_incantation_by_level(client->character->level + 1);
-  if (check_incantation(incantation, client->character->current_case, &players) == RETURN_FAILURE)
+  if (check_incantation(incantation,
+			client->character->current_case,
+			&players) == RETURN_FAILURE)
     {
-      strcpy(server->buffer, "ko\n");
-      write_to_buffer(&client->buffer_out, server->buffer, strlen(server->buffer));
+      write_to_buffer(&client->buffer_out, "ko\n", 3);
       return (RETURN_SUCCESS);
     }
   if (client->type == DRONE && incantation && players)
@@ -63,12 +64,12 @@ int					incantation_command(t_server *server
   return (RETURN_SUCCESS);
 }
 
-int					prend_command(t_server *server
-						      __attribute__((unused)),
-						      t_client *client,
-						      char *operands)
+int			prend_command(t_server *server
+				      __attribute__((unused)),
+				      t_client *client,
+				      char *operands)
 {
-  t_action				*new_action;
+  t_action		*new_action;
 
   if (client->type == DRONE)
     {
@@ -82,7 +83,9 @@ int					prend_command(t_server *server
       new_action->type = TAKE_RESOURCE;
       new_action->origin = client;
       new_action->duration = 7;
-      if (!(new_action->argument = malloc(strlen(operands))))
+      if ((new_action->argument = malloc(sizeof(char)
+					 * (strlen(operands)
+					    + 1))) == NULL)
 	return (RETURN_FAILURE);
       strcpy(new_action->argument, operands);
       new_action->next = NULL;
@@ -91,12 +94,12 @@ int					prend_command(t_server *server
   return (RETURN_SUCCESS);
 }
 
-int					pose_command(t_server *server
-						     __attribute__((unused)),
-						     t_client *client,
-						     char *operands)
+int			pose_command(t_server *server
+				     __attribute__((unused)),
+				     t_client *client,
+				     char *operands)
 {
-  t_action				*new_action;
+  t_action		*new_action;
 
   if (client->type == DRONE)
     {
@@ -110,9 +113,10 @@ int					pose_command(t_server *server
       new_action->type = THROW_RESOURCE;
       new_action->origin = client;
       new_action->duration = 7;
-      if (!(new_action->argument = malloc(strlen(operands))))
+      if ((new_action->argument = malloc(sizeof(char)
+					 * (strlen(operands) + 1))) == NULL)
 	return (RETURN_FAILURE);
-      strcpy(new_action->argument, operands);
+      new_action->argument = strcpy(new_action->argument, operands);
       new_action->next = NULL;
       add_action(&client->character->action_queue, new_action);
     }

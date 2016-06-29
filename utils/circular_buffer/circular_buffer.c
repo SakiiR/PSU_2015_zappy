@@ -5,14 +5,14 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon May 30 14:55:52 2016 Barthelemy Gouby
-** Last update Wed Jun 29 14:41:51 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:38:22 2016 Barthelemy Gouby
 */
 
 #include "circular_buffer.h"
 
 int		initialize_buffer(t_circular_buffer *buffer, int size)
 {
-  if (!(buffer->memory = malloc(size)))
+  if (!(buffer->memory = malloc(sizeof(*buffer->memory) * (size + 1))))
     return (-1);
   buffer->memory = memset(buffer->memory, 0, size);
   buffer->valid_data_start = 0;
@@ -47,6 +47,9 @@ char		*get_next_message(t_circular_buffer *buffer)
 int		get_if_message(t_circular_buffer *buffer)
 {
   if (buffer->valid_data_start != buffer->valid_data_end)
-    return (1);
+    {
+      printf("message to write\n");
+      return (1);
+    }
   return (0);
 }

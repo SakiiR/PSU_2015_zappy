@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 ** 
 ** Started on  Thu Jun  9 16:31:56 2016 Thomas Billot
-** Last update Sat Jun 18 14:30:45 2016 Thomas Billot
+** Last update Sun Jun 26 20:37:52 2016 Karine Aknin
 */
 
 #ifndef XFUNC_H_
@@ -14,7 +14,7 @@
 # define BUFF_SIZE (1024)
 # define IS_NUMBER(c) ((c >= '0' && c <= '9'))
 
-#include <sys/socket.h>
+# include <sys/socket.h>
 
 char		*get_next_line(const int fd);
 char		**my_str_to_wordtab(const char *str, const char *forbidden);
@@ -25,5 +25,6 @@ int		xconnect(int sockfd,
 int		xsocket(int domain, int type, int protocol);
 int		xclose(int fd);
 char		*my_strdup(char *str);
+int		random_number(int min, int max);
 
 #endif /* !XFUNC_H_ */

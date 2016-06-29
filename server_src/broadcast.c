@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 22 15:52:03 2016 Barthelemy Gouby
-** Last update Fri Jun 24 17:09:53 2016 Barthelemy Gouby
+** Last update Sun Jun 26 17:41:32 2016 Erwan Dupard
 */
 
 #include "server.h"
@@ -27,9 +27,9 @@ void		get_starting_coordinates(t_character *character,
 }
 
 t_case		**get_surrounding_cases(t_map *map,
-					t_character *character)
+					t_character *character,
+					t_case **cases)
 {
-  t_case	**cases;
   int		i;
   int		x;
   int		y;
@@ -41,16 +41,16 @@ t_case		**get_surrounding_cases(t_map *map,
   while (i < 8)
     {
       cases[i++] = map_get_case_circular(x, y, map);
-      if (y < character->current_case->y && 
+      if (y < character->current_case->y &&
 	  x >= character->current_case->x)
 	x--;
-      else if (x < character->current_case->x && 
+      else if (x < character->current_case->x &&
 	       y <= character->current_case->y)
 	y++;
-      else if (y > character->current_case->y && 
+      else if (y > character->current_case->y &&
 	       x <= character->current_case->x)
 	x++;
-      else if (x > character->current_case->x && 
+      else if (x > character->current_case->x &&
 	       y >= character->current_case->y)
 	y--;
     }
@@ -97,7 +97,9 @@ int		get_closest_case(t_map *map,
   double	distance;
   double	shortest_distance;
 
-  if (!(surrouding_cases = get_surrounding_cases(map, receiver)))
+  surrouding_cases = NULL;
+  if (!(surrouding_cases = get_surrounding_cases(map, receiver,
+						 surrouding_cases)))
     return (RETURN_FAILURE);
   i = -1;
   shortest_distance = -1;
@@ -130,7 +132,9 @@ int		send_broadcast_to_drone(t_server *server,
 					    receiver->character))
 	   == RETURN_FAILURE)
     return (RETURN_FAILURE);
-  sprintf(server->buffer, "message %i,%s\n", closest_case, message);
+  sprintf(server->buffer, "message %i,%s\n",
+	  closest_case,
+	  (message && strlen(message) < 512 ? message : NULL));
   write_to_buffer(&receiver->buffer_out,
 		  server->buffer,
 		  strlen(server->buffer));

@@ -5,9 +5,10 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed May 18 16:39:43 2016 Erwan Dupard
-** Last update Thu Jun 23 17:44:09 2016 Barthelemy Gouby
+** Last update Sun Jun 26 18:35:37 2016 Erwan Dupard
 */
 
+#include <my_str_to_wordtab/my_str_to_wordtab.h>
 #include "server.h"
 
 static const t_command			g_commands[] = {
@@ -39,23 +40,24 @@ int					handle_command(char *input,
 						       t_client *client)
 {
   int					i;
-  char					*command_name;
-  char					*operands;
+  char					**line;
 
-  i = -1;
   if (strlen(input) > 1)
       input[strlen(input) - 1] = 0;
   if (client->type == UNSPECIFIED)
     define_client_type(server, client, input);
   else
     {
-      command_name = strtok(input, " ");
-      operands = strtok(NULL, "\n");
-      while (g_commands[++i].command != NULL)
+      if ((line = my_str_to_wordtab(input, " \t\n")) == NULL)
+	return (RETURN_FAILURE);
+      i = -1;
+      while (g_commands[++i].command != NULL && line && line[0])
 	{
-	  if (strcmp(g_commands[i].command, command_name) == RETURN_SUCCESS)
-	    return (g_commands[i].f(server, client, operands));
+	  if (strcmp(g_commands[i].command, line[0]) == RETURN_SUCCESS)
+	    return (g_commands[i].f(server, client, line[1]));
 	}
+      write_to_buffer(&client->buffer_out, "ko\n", 3);
+      free_word_tab(line);
     }
   return (RETURN_SUCCESS);
 }

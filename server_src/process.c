@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Tue May 17 09:26:36 2016 Erwan Dupard
-** Last update Fri Jun 24 16:52:47 2016 Barthelemy Gouby
+** Last update Wed Jun 29 15:55:05 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -16,9 +16,9 @@ static int			handle_clients_input(t_server *server, fd_set *set_in)
   int				size_read;
   char				buffer[PAGE_SIZE];
   char				*next_message;
-  i = -1;
 
-  while (++i < MAX_CLIENTS)
+  i = -1;
+  while (++i < server->client_pool_size)
     {
       if (FD_ISSET(server->clients[i].socket, set_in))
 	{
@@ -46,13 +46,14 @@ static int			handle_server_output(t_server *server, fd_set *set_out)
   char				*data;
 
   i = -1;
-  while (++i < MAX_CLIENTS)
+  while (++i < server->client_pool_size)
     {
       if (FD_ISSET(server->clients[i].socket, set_out))
 	{
 	  data = read_data_from_buffer(&(server->clients[i].buffer_out));
 	  free(data);
-	  while ((next_message = get_next_message(&(server->clients[i].buffer_out)))
+	  while ((next_message =
+		  get_next_message(&(server->clients[i].buffer_out)))
 		 && next_message[0])
 	    {
 	      write(server->clients[i].socket, next_message, strlen(next_message));
@@ -65,40 +66,9 @@ static int			handle_server_output(t_server *server, fd_set *set_out)
   return (RETURN_SUCCESS);
 }
 
-static int			add_client(t_server *server)
-{
-  socklen_t			length;
-  int				i;
-  t_client			*new_client;
-
-  new_client = NULL;
-  i = -1;
-  while (++i < MAX_CLIENTS)
-    {
-      if (server->clients[i].socket == 0)
-	{
-	  new_client = &server->clients[i];
-	  break;
-	}
-    }
-  if (new_client == NULL)
-    return (RETURN_FAILURE);
-  length = sizeof(new_client->in);
-  if ((new_client->socket = accept(server->socket,
-				   (struct sockaddr *)&new_client->in,
-				   &length)) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
-  new_client->type = UNSPECIFIED;
-  printf("[^] New connection : %s:%d\n",
-	 inet_ntoa(new_client->in.sin_addr),
-	 ntohs(new_client->in.sin_port));
-  write_to_buffer(&new_client->buffer_out, WELCOME, strlen(WELCOME));
-  return (RETURN_SUCCESS);
-}
-
 int				process_server(t_server *server)
 {
-  fd_set		        si;
+  fd_set			si;
   fd_set			so;
 
   server->game_data.next_drone_id = 1;
@@ -109,10 +79,7 @@ int				process_server(t_server *server)
       if (select_sockets(server, &si, &so) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (FD_ISSET(server->socket, &si))
-	{
-	  if (add_client(server) == RETURN_FAILURE)
-	    return (RETURN_FAILURE);
-	}
+	add_client(server);
       if (handle_clients_input(server, &si) == RETURN_FAILURE)
 	return (RETURN_FAILURE);
       if (handle_events(server) == RETURN_FAILURE)

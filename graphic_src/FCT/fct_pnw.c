@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:25:33 2016 Thomas Billot
-** Last update Mon Jun 20 15:03:48 2016 Thomas Billot
+** Last update Sun Jun 26 19:53:34 2016 Thomas Billot
 */
 
 #include <stdlib.h>
@@ -24,7 +24,8 @@ t_character	*create_new_player(int id,
 
   if ((new = malloc(sizeof(*new))) == NULL)
     return (NULL);
-  new->id = id;
+  new->id = (t_u64)id;
+  new->status = ALIVE;
   if (orentation >= 0 && orentation <= 4)
     new->orientation = (e_orientation)orentation;
   new->level = level;
@@ -36,6 +37,7 @@ t_character	*create_new_player(int id,
   while (++i < NUMBER_OF_TYPES)
     new->inventory[i] = 0;
   new->next_in_case = NULL;
+  new->texture = CHARACTER;
   return (new);
 }
 
@@ -62,5 +64,6 @@ int		fct_pnw(t_map *map,
   while (current->next_in_case != NULL)
     current = current->next_in_case;
   current->next_in_case = new;
+  new->prev_in_case = current;
   return (RETURN_SUCCESS);
 }

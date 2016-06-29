@@ -5,7 +5,7 @@
 ** Login   <beaude_t@epitech.net>
 **
 ** Started on  Tue Jun 21 12:17:09 2016 Thomas Beaudet
-** Last update Wed Jun 22 15:08:44 2016 Thomas Billot
+** Last update Sun Jun 26 20:35:12 2016 Karine Aknin
 */
 
 #include "graphical.h"
@@ -38,7 +38,10 @@ SDL_Texture			*create_texture(t_render *ress, SDL_Surface *bmp)
   return (texture);
 }
 
-int				display_texture(t_render *ress, t_texture *tile, int x, int y)
+int				display_texture(t_render *ress,
+						t_texture *tile,
+						int x,
+						int y)
 {
   if (ress->rend)
     {

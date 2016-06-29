@@ -5,24 +5,34 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun 16 14:43:26 2016 Thomas Billot
-** Last update Thu Jun 16 17:21:14 2016 Thomas Beaudet
+** Last update Sun Jun 26 20:56:27 2016 Thomas Billot
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "../graphical.h"
 
+t_character	*create_new_egg(int id)
+{
+  t_character	*new;
+
+  if ((new = malloc(sizeof(*new))) == NULL)
+    return (NULL);
+  new->id = (t_u64)id;
+  new->status = ALIVE;
+
+  return (new);
+}
+
 int		fct_pfk(t_map *map,
 			t_server *server __attribute__((unused)),
 			char **cmd)
 {
-  int		i;
+  t_character	*drone;
 
-  (void)map;
-  i = 0;
-  printf("fct_%s args:", cmd[i]);
-  while (cmd[++i])
-    printf(" %s |", cmd[i]);
-  printf("\n");
-  return (0);
+  if ((drone = get_player_by_id(map, (t_u64)atoi(cmd[1]))) == NULL)
+    return (RETURN_FAILURE);
+  put_delay(5000);
+  create_new_egg(drone->id);
+  return (RETURN_SUCCESS);
 }

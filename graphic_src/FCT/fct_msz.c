@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Wed Jun 15 14:14:15 2016 Thomas Billot
-** Last update Fri Jun 24 15:48:35 2016 Thomas Beaudet
+** Last update Sat Jun 25 19:17:37 2016 Thomas Beaudet
 */
 
 #include <stdlib.h>
@@ -23,6 +23,7 @@ t_character	*init_characters(void)
   new->orientation = NORTH;
   new->team = NULL;
   new->next_in_case = NULL;
+  new->prev_in_case = NULL;
   return (new);
 }
 

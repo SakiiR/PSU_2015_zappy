@@ -5,7 +5,7 @@
 ** Login   <mikaz3@epitech.net>
 **
 ** Started on  Thu Jun  9 14:43:41 2016 Thomas Billot
-** Last update Fri Jun 24 16:21:57 2016 Thomas Beaudet
+** Last update Sun Jun 26 20:55:38 2016 Thomas Billot
 */
 
 #ifndef GRAPHICAL_H_
@@ -19,7 +19,6 @@
 
 # define RETURN_SUCCESS		(0)
 # define RETURN_FAILURE		(-1)
-
 # define SOCKET_ERROR		(-1)
 # define USAGE			"./console -h [host-ip] -p [host-port]\n"
 # define MSZ			"msz" /* Taille de la carte */
@@ -46,7 +45,6 @@
 # define SMG			"smg" /* Message du serveur */
 # define SUC			"suc" /* Commande du serveur */
 # define SBP			"sbp" /* Mauvais parametres de commande */
-
 # define BIENVENUE		"BIENVENUE" /* Message du serveur pour
 					       initialisé le moniteur graphique */
 
@@ -59,21 +57,22 @@
 # define T_BORDER_DARK		"graphic_src/Media/border_back.bmp"
 # define T_BORDER_LIGHT		"graphic_src/Media/border_side.bmp"
 # define T_CHARACTER		"graphic_src/Media/villager_idle_00000.png"
-# define T_FOOD			"graphic_src/Media/food.jpg"
-# define T_LINEMATE		"graphic_src/Media/linemate.png"
-# define T_DERAUMERE		"graphic_src/Media/deraumere.png"
-# define T_MENDIANE		"graphic_src/Media/mendiane.png"
-# define T_PHIRAS		"graphic_src/Media/phiras.png"
-# define T_SIBUR		"graphic_src/Media/sibur.png"
-# define T_THYSTAME		"graphic_src/Media/thystame.png"
+# define T_FOOD			"graphic_src/Media/Food.png"
+# define T_LINEMATE		"graphic_src/Media/Linemate.png"
+# define T_DERAUMERE		"graphic_src/Media/Deraumere.png"
+# define T_MENDIANE		"graphic_src/Media/Mendiane.png"
+# define T_PHIRAS		"graphic_src/Media/Phiras.png"
+# define T_SIBUR		"graphic_src/Media/Sibur.png"
+# define T_THYSTAME		"graphic_src/Media/Thystame.png"
 # define T_EGG			"graphic_src/Media/egg.bmp"
 
 /*
-** Defines for animation
+** Defines for status
 */
 
-# define STOP			(0)
-# define RUN			(1)
+# define DEAD			(0)
+# define ALIVE			(1)
+# define EGG			(2)
 
 /*
 ** Convertion map coord to screen cord
@@ -86,7 +85,7 @@
 ** Simple Typedefs
 */
 
-typedef unsigned int	       	t_u64;
+typedef unsigned int		t_u64;
 typedef unsigned int		t_quantity;
 typedef int			t_socket;
 typedef struct sockaddr_in	t_sockaddr;
@@ -97,12 +96,12 @@ typedef struct protoent		t_protocol;
 ** Networking
 */
 
-typedef struct		       	s_server
+typedef struct			s_server
 {
-  t_socket	       	       	socket;
-  t_circular_buffer    		buffer_in;
-  t_circular_buffer    		buffer_out;
-}	       			t_server;
+  t_socket			socket;
+  t_circular_buffer		buffer_in;
+  t_circular_buffer		buffer_out;
+}				t_server;
 
 typedef struct			s_option
 {
@@ -127,16 +126,17 @@ typedef enum
     MENDIANE_T			= 8,
     PHIRAS_T			= 9,
     THYSTAME_T			= 10,
-    NUMBER_OF_TEXTURES		= 11
+    EGG_T			= 11,
+    NUMBER_OF_TEXTURES		= 12
   }				e_textures;
 
 typedef enum
   {
-    NORTH		       	= 1,
-    EAST		       	= 2,
-    SOUTH		       	= 3,
-    WEST		       	= 4
-  }			       	e_orientation;
+    NORTH			= 1,
+    EAST			= 2,
+    SOUTH			= 3,
+    WEST			= 4
+  }				e_orientation;
 
 typedef enum
   {
@@ -153,12 +153,15 @@ typedef enum
 typedef struct			s_character
 {
   t_u64				level;
-  t_u64			        id;
+  t_u64 			id;
+  int				status;
   char 				*team;
   t_quantity   			inventory[NUMBER_OF_TYPES];
-  e_orientation		        orientation;
-  struct s_character   		*next_in_case;
-}			       	t_character;
+  e_orientation			orientation;
+  e_textures			texture;
+  struct s_character		*next_in_case;
+  struct s_character		*prev_in_case;
+}				t_character;
 
 typedef struct			s_tile
 {
@@ -167,10 +170,11 @@ typedef struct			s_tile
   unsigned int			players;
 }				t_tile;
 
-typedef struct		       	s_map
+typedef struct			s_map
 {
   int				x;
   int				y;
+  int				time_u;
   t_tile			*tiles;
 }				t_map;
 
@@ -225,7 +229,9 @@ typedef struct			s_sprite
 */
 
 int				setup_networking(t_option *options);
-int				launch_client(t_server *server, t_render *render);
+int				launch_client(t_server *server,
+					      t_render *render,
+					      t_map *map);
 t_character			*get_player_by_id(t_map *map, t_u64 id);
 int				map_rendering(t_render *render, t_map *map);
 int				ress_rendering(t_render *ress, t_map *map);
@@ -243,7 +249,7 @@ int				clear_surface(t_render *ress);
 */
 
 int				sdl_init();
-void				draw_backg(t_render *ress);
+int				draw_backg(t_render *ress);
 void				put_delay(int delay);
 int				sdl_create_win(t_render *ress);
 int				sdl_event(t_render *ress);
@@ -251,7 +257,6 @@ void				zoom(t_render *ress, t_texture *tile,
 				     int x, int y,
 				     float scale_W, float scale_H);
 void				sdl_quit();
-/*SDL_Rect			sdl_mouse_motion(t_render *ress);*/
 
 /*
 ** Function pointer definition

@@ -5,7 +5,7 @@
 ** Login   <goude_g@epitech.net>
 ** 
 ** Started on  Tue Jun 07 15:48:09 2016 Gabriel Goude
-** Last update Thu Jun 23 16:59:38 2016 Gabriel Goude
+** Last update Sun Jun 26 20:51:48 2016 Erwan Dupard
 */
 
 #include <stdlib.h>
@@ -14,22 +14,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "resources.h"
-
-int			main(int ac, char **av)
-{
-  t_infos		infos;
-  t_map			map;
-  t_client		client;
-
-  infos.client = &client;
-  infos.map = &map;
-  infos.request = NULL;
-  if (init_client(ac, av, &infos) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
-  if (play_loop(&infos) == RETURN_FAILURE)
-    return (RETURN_FAILURE);
-  return (RETURN_SUCCESS);
-}
 
 int			init_client(int ac, char **av, t_infos *infos)
 {
@@ -50,14 +34,14 @@ int			play_loop(t_infos *infos)
 
   init_fct(fct);
   while (infos->client->alive)
-  {
-    if (update(infos, fct) == RETURN_FAILURE)
-      return (RETURN_FAILURE);
-    if (ai(infos) == RETURN_FAILURE)
-      return (RETURN_FAILURE);
-    if (send_update(infos) == RETURN_FAILURE)
-      return (RETURN_FAILURE);
-  }
+    {
+      if (update(infos, fct) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+      if (ai(infos) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+      if (send_update(infos) == RETURN_FAILURE)
+	return (RETURN_FAILURE);
+    }
   return (RETURN_SUCCESS);
 }
 
@@ -74,4 +58,21 @@ void			init_fct(int (**fct)(t_infos *, char *))
   fct[BROADCAST] = handle_broadcast;
   fct[INCANTATION] = handle_incantation;
   fct[CONNECT_NBR] = handle_connect_nbr;
+}
+
+int			main(int ac, char **av)
+{
+  t_infos		infos;
+  t_map			map;
+  t_client		client;
+
+  return (RETURN_SUCCESS);
+  infos.client = &client;
+  infos.map = &map;
+  infos.request = NULL;
+  if (init_client(ac, av, &infos) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  if (play_loop(&infos) == RETURN_FAILURE)
+    return (RETURN_FAILURE);
+  return (RETURN_SUCCESS);
 }
