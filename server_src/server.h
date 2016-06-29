@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Fri Jun 24 16:50:46 2016 Barthelemy Gouby
+** Last update Wed Jun 29 14:49:09 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
@@ -168,6 +168,7 @@ typedef struct				s_server
   struct sockaddr_in			in;
   int					port;
   t_client				*clients;
+  struct timeval			select_timeout;
   t_game_data				game_data;
   char					buffer[PAGE_SIZE];
 }					t_server;

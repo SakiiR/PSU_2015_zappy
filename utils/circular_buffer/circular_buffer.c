@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon May 30 14:55:52 2016 Barthelemy Gouby
-** Last update Fri Jun 10 17:03:33 2016 Barthelemy Gouby
+** Last update Wed Jun 29 14:41:51 2016 Barthelemy Gouby
 */
 
 #include "circular_buffer.h"
@@ -42,4 +42,11 @@ char		*get_next_message(t_circular_buffer *buffer)
 	buffer->valid_data_start += message_size;
     }
   return (data);
+}
+
+int		get_if_message(t_circular_buffer *buffer)
+{
+  if (buffer->valid_data_start != buffer->valid_data_end)
+    return (1);
+  return (0);
 }

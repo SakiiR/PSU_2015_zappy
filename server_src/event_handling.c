@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Wed Jun 15 14:38:08 2016 Barthelemy Gouby
-** Last update Thu Jun 23 18:48:24 2016 Barthelemy Gouby
+** Last update Wed Jun 29 14:58:00 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -22,6 +22,12 @@ void			set_time_speed(t_server *server)
 	 (int)length);
   printf("unit length usecond:  %i\n",
 	 (int)((length - (int) length) * 1000000));
+  server->select_timeout.tv_sec = server->game_data.tick_length.tv_sec / 2;
+  server->select_timeout.tv_usec = server->game_data.tick_length.tv_usec / 2;
+  printf("timeout length second:  %i\n",
+	 (int) server->select_timeout.tv_sec);
+  printf("timeout length usecond:  %i\n",
+	 (int) server->select_timeout.tv_usec);
   gettimeofday(&server->game_data.last_tick, NULL);
 }
 

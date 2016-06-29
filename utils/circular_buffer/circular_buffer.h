@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Mon May 30 18:55:33 2016 Barthelemy Gouby
-** Last update Fri Jun  3 11:55:06 2016 Erwan Dupard
+** Last update Wed Jun 29 14:42:01 2016 Barthelemy Gouby
 */
 
 #ifndef _CIRCULAR_BUFFER_H_
@@ -30,5 +30,6 @@ int		write_to_buffer(t_circular_buffer *buffer,
 				unsigned int size_to_write);
 char		*read_data_from_buffer(t_circular_buffer *buffer);
 char		*get_next_message(t_circular_buffer *buffer);
+int		get_if_message(t_circular_buffer *buffer);
 
 #endif /* !_CIRCULAR_BUFFER_H_ */
