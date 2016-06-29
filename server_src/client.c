@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 29 14:37:49 2016 Erwan Dupard
-** Last update Wed Jun 29 16:25:44 2016 Barthelemy Gouby
+** Last update Wed Jun 29 16:52:41 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -23,22 +23,11 @@ static void		init_client(t_client *client)
 
 static t_client		*reallocate_clients(t_server *server)
 {
-  int			i;
-  t_client		*new_clients;
-
-  i = -1;
-  while (server->clients[++i].host_name)
-    ;
-  if ((new_clients = malloc(sizeof(*new_clients) * (i + 2))) == NULL)
-    return (NULL);
-  i = -1;
-  while (server->clients[++i].host_name)
-    new_clients[i] = server->clients[i];
-  init_client(&new_clients[i]);
-  free(server->clients);
-  server->clients = new_clients;
   server->client_pool_size++;
-  return (&new_clients[i]);
+  if ((server->clients = realloc(server->clients, sizeof(*(server->clients)) * server->client_pool_size)) == NULL)
+    return (NULL);
+  init_client(&server->clients[server->client_pool_size - 1]);
+  return (&server->clients[server->client_pool_size - 1]);
 }
 
 int			add_client(t_server *server)

@@ -5,7 +5,7 @@
 ** Login   <barthe_g@epitech.net>
 ** 
 ** Started on  Tue Jun  7 16:22:59 2016 Barthelemy Gouby
-** Last update Wed Jun 29 15:52:08 2016 Barthelemy Gouby
+** Last update Wed Jun 29 16:52:39 2016 Barthelemy Gouby
 */
 
 #ifndef SERVER_H_
