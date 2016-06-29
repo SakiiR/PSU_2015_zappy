@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Mon May 30 14:55:52 2016 Barthelemy Gouby
-** Last update Wed Jun 29 15:38:22 2016 Barthelemy Gouby
+** Last update Wed Jun 29 16:26:24 2016 Barthelemy Gouby
 */
 
 #include "circular_buffer.h"
@@ -26,7 +26,7 @@ char		*get_next_message(t_circular_buffer *buffer)
   char		*data;
   char		*end_of_line;
   int		message_size;
-
+  
   if (!(data = read_data_from_buffer(buffer)))
     return (NULL);
   if (!(end_of_line = strstr(data, "\n")))
@@ -47,9 +47,6 @@ char		*get_next_message(t_circular_buffer *buffer)
 int		get_if_message(t_circular_buffer *buffer)
 {
   if (buffer->valid_data_start != buffer->valid_data_end)
-    {
-      printf("message to write\n");
-      return (1);
-    }
+    return (1);
   return (0);
 }

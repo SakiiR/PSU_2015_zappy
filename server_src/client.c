@@ -5,7 +5,7 @@
 ** Login   <dupard_e@epitech.net>
 ** 
 ** Started on  Wed Jun 29 14:37:49 2016 Erwan Dupard
-** Last update Wed Jun 29 15:54:36 2016 Barthelemy Gouby
+** Last update Wed Jun 29 16:25:44 2016 Barthelemy Gouby
 */
 
 #include "server.h"
@@ -54,7 +54,7 @@ int			add_client(t_server *server)
       if (server->clients[i].socket == 0)
 	new_client = &server->clients[i];
     }
-  new_client = (new_client == NULL ? reallocate_clients(server) : NULL);
+  new_client = (new_client == NULL ? reallocate_clients(server) : new_client);
   if (new_client == NULL)
     return (RETURN_SUCCESS);
   length = sizeof(new_client->in);
